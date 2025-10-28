@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bier.jp WorkSpaces</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fdfdfd;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #222;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 1em;
+        }
+        a {
+            display: block;
+            padding: 1em 1.5em;
+            background-color: #fff;
+            color: #007bff;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-weight: 600;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        a:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            border-color: #cce5ff;
+        }
+        .how-to {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5em 2em;
+            margin-bottom: 2em;
+        }
+        .how-to h2 {
+            margin-top: 0;
+            border-bottom: none;
+        }
+        dl {
+            margin-top: 1em;
+        }
+        dt {
+            font-weight: 600;
+            margin-top: 1em;
+        }
+        dd {
+            margin-left: 0;
+            padding-left: 1.5em;
+            border-left: 3px solid #dee2e6;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bier.jp WorkSpaces</h1>
+
+    <section class="how-to">
+        <h2>各WorkSpaceの見方</h2>
+        <p>各WorkSpaceは、特定のテーマに関する議論や開発を集約する場所です。主に以下の構造で構成されています。</p>
+        <dl>
+            <dt><code>docs/</code></dt>
+            <dd>企画の背景、Miroの議論をまとめた仕様書、技術的な計画書などのドキュメントが格納されています。</dd>
+            <dt><code>src/</code></dt>
+            <dd>機能実装のためのソースコードが格納されます。（まだ企画段階のWorkSpaceには存在しない場合があります）</dd>
+            <dt><code>index.html</code></dt>
+            <dd>そのWorkSpaceの企画内容や議論の要点をまとめたサマリーページです。まずこのページを見ることで、WorkSpaceの全体像を把握できます。</dd>
+        </dl>
+    </section>
+
+    <h2>WorkSpace一覧</h2>
+    <ul>
+        <li><a href="./WorkSpace1_tastingnotes/index.html">WorkSpace1: Tasting Notes</a></li>
+        <li><a href="./WorkSpace2_official-line/index.html">WorkSpace2: Official LINE</a></li>
+        <li><a href="./WorkSpace3_line-ordering/index.html">WorkSpace3: LINE Ordering</a></li>
+        <li><a href="./WorkSpace4_product-detail-page/index.html">WorkSpace4: Product Detail Page</a></li>
+        <li><a href="./WorkSpace5_feature-page/index.html">WorkSpace5: Feature Page</a></li>
+        <li><a href="./WorkSpace6_beer-comparison/index.html">WorkSpace6: Beer Comparison</a></li>
+        <li><a href="./WorkSpace7_video-content/index.html">WorkSpace7: Video Content</a></li>
+        <li><a href="./WorkSpace8_search-feature/index.html">WorkSpace8: Search Feature</a></li>
+        <li><a href="./WorkSpace9_image-search/index.html">WorkSpace9: Image Search</a></li>
+        <li><a href="./WorkSpace10_my-page/index.html">WorkSpace10: My Page</a></li>
+        <li><a href="./WorkSpace11_recommended-products/index.html">WorkSpace11: Recommended Products</a></li>
+        <li><a href="./WorkSpace12_taste-graph/index.html">WorkSpace12: Taste Graph</a></li>
+    </ul>
+</body>
+</html>

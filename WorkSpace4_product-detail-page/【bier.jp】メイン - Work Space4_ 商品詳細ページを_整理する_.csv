@@ -1,0 +1,500 @@
+﻿"Work Space4: 商品詳細ページを​整理する​"
+"商品詳細ページを整理する（コタニ）"
+"商品説明のテキストが、小さく、また改行位置もきりが悪い部分があるため、商品の魅力をもっと伝えるために整理する余地があると考えた"
+"他社分析"
+"ストーリー、商品情報、飲み方のページを分けている。ここまでしなくても良いが、見出しとなるキャッチフレーズを作るのも良いのではないか。 また、写真自体をもっと大きな物にするか、何枚か写真を掲載するのも良いと思う"
+"実際にどの料理との相性が良いのか等が分かれば、購入者の視点から見ると便利に思う"
+"https://codepen.io/ykvdxbzq-the-bashful/pen/RNWVZJm","https://codepen.io/ykvdxbzq-the-bashful/pen/RNWVZJm"
+"タブで​分けて​多くの​情報を​出すのは​良いと​思いますが、​スマホの​時は​どのような​UIにしますか？​(左の​サイトは、​縦長で​「-」で​たためる​形式ですね)"
+"https://kurand.jp/products/pilsnermood","https://kurand.jp/products/pilsnermood"
+"思わず​購入したくなるような​キャッチコピーを​つけても​良いように​思う​"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+  <title>ビール商品詳細</title>
+  <style>
+    body {
+      font-family: ""Segoe UI"", ""Hiragino Sans"", sans-serif;
+      background: #fdfaf6;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* 左カラム（画像） */
+    .image-section {
+      flex: 1;
+      background: #faf3e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .image-section img {
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: 12px;
+    }
+
+    /* 右カラム（情報） */
+    .info-section {
+      flex: 2;
+      padding: 30px;
+    }
+
+    .info-section h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #b8741a;
+    }
+
+    .brewery {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    /* タブ */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #eee;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      flex: 1;
+      padding: 12px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 16px;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab-button.active {
+      border-bottom: 3px solid #0077cc;
+      font-weight: bold;
+      color: #0077cc;
+    }
+
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .label {
+      font-weight: bold;
+      color: #444;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* 購入ボタン */
+    .buy-button {
+      display: inline-block;
+      background: #0077cc;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    .buy-button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class=""container"">
+    <!-- 左：商品画像 -->
+    <div class=""image-section"">
+      <img src=""https://images.unsplash.com/photo-1605276374104-dee2a1c93a54?auto=format&fit=crop&w=500&q=80"" alt=""バイエルンヴァイツェン"">
+    </div>
+
+    <!-- 右：情報 -->
+    <div class=""info-section"">
+      <h1>バイエルンヴァイツェン</h1>
+      <p class=""brewery"">ドイツ・バイエルン醸造所</p>
+
+      <div class=""tabs"">
+        <button class=""tab-button active"" data-tab=""basic"">基本情報</button>
+        <button class=""tab-button"" data-tab=""details"">原料・製造</button>
+        <button class=""tab-button"" data-tab=""pairing"">料理マッチング</button>
+      </div>
+
+      <div class=""tab-content active"" id=""basic"">
+        <p><span class=""label"">ABV:</span> 5.5%</p>
+        <p><span class=""label"">IBU:</span> 12</p>
+        <p><span class=""label"">説明:</span> フルーティーで柔らかな小麦の香りが特徴のヴァイツェン。</p>
+      </div>
+
+      <div class=""tab-content"" id=""details"">
+        <p><span class=""label"">モルト:</span> 小麦麦芽、ピルスナーモルト</p>
+        <p><span class=""label"">ホップ:</span> テトナンガー</p>
+        <p><span class=""label"">酵母:</span> ヴァイツェン酵母</p>
+        <p><span class=""label"">その他:</span> 水、天然ミネラル</p>
+      </div>
+
+      <div class=""tab-content"" id=""pairing"">
+        <ul>
+          <li>ソーセージとザワークラウト</li>
+          <li>白身魚のムニエル</li>
+          <li>シーザーサラダ</li>
+          <li>和風だしの冷奴</li>
+        </ul>
+      </div>
+
+      <a href=""#"" class=""buy-button"">カートに入れる</a>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll("".tab-button"");
+    const contents = document.querySelectorAll("".tab-content"");
+
+    buttons.forEach(button => {
+      button.addEventListener(""click"", () => {
+        const tab = button.dataset.tab;
+
+        buttons.forEach(btn => btn.classList.remove(""active""));
+        contents.forEach(content => {
+          content.classList.remove(""active"");
+        });
+
+        button.classList.add(""active"");
+        document.getElementById(tab).classList.add(""active"");
+      });
+    });
+  </script>
+
+</body>
+</html>"
+"どの​ページに​飛んでも​すぐに​カートに​入れる​コトが​できるような​ボタンを​設置した​"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <title>ヴァイエンシュテファン ヘフェヴァイスビア</title>
+  <style>
+    body {
+      font-family: ""Helvetica Neue"", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .product-header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .product-header img {
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .product-info {
+      flex: 1;
+    }
+    .product-name {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    /* キャッチコピーを強調 */
+    .catchcopy {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d48806;
+      font-family: ""Georgia"", serif;
+      margin-bottom: 20px;
+    }
+    .product-details {
+      line-height: 1.7;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .section h2 {
+      font-size: 20px;
+      border-left: 5px solid #d48806;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class=""container"">
+    <div class=""product-header"">
+      <img src=""bier-image.jpg"" alt=""ヴァイエンシュテファン ヘフェヴァイスビア"">
+      <div class=""product-info"">
+        <div class=""product-name"">ヴァイエンシュテファン ヘフェヴァイスビア</div>
+        <div class=""catchcopy"">「世界最古の醸造所が贈る、究極の小麦ビール」</div>
+        <div class=""product-details"">
+          アルコール度数：5.4%<br>
+          容量：500ml<br>
+          原産国：ドイツ・バイエルン州<br>
+        </div>
+      </div>
+    </div>
+
+    <div class=""section"">
+      <h2>商品説明</h2>
+      <p>
+        世界最古のビール醸造所ヴァイエンシュテファンが誇る伝統的なヘフェヴァイスビア。
+        フルーティーな香りとクリーミーな泡立ちが特徴で、小麦の柔らかさと爽やかな酸味が心地よく広がります。
+      </p>
+    </div>
+
+    <div class=""section"">
+      <h2>料理との相性</h2>
+      <p>
+        ソーセージ、チーズ、シーフード料理との相性抜群。特にレモンを添えた白身魚のグリルによく合います。
+      </p>
+    </div>
+  </div>
+</body>
+</html>"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+  <title>商品詳細ページ（テンプレート）</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; background: #fafafa; }
+    .product-card { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .product-header { display: flex; align-items: center; gap: 20px; }
+    .product-header img { width: 200px; border-radius: 12px; }
+    h1 { font-size: 1.8rem; margin: 0; }
+    .catch { font-size: 1.2rem; color: #d2691e; margin-top: 5px; }
+    .info { margin-top: 20px; }
+    .info p { margin: 8px 0; }
+    .section { margin-top: 30px; }
+    .section h2 { border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class=""product-card"">
+    <div class=""product-header"">
+      <img id=""product-image"" src="""" alt=""商品画像"">
+      <div>
+        <h1 id=""product-name""></h1>
+        <p class=""catch"" id=""product-catch""></p>
+      </div>
+    </div>
+
+    <div class=""info"">
+      <p><strong>スタイル:</strong> <span id=""product-style""></span></p>
+      <p><strong>アルコール度数:</strong> <span id=""product-abv""></span></p>
+      <p><strong>原産国:</strong> <span id=""product-country""></span></p>
+    </div>
+
+    <div class=""section"">
+      <h2>商品説明</h2>
+      <p id=""product-description""></p>
+    </div>
+
+    <div class=""section"">
+      <h2>料理とのペアリング</h2>
+      <ul id=""product-pairing""></ul>
+    </div>
+  </div>
+
+  <script>
+    // ▼ここを書き換えるだけでページを使い回せる▼
+    const productData = {
+      name: ""ホフブロイ・オクトーバーフェストビア"",
+      catch: ""ミュンヘンの祭典を彩る芳醇な味わい"",
+      image: ""https://example.com/hofbrau.jpg"", // ←画像URLを入れる
+      style: ""メルツェン / オクトーバーフェストビア"",
+      abv: ""6.3%"",
+      country: ""ドイツ・バイエルン"",
+      description: ""ホフブロイ醸造所が誇るオクトーバーフェスト限定ビール。麦芽の甘みとしっかりしたボディが特徴で、秋の祭典にぴったりの一杯です。"",
+      pairing: [
+        ""ヴァイスヴルスト＋プレッツェル"",
+        ""シュヴァイネハクセ（豚すね肉のロースト）"",
+        ""ザワークラウト"",
+        ""焼き鳥（タレ）"",
+        ""とんかつ""
+      ]
+    };
+
+    // データを反映
+    document.getElementById(""product-name"").textContent = productData.name;
+    document.getElementById(""product-catch"").textContent = productData.catch;
+    document.getElementById(""product-image"").src = productData.image;
+    document.getElementById(""product-style"").textContent = productData.style;
+    document.getElementById(""product-abv"").textContent = productData.abv;
+    document.getElementById(""product-country"").textContent = productData.country;
+    document.getElementById(""product-description"").textContent = productData.description;
+
+    const pairingList = document.getElementById(""product-pairing"");
+    productData.pairing.forEach(item => {
+      const li = document.createElement(""li"");
+      li.textContent = item;
+      pairingList.appendChild(li);
+    });
+  </script>
+</body>
+</html>"
+"コードブロック","JavaScript","<script>
+  // ▼この部分の商品データだけ入れ替えればOK▼
+  const productData = {
+    name: ""（商品名）"",
+    catch: ""（キャッチコピー）"",
+    image: ""（商品画像URL）"",
+    style: ""（スタイル）"",
+    abv: ""（アルコール度数）"",
+    country: ""（原産国）"",
+    description: ""（商品説明文）"",
+    pairing: [
+      ""（ペアリング料理1）"",
+      ""（ペアリング料理2）"",
+      ""（ペアリング料理3）""
+    ]
+  };
+</script>"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+  <title>商品詳細ページ</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; background: #fafafa; }
+    .product-card { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .product-header { display: flex; align-items: center; gap: 20px; }
+    .product-header img { width: 200px; border-radius: 12px; }
+    h1 { font-size: 1.8rem; margin: 0; }
+    .catch { font-size: 1.2rem; color: #d2691e; margin-top: 5px; }
+    .info { margin-top: 20px; }
+    .info p { margin: 8px 0; }
+    .section { margin-top: 30px; }
+    .section h2 { border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+    .price-box { margin-top: 20px; padding: 15px; border: 2px solid #eee; border-radius: 10px; background: #fdf7f2; }
+    .price-box p { margin: 8px 0; font-size: 1.1rem; }
+    .btn-buy { display: inline-block; margin-top: 15px; padding: 12px 24px; font-size: 1.1rem; background: #d2691e; color: white; text-decoration: none; border-radius: 8px; transition: background 0.3s; }
+    .btn-buy:hover { background: #a0522d; }
+  </style>
+</head>
+<body>
+  <div class=""product-card"">
+    <div class=""product-header"">
+      <img id=""product-image"" src="""" alt=""商品画像"">
+      <div>
+        <h1 id=""product-name""></h1>
+        <p class=""catch"" id=""product-catch""></p>
+      </div>
+    </div>
+
+    <div class=""info"">
+      <p><strong>スタイル:</strong> <span id=""product-style""></span></p>
+      <p><strong>アルコール度数:</strong> <span id=""product-abv""></span></p>
+      <p><strong>原産国:</strong> <span id=""product-country""></span></p>
+      <p><strong>容量:</strong> <span id=""product-size""></span></p>
+    </div>
+
+    <div class=""price-box"">
+      <p><strong>価格:</strong> <span id=""product-price""></span></p>
+      <p><strong>在庫状況:</strong> <span id=""product-stock""></span></p>
+      <a href=""#"" class=""btn-buy"">カートに入れる</a>
+    </div>
+
+    <div class=""section"">
+      <h2>商品説明</h2>
+      <p id=""product-description""></p>
+    </div>
+
+    <div class=""section"">
+      <h2>料理とのペアリング</h2>
+      <ul id=""product-pairing""></ul>
+    </div>
+  </div>
+
+  <script>
+    // ▼この部分の商品データだけ差し替えればOK▼
+    const productData = {
+      name: ""商品名を入れてください"",
+      catch: ""キャッチコピーを入れてください"",
+      image: ""https://example.com/sample.jpg"", // 画像URL
+      style: ""スタイルを入れてください"",
+      abv: ""例: 5.0%"",
+      country: ""国名を入れてください"",
+      size: ""例: 500ml 瓶"",
+      price: ""例: 650円（税込）"",
+      stock: ""在庫あり"", // 在庫状況
+      description: ""ここに商品説明文を入れます。長いテキストでもOKです。"",
+      pairing: [
+        ""ペアリング料理1"",
+        ""ペアリング料理2"",
+        ""ペアリング料理3""
+      ]
+    };
+
+    // データを反映
+    document.getElementById(""product-name"").textContent = productData.name;
+    document.getElementById(""product-catch"").textContent = productData.catch;
+    document.getElementById(""product-image"").src = productData.image;
+    document.getElementById(""product-style"").textContent = productData.style;
+    document.getElementById(""product-abv"").textContent = productData.abv;
+    document.getElementById(""product-country"").textContent = productData.country;
+    document.getElementById(""product-size"").textContent = productData.size;
+    document.getElementById(""product-price"").textContent = productData.price;
+    document.getElementById(""product-stock"").textContent = productData.stock;
+    document.getElementById(""product-description"").textContent = productData.description;
+
+    const pairingList = document.getElementById(""product-pairing"");
+    productData.pairing.forEach(item => {
+      const li = document.createElement(""li"");
+      li.textContent = item;
+      pairingList.appendChild(li);
+    });
+  </script>
+</body>
+</html>"
+"<!DOCTYPE html><html lang=""ja""><head>  <meta charset=""UTF-8"">  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">  <title>商品詳細ページひな形</title>  <style>    body {      font-family: ""Arial"", sans-serif;      background-color: #f8f8f8;      margin: 0;      padding: 0;      line-height: 1.6;    }    .container {      max-width: 1200px;      margin: 20px auto;      padding: 20px;      background-color: #fff;      box-shadow: 0 4px 10px rgba(0,0,0,0.1);      border-radius: 10px;    }    .product {      display: flex;      flex-wrap: wrap;      gap: 20px;    }    .product img {      width: 100%;      max-width: 400px;      border-radius: 10px;    }    .product-info {      flex: 1;      min-width: 300px;    }    .product-info h1 {      font-size: 2rem;      margin-bottom: 10px;      color: #333;    }    .price {      font-size: 1.5rem;      color: #d35400;      margin: 10px 0;    }    .stock {      font-size: 1rem;      color: #27ae60;      margin-bottom: 15px;    }    .buy-button {      display: inline-block;      padding: 10px 20px;      background-color: #3498db;      color: #fff;      text-decoration: none;      border-radius: 5px;      font-size: 1rem;      transition: background 0.3s;    }    .buy-button:hover {      background-color: #2980b9;    }    .description, .pairing, .related-products {      margin-top: 30px;    }    .description h2, .pairing h2, .related-products h2 {      margin-bottom: 5px;      font-size: 1.4rem;      color: #444;    }    .rating {      display: flex;      align-items: center;      gap: 5px;      margin: 15px 0;      font-size: 1.2rem;    }    .stars {      color: #f1c40f;    }    /* 関連商品 */    .related-list {      display: flex;      gap: 15px;      overflow-x: auto;    }    .related-item {      flex: 0 0 150px;      background-color: #fafafa;      border-radius: 8px;      padding: 10px;      text-align: center;      box-shadow: 0 2px 5px rgba(0,0,0,0.05);    }    .related-item img {      width: 100%;      border-radius: 5px;    }    .related-item p {      margin: 8px 0 0;      font-size: 0.9rem;      color: #333;    }  </style></head><body>  <!-- ===== 商品データを書き換えるだけでOK ===== -->  <script>    const productData = {      name: ""ホフブロイ・オクトーバーフェストビア"",      image: ""beer.jpg"",      price: ""¥680 / 500ml"",      stock: ""在庫あり"",      description: ""ホフブロイ・オクトーバーフェストビアは、ミュンヘンの伝統的なオクトーバーフェストで提供される限定ビール。麦芽の甘みと軽快な飲み口が特徴です。"",      ratingStars: 4, // 0〜5      reviews: 36,      pairing: [        ""プレッツェルやソーセージなどのドイツ料理"",        ""ローストチキン"",        ""チーズプレート""      ],      related: [        { name: ""ホフブロイ・オリジナル"", image: ""related1.jpg"" },        { name: ""ホフブロイ・ドゥンケル"", image: ""related2.jpg"" },        { name: ""パウラナー・ヴァイス"", image: ""related3.jpg"" }      ]    };  </script>  <div class=""container"">    <div class=""product"">      <img id=""product-image"" src="""" alt="""">      <div class=""product-info"">        <h1 id=""product-name""></h1>        <div class=""price"" id=""product-price""></div>        <div class=""stock"" id=""product-stock""></div>        <a href=""#"" class=""buy-button"">カートに入れる</a>        <div class=""rating"">          <span class=""stars"" id=""product-stars""></span>          <span id=""product-reviews""></span>        </div>        <div class=""description"">          <h2>商品説明</h2>          <p id=""product-description""></p>        </div>        <div class=""pairing"">          <h2>この商品に合う料理</h2>          <ul id=""product-pairing""></ul>        </div>      </div>    </div>    <div class=""related-products"">      <h2>関連商品</h2>      <div class=""related-list"" id=""related-list""></div>    </div>  </div>  <script>    // ページにデータを挿入    document.getElementById('product-image').src = productData.image;    document.getElementById('product-image').alt = productData.name;    document.getElementById('product-name').textContent = productData.name;    document.getElementById('product-price').textContent = productData.price;    document.getElementById('product-stock').textContent = productData.stock;    document.getElementById('product-description').textContent = productData.description;    // レビュー    const stars = ""★★★★★☆☆☆☆☆"".slice(5 - productData.ratingStars, 10 - productData.ratingStars);    document.getElementById('product-stars').textContent = stars.slice(0,5);    document.getElementById('product-reviews').textContent = &"
+"ひな形の​作成"
+"もう​少し​情報を​足した​ひな形"
+"商品説明を​既存の​説明に​差し替え、​アルコール度数なども​調整していけば​見やすい​物が​できるのでは中。​次回は、​既存の​ページを​変更してみる​"
+"これだけでも、​見やすく、​購入したいと​思えるのではないか​"

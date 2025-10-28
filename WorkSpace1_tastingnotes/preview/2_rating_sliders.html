@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレビュー: 評価スライダー</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f7f7f7; color: #333; padding: 20px; }
+        h1 { text-align: center; color: #555; }
+        .slider-container {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .slider-item { margin-bottom: 20px; }
+        label { display: block; font-size: 16px; margin-bottom: 10px; color: #333; }
+        input[type="range"] { width: 100%; -webkit-appearance: none; height: 5px; background-color: #ddd; border-radius: 5px; outline: none;}
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; background-color: #007bff; border-radius: 50%; cursor: pointer; }
+        input[type="range"]::-moz-range-thumb { width: 15px; height: 15px; background-color: #007bff; border-radius: 50%; cursor: pointer; }
+        h2 { font-size: 18px; margin-bottom: 15px; color: #007bff; }
+        input[disabled]::-webkit-slider-thumb { background-color: #aaa; }
+        input[disabled]::-moz-range-thumb { background-color: #aaa; }
+    </style>
+</head>
+<body>
+    <h1>ビールの口コミ評価</h1>
+
+    <div class="slider-container">
+        <h2>あなたの評価</h2>
+        <div class="slider-item">
+            <label for="taste-slider">味（甘口 ↔ 辛口）</label>
+            <input type="range" id="taste-slider" min="0" max="10" value="5">
+        </div>
+        <div class="slider-item">
+            <label for="bitterness-slider">苦味（弱い ↔ 強い）</label>
+            <input type="range" id="bitterness-slider" min="0" max="10" value="5">
+        </div>
+        <div class="slider-item">
+            <label for="aroma-slider">香り（弱い ↔ 強い）</label>
+            <input type="range" id="aroma-slider" min="0" max="10" value="5">
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <h2>皆の評価（平均）</h2>
+        <div class="slider-item">
+            <label for="avg-taste-slider">味（甘口 ↔ 辛口）</label>
+            <input type="range" id="avg-taste-slider" min="0" max="10" value="7" disabled>
+        </div>
+        <div class="slider-item">
+            <label for="avg-bitterness-slider">苦味（弱い ↔ 強い）</label>
+            <input type="range" id="avg-bitterness-slider" min="0" max="10" value="6" disabled>
+        </div>
+        <div class="slider-item">
+            <label for="avg-aroma-slider">香り（弱い ↔ 強い）</label>
+            <input type="range" id="avg-aroma-slider" min="0" max="10" value="7" disabled>
+        </div>
+    </div>
+</body>
+</html>

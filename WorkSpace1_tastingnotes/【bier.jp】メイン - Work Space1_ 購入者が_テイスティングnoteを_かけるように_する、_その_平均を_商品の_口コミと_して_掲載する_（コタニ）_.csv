@@ -1,0 +1,1101 @@
+﻿"Work Space1: 購入者が​テイスティングnoteを​かけるように​する、​その​平均を​商品の​口コミと​して​掲載する​（コタニ）​"
+"テイスティングnoteの有用性"
+"LINE×テイスティングnote"
+"これは、酒ガチャと呼ばれるもので、テイスティングノートと関係ないが、最近注目していることがあるから載せた"
+"bier.jpは、日本では珍しい海外のお酒を飲める。そして、それを定期的に購入する人がおそらくサブスクやこのテイスティングノートをするだろうと思われる。"
+"そのようなお酒好きな人が多いだろう顧客層だからこそ、下のガチャシステムはお酒がもらえるだけでなく、その種類が運によって決まるという要素がより面白くしていると思う、"
+"そのような意味でもっと、お酒の楽しみ方を増やすようなサービスを作っても良いと思った。"
+"コレクション機能も良いと思う。bier.jpでは主にビールを取り扱うので、どうにかビールの写真を取るなりしてそれを気持ちよくコレクションする感じが面白かったりするとおもう。まさに、好きなプラモデルや古本、フィギア等を集めるの同じような感じだと思う。"
+"テイスティングノートともに、商品画像も添付することでコレクションできる？ような機能も面白そう。"
+"購入者"
+"どのようなビールを注文し、そのとき自分がどんな感想を持ったのか、「MYテイスティングnote」をマイページなどに作る"
+"各項目"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>テイスティングノート一覧</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .note-item {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .note-item h3 {
+            margin-top: 0;
+        }
+        .note-photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .note-photos img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #222;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>テイスティングノート一覧</header>
+    <div class=""container"" id=""note-list"">
+        <p>（ここに登録されたノートを表示します。仮データ例あり）</p>
+
+        <div class=""note-item"">
+            <h3>シュナイダー・ヴァイセ</h3>
+            <p>味: 4 / 香り: 5 / 苦味: 2</p>
+            <p>バナナのような香りと軽やかな口当たりがとても良かったです。</p>
+            <div class=""note-photos"">
+                <img src=""photo1.jpg"" alt=""テイスティング写真1"">
+                <img src=""photo2.jpg"" alt=""テイスティング写真2"">
+            </div>
+        </div>
+
+        <div class=""note-item"">
+            <h3>ヴァイエンステファン</h3>
+            <p>味: 5 / 香り: 4 / 苦味: 3</p>
+            <p>非常に滑らかで香り高いビールでした。</p>
+            <div class=""note-photos"">
+                <img src=""photo3.jpg"" alt=""テイスティング写真3"">
+            </div>
+        </div>
+    </div>
+    <footer>&copy; 2024 個人テイスティングノート</footer>
+</body>
+</html>"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>個人テイスティングノート</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .note-form {
+            margin-top: 20px;
+        }
+        .note-form label {
+            font-weight: bold;
+        }
+        .note-form input, .note-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .note-form button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .photo-upload {
+            margin-top: 10px;
+        }
+        .photo-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .photo-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        個人テイスティングノート
+    </header>
+    <div class=""container"">
+        <h2>新しいテイスティングノートを追加</h2>
+        <form class=""note-form"">
+            <label for=""beer-name"">ビール名:</label>
+            <input type=""text"" id=""beer-name"" placeholder=""ビールの名前を入力"">
+            
+            <label for=""taste-score"">味の評価 (1-5):</label>
+            <input type=""number"" id=""taste-score"" min=""1"" max=""5"">
+            
+            <label for=""aroma-score"">香りの評価 (1-5):</label>
+            <input type=""number"" id=""aroma-score"" min=""1"" max=""5"">
+            
+            <label for=""bitterness-score"">苦味の評価 (1-5):</label>
+            <input type=""number"" id=""bitterness-score"" min=""1"" max=""5"">
+            
+            <label for=""note"">コメント:</label>
+            <textarea id=""note"" rows=""4"" placeholder=""テイスティングの感想を記入""></textarea>
+            
+            <label for=""photo-upload"" class=""photo-upload"">写真をアップロード:</label>
+            <input type=""file"" id=""photo-upload"" accept=""image/*"" multiple>
+            <div class=""photo-preview"" id=""photo-preview""></div>
+            
+            <button type=""submit"">保存</button>
+        </form>
+    </div>
+    <footer>
+        &copy; 2024 個人テイスティングノート
+    </footer>
+
+    <script>
+        document.getElementById('photo-upload').addEventListener('change', function(event) {
+            let preview = document.getElementById('photo-preview');
+            preview.innerHTML = '';
+            Array.from(event.target.files).forEach(file => {
+                let img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                preview.appendChild(img);
+            });
+        });
+    </script>
+</body>
+</html>"
+"考慮点"
+"登録画面"
+"  ## **方法1: Googleスプレッドシート + LINE Bot** ### **概要** LINE公式アカウントを「LIFF（LINE Front-end Framework）」やWebhookを使って拡張し、ユーザーが送信したテイスティング情報をGoogleスプレッドシートに記録する方法。   ### **手順** 1. **LINE公式アカウントを開設**    - [LINE Official Account Manager](https://www.linebiz.com/jp/service/line-official-account/) でアカウントを作成。   2. **Messaging APIを有効化**    - [LINE Developers](https://developers.line.biz/ja/) でチャネルを作成し、Webhookを設定。   3. **Googleスプレッドシートを用意**    - ビール名、テイスティングコメント、評価、日付などの項目を用意。   4. **GAS（Google Apps Script）でスプレッドシートにデータ保存**    - LINE BotのWebhookにGASを指定し、ユーザーが送ったテキストをスプレッドシートに保存するスクリプトを作成。   5. **LINE Botを設定**    - 例えば、ユーザーが「#ビール テイスティングコメント」と送信したら、自動でスプレッドシートに記録する。   ---   ## **方法2: LIFFアプリを作成** ### **概要** LIFFを使うと、LINEの中で簡易的なアプリを動かせる。Webフォームを用意し、そこにビールのテイスティング情報を入力して記録する形にする。   ### **手順** 1. **LIFFアプリを作成**    - [LINE Developers](https://developers.line.biz/ja/) でLIFFアプリを登録。   2. **Webアプリを開発**    - ReactやVueで簡単な入力フォームを作成し、ビールの情報を記録できるようにする。   3. **データ保存**    - GoogleスプレッドシートやFirebaseを使って情報を保存。   4. **LINEのメニューに追加**    - LINE公式アカウントのリッチメニューに「テイスティングノートを書く」ボタンを配置し、LIFFアプリを開くようにする。   ---   ## **方法3: Chatbotで記録** ### **概要** ユーザーが会話形式で入力できるようにし、データを記録する。例えば、「このビールの名前は？」「味の特徴は？」と聞いて、回答をスプレッドシートやデータベースに保存する。   ### **手順** 1. **Chatbotを作成**    - DialogflowやLINE Messaging APIを使い、ユーザーが自然な会話で入力できるようにする。   2. **データを保存**    - GoogleスプレッドシートやNotion APIなどを使って記録。   3. **過去の記録を参照できるようにする**    - 「前回のビールを見せて」と言えば、履歴を表示する。   ---   ## **おすすめの方法** - **簡単に始めるなら** → **方法1（Googleスプレッドシート + LINE Bot）** - **UIを整えたいなら** → **方法2（LIFFアプリ）** - **会話形式がいいなら** → **方法3（Chatbot）**   どれが良さそうですか？技術的なレベルや使いたい機能に合わせて選ぶといいですね！","https://www.linebiz.com/jp/service/line-official-account/, https://developers.line.biz/ja/"
+"お気に入り度 を数値化？"
+"登録後のコレクション一覧"
+"### **購入者のメリット**   1. **自分の好みを記録・整理できる**    - テイスティングNoteを通じて、どのビールが好みだったか、どんな味や香りを感じたかを記録できます。これにより、自分の嗜好に基づいて次回の購入を選びやすくなります。   2. **新しいビールに挑戦する楽しみが増える**    - 記録を振り返ることで、新しい種類やブランドのビールを試したいという意欲が湧き、購入の幅が広がります。   3. **飲み比べの楽しさ**    - 過去に試したビールと比較することで、飲み比べの楽しさを増幅できます。   4. **知識の向上**    - テイスティングNoteを書くことで、味覚や香りの特徴を意識的に考える習慣がつき、ビールに対する知識が深まります。   5. **SNSやコミュニティで共有可能**    - テイスティングNoteをSNSや友人と共有することで、自分の体験を発信し、他のビール愛好者とつながるきっかけになります。   ---   ### **サイト運営者のメリット**   1. **口コミの充実**    - 購入者のテイスティングNoteが充実することで、商品ページに具体的なレビューが増え、新規顧客が購入を決断しやすくなります。   2. **商品改良のヒント**    - 顧客のフィードバックを分析することで、売れ筋商品や改善が必要なポイントを特定し、ラインナップの改良や新商品の開発に役立てられます。   3. **コミュニティの形成**    - テイスティングNoteを通じて、ビール愛好者同士が交流する場を作り、ECサイトが単なる購入プラットフォームではなく、コミュニティとしての価値を持つようになります。   4. **リピート購入促進**    - 購入者が自身の記録を参照できることで、「また買いたい」と思わせるきっかけになり、リピート購入率を向上させます。   5. **顧客データの活用**    - 収集されたデータを基に、購入者の嗜好に合わせたパーソナライズされた商品推薦が可能になります。   ---   ### **他の顧客へのメリット**   1. **参考情報が増える**    - 他の購入者のテイスティングNoteを閲覧することで、商品の味わいや香りのイメージがつかみやすくなり、購入の参考になります。   2. **新しい商品への挑戦の後押し**    - 他の人の評価を見ることで、未知の商品に挑戦する意欲が湧きます。   3. **共感や信頼感の形成**    - 自分と似た嗜好の人のテイスティングNoteを見つけることで、ECサイトやその商品に対する信頼感が高まります。   ---   ### **ECサイトの魅力としての差別化** 他のECサイトでは単に商品の売買が行われるだけのケースが多い中、テイスティングNoteを導入することで「ビール体験を記録し共有できる場」という独自の価値を提供できます。このような体験型の仕組みは、競合との差別化につながり、リピーターやコミュニティ形成を促進する強力なツールになります。   ---   「購入者が主体的に楽しめる場を提供する」という観点から、テイスティングNoteの導入は双方にとって有益な施策といえます。"
+"メリット"
+"デメリット"
+"ビールの銘柄"
+"ビールごとに固有のリンクを作れば銘柄を記載する必要はない＆顧客のミスもなくせる"
+"これまでの記録が表になって出てくるため見やすい"
+"このフォーマットさえ作成できれば簡単にはじめられるのではないか"
+"若者など普段PCを使う人は、Googleスプレッドシートを使い方や見方を知っていると思うが、普段LINEぐらいしか使わない人には難しいのでは"
+"テイスティングnoteを記録するためには、LINEとGoogleフォームの二つをインストールまたはログインする必要がある"
+"日付"
+"投稿日から自動 で入力"
+"このあたりの平均を、各ビールの説明部分に記載するのはどうか"
+"これまでの購入者の評価や味の口コミが見れたら、購入を考えている人の後押しにもなる"
+"通常の口コミのようにコメント欄を作らないことで、ネガティブワードやアンチなど商品に否定的なイメージを持たれることはないのでは"
+"bier.jp"
+"その商品に対して、購入者がどのような感想を持っているのか、その平均を商品ページに掲載。 →思っていたのと味が違うというようなミスをなくせて、理想に近いビールを購入できる"
+"ビアスタイル"
+"調べればわかるため、この項目は排除して良さそう"
+"お気に入り度"
+"ビール自体の評価。これが一番"
+"平均値の計算"
+"こんな感じで、コミカルな図鑑のようにテイスティングnoteを描いてもらいたい"
+"投稿の保存"
+"原産国、原料、 アルコール濃度"
+"調べればわかるため、この項目は排除して良さそう"
+"コードブロック","JavaScript","app.post('/api/tasting-notes', async (req, res) => {
+  const { userId, beerId, taste, aroma, comment } = req.body;
+
+  // テイスティングノートを保存
+  const note = new TastingNote({ userId, beerId, taste, aroma, comment });
+  await note.save();
+
+  res.status(200).json({ message: ""投稿が保存されました"" });
+});"
+"コードブロック","SQL","SELECT 
+    beer_id,
+    AVG(taste_score) AS average_taste,
+    AVG(aroma_score) AS average_aroma,
+    COUNT(*) AS review_count
+FROM reviews
+WHERE beer_id = ?
+GROUP BY beer_id;"
+"コードブロック","JavaScript","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+  <title>Myビール図鑑</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+    body {
+      font-family: 'Yusei Magic', cursive;
+      background: linear-gradient(to bottom, #fff8e7, #ffeabf);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #ffb700;
+      color: #fff;
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-shadow: 2px 2px #b36b00;
+      border-bottom: 8px dotted #ff8c00;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .zukan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+    }
+
+    .beer-card {
+      background-color: #fff1c1;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0px #e09b1f;
+      text-align: center;
+      padding: 15px;
+      position: relative;
+      border: 4px dashed #fcbf49;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .beer-card:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 8px 8px 0px #cc8c00;
+    }
+
+    .beer-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }"
+"分類や掲載写真などbier.jpの内容と関連図消させたい"
+"コードブロック","JavaScript",".beer-card h3 {
+      margin: 5px 0;
+      font-size: 20px;
+      color: #5e4400;
+    }
+
+    .beer-card p {
+      font-size: 14px;
+      color: #6d4c00;
+    }
+
+    .beer-card.unknown {
+      background-color: #eee;
+      color: #888;
+      font-style: italic;
+      border: 4px dashed #ccc;
+      box-shadow: 6px 6px 0px #aaa;
+    }
+
+    .beer-card.unknown img {
+      opacity: 0.3;
+    }
+
+    .beer-card.unknown h3 {
+      font-size: 18px;
+    }
+
+    .beer-card.unknown p {
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ffb700;
+      color: #fff;
+      font-size: 14px;
+      border-top: 8px dotted #ff8c00;
+    }
+  </style>
+</head>
+<body>
+  <header>Myビール図鑑</header>
+  <div class=""container"">
+    <div class=""zukan-grid"">
+      <!-- 登録済みビール -->
+      <div class=""beer-card"">
+        <img src=""beer1.png"" alt=""ヴァイエンステファン"">
+        <h3>ヴァイエンステファン</h3>
+        <p>香り：★★★★☆<br>苦味：★★★☆☆</p>
+      </div>
+
+      <div class=""beer-card"">
+        <img src=""beer2.png"" alt=""シュナイダー・ヴァイセ"">
+        <h3>シュナイダー・ヴァイセ</h3>
+        <p>香り：★★★★★<br>苦味：★★☆☆☆</p>
+      </div>
+
+      <!-- 未登録ビール -->
+      <div class=""beer-card unknown"">
+        <img src=""question.png"" alt=""？？？"">
+        <h3>？？？</h3>
+        <p>飲んだビールを記録しよう！</p>
+      </div>
+
+      <div class=""beer-card unknown"">
+        <img src=""question.png"" alt=""？？？"">
+        <h3>？？？</h3>
+        <p>飲んだビールを記録しよう！</p>
+      </div>
+    </div>
+  </div>
+  <footer>&copy; 2024 Myビール図鑑</footer>
+</body>
+</html>"
+"色味、にごり、 泡立ち"
+"テーブル構造"
+"どのような人がテイスティングnoteを描きたいと思うか"
+"ビールを購入する前に具体的なイメージをつかめそう"
+"香り （スモーキー、フラワリー、フルーティ）"
+"LINEアプリさえ入れていれば、テイスティングnoteが×"
+"公式あかうんと内の一部機能として使用できるので、質問機能などと併せて運用できる"
+"コードブロック","HTML","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>ビール評価スライダー</title>
+    <link rel=""stylesheet"" href=""styles.css"">
+</head>
+<body>
+    <h1>ビールの口コミ評価</h1>
+
+    <div class=""slider-container"">
+        <h2>あなたの評価</h2>
+        <div class=""slider-item"">
+            <label for=""taste-slider"">味（甘口 ↔ 辛口）</label>
+            <input type=""range"" id=""taste-slider"" min=""0"" max=""10"" value=""5"">
+        </div>
+        <div class=""slider-item"">
+            <label for=""pairing-slider"">合う料理（軽い料理 ↔ 重い料理）</label>
+            <input type=""range"" id=""pairing-slider"" min=""0"" max=""10"" value=""5"">
+        </div>
+        <div class=""slider-item"">
+            <label for=""alcohol-slider"">アルコール度数（低い ↔ 高い）</label>
+            <input type=""range"" id=""alcohol-slider"" min=""0"" max=""10"" value=""5"">
+        </div>
+        <div class=""slider-item"">
+            <label for=""bitterness-slider"">苦味（弱い ↔ 強い）</label>
+            <input type=""range"" id=""bitterness-slider"" min=""0"" max=""10"" value=""5"">
+        </div>
+        <div class=""slider-item"">
+            <label for=""aroma-slider"">香り（弱い ↔ 強い）</label>
+            <input type=""range"" id=""aroma-slider"" min=""0"" max=""10"" value=""5"">
+        </div>
+    </div>
+
+    <div class=""slider-container"">
+        <h2>皆の評価（平均）</h2>
+        <div class=""slider-item"">
+            <label for=""avg-taste-slider"">味（甘口 ↔ 辛口）</label>
+            <input type=""range"" id=""avg-taste-slider"" min=""0"" max=""10"" value=""7"" disabled>
+        </div>
+        <div class=""slider-item"">
+            <label for=""avg-pairing-slider"">合う料理（軽い料理 ↔ 重い料理）</label>
+            <input type=""range"" id=""avg-pairing-slider"" min=""0"" max=""10"" value=""6"" disabled>
+        </div>
+        <div class=""slider-item"">
+            <label for=""avg-alcohol-slider"">アルコール度数（低い ↔ 高い）</label>
+            <input type=""range"" id=""avg-alcohol-slider"" min=""0"" max=""10"" value=""8"" disabled>
+        </div>
+        <div class=""slider-item"">
+            <label for=""avg-bitterness-slider"">苦味（弱い ↔ 強い）</label>
+            <input type=""range"" id=""avg-bitterness-slider"" min=""0"" max=""10"" value=""6"" disabled>
+        </div>
+        <div class=""slider-item"">
+            <label for=""avg-aroma-slider"">香り（弱い ↔ 強い）</label>
+            <input type=""range"" id=""avg-aroma-slider"" min=""0"" max=""10"" value=""7"" disabled>
+        </div>
+    </div>
+</body>
+</html>"
+"コードブロック","CSS","body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #555;
+}
+
+.slider-container {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-item {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type=""range""] {
+    width: 100%;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 5px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type=""range""]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type=""range""]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background-color: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+input[disabled] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}"
+"どのようなデザイン ・特徴が良いか"
+"どんな人が"
+"なぜnoteを描くのか"
+"年齢層"
+"味わい 甘味、苦み、酸味"
+"チャットボット機能を作るワークスペースがあったと思うので、底の内容と併用することができるのでは"
+"「前回のビールを見せて」と言わないと出てこない形にしてしまうとこれまでの記録が見づらくなる"
+"ドイツビールをよく購入する人 （ドイツビール好きな人やドイツビールを使って生計を立てている人）"
+"自分の備忘録として記載する"
+"中高年、高齢層がおおいのでは"
+"簡易な操作で出来る者が良い、手間をかけなく出来る者が良い"
+"現在のテイスティングノートでは手間がかかりすぎるかも   色を塗ったり、原料書いたり"
+"上の項目をクリックしたら、テイスティングnoteが出てくるようにする"
+"コードブロック","HTML","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+  <title>ビール図鑑</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Impact', fantasy;
+      color: #ff5722;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #ffe082;
+      border: 3px dashed #ff8f00;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .note-popup {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 600px;
+      background-image: url('https://cdn.pixabay.com/photo/2016/05/25/08/35/map-1417234_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 5px double #6d4c41;
+      border-radius: 15px;
+      padding: 20px;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      color: #3e2723;
+    }
+
+    .note-popup h2 {
+      font-family: 'Georgia', serif;
+      font-size: 24px;
+      color: #4e342e;
+      text-shadow: 1px 1px #fff3e0;
+    }
+
+    .note-popup p {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .note-popup img {
+      max-width: 100%;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .chart-container {
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      background: #ef5350;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+  </style>
+  <script src=""https://cdn.jsdelivr.net/npm/chart.js""></script>
+</head>
+<body>
+  <h1>🍺 Myビール図鑑</h1>
+
+  <div class=""card-grid"">
+    <div class=""card"" onclick=""openNote()"">
+      <img src=""beer1.jpg"" alt=""ビール1"">
+      <div>シュナイダー・ヴァイセ</div>
+    </div>
+  </div>
+
+  <div class=""note-popup"" id=""notePopup"">
+    <button class=""close-btn"" onclick=""closeNote()"">閉じる</button>
+    <h2>シュナイダー・ヴァイセのテイスティングノート</h2>
+    <p>
+      🍌 バナナのような香りがふわっと広がる！<br>
+      🍞 酵母のコクがリッチで満足感あり！<br>
+      🍯 甘さと酸味のバランスが絶妙。<br>
+    </p>
+    <img src=""tasting_photo.jpg"" alt=""テイスティング写真"">
+
+    <div class=""chart-container"">
+      <canvas id=""tasteChart""></canvas>
+    </div>
+  </div>
+
+  <script>
+    function openNote() {
+      document.getElementById('notePopup').style.display = 'block';
+
+      const ctx = document.getElementById('tasteChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['甘さ', '香り', '苦味', 'コク', 'キレ'],
+          datasets: [{
+            label: '味バランス',
+            data: [4.5, 4.8, 3.2, 4.7, 3.9],
+            backgroundColor: 'rgba(255, 160, 0, 0.2)',
+            borderColor: '#ff9800',
+            pointBackgroundColor: '#ff5722',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          scale: {
+            ticks: {
+              beginAtZero: true,
+              max: 5
+            }
+          }
+        }
+      });
+    }
+
+    function closeNote() {
+      document.getElementById('notePopup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>"
+"スライダー形式ではなく、見やすく口コミを表示しても良いのでは"
+"味のグラフは購入者の口コミの平均で決めるとか？"
+"若者"
+"分かりやすい評価段階、専門用語を使わない"
+"ドイツビール初心者"
+"どのスタイルがどういった味なのかをまだつかめていないから記載"
+"スモーキーはまだしも、フラワリーはちょっと難しいかも"
+"テイスティングノートの良さについて"
+"テイスティングnoteはそのままで良いのか"
+"テイスティングを書いてもらうにはどうすれば良いか"
+"どういったものを想定しているかは、明確には分からないが、ドイツビール図鑑はたしかに面白そう。"
+"今まで購入してきたものを図鑑に反映して、自分のテイスティングノートと他人が見れない購入したビールに対する一言コメントが見れるようにするのは面白いかもしれない。（＊個人的に、商品に対するコメントは見れないようにした方が良いと思っている。）"
+"飲んだ図鑑が見れれば、美味しかったビールの名前を思い出すのにも使えるし、飲んできたものを眺めて楽しんだり、眺めてる最中に自身が高く評価したビールを見つけ購買欲を促進することもできるかもしれない。"
+"試飲時に書いているが、正直少し面倒だと感じてしまうこともある"
+"iPadで書くなら楽だが、印刷して書いたり、PCで書き上げたりする人にとっては結構な手間"
+"中高年者を見ると後者の方が多いような気がする"
+"アンケートに答えるだけで口コミ投稿ができるようなシステムを作った方が利用されやすいかもしれない"
+"コレクション"
+"かなり調べたが、オンライン上で扱えるのテイスティングノートはそんなにないことが分かった。"
+"しかし、簡単レヴューや感想を書けるサイトやアプリは多くあることが分かった。"
+"テイスティングノートをオンライン上で実現するには、こちら側が制作する必要がある。"
+"今後は、レヴューと比較しながら、テイスティングノートの意義をより見つけていく必要があると感じた。"
+"ターゲーット"
+"ここでいうテイスティングノートは左の画像のものを指す"
+"クリックすると自分で描いたテイスティングnoteが見れるようにする"
+"テイスティングノートの良さを改めて併記する理由は、。レヴューなのかテイスティングノートなのか、外部のサイトを使うのか。。。。"
+"これまでの議論を考慮すると、ドイツビールに精通する人の中で テイスティングノートを書いてくれる人 ＊大前提として、レヴューを書く人など少ないと思う。"
+"このスライダーの要素を入れられるようにする"
+"このあたりの項目だけ抜き出してスライダー形式または選択式にすれば高齢者でも、iPadなどが無くても回答しやすいのでは"
+"コードブロック","HTML","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>ビール図鑑</title>
+    <link rel=""stylesheet"" href=""styles.css"">
+</head>
+<body>
+    <h1>ドイツビール図鑑</h1>
+    <div class=""catalog"">
+        <div class=""beer-card"">
+            <div class=""beer-image"">
+                <img src=""https://via.placeholder.com/100x200.png?text=Beer+1"" alt=""ビール画像1"">
+            </div>
+            <div class=""beer-info"">
+                <h2>ビール名1</h2>
+                <p>タイプ: ピルスナー</p>
+                <p>度数: 5.0%</p>
+                <p>評価: ★★★★☆</p>
+                <p>コメント: さわやかで飲みやすいビール。</p>
+            </div>
+        </div>
+
+        <div class=""beer-card"">
+            <div class=""beer-image"">
+                <img src=""https://via.placeholder.com/100x200.png?text=Beer+2"" alt=""ビール画像2"">
+            </div>
+            <div class=""beer-info"">
+                <h2>ビール名2</h2>
+                <p>タイプ: ヴァイツェン</p>
+                <p>度数: 5.5%</p>
+                <p>評価: ★★★☆☆</p>
+                <p>コメント: フルーティーな香りが特徴。</p>
+            </div>
+        </div>
+
+        <div class=""beer-card"">
+            <div class=""beer-image"">
+                <img src=""https://via.placeholder.com/100x200.png?text=Beer+3"" alt=""ビール画像3"">
+            </div>
+            <div class=""beer-info"">
+                <h2>ビール名3</h2>
+                <p>タイプ: ラガー</p>
+                <p>度数: 4.7%</p>
+                <p>評価: ★★★★★</p>
+                <p>コメント: 軽やかでバランスの取れた味わい。</p>
+            </div>
+        </div>
+
+        <div class=""beer-card"">
+            <div class=""beer-image"">
+                <img src=""https://via.placeholder.com/100x200.png?text=Beer+4"" alt=""ビール画像4"">
+            </div>
+            <div class=""beer-info"">
+                <h2>ビール名4</h2>
+                <p>タイプ: ボック</p>
+                <p>度数: 6.5%</p>
+                <p>評価: ★★★★☆</p>
+                <p>コメント: コクが深く飲みごたえあり。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>"
+"質問に答えるだけで出来たらうれしい"
+"ラインチャット ボットとの連携"
+"回答内容をもとに画像形式でのテイスティングノートをプレゼント など"
+"コレクション機能を 加えてみても面白いかも。 コレクション数により実績解除など"
+"テイスティングノートの良さ"
+"① 数値や数直線等で商品の特徴を示すことで、商品同士の微妙な違いを表すことができる。例えば、甘いビールと言っても甘さは商品によって違うが数値が違うだけでそれを表せる。   ② 販売者によって一方的に決めるのではなく、実際に試飲した多くの購入者によって味や香り等を定めることできることも利点だと思う。   ③ これまでの購入者の評価や味の口コミが見れたら、購入を考えている人の後押しにもなる   ④ コメント欄を作らないことで、文字による評価の問題を解消することができる。文字での評価は、時に商品に対して過剰なまでの批判をもたらす。数値も極端に低くすることができるため、悪い印象を持たられることには違いないが、文字はそれを遥かに凌駕するくらい強烈な批判から悪い印象を持たせることができてしまう。"
+"いつ書いてもらうか"
+"ログインしないと見られない問題はどう解決するか（会員出なくなれば見れない）"
+"試飲時または、試飲後すぐに書いてもらうのがベストだと思う。 舌が味を覚えているうちに書いてもらうのが良いと思う。"
+"どう書いてもらうか"
+"　まずは、テイスティングノートまでのアクセスを容易にすることが大切だと思う。つまり、手近にあるスマホでbier.jpにすぐアクセスできるようにするべきだと思う。無論、そこから簡単にログインできるようにすることも大切。 　そのような意味で、テイスティングノートを書いてもらうよう促す紙をビールと共に同封し、そこにQRコードでbier.jpに簡易にアクセスできるような工夫があると良さそう。また、その紙がテイスティングノートためだけのものだと、もったいないため、それこそビールの解説の裏に載せるのも良いと思う、"
+"お客様は、bier.jp以外のビールも飲むと思いますが、その際のテイスティングノートとはどう関連付けられますか？"
+"テイスティングnoteコレクション機能"
+"bier.jp内で他のビールのテイスティングnoteも管理する事が出来れば良いのではないでしょうか"
+"画像から検索のワークスペースと掛け合わせ、他のビールを画像検索した上で、テイスティングnoteを記載する形"
+"各ユーザーが作ったノートはコレクションページから閲覧可能"
+"お気に入り機能や、一定数コレクションすると実績を得られる"
+"実績やコレクションのシェア機能 レベルアップやランキング機能"
+"ユーザー同士の交流が生まれ、さらに盛り上がる"
+"上記したが、ビールを飲み、それを画像に収めテイスティングノートに載せられるようにして、コレクションしていくというのも良いと思う。 "
+"各ユーザのテイスティングノートは、見れるようにするというのは、良いアイディアだと思う。アマゾンでも、他人のレヴューが見れることで参考になることが多いし。ほとんどの人が甘いと感じるビールの中でも甘くないと感じる人が2・３人いるという情報があるだけで買う時の情報量と試飲時の心構えが異なると思う。"
+"多少テイスティングnoteとは関係ないゲームのような物も含まれているが、一部テイスティングnoteもまとめられているサイト​"
+"実績によりクーポン 付与するなど"
+"Ratebeerはサイトが閉鎖していました"
+"既存のサービスとの連携は何か考えていますか？(RatebeerやUntappdなど)​"
+"untappd ​"
+"そのビールを飲んだお店を探すことができる​"
+"販売店も検索で、いろいろな人の口コミを見て購入できる​​"
+"https://www.appbank.net/app-rank/gourmet-app/beer-app","https://www.appbank.net/app-rank/gourmet-app/beer-app"
+"友達と共有する事もできる​"
+"ビールに評価をつけながら、アプリ上に投稿もできる。"
+"beer hunt​"
+"日本語対応しているビール記録アプリ​"
+"コードブロック","CSS","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>バーコードスキャナー</title>
+    <script src=""https://serratus.github.io/quaggaJS/dist/quagga.min.js""></script>
+    <style>
+        #scanner-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+        #product-info {
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id=""scanner-container"">
+        <h1>バーコードスキャナー</h1>
+        <video id=""video-preview""></video>
+        <div id=""product-info"">
+            <p>バーコードをスキャンしてください...</p>
+        </div>
+    </div>
+
+    <script>
+        // QuaggaJSの初期化
+        Quagga.init({
+            inputStream: {
+                name: ""Live"",
+                type: ""LiveStream"",
+                target: document.querySelector('#video-preview'),
+            },
+            decoder: {
+                readers: [""ean_reader"", ""upc_reader""] // EANやUPCフォーマット対応
+            }
+        }, function(err) {
+            if (err) {
+                console.error(err);
+                alert(""バーコードスキャナーの初期化に失敗しました。"");
+                return;
+            }
+            Quagga.start();
+        });
+
+        // バーコードが検出されたときの処理
+        Quagga.onDetected(function(result) {
+            const code = result.codeResult.code;
+            document.getElementById('product-info').innerHTML = `
+                <p>バーコード: ${code}</p>
+                <p>商品情報を取得中...</p>
+            `;
+
+            // 外部APIを使用して商品情報を取得（仮のAPI）
+            fetch(`https://api.upcitemdb.com/prod/trial/lookup?upc=${code}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        const item = data.items[0];
+                        document.getElementById('product-info').innerHTML = `
+                            <p>商品名: ${item.title}</p>
+                            <p>ブランド: ${item.brand}</p>
+                            <p>カテゴリ: ${item.category}</p>
+                        `;
+                    } else {
+                        document.getElementById('product-info').innerHTML = `
+                            <p>商品情報が見つかりませんでした。</p>
+                        `;
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    document.getElementById('product-info').innerHTML = `
+                        <p>商品情報の取得に失敗しました。</p>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>"
+"コードブロック","CSS","/* 全体のスタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.tasting-note-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555555;
+}
+
+input[type=""text""],
+input[type=""number""],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type=""range""] {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+.slider-value {
+    text-align: right;
+    font-size: 14px;
+    color: #777777;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type=""file""] {
+    padding: 5px;
+    font-size: 14px;
+}"
+"コードブロック","HTML","<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>テイスティングノート</title>
+    <link rel=""stylesheet"" href=""styles.css"">
+</head>
+<body>
+    <div class=""tasting-note-container"">
+        <h1>テイスティングノート</h1>
+        <form id=""tasting-note-form"">
+            <!-- ビール名 -->
+            <div class=""form-group"">
+                <label for=""beer-name"">ビール名:</label>
+                <input type=""text"" id=""beer-name"" name=""beer-name"" placeholder=""ビール名を入力してください"" required>
+            </div>
+
+            <!-- 製造元 -->
+            <div class=""form-group"">
+                <label for=""manufacturer"">製造元:</label>
+                <input type=""text"" id=""manufacturer"" name=""manufacturer"" placeholder=""製造元を入力してください"" required>
+            </div>
+
+            <!-- アルコール度数 -->
+            <div class=""form-group"">
+                <label for=""alcohol"">アルコール度数 (%):</label>
+                <input type=""number"" id=""alcohol"" name=""alcohol"" placeholder=""例: 5.5"" step=""0.1"" required>
+            </div>
+
+            <!-- 容量 -->
+            <div class=""form-group"">
+                <label for=""volume"">容量 (ml):</label>
+                <input type=""number"" id=""volume"" name=""volume"" placeholder=""例: 500"" required>
+            </div>
+
+            <!-- 味スライダー -->
+            <div class=""form-group"">
+                <label for=""taste"">味:</label>
+                <input type=""range"" id=""taste"" name=""taste"" min=""1"" max=""10"">
+                <div class=""slider-value"">5</div>
+            </div>
+
+            <!-- 香りスライダー -->
+            <div class=""form-group"">
+                <label for=""aroma"">香り:</label>
+                <input type=""range"" id=""aroma"" name=""aroma"" min=""1"" max=""10"">
+                <div class=""slider-value"">5</div>
+            </div>
+
+            <!-- 画像アップロード -->
+            <div class=""form-group"">
+                <label for=""image-upload"">画像アップロード:</label>
+                <input type=""file"" id=""image-upload"" name=""image-upload"" accept=""image/*"">
+            </div>
+
+            <!-- コメント -->
+            <div class=""form-group"">
+                <label for=""comments"">コメント:</label>
+                <textarea id=""comments"" name=""comments"" placeholder=""感想やメモを記入してください"" rows=""4""></textarea>
+            </div>
+
+            <!-- 保存ボタン -->
+            <div class=""form-group"">
+                <button type=""submit"">テイスティングノートを保存</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>"
+"他のビールのテイスティングnoteを描くときの仕様"
+"商品目などを入力しなくても、バーコードをスキャンすれば詳細情報が出てくるように出来れば便利"
+"https://www.beerhunt.app/","https://www.beerhunt.app/"
+"懸念 →日本語対応していないので、このアプリサイトの使用を促す事は難しそう。​​"
+"このアプリと紐付けられるような新たな日本語対応ビールアプリの開発が必要？​"
+"beer huntの問題点は、対象がクラフトビールだけであること"
+"それ以外は、評価とレヴューができる点では良いと思う"
+"クラフトビールECサイト「OTOMONI」の専用会員アプリ"
+"OTOMONI BEER BOOK"
+"https://help.untappd.com/hc/en-us/articles/360034404451-How-to-Check-In-a-Beer","https://help.untappd.com/hc/en-us/articles/360034404451-How-to-Check-In-a-Beer"
+"https://www.craftbeer-times.com/otomoni/#google_vignette","https://www.craftbeer-times.com/otomoni/#google_vignette"

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレビュー: リッチメニュー</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #707070; font-family: sans-serif; margin: 0;}
+        .phone-simulator { width: 375px; height: 812px; background-color: #1c1c1c; border-radius: 40px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
+        .screen {
+            background-color: #90a4ae; /* LINE chat background color */
+            height: 100%;
+            border-radius: 22px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Pushes rich menu to the bottom */
+        }
+        .rich-menu-bar {
+            background-color: #ffffff;
+            display: flex;
+            border-top: 1px solid #e0e0e0;
+            height: 29%; /* Height based on 843/2500 ratio, adjusted for screen */
+            width: 100%;
+        }
+        .rich-menu-item {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid #e0e0e0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+        .rich-menu-item:last-child { border-right: none; }
+        .rich-menu-item:hover { background-color: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <div class="phone-simulator">
+        <div class="screen">
+            <!-- Chat content would go here -->
+            <div class="rich-menu-bar">
+                <div class="rich-menu-item">おすすめを聞く</div>
+                <div class="rich-menu-item">買い物かご</div>
+                <div class="rich-menu-item">公式サイトTOP</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレビュー: バーコードスキャナー</title>
+    <script src="https://serratus.github.io/quaggaJS/dist/quagga.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0;}
+        #scanner-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: center;
+            background: #fff; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        video {
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+        #product-info {
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="scanner-container">
+        <h1>バーコードスキャナー</h1>
+        <p>カメラを有効にして、ビールのバーコードをスキャンしてください。</p>
+        <video id="video-preview"></video>
+        <div id="product-info">
+            <p>スキャン待機中...</p>
+        </div>
+    </div>
+
+    <script>
+        // QuaggaJSの初期化
+        Quagga.init({
+            inputStream: {
+                name: "Live",
+                type: "LiveStream",
+                target: document.querySelector('#video-preview'),
+                constraints: {
+                    width: 480,
+                    height: 320,
+                    facingMode: "environment"
+                },
+            },
+            decoder: {
+                readers: ["ean_reader", "upc_reader"] // EANやUPCフォーマット対応
+            }
+        }, function(err) {
+            if (err) {
+                console.error(err);
+                alert("カメラの初期化に失敗しました。ブラウザのカメラアクセスを許可してください。");
+                return;
+            }
+            Quagga.start();
+        });
+
+        // バーコードが検出されたときの処理
+        Quagga.onDetected(function(result) {
+            const code = result.codeResult.code;
+            document.getElementById('product-info').innerHTML = `
+                <p><strong>バーコード:</strong> ${code}</p>
+                <p>商品情報を検索中...</p>
+            `;
+            Quagga.stop(); // スキャンを停止
+
+            // ここで、取得したバーコード(code)を使って
+            // 実際のbier.jpの商品データベースに問い合わせるAPIを呼び出す
+            alert(`スキャン成功！\nバーコード: ${code}\n\nこのコードを元に商品情報を検索します。`);
+        });
+    </script>
+</body>
+</html>

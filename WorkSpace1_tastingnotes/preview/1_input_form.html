@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレビュー: テイスティングノート入力フォーム</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; }
+        .container { max-width: 800px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; }
+        .note-form label { font-weight: bold; display: block; margin-top: 15px;}
+        .note-form input, .note-form textarea { width: 100%; box-sizing: border-box; padding: 10px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .note-form button { background-color: #28a745; color: #fff; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .photo-preview { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; border: 1px dashed #ccc; padding: 10px; min-height: 100px; border-radius: 5px;}
+        .photo-preview img { width: 100px; height: 100px; object-fit: cover; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>新しいテイスティングノートを追加</h1>
+        <form class="note-form" onsubmit="return false;">
+            <label for="beer-name">ビール名:</label>
+            <input type="text" id="beer-name" placeholder="ビールの名前を入力">
+            
+            <label for="taste-score">味の評価 (1-5):</label>
+            <input type="number" id="taste-score" min="1" max="5">
+            
+            <label for="aroma-score">香りの評価 (1-5):</label>
+            <input type="number" id="aroma-score" min="1" max="5">
+            
+            <label for="bitterness-score">苦味の評価 (1-5):</label>
+            <input type="number" id="bitterness-score" min="1" max="5">
+            
+            <label for="note">コメント (他の人には公開されません):</label>
+            <textarea id="note" rows="4" placeholder="テイスティングの感想を記入"></textarea>
+            
+            <label for="photo-upload">写真をアップロード:</label>
+            <input type="file" id="photo-upload" accept="image/*" multiple>
+            <div class="photo-preview" id="photo-preview"></div>
+            
+            <button type="submit">保存</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('photo-upload').addEventListener('change', function(event) {
+            let preview = document.getElementById('photo-preview');
+            preview.innerHTML = '';
+            if (event.target.files.length > 0) {
+                Array.from(event.target.files).forEach(file => {
+                    let img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    preview.appendChild(img);
+                });
+            } else {
+                preview.innerHTML = '<p style="color: #888;">ここに写真のプレビューが表示されます</p>';
+            }
+        });
+        // 初期表示
+        document.getElementById('photo-preview').innerHTML = '<p style="color: #888;">ここに写真のプレビューが表示されます</p>';
+    </script>
+</body>
+</html>

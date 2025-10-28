@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プレビュー: 商品カード</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #707070; font-family: sans-serif; margin: 0;}
+        .phone-simulator { width: 375px; height: 812px; background-color: #1c1c1c; border-radius: 40px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .screen { background-color: #f0f0f0; height: 100%; border-radius: 22px; padding: 20px; box-sizing: border-box; overflow-y: auto;}
+        .bubble-container { padding: 10px; }
+        /* Based on LINE Flex Message Simulator */
+        .flex-bubble { background-color: #ffffff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; max-width: 300px; margin: auto;}
+        .flex-hero img { width: 100%; display: block; }
+        .flex-body { padding: 20px; }
+        .flex-body .text-bold { font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;}
+        .flex-body .info-grid { display: grid; grid-template-columns: 40px 1fr; gap: 5px 10px; }
+        .flex-body .text-gray { color: #aaaaaa; font-size: 0.9rem; }
+        .flex-body .text-wrap { color: #666666; font-size: 0.9rem; word-break: break-word; }
+        .flex-footer { padding: 10px 20px; border-top: 1px solid #f0f0f0; }
+        .flex-footer .button-link { display: block; text-align: center; padding: 10px; text-decoration: none; color: #007bff; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="phone-simulator">
+        <div class="screen">
+            <div class="bubble-container">
+                <div class="flex-bubble">
+                    <div class="flex-hero">
+                        <img src="https://bier.jp/images/beeroriginal/weizen_image.jpg" alt="ヴァイツェン">
+                    </div>
+                    <div class="flex-body">
+                        <div class="text-bold">ヴァイツェン</div>
+                        <div class="info-grid">
+                            <div class="text-gray">価格</div>
+                            <div class="text-wrap">¥600</div>
+                            <div class="text-gray">説明</div>
+                            <div class="text-wrap">南ドイツスタイルの小麦ビール。バナナやクローブのようなフルーティーな香りが特徴です。苦みは少なく、まろやかな口当たり。………</div>
+                        </div>
+                    </div>
+                    <div class="flex-footer">
+                        <a href="#" class="button-link">商品かごに追加</a>
+                        <a href="#" class="button-link">詳細はこちら</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

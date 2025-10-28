@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ビール商品詳細 - タブレイアウト</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+      background: #fdfaf6;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* 左カラム（画像） */
+    .image-section {
+      flex: 1;
+      background: #faf3e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .image-section img {
+      max-width: 100%;
+      max-height: 500px;
+      border-radius: 12px;
+    }
+
+    /* 右カラム（情報） */
+    .info-section {
+      flex: 2;
+      padding: 30px;
+    }
+
+    .info-section h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #b8741a;
+    }
+
+    .brewery {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    /* タブ */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #eee;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      flex: 1;
+      padding: 12px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 16px;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+
+    .tab-button.active {
+      border-bottom: 3px solid #0077cc;
+      font-weight: bold;
+      color: #0077cc;
+    }
+
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .label {
+      font-weight: bold;
+      color: #444;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* 購入ボタン */
+    .buy-button {
+      display: inline-block;
+      background: #0077cc;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    .buy-button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 左：商品画像 -->
+    <div class="image-section">
+      <img src="https://images.unsplash.com/photo-1605276374104-dee2a1c93a54?auto=format&fit=crop&w=500&q=80" alt="バイエルンヴァイツェン">
+    </div>
+
+    <!-- 右：情報 -->
+    <div class="info-section">
+      <h1>バイエルンヴァイツェン</h1>
+      <p class="brewery">ドイツ・バイエルン醸造所</p>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="basic">基本情報</button>
+        <button class="tab-button" data-tab="details">原料・製造</button>
+        <button class="tab-button" data-tab="pairing">料理マッチング</button>
+      </div>
+
+      <div class="tab-content active" id="basic">
+        <p><span class="label">ABV:</span> 5.5%</p>
+        <p><span class="label">IBU:</span> 12</p>
+        <p><span class="label">説明:</span> フルーティーで柔らかな小麦の香りが特徴のヴァイツェン。</p>
+      </div>
+
+      <div class="tab-content" id="details">
+        <p><span class="label">モルト:</span> 小麦麦芽、ピルスナーモルト</p>
+        <p><span class="label">ホップ:</span> テトナンガー</p>
+        <p><span class="label">酵母:</span> ヴァイツェン酵母</p>
+        <p><span class="label">その他:</span> 水、天然ミネラル</p>
+      </div>
+
+      <div class="tab-content" id="pairing">
+        <ul>
+          <li>ソーセージとザワークラウト</li>
+          <li>白身魚のムニエル</li>
+          <li>シーザーサラダ</li>
+          <li>和風だしの冷奴</li>
+        </ul>
+      </div>
+
+      <a href="#" class="buy-button">カートに入れる</a>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const tab = button.dataset.tab;
+
+        buttons.forEach(btn => btn.classList.remove("active"));
+        contents.forEach(content => {
+          content.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        document.getElementById(tab).classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

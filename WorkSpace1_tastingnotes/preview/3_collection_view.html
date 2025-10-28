@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プレビュー: Myビール図鑑</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+    body {
+      font-family: 'Yusei Magic', cursive;
+      background: linear-gradient(to bottom, #fff8e7, #ffeabf);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #ffb700;
+      color: #fff;
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-shadow: 2px 2px #b36b00;
+      border-bottom: 8px dotted #ff8c00;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .zukan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+    }
+
+    .beer-card {
+      background-color: #fff1c1;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0px #e09b1f;
+      text-align: center;
+      padding: 15px;
+      position: relative;
+      border: 4px dashed #fcbf49;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .beer-card:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 8px 8px 0px #cc8c00;
+    }
+
+    .beer-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    
+    .beer-card h3 {
+      margin: 5px 0;
+      font-size: 20px;
+      color: #5e4400;
+    }
+
+    .beer-card p {
+      font-size: 14px;
+      color: #6d4c00;
+    }
+
+    .beer-card.unknown {
+      background-color: #eee;
+      color: #888;
+      font-style: italic;
+      border: 4px dashed #ccc;
+      box-shadow: 6px 6px 0px #aaa;
+      cursor: default;
+    }
+    
+    .beer-card.unknown:hover {
+        transform: none;
+        box-shadow: 6px 6px 0px #aaa;
+    }
+
+    .beer-card.unknown img {
+      opacity: 0.3;
+    }
+
+    .beer-card.unknown h3 {
+      font-size: 18px;
+    }
+
+    .beer-card.unknown p {
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background: #ffb700;
+      color: #fff;
+      font-size: 14px;
+      border-top: 8px dotted #ff8c00;
+    }
+  </style>
+</head>
+<body>
+  <header>Myビール図鑑</header>
+  <div class="container">
+    <div class="zukan-grid">
+      <!-- 登録済みビール -->
+      <div class="beer-card">
+        <img src="https://www.heise-brewing.com/wp-content/uploads/2022/03/logo_transparent.png" alt="ヴァイエンステファン">
+        <h3>ヴァイエンステファン</h3>
+        <p>香り：★★★★☆<br>苦味：★★★☆☆</p>
+      </div>
+
+      <div class="beer-card">
+        <img src="https://www.heise-brewing.com/wp-content/uploads/2022/03/logo_transparent.png" alt="シュナイダー・ヴァイセ">
+        <h3>シュナイダー・ヴァイセ</h3>
+        <p>香り：★★★★★<br>苦味：★★☆☆☆</p>
+      </div>
+
+      <!-- 未登録ビール -->
+      <div class="beer-card unknown">
+        <img src="https://static.vecteezy.com/system/resources/previews/000/176/327/original/question-mark-vector-icon.jpg" alt="？？？">
+        <h3>？？？</h3>
+        <p>飲んだビールを記録しよう！</p>
+      </div>
+
+      <div class="beer-card unknown">
+        <img src="https://static.vecteezy.com/system/resources/previews/000/176/327/original/question-mark-vector-icon.jpg" alt="？？？">
+        <h3>？？？</h3>
+        <p>飲んだビールを記録しよう！</p>
+      </div>
+    </div>
+  </div>
+  <footer>&copy; 2024 Myビール図鑑</footer>
+</body>
+</html>

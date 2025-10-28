@@ -1,0 +1,107 @@
+{
+  "type": "flex",
+  "altText": "おすすめのビール: ヴァイツェン",
+  "contents": {
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://bier.jp/images/beeroriginal/weizen_image.jpg",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "cover"
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "ヴァイツェン",
+          "weight": "bold",
+          "size": "xl",
+          "wrap": true
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "margin": "lg",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "baseline",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "価格",
+                  "color": "#aaaaaa",
+                  "size": "sm",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "¥600",
+                  "wrap": true,
+                  "color": "#666666",
+                  "size": "sm",
+                  "flex": 4
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "説明",
+                  "color": "#aaaaaa",
+                  "size": "sm",
+                  "flex": 1
+                },
+                {
+                  "type": "text",
+                  "text": "南ドイツスタイルの小麦ビール。バナナやクローブのようなフルーティーな香りが特徴です。苦みは少なく、まろやかな口当たり。………",
+                  "wrap": true,
+                  "color": "#666666",
+                  "size": "sm",
+                  "flex": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "uri",
+            "label": "商品かごに追加",
+            "uri": "https://bier.jp/api/add-to-cart?item=%7B%22id%22%3A%22Ex101i%22%7D"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "uri",
+            "label": "詳細はこちら",
+            "uri": "https://bier.jp/itemdetail/Ex101i"
+          }
+        }
+      ],
+      "flex": 0
+    }
+  }
+}

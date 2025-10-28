@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プレビュー: ポップアップノート</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Impact', fantasy;
+      color: #ff5722;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #ffe082;
+      border: 3px dashed #ff8f00;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .note-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 600px;
+      background-image: url('https://cdn.pixabay.com/photo/2016/05/25/08/35/map-1417234_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 5px double #6d4c41;
+      border-radius: 15px;
+      padding: 20px;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      color: #3e2723;
+    }
+    
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+    }
+
+    .note-popup h2 {
+      font-family: 'Georgia', serif;
+      font-size: 24px;
+      color: #4e342e;
+      text-shadow: 1px 1px #fff3e0;
+      margin-top: 0;
+    }
+
+    .note-popup p {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+      line-height: 1.6;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .note-popup .user-photo {
+      max-width: 100%;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .chart-container {
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      background: #ef5350;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>🍺 Myビール図鑑</h1>
+
+  <div class="card-grid">
+    <div class="card" onclick="openNote()">
+      <img src="https://www.heise-brewing.com/wp-content/uploads/2022/03/logo_transparent.png" alt="ビール1">
+      <div>シュナイダー・ヴァイセ</div>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popupOverlay" onclick="closeNote()"></div>
+  <div class="note-popup" id="notePopup">
+    <button class="close-btn" onclick="closeNote()">閉じる</button>
+    <h2>シュナイダー・ヴァイセのテイスティングノート</h2>
+    <p>
+      🍌 バナナのような香りがふわっと広がる！<br>
+      🍞 酵母のコクがリッチで満足感あり！<br>
+      🍯 甘さと酸味のバランスが絶妙。<br>
+    </p>
+    <img class="user-photo" src="https://images.unsplash.com/photo-1584225059942-c3a51a3e83d8?auto=format&fit=crop&w=500&q=60" alt="テイスティング写真">
+
+    <div class="chart-container">
+      <canvas id="tasteChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    let myChart = null;
+    function openNote() {
+      document.getElementById('popupOverlay').style.display = 'block';
+      document.getElementById('notePopup').style.display = 'block';
+
+      const ctx = document.getElementById('tasteChart').getContext('2d');
+      if(myChart) {
+          myChart.destroy();
+      }
+      myChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['甘さ', '香り', '苦味', 'コク', 'キレ'],
+          datasets: [{
+            label: '味バランス',
+            data: [4.5, 4.8, 3.2, 4.7, 3.9],
+            backgroundColor: 'rgba(255, 160, 0, 0.2)',
+            borderColor: '#ff9800',
+            pointBackgroundColor: '#ff5722',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          scale: {
+            ticks: {
+              beginAtZero: true,
+              max: 5
+            }
+          }
+        }
+      });
+    }
+
+    function closeNote() {
+      document.getElementById('popupOverlay').style.display = 'none';
+      document.getElementById('notePopup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

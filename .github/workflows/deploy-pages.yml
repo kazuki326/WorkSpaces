@@ -1,16 +1,12 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Run on pushes to the main branch
+  push:
+    branches:
+      - main
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      project:
-        description: 'Which project to deploy?'
-        required: true
-        type: choice
-        options:
-          - project-a
-          - project-b
 
 # Special permissions are required to deploy to GitHub Pages
 permissions:
@@ -19,7 +15,6 @@ permissions:
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -36,20 +31,12 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
-      - name: Build project
-        run: |
-          echo "Deploying project: ${{ github.event.inputs.project }}"
-          # Create a directory for the site content
-          mkdir -p ./_site
-          # Copy the selected project's files to the site directory
-          cp -r ./${{ github.event.inputs.project }}/* ./_site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the site directory
-          path: './_site'
+          # Upload the entire repository
+          path: '.'
 
       - name: Deploy to GitHub Pages
         id: deployment
