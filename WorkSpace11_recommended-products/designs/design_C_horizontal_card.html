@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おすすめ商品 - デザインC (横長カード)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {},
+          },
+          plugins: [
+            require('@tailwindcss/line-clamp'),
+          ],
+        }
+      </script>
+</head>
+<body>
+    <div class="p-6 bg-gray-50">
+        <h1 class="text-3xl font-bold text-center mb-8">おすすめ商品 - デザインC (横長カード)</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 商品カード -->
+            <div class="flex flex-col md:flex-row bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+              <!-- 商品画像 -->
+              <img class="w-full md:w-48 h-48 object-cover" src="https://bier.jp/images/beeroriginal/nx-002.jpg" alt="ヴァイエンシュテファン">
+          
+              <!-- 商品情報 -->
+              <div class="p-4 flex flex-col justify-between">
+                <div>
+                  <h2 class="text-xl font-semibold text-gray-800">ヴァイエンシュテファン ヘフェヴァイスビア</h2>
+                  <p class="text-sm text-gray-500 mt-1">カテゴリ: ヴァイツェン</p>
+                  <p class="text-sm text-gray-500">価格: ¥780</p>
+                  <p class="text-sm text-gray-500">在庫: 25本</p>
+                  <p class="mt-2 text-gray-600 text-sm leading-snug line-clamp-3">
+                    バナナのような香りとスパイスの風味。世界最古の醸造所が誇る、伝統的な味わいのヴァイツェンです。
+                  </p>
+                </div>
+                <button class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-2 px-4 rounded-xl self-start transition">詳細を見る</button>
+              </div>
+            </div>
+            <!-- ここに複数の商品カードを追加 -->
+            <div class="flex flex-col md:flex-row bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <img class="w-full md:w-48 h-48 object-cover" src="https://bier.jp/images/beeroriginal/ex-101.jpg" alt="エルディンガー">
+                <div class="p-4 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">エルディンガー ヴァイスビア</h2>
+                        <p class="mt-2 text-gray-600 text-sm leading-snug line-clamp-3">まろやかでクリーミーな味わい。</p>
+                    </div>
+                    <button class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-2 px-4 rounded-xl self-start transition">詳細を見る</button>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <img class="w-full md:w-48 h-48 object-cover" src="https://bier.jp/images/beeroriginal/dx-101.jpg" alt="ビットブルガー">
+                <div class="p-4 flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">ビットブルガー プレミアムピルス</h2>
+                        <p class="mt-2 text-gray-600 text-sm leading-snug line-clamp-3">キレのある爽快な苦味。</p>
+                    </div>
+                    <button class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-2 px-4 rounded-xl self-start transition">詳細を見る</button>
+                </div>
+            </div>
+          </div>
+    </div>
+</body>
+</html>

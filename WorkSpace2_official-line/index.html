@@ -3,268 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkSpace2: LINE公式アカウント 統合ドキュメント</title>
-    <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        h1, h2, h3, h4 { 
-            font-weight: 600;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-            color: #222;
-        }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3em; font-size: 2.25em; }
-        h2 { border-bottom: 1px solid #eee; padding-bottom: 0.3em; font-size: 1.75em; }
-        h3 { font-size: 1.5em; }
-        h4 { font-size: 1.25em; }
-        p { margin-bottom: 1em; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 0.5em; }
-        code {
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            font-size: 0.9em;
-            background-color: #f0f0f0;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-        }
-        strong { font-weight: 600; }
-        .container {
-            background-color: #fff;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        /* LINE Preview Styles */
-        .preview-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #e9ebee;
-            border-radius: 8px;
-        }
-        .phone-mockup {
-            width: 320px;
-            height: 500px;
-            background-color: #fff;
-            border: 8px solid #222;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        .line-header {
-            background-color: #3d414c;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-weight: bold;
-        }
-        .line-chat-area {
-            flex-grow: 1;
-            background-color: #7bb9de;
-            padding: 10px;
-            overflow-y: auto;
-        }
-        .line-bubble {
-            display: flex;
-            margin-bottom: 10px;
-        }
-        .line-icon img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .line-message {
-            max-width: 80%;
-        }
-        .line-message p {
-            margin: 0 0 5px 0;
-            font-size: 0.95em;
-        }
-        .line-card {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-        .line-button {
-            display: block;
-            text-align: center;
-            background-color: #00b900;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .back-to-home {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            background-color: #6c757d;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-        .back-to-home:hover {
-            background-color: #5a6268;
-        }
-    </style>
+    <title>WorkSpace2: 公式LINE連携 戦略概要</title>
+    <link rel="stylesheet" href="../common_style.css">
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>WorkSpace2: LINE公式アカウント 統合ドキュメント</h1>
+    <header>
+        <h1>WorkSpace2: 公式LINE連携 戦略概要</h1>
+        <p>公式LINEアカウントの構築・活用に関する戦略をまとめたワークスペースです。</p>
+    </header>
 
-        <section id="line-strategy">
-            <h2>LINE公式アカウント 運用戦略</h2>
-            <p>Miroでのブレインストーミングに基づき、本プロジェクトの目的と戦略を以下に定義する。</p>
-
-            <h3>1. 目的</h3>
-            <p><strong>販売促進</strong>を主目的とし、日本で最も利用率の高いSNSであるLINEを活用して、既存顧客および潜在顧客へのアプローチを強化する。従来の受け身の姿勢（サブスクなど）から脱却し、より能動的なアクションを通じて売上向上を目指す。</p>
-
-            <h3>2. なぜLINEか？</h3>
-            <ul>
-                <li><strong>圧倒的なユーザー基盤</strong>: 日本の人口の約7割（9,500万人）が利用しており、馴染みがあり抵抗感が少ない。</li>
-                <li><strong>幅広い利用者層</strong>: 年代・性別・地域を問わず、日本の人口分布に近いユーザーが利用。特に会社員、主婦、学生が多く、<code>bier.jp</code>のターゲット層と合致する。</li>
-                <li><strong>高いリーチ力</strong>: 他のSNSでは接触できないユーザー層にもアプローチ可能。</li>
-            </ul>
-
-            <h3>3. 基本戦略</h3>
-            <ol>
-                <li><strong>メールマガジンの代替</strong>: LINEを主要な情報発信チャネルと位置づけ、開封率の高いメッセージで顧客にアプローチする。</li>
-                <li><strong>ブロック率を抑えるための情報発信</strong>: クーポンやセール情報など、ユーザーにとって明確なメリットがある情報を中心に配信する。「ドイツビールの豆知識」のようなコンテンツは頻度を抑え、あくまで補助的なものとする。</li>
-                <li><strong>リピート率の向上（ファン化の促進）</strong>: 既存顧客や一度購入したユーザーに対し、継続的な情報発信やクーポン配布を行い、再購入を促す。</li>
-                <li><strong>新規顧客の育成</strong>: WebサイトやSNSからLINE公式アカウントへ誘導し、新規顧客をリピーターへと育成する。</li>
-                <li><strong>即時性の高い販促活動</strong>: 在庫が残っている商品や、特定の日時で集客したい場合に、即効性の高い施策（例: タイムセール告知）を実施する。</li>
-                <li><strong>ID連携によるパーソナライズ</strong>: <code>bier.jp</code>の会員IDとLINEアカウントを連携させ、個人に合わせた情報（例: おすすめ商品）を提供する。</li>
-            </ol>
-
-            <h4>配信メッセージのプレビュー</h4>
-            <div class="preview-container">
-                <!-- Preview 1: Coupon -->
-                <div class="phone-mockup">
-                    <div class="line-header">Bier.jp</div>
-                    <div class="line-chat-area">
-                        <div class="line-bubble">
-                            <div class="line-icon"><img src="https://placehold.jp/40x40.png?text=B" alt="icon"></div>
-                            <div class="line-message">
-                                <div class="line-card">
-                                    <p><strong>週末限定クーポン！</strong></p>
-                                    <p>友だち限定！今週末に使える10% OFFクーポンをプレゼント🍺</p>
-                                    <img src="https://placehold.jp/280x150.png?text=COUPON" alt="coupon" style="width:100%; border-radius: 5px; margin-top: 5px;">
-                                    <a href="#" class="line-button">今すぐクーポンを使う</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Preview 2: New Product -->
-                <div class="phone-mockup">
-                    <div class="line-header">Bier.jp</div>
-                    <div class="line-chat-area">
-                        <div class="line-bubble">
-                            <div class="line-icon"><img src="https://placehold.jp/40x40.png?text=B" alt="icon"></div>
-                            <div class="line-message">
-                                <div class="line-card">
-                                    <p><strong>【新商品】春限定醸造「マイボック」登場！</strong></p>
-                                    <img src="https://placehold.jp/280x150.png?text=New+Beer" alt="new_beer" style="width:100%; border-radius: 5px;">
-                                    <p style="font-size: 0.9em; margin-top: 5px;">春の訪れを祝う、麦の旨味が凝縮された一杯。数量限定ですのでお早めに！</p>
-                                    <a href="#" class="line-button">商品詳細を見る</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Preview 3: Personalized -->
-                <div class="phone-mockup">
-                    <div class="line-header">Bier.jp</div>
-                    <div class="line-chat-area">
-                        <div class="line-bubble">
-                            <div class="line-icon"><img src="https://placehold.jp/40x40.png?text=B" alt="icon"></div>
-                            <div class="line-message">
-                                <p>田中様、いつもありがとうございます！</p>
-                                <div class="line-card">
-                                    <p>先日ご購入いただいた「ヴァイツェン」がお好きでしたら、こちらの<strong>「ホフブロイ・ヴァイスビア」</strong>もおすすめです！</p>
-                                    <p style="font-size: 0.9em; margin-top: 5px;">同じ醸造所の自信作で、よりフルーティーな香りをお楽しみいただけます。</p>
-                                    <a href="#" class="line-button">詳細をチェック</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <main class="container">
+        <section class="my-page-section">
+            <h2>目的とLINEの優位性</h2>
+            <div class="my-page-section">
+                <h3>プロジェクトの目的</h3>
+                <p>
+                    本プロジェクトの主目的は**販売促進**です。
+                    従来の受け身の姿勢（サブスクリプションなど）から脱却し、より能動的なアプローチを通じて売上向上を目指します。
+                    そのための主要な手段として、LINE公式アカウントを構築・活用します。
+                </p>
             </div>
-
-            <h3>4. 友だち（ユーザー）獲得戦略</h3>
-            <ul>
-                <li><strong>既存チャネルからの誘導</strong>: <code>bier.jp</code>のサイト上や他のSNS（Instagramなど）に、LINEアカウントへの導線（URL、QRコード）を設置し、友だち追加を促す。</li>
-                <li><strong>LINE広告の活用</strong>:
-                    <ul>
-                        <li><strong>ターゲット配信</strong>: 年齢、性別、地域、興味関心などでセグメントし、効率的にターゲット層へリーチする。</li>
-                        <li><strong>類似オーディエンス配信</strong>: 過去の購入者データに基づき、類似した行動履歴を持つユーザーに広告を配信する。</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h3>5. 主要な課題と考慮点</h3>
-            <ul>
-                <li><strong>友だち集めの必要性</strong>: LINE施策の成功は友だち数に依存するため、他媒体との連携によるユーザー獲得が不可欠。</li>
-                <li><strong>通知頻度とブロック率</strong>: 通知が多すぎるとブロックされる傾向が強い。情報の質と量のバランスを慎重に検討する必要がある。</li>
-                <li><strong>メッセージの課金体系</strong>: メッセージ配信は通数によって課金が発生する。費用対効果を意識した運用が求められる。（例: Push APIは課金対象、Reply APIは課金対象外）</li>
-            </ul>
+            <div class="my-page-section">
+                <h3>なぜLINEか？</h3>
+                <ul>
+                    <li><strong>圧倒的なユーザー基盤</strong>: 日本の人口の約7割（9,500万人）が利用しており、ユーザーにとって馴染み深く抵抗感が少ない。</li>
+                    <li><strong>幅広い利用者層</strong>: 年代・性別・地域を問わず、日本の人口分布に近いユーザーが利用。特に会社員、主婦、学生が多く、<code>bier.jp</code>のターゲット層と合致する可能性が高い。</li>
+                    <li><strong>高いリーチ力と開封率</strong>: 他のSNSでは接触できないユーザー層にもアプローチ可能です。メールマガジンと比較して開封率が高く、情報が届きやすいと期待されます。</li>
+                </ul>
+            </div>
         </section>
 
-        <section id="tools-and-services">
-            <h2>関連ツール・サービス調査</h2>
-            <p>LINE公式アカウントの機能を拡張し、運用を助けるツールやサービスについてまとめる。</p>
-
-            <h3>1. LINE公式提供・連携サービス</h3>
-            <p>LINE自身が提供する広告サービスや、公式なテクノロジーパートナーが提供する連携サービス。</p>
-
-            <h4>LINE広告 (LINE Ads)</h4>
-            <ul>
-                <li><strong>概要</strong>: LINEのプラットフォーム内に広告を配信するサービス。圧倒的なユーザー数を誇る媒体に対し、詳細なターゲティング設定を行って広告を配信できる。</li>
-                <li><strong>主な機能</strong>:
-                    <ul>
-                        <li><strong>ターゲット配信</strong>: 年齢、性別、地域、興味・関心といったデモグラフィック情報や行動データに基づき、特定のセグメントに広告を届けられる。</li>
-                        <li><strong>類似オーディエンス配信</strong>: 過去の購入者やサイト訪問者のデータを利用し、それらのユーザーと行動が類似するユーザー層に広告を配信する機能。効率的な新規顧客獲得が期待できる。</li>
-                    </ul>
-                </li>
-                <li><strong>評価</strong>: 友だち獲得やサイトへの新規流入を増やすための強力な手段となる。友だち獲得数に応じた課金体系も選択可能。</li>
-            </ul>
-
-            <h4>ソーシャルPLUS (SocialPlus)</h4>
-            <ul>
-                <li><strong>概要</strong>: LINEヤフーのテクノロジーパートナーである株式会社ソーシャルPLUSが提供する、LINE連携に特化したCRM・ソーシャルログインサービス。</li>
-                <li><strong>主な機能</strong>:
-                    <ul>
-                        <li><strong>LINEログイン・ID連携</strong>: <code>bier.jp</code>のような既存のWebサービスとLINEアカウントのID連携をスムーズに実装するための機能を提供。</li>
-                        <li><strong>CRM施策支援</strong>: 連携した顧客データに基づき、セグメントされたメッセージ配信など、CRM施策をサポートする。</li>
-                        <li><strong>Shopifyアプリ</strong>: Shopifyで構築されたECサイト向けに「CRM PLUS on LINE」というアプリも提供している。</li>
-                    </ul>
-                </li>
-                <li><strong>評価</strong>: 自前でのID連携実装が複雑な場合に、開発コストを抑えつつ高度な機能を実現するための有力な選択肢となる。</li>
-            </ul>
+        <section class="my-page-section">
+            <h2>基本戦略</h2>
+            <p>LINE公式アカウントを効果的に運用するための基本戦略は以下の通りです。</p>
+            <div class="my-page-section">
+                <h3>1. メールの代替としての情報発信</h3>
+                <p>LINEを主要な情報発信チャネルと位置づけ、開封率の高いメッセージで顧客にアプローチします。クーポンやセール情報など、ユーザーにとって明確なメリットがある情報を中心に配信し、ブロック率を抑制します。「ドイツビールの豆知識」のようなコンテンツは頻度を抑え、補助的に活用します。</p>
+            </div>
+            <div class="my-page-section">
+                <h3>2. リピート率の向上（ファン化の促進）</h3>
+                <p>既存顧客や一度購入したユーザーに対し、継続的な情報発信やクーポン配布を行い、再購入を促します。</p>
+            </div>
+            <div class="my-page-section">
+                <h3>3. 新規顧客の育成</h3>
+                <p>Webサイトや他のSNSからLINE公式アカウントへ誘導し、関係性を構築することで新規顧客をリピーターへと育成します。</p>
+            </div>
+            <div class="my-page-section">
+                <h3>4. 即時性の高い販促活動</h3>
+                <p>在庫が残っている商品や、特定の日時で集客したい場合に、即効性の高い施策（例: タイムセール告知）を実施します。メッセージの見られやすさを活かした販売戦略です。</p>
+            </div>
+            <div class="my-page-section">
+                <h3>5. ID連携によるパーソナライズ</h3>
+                <p><code>bier.jp</code>の会員IDとLINEアカウントを連携させることで、個々のユーザーに合わせた情報（例: 購入履歴に基づくおすすめ商品）の提供を目指します。</p>
+            </div>
         </section>
 
-    </div>
+        <section class="my-page-section">
+            <h2>友だち（ユーザー）獲得戦略</h2>
+            <p>LINE施策の成功は友だち数に依存するため、ユーザー獲得は最重要課題の一つです。</p>
+            <div class="my-page-section">
+                <h3>1. 既存チャネルからの誘導</h3>
+                <p>
+                    <code>bier.jp</code>のサイト上や他のSNS（Instagramなど）に、LINEアカウントへの導線（URL、QRコード）を分かりやすく設置し、友だち追加を促します。
+                    「友だち追加で10%OFFクーポンプレゼント」のようなインセンティブを用意すると効果的です。
+                </p>
+            </div>
+            <div class="my-page-section">
+                <h3>2. LINE広告の活用</h3>
+                <p>
+                    LINEのプラットフォーム内に広告を配信し、能動的に新規友だちを獲得します。
+                </p>
+                <ul>
+                    <li>
+                        <strong>ターゲット配信:</strong> 年齢、性別、地域、興味関心などでセグメントし、bier.jpのターゲット層へ効率的にリーチします。
+                    </li>
+                    <li>
+                        <strong>類似オーディエンス配信:</strong> 過去の購入者データに基づき、類似した行動履歴を持つユーザーに広告を配信することで、質の高い新規顧客獲得が期待できます。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="my-page-section">
+            <h2>関連ツール・サービス</h2>
+            <p>LINE公式アカウントの機能を拡張し、運用を効率化するためのツールやサービスです。</p>
+            <div class="my-page-section">
+                <h3>1. LINE広告 (LINE Ads)</h3>
+                <p>
+                    LINEのプラットフォーム内に広告を配信するサービス。圧倒的なユーザー数を誇る媒体に対し、詳細なターゲティング設定を行って広告を配信できます。
+                    友だち獲得やサイトへの新規流入を増やすための強力な手段となります。
+                </p>
+            </div>
+            <div class="my-page-section">
+                <h3>2. ソーシャルPLUS (SocialPlus)</h3>
+                <p>
+                    LINEヤフーのテクノロジーパートナーである株式会社ソーシャルPLUSが提供する、LINE連携に特化したCRM・ソーシャルログインサービスです。
+                    <code>bier.jp</code>のような既存のWebサービスとLINEアカウントのID連携をスムーズに実装するための機能を提供しており、自前でのID連携実装が複雑な場合に有力な選択肢となります。
+                </p>
+            </div>
+        </section>
+
+        <section class="my-page-section">
+            <h2>課題と考慮点</h2>
+            <p>LINE公式アカウント運用を成功させるために、事前に把握しておくべき課題です。</p>
+            <div class="my-page-section">
+                <h3>1. 友だち集めの必要性</h3>
+                <p>
+                    LINE施策の成功は友だち数に大きく依存します。そのため、サイトや他SNSからの誘導、広告活用など、継続的なユーザー獲得施策が不可欠です。
+                </p>
+            </div>
+            <div class="my-page-section">
+                <h3>2. 通知頻度とブロック率</h3>
+                <p>
+                    調査によると、通知が多すぎることがアカウントブロックの主な原因となっています。ユーザーに価値を感じてもらえる情報（クーポン、セールなど）を厳選し、適切な頻度で配信するバランス感覚が求められます。
+                </p>
+            </div>
+            <div class="my-page-section">
+                <h3>3. メッセージの課金体系</h3>
+                <p>
+                    メッセージ配信は通数によって課金が発生します（例: Push API）。一方で、ユーザーからのメッセージに返信するReply APIは課金対象外です。
+                    費用対効果を常に意識し、無駄な配信を避ける計画的な運用が必要です。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
 </body>
 </html>

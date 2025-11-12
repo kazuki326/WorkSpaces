@@ -1,22 +1,112 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkSpace6: Beer Comparison</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        .container { background-color: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3em; font-size: 2.25em; }
-        .back-to-home { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .back-to-home:hover { background-color: #5a6268; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../common_style.css" />
+  <title>WorkSpace6: ビールの比較機能</title>
 </head>
 <body>
+  <header>
+      <h1>WorkSpace6: ビールの比較機能</h1>
+      <p>bier.jpにおけるビールの比較機能のプロトタイプです。複数のビールを選択し、価格、容量、商品説明などの詳細情報を一覧で比較できます。</p>
+  </header>
+
+  <main>
     <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>WorkSpace6: Beer Comparison</h1>
-        <p>このWorkSpaceは現在準備中です。</p>
+        <h2>プロトタイプの使い方</h2>
+        <p>以下の商品リストから比較したいビールのチェックボックスをオンにしてください（最大4つまで）。選択された商品は画面下部の「比較する商品一覧」に表示されます。「商品の比較をする」ボタンをクリックすると、画面上部に詳細な比較表が表示されます。</p>
+
+        <!-- 比較結果表示コンテナ（上部に固定表示） -->
+        <div id="compareResult" class="compare_result" style="display: none;">
+            <div class="compare_header">
+            <h2>商品比較表</h2>
+            <span id="closeCompare" class="close_compare">&times;</span>
+            </div>
+            <div id="compareTableContainer" class="compare_table_container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>商品画像</th>
+                            <th>商品名</th>
+                            <th>価格</th>
+                            <th>容量</th>
+                            <th>ビール情報</th>
+                            <th>URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ここに比較結果が挿入されます -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- チェックボックス群 -->
+        <div class="product-list">
+            <label>
+            <input class="checks" type="checkbox" name="【※バラ売り】パウラナー・オクトーバーフェストビア【2024】" 
+                    value="https://bier.jp/itemdetail/Fx006i" 
+                    src="https://bier.jp/images/beeroriginal/fx-006.jpg"
+                    onchange="inputChange(this)">
+            【※バラ売り】パウラナー・オクトーバーフェストビア【2024】
+            </label>
+            
+            <label>
+            <input class="checks" type="checkbox" name="【※バラ売り】ツム ユーリゲ アルトビール" 
+                    value="https://bier.jp/itemdetail/Cx313i" 
+                    src="https://bier.jp/images/beeroriginal/cx-313.jpg"
+                    onchange="inputChange(this)">
+            【※バラ売り】ツム ユーリゲ アルトビール
+            </label>
+            
+            <label>
+            <input class="checks" type="checkbox" name="【※バラ売り】ケストリッツァー シュヴァルツビア" 
+                    value="https://bier.jp/itemdetail/Dx103i" 
+                    src="https://bier.jp/images/beeroriginal/dx-103.jpg"
+                    onchange="inputChange(this)">
+            【※バラ売り】ケストリッツァー シュヴァルツビア
+            </label>
+            
+            <label>
+            <input class="checks" type="checkbox" name="【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）" 
+                    value="https://bier.jp/itemdetail/Sx155" 
+                    src="https://bier.jp/images/beeroriginal/sx-155f.jpg"
+                    onchange="inputChange(this)">
+            【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）
+            </label>
+            
+            <label>
+            <input class="checks" type="checkbox" name="【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル" 
+                    value="https://bier.jp/itemdetail/Zx105i" 
+                    src="https://bier.jp/images/beeroriginal/zx-105.jpg"
+                    onchange="inputChange(this)">
+            【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル
+            </label>
+        </div>
     </div>
+  </main>
+
+  <!-- 比較コンテナ（最下部に表示される） -->
+  <div id="compareContainer" class="compare_container">
+    <div class="upper_part">
+      <span>比較する商品一覧</span>
+      <div class="buttons">
+        <button id="compareBtn" class="btn">
+          商品の比較をする
+        </button>
+        <button id="clearBtn" class="btn">
+          クリア
+        </button>
+      </div>
+    </div>
+    <div id="compareList" class="compare_list"></div>
+  </div>
+  
+  <footer>
+      <p>&copy; 2025 bier.jp WorkSpaces</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>特集ページバナー プロトタイプ</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="../common_style.css">
+  <style>
+    .swiper {
+      width: 100%;
+      max-width: 1200px;
+      height: 400px;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #fff;
+      background-color: #333;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+      <h1>特集ページバナー プロトタイプ</h1>
+      <p>トップページに表示されるカルーセルバナーの動作サンプルです。</p>
+  </header>
+
+  <main class="container">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <a href="#" class="swiper-slide">
+            <img src="https://placehold.jp/1200x400.png?text=Oktoberfest+Feature" alt="オクトーバーフェスト特集">
+          </a>
+          <a href="#" class="swiper-slide">
+            <img src="https://placehold.jp/1200x400.png?text=Beer+Style+Feature" alt="ビアスタイル特集">
+          </a>
+          <a href="#" class="swiper-slide">
+            <img src="https://placehold.jp/1200x400.png?text=Food+Pairing+Feature" alt="料理ペアリング特集">
+          </a>
+           <a href="#" class="swiper-slide">
+            <img src="https://placehold.jp/1200x400.png?text=Gift+Set+Feature" alt="ギフトセット特集">
+          </a>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: { delay: 4000 },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+</body>
+</html>

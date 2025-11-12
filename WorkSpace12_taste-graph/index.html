@@ -3,20 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkSpace12: Taste Graph</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        .container { background-color: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3em; font-size: 2.25em; }
-        .back-to-home { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .back-to-home:hover { background-color: #5a6268; }
-    </style>
+    <title>WorkSpace12: テイストグラフ</title>
+    <link rel="stylesheet" href="../common_style.css">
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>WorkSpace12: Taste Graph</h1>
-        <p>このWorkSpaceは現在準備中です。</p>
-    </div>
+    <header>
+        <h1>WorkSpace12: テイストグラフ</h1>
+        <p>ビールの味わいを視覚的に表現する「テイストグラフ」機能に関するワークスペースです。</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>機能プロトタイプ</h2>
+            <p>
+                ビールの味をレーダーチャートで表現する機能のプロトタイプを3種類作成しました。<br>
+                各リンクからそれぞれの機能を確認できます。
+            </p>
+            
+            <div class="preview-links">
+                <ul>
+                    <li>
+                        <a href="prototypes/taste_creator.html" class="modal-link">
+                            <strong>プロトタイプA: マイテイスト登録</strong><br>
+                            スライダーを操作して、自分好みの味のグラフをインタラクティブに作成・保存する機能のデモです。
+                        </a>
+                    </li>
+                    <li>
+                        <a href="prototypes/beer_matcher.html" class="modal-link">
+                            <strong>プロトタイプB: ビールマッチング</strong><br>
+                            好みの味の数値を入力すると、データベースの中から最も近い味のビールを提案する機能のデモです。
+                        </a>
+                    </li>
+                    <li>
+                        <a href="prototypes/auto_generator.html" class="modal-link">
+                            <strong>プロトタイプC: 味グラフ自動生成</strong><br>
+                            ビールのスペック（IBU, ABVなど）を入力すると、味の傾向を推測してグラフを自動生成する機能のデモです。
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+    <script src="../modal.js" defer></script>
 </body>
 </html>

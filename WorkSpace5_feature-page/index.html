@@ -3,309 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkSpace5: 特集ページ企画 統合ドキュメント</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        h1, h2, h3, h4 { font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; color: #222; }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3em; font-size: 2.25em; }
-        h2 { border-bottom: 1px solid #eee; padding-bottom: 0.3em; font-size: 1.75em; }
-        h3 { font-size: 1.5em; border-bottom: none; }
-        h4 { font-size: 1.2em; color: #555; }
-        p, ul { margin-bottom: 1em; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 0.5em; }
-        pre { background-color: #2d2d2d; color: #f1f1f1; padding: 1em; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
-        th, td { border: 1px solid #ddd; padding: 0.8em; text-align: left; }
-        th { background-color: #f2f2f2; font-weight: 600; }
-        strong { font-weight: 600; }
-        .container { background-color: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .back-to-home { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .back-to-home:hover { background-color: #5a6268; }
-        .feature-example { background-color: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 1.5em; margin-bottom: 1.5em; }
-        .mockup-container { border: 1px solid #ddd; border-radius: 8px; margin-top: 1em; }
-        .mockup-header { background-color: #f7f7f7; padding: 0.5em 1em; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
-        .preview-btn { background-color: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .preview-btn:hover { background-color: #0056b3; }
-
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: #fff;
-            width: 80%;
-            height: 80%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .modal-title { font-weight: bold; }
-        .modal-close {
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .modal-body {
-            flex-grow: 1;
-            padding: 0;
-            overflow: hidden;
-        }
-        .modal-body iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+    <title>WorkSpace5: 特集ページ作成</title>
+    <link rel="stylesheet" href="../common_style.css">
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>WorkSpace5: 特集ページ企画 統合ドキュメント</h1>
+    <header>
+        <h1>WorkSpace5: 特集ページ作成</h1>
+        <p>サイトに新鮮さと発見の楽しみを加えるための、特集ページの企画に関するワークスペースです。</p>
+    </header>
 
-        <section id="feature-plan">
-            <h2>特集ページ企画案</h2>
-            <h3>1. 目的</h3>
-            <p>常に同じラインナップの商品が並んでいるだけでは、サイトが静的に見えてしまう。定期的に「特集」を組むことで、サイトに新鮮さと発見の楽しみを加える。</p>
-            <ul>
-                <li><strong>新規ユーザーに対して</strong>: ビール選びの切り口を提示し、好みのスタイルや商品を見つけやすくする導線を作る。</li>
-                <li><strong>既存ユーザーに対して</strong>: 新しい視点で商品を再発見してもらい、サイト訪問の楽しみを増やし、継続的な利用を促す。</li>
+    <main class="container">
+        <section class="my-page-section">
+            <h2>プロジェクトの目的</h2>
+            <p>
+                定期的にテーマに基づいた「特集ページ」を設けることで、新規ユーザーにはビール選びの指針を、既存ユーザーには新たな発見を提供し、サイト全体の魅力を高めます。
+            </p>
+        </section>
+
+        <section class="my-page-section">
+            <h2>トップページバナー プロトタイプ</h2>
+            <p>
+                トップページには、開催中の特集に誘導するためのカルーセルバナーを設置します。以下から動作プロトタイプを確認できます。
+            </p>
+            <p class="link-list">
+                <a href="banner_prototype.html" class="modal-link"><strong>バナープロトタイプを見る</strong></a>
+            </p>
+        </section>
+
+        <section class="my-page-section">
+            <h2>企画内容</h2>
+            <p>
+                年間を通したコンテンツ計画や、具体的な特集テーマ案、実装の詳細については、以下のドキュメントにまとめています。
+            </p>
+            <ul class="link-list">
+                <li>
+                    <h3><a href="docs/feature-plan.md">特集テーマ案</a></h3>
+                    <p>「季節限定」「ビアスタイル別」「料理ペアリング」など、8つの異なる切り口のテーマ案です。</p>
+                </li>
+                <li>
+                    <h3><a href="docs/content-calendar.md">コンテンツカレンダー</a></h3>
+                    <p>年間を通した特集の更新計画案です。月ごとのテーマや更新の狙いを定義しています。</p>
+                </li>
+                <li>
+                    <h3><a href="docs/implementation-details.md">実装と運用の詳細</a></h3>
+                    <p>バナーから特集ページへの遷移、更新ルール、効果測定の方法などを定義しています。</p>
+                </li>
             </ul>
-            <h3>2. 特集テーマ案</h3>
-            <table>
-                <thead><tr><th>テーマ名</th><th>内容</th><th>狙い</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>① 季節限定ビール特集</strong></td><td>オクトーバーフェスト、春のメイボックなど、その季節ならではのビールを集める。</td><td>「今しか飲めない」という特別感で購入意欲を刺激する。</td></tr>
-                    <tr><td><strong>② ビアスタイル別特集</strong></td><td>ピルスナー、ヴァイツェン、ドゥンケル、ボックなど、ビアスタイルごとに商品を分類。</td><td>ビール初心者でも自分の好みのスタイルを見つけやすくする。</td></tr>
-                    <tr><td><strong>③ 地域別ビール特集</strong></td><td>ミュンヘン、バイエルン、ケルン、ベルリンなど、ドイツの地域ごとにビールを分類。</td><td>「旅する気分」で飲み比べを提案し、新たな発見を促す。</td></tr>
-                    <tr><td><strong>④ 料理ペアリング特集</strong></td><td>ドイツソーセージ、プレッツェル、ザワークラウトなど、相性の良い料理と共にビールを提案。</td><td>食卓のシーンを具体的にイメージさせ、合わせ買いによる単価UPを狙う。</td></tr>
-                    <tr><td><strong>⑤ ギフト・飲み比べセット特集</strong></td><td>父の日、誕生日、贈答品など、特定のシーンに合わせた詰め合わせを提案。</td><td>「贈る需要」や「まとめ買い需要」に応える。</td></tr>
-                    <tr><td><strong>⑥ 歴史ある老舗ブルワリー特集</strong></td><td>創業年や伝統的なレシピなど、ブルワリーの物語と共に銘柄を紹介。</td><td>ストーリーテリングでブランドの価値を高め、ファンの醸成に繋げる。</td></tr>
-                    <tr><td><strong>⑦ 女性におすすめのビール特集</strong></td><td>フルーティーな味わい、低アルコール、おしゃれなラベルなど、女性が手に取りやすいビールを厳選。</td><td>新規顧客層の拡大と、SNSでの「インスタ映え」を狙う。</td></tr>
-                    <tr><td><strong>⑧ “プロが選ぶ”おすすめ特集</strong></td><td>ビールソムリエや店舗スタッフが「推し」のビールを推薦。</td><td>専門家による権威付けで、ユーザーに安心感と信頼感を与える。</td></tr>
-                </tbody>
-            </table>
         </section>
+    </main>
 
-        <section id="feature-examples">
-            <h2>特集ページの具体例</h2>
-            <div class="feature-example">
-                <h4>①【秋の味覚 × ドイツビール】</h4>
-                <ul>
-                    <li><strong>タイトル例:</strong> 「オクトーバーフェスト気分をおうちで」</li>
-                    <li><strong>内容:</strong> 秋限定入荷のフェストビアを特集。ドイツの屋台料理（プレッツェル、ソーセージ）との相性も紹介。</li>
-                    <li><strong>対象者:</strong> 30代～40代のビールファン、オクトーバーフェストに憧れる層。</li>
-                    <li><strong>時期:</strong> 9月〜10月</li>
-                    <li><strong>特集ビール:</strong> パウラナー オクトーバーフェストビア、ホフブロイ フェストビア、エルディンガー ヴァイスビア</li>
-                </ul>
-            </div>
-            <div class="feature-example">
-                <h4>②【初心者向け入門セット】</h4>
-                <ul>
-                    <li><strong>タイトル例:</strong> 「はじめてのドイツビール」</li>
-                    <li><strong>内容:</strong> ラガー、ヴァイツェン、デュンケルの基本スタイルを飲み比べできるセット。飲み方・保存方法も解説。</li>
-                    <li><strong>対象者:</strong> 20代後半〜30代前半、クラフトビール初心者、プレゼント需要。</li>
-                    <li><strong>時期:</strong> 通年</li>
-                    <li><strong>特集ビール:</strong> フランツィスカーナー ヴァイスビア、ビットブルガー、シュパーテン</li>
-                </ul>
-            </div>
-            <div class="feature-example">
-                <h4>③【季節限定ギフト特集】</h4>
-                <ul>
-                    <li><strong>タイトル例:</strong> 「冬だけの贈り物。限定ドイツビールギフト」</li>
-                    <li><strong>内容:</strong> 冬季限定のボックビアやクリスマスラベルのビールを木箱・ギフト仕様で。</li>
-                    <li><strong>対象者:</strong> 40代以上のギフト需要、法人の贈答品。</li>
-                    <li><strong>時期:</strong> 11月〜12月</li>
-                    <li><strong>特集ビール:</strong> ヴェルテンブルガー アッサムボック、シュナイダーヴァイス Aventinus、ケストリッツァー</li>
-                </ul>
-            </div>
-            <div class="feature-example">
-                <h4>④【食事ペアリング特集】</h4>
-                <ul>
-                    <li><strong>タイトル例:</strong> 「ドイツビールと楽しむ秋の食卓」</li>
-                    <li><strong>内容:</strong> ソーセージやザワークラウト、ドイツパンなどと相性抜群のビールをペアリング解説。</li>
-                    <li><strong>対象者:</strong> 30〜50代の食事重視層、家飲みを楽しむ人。</li>
-                    <li><strong>時期:</strong> 秋冬（食欲の季節）</li>
-                    <li><strong>特集ビール:</strong> アイヒェンフェルダー ピルス、アインベッカー、ヴァルシュタイナー</li>
-                </ul>
-            </div>
-            <div class="feature-example">
-                <h4>⑤【プレミアム体験特集】</h4>
-                <ul>
-                    <li><strong>タイトル例:</strong> 「ドイツの修道院ビールを味わう」</li>
-                    <li><strong>内容:</strong> 世界最古の修道院醸造所やプレミアムラインの紹介。背景ストーリーで価値を高める。</li>
-                    <li><strong>対象者:</strong> 30代〜50代のクラフトビールファン、こだわり派。</li>
-                    <li><strong>時期:</strong> 通年（特に年末年始に強い）</li>
-                    <li><strong>特集ビール:</strong> ヴェルテンブルガー、アンドechs（アンデックス）、クルーリパブリック限定醸造</li>
-                </ul>
-            </div>
-            <div class="feature-example">
-                <h4>⑥【夏限定！爽快特集】</h4>
-                <ul>
-                    <li><strong>タイトル例:</strong> 「ドイツ直送、夏に飲みたい爽快ビール」</li>
-                    <li><strong>内容:</strong> ピルスナーやラドラーなど、軽快な夏向けビールを特集。アウトドアやBBQと絡める。</li>
-                    <li><strong>対象者:</strong> 20代〜40代の夏イベント好き層。</li>
-                    <li><strong>時期:</strong> 6月〜8月</li>
-                    <li><strong>特集ビール:</strong> ビットブルガー ピルス、ラーデベルガー、シュパーテン ミュンヘナーヘル</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="implementation-details">
-            <h2>実装詳細</h2>
-            <h3>1. トップページへの導線（カルーセルモックアップ）</h3>
-            <div class="mockup-container">
-                <div class="mockup-header">
-                    <span>Swiper.js Carousel Mockup</span>
-                    <button class="preview-btn" onclick="openModal(carouselMockup, 'カルーセル プレビュー')">プレビュー</button>
-                </div>
-                <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-&lt;head&gt;
-  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/&gt;
-  &lt;script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class="swiper"&gt; ... &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            </div>
-            <script>
-                const carouselMockup = `
-                    &lt;!DOCTYPE html&gt;
-                    &lt;html lang="ja"&gt;
-                    &lt;head&gt;
-                      &lt;meta charset="UTF-8"&gt;
-                      &lt;title&gt;ドイツビール特集バナー&lt;/title&gt;
-                      &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/&gt;
-                      &lt;style&gt;
-                        body { font-family: sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f0f0; }
-                        .swiper { width: 100%; max-width: 600px; height: 300px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-                        .swiper-slide { display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; background-color: #ccc; }
-                        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
-                      &lt;/style&gt;
-                    &lt;/head&gt;
-                    &lt;body&gt;
-                      &lt;div class="swiper"&gt;
-                        &lt;div class="swiper-wrapper"&gt;
-                          &lt;div class="swiper-slide"&gt;&lt;img src="https://placehold.jp/600x300.png?text=Oktoberfest" alt="オクトーバーフェスト特集"&gt;&lt;/div&gt;
-                          &lt;div class="swiper-slide"&gt;&lt;img src="https://placehold.jp/600x300.png?text=Beer+Styles" alt="ビアスタイル特集"&gt;&lt;/div&gt;
-                          &lt;div class="swiper-slide"&gt;&lt;img src="https://placehold.jp/600x300.png?text=Food+Pairing" alt="料理ペアリング特集"&gt;&lt;/div&gt;
-                          &lt;div class="swiper-slide"&gt;&lt;img src="https://placehold.jp/600x300.png?text=Gift+Sets" alt="ギフトセット特集"&gt;&lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div class="swiper-pagination"&gt;&lt;/div&gt;
-                        &lt;div class="swiper-button-prev"&gt;&lt;/div&gt;
-                        &lt;div class="swiper-button-next"&gt;&lt;/div&gt;
-                      &lt;/div&gt;
-                      &lt;script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"&gt;&lt;/script&gt;
-                      &lt;script&gt;
-                        const swiper = new Swiper('.swiper', {
-                          loop: true, autoplay: { delay: 4000 },
-                          pagination: { el: '.swiper-pagination', clickable: true },
-                          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-                        });
-                      &lt;/script&gt;
-                    &lt;/body&gt;
-                    &lt;/html&gt;`;
-            </script>
-            <h3>2. ページ遷移</h3>
-            <ol>
-                <li><strong>トップページ</strong>: ユーザーがカルーセル内の特集バナーをクリックする。</li>
-                <li><strong>特集ページ</strong>: バナーに対応した特集ページ（例: <code>feature_oktoberfest.html</code>）に遷移する。</li>
-                <li><strong>商品詳細ページ</strong>: ユーザーが特集ページ内の商品をクリックすると、既存の通常の商品詳細ページに遷移する。</li>
-            </ol>
-            <h3>3. 運用ルールと効果測定</h3>
-            <table>
-                <thead><tr><th>項目</th><th>内容</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>更新頻度</strong></td><td>月1回（定例）＋ 季節ごとの大型入れ替え</td></tr>
-                    <tr><td><strong>更新日</strong></td><td>毎月1日 or 15日など、社内で日付を固定</td></tr>
-                    <tr><td><strong>制作工数</strong></td><td>バナー画像1枚＋テキスト修正で、1時間以内の作業を目安とする</td></tr>
-                    <tr><td><strong>効果測定</strong></td><td><strong>CTR</strong>（クリック率）、<strong>PV</strong>（特集ページへの遷移数）を計測する</td></tr>
-                    <tr><td><strong>次回更新の判断基準</strong></td><td>CTRが一定の割合（例: 2%）を下回ったら、バナーやテーマの差し替えを検討する</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="content-calendar">
-            <h2>特集コンテンツカレンダー案</h2>
-            <table>
-                <thead><tr><th>月</th><th>テーマ</th><th>バナー内容例</th><th>更新の狙い・背景</th><th>備考</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>1月</strong></td><td>冬ギフト・新年乾杯特集</td><td>「新しい年に、輝くビールを。」<br>限定ボック・ギフトセット</td><td>年末ギフトの延長需要＆お正月の乾杯需要</td><td>在庫一掃セールも組み合わせ可能</td></tr>
-                    <tr><td><strong>2月</strong></td><td>冬の濃厚ビール特集</td><td>「体を温める、琥珀の香り。」<br>ドッペルボック・黒ビール</td><td>寒さのピークに合わせて濃厚系ビールをPR</td><td>バレンタインギフトとしての提案も有効</td></tr>
-                    <tr><td><strong>3月</strong></td><td>春のはじまり特集</td><td>「春、はじまる。軽やかな一杯。」<br>ヘレス・ピルスナー中心</td><td>季節の変わり目に爽やかなビールを訴求</td><td>ホワイトデー・歓送迎会需要に対応</td></tr>
-                    <tr><td><strong>4月</strong></td><td>新生活×クラフト特集</td><td>「新しい季節に、新しい味を。」<br>飲み比べセット</td><td>新生活や花見の需要を捉える</td><td>セット割引やサブスクリプションへの誘導も</td></tr>
-                    <tr><td><strong>5月</strong></td><td>ドイツ伝統特集</td><td>「伝統が息づく、職人の一杯。」<br>修道院ビール・有名醸造所紹介</td><td>ドイツの文化月間のような位置づけ</td><td>ビールの背景知識を紹介するコンテンツと連動</td></tr>
-                    <tr><td><strong>6月</strong></td><td>父の日ギフト特集</td><td>「感謝を込めて、特別なビールを。」<br>木箱入りギフト・限定ラベル</td><td>ECにおける年間の最重要贈答需要期</td><td></td></tr>
-                    <tr><td><strong>7月</strong></td><td>夏のヴァイツェン特集</td><td>「夏に香る、白ビール。」<br>ヴァイツェン・ラドラー</td><td>夏の清涼感をアピール</td><td>よく冷えた状態や、グラスに注がれた「映える」写真を活用</td></tr>
-                    <tr><td><strong>8月</strong></td><td>BBQ・夏イベント特集</td><td>「仲間と乾杯、夏のビール。」<br>大瓶・セット商品</td><td>レジャーシーンでのまとめ買いを訴求</td><td>SNSでの投稿キャンペーンなどと連動</td></tr>
-                    <tr><td><strong>9月</strong></td><td>オクトーバーフェスト特集</td><td>「本場の祭りを、日本で。」<br>メルツェン・フェストビア</td><td>年間最大のビールイベント</td><td>キービジュアルを大胆に変更し、サイト全体で盛り上げる</td></tr>
-                    <tr><td><strong>10月</strong></td><td>秋の味覚×ビール特集</td><td>「香ばしい秋、芳醇な泡。」<br>ブラウンエール・ボック</td><td>料理とのペアリング提案に最適</td><td>秋限定商品のPR</td></tr>
-                    <tr><td><strong>11月</strong></td><td>冬ギフト先取り特集</td><td>「冬だけの贈り物。」<br>クリスマスビール・木箱セット</td><td>年末ギフトの準備期間を狙う</td><td>早割キャンペーンなどと連動</td></tr>
-                    <tr><td><strong>12月</strong></td><td>クリスマス＆年末乾杯特集</td><td>「乾杯を、最高の一杯で。」<br>シュティッフェル・限定ラベル</td><td>年末の消費ピーク</td><td>豪華さやプレミアム感を演出</td></tr>
-                </tbody>
-            </table>
-        </section>
-
-    </div>
-
-    <!-- Modal Structure -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="modalTitle"></div>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <iframe id="modal-iframe" src="about:blank"></iframe>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalIframe = document.getElementById('modal-iframe');
-        const modalTitle = document.getElementById('modalTitle');
-
-        function openModal(content, title) {
-            modalTitle.textContent = title;
-            // Use srcdoc to inject HTML content into the iframe
-            modalIframe.srcdoc = content;
-            modalOverlay.style.display = 'flex';
-        }
-
-        function closeModal() {
-            modalOverlay.style.display = 'none';
-            modalIframe.srcdoc = ''; // Clear iframe content
-        }
-
-        // Close modal if overlay is clicked
-        modalOverlay.addEventListener('click', function(event) {
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
-    </script>
-
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+    <script src="../modal.js" defer></script>
 </body>
 </html>

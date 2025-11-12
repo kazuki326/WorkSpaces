@@ -3,20 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkSpace8: Search Feature</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        .container { background-color: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3em; font-size: 2.25em; }
-        .back-to-home { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .back-to-home:hover { background-color: #5a6268; }
-    </style>
+    <title>WorkSpace8: 検索機能</title>
+    <link rel="stylesheet" href="../common_style.css">
+    <link href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>WorkSpace8: Search Feature</h1>
-        <p>このWorkSpaceは現在準備中です。</p>
-    </div>
+    <header>
+        <h1>WorkSpace8: 検索機能</h1>
+        <p>bier.jpの検索機能をより充実させ、様々な方法で商品を検索できるようにするためのワークスペースです。</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>詳細検索プロトタイプ</h2>
+            <p>味、香り、アルコール度数など、ビールの特徴から商品を絞り込む詳細検索機能のプロトタイプです。</p>
+            
+            <button class="btn" onclick="openModal()">詳細検索を開く</button>
+
+            <!-- 詳細検索モーダル -->
+            <div id="modalOverlay" class="modal_overlay">
+                <div id="modal" class="modal">
+                    <div class="modal_content">
+                        <span class="close_button" onclick="closeModal()">X</span>
+                        <div class="aroma">
+                            <div class="aroma_title">香り</div>
+                            <div id="aroma_items" class="aroma_items">
+                                <span onclick="selectItems(this);">心地よい香り</span>
+                                <span onclick="selectItems(this);">柑橘系でさわやか</span>
+                                <span onclick="selectItems(this);">フルーティー</span>
+                                <span onclick="selectItems(this);">スモーキー</span>
+                                <span onclick="selectItems(this);">フローラル</span>
+                                <span onclick="selectItems(this);">スパイシー</span>
+                                <span onclick="selectItems(this);">ロースト</span>
+                                <span onclick="selectItems(this);">ハーブ</span>
+                                <span onclick="selectItems(this);">ウッド</span>
+                                <span onclick="selectItems(this);">酵母</span>
+                            </div>
+                        </div>
+
+                        <div class="flavor">
+                            <div class="flavor_title">味</div>
+                            <div class="flavor_items">
+                                <span onclick="selectItems(this);">甘い</span>
+                                <span onclick="selectItems(this);">苦い</span>
+                                <span onclick="selectItems(this);">酸味が強い</span>
+                                <span onclick="selectItems(this);">すっきり</span>
+                                <span onclick="selectItems(this);">コクがある</span>
+                                <span onclick="selectItems(this);">まろやか</span>
+                                <span onclick="selectItems(this);">ドライ</span>
+                                <span onclick="selectItems(this);">フルボディ</span>
+                                <span onclick="selectItems(this);">ライトボディ</span>
+                            </div>
+                        </div>
+
+                        <div class="alcohol_content">
+                            <div class="alcohol_content_title">アルコール度数</div>
+                            <div class="seraching_alcohol">
+                                <input type="number" id="alcoholMinInput" placeholder="下限" min="0" max="100">
+                                                ～
+                                <input type="number" id="alcoholMaxInput" placeholder="上限" min="0" max="100">
+                            </div>
+                            <div>＊範囲検索ではなく、詳細検索したい方は右側の欄を空白にしてください</div>
+                            <div id="searchAlcohol" class="search_alcohol">
+                                <div class="search_alcohol_container">
+                                  <div class="search_alcohol_left_container">
+                                    <i id="angleUpLeft" class="fa-solid fa-caret-up" onclick="changeContentUp(this)"></i>
+                                    <div class="search_alcohol_left">
+                                      <div id="alcoholContentLeft" class="alcohol_content_left">0</div>
+                                      <span>%</span>
+                                    </div>
+                                    <i id="angleDownLeft" class="fa-solid fa-caret-down" onclick="changeContentDown(this)"></i>
+                                  </div>
+                                  <span>～</span>
+                                  <div class="search_alcohol_right_container">
+                                    <i id="angleUpRight" class="fa-solid fa-caret-up" onclick="changeContentUp(this)"></i>
+                                    <div class="search_alcohol_right">
+                                      <div id="alcoholContentRight" class="alcohol_content_right">0</div>
+                                      <span>%</span>
+                                    </div>
+                                    <i id="angleDownRight" class="fa-solid fa-caret-down" onclick="changeContentDown(this)"></i>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="modal_btns">
+                        <div class="reset_btn">クリア</div>
+                        <div class="specific_serach_btn">検索</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>その他の検索機能アイデア</h2>
+            <div class="video-idea">
+                <h3>ラベル画像検索</h3>
+                <p>ビールのラベル画像をアップロードして、似たビールや同じビールを検索する機能です。</p>
+                <div class="details">
+                    <p><strong>プロトタイプ:</strong> <a href="label_search.html" target="_blank">ラベル検索デモ (別ページ)</a></p>
+                </div>
+            </div>
+            <div class="video-idea">
+                <h3>料理からのビール検索 (フードペアリング)</h3>
+                <p>食べたい料理から、それに合うビールを提案する機能です。</p>
+                <div class="details">
+                    <p><strong>プロトタイプ:</strong> <a href="food_pairing.html" target="_blank">フードペアリングデモ (別ページ)</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

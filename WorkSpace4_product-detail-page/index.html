@@ -3,124 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkSpace4: 商品詳細ページ改善 統合ドキュメント</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        h1, h2, h3, h4 { font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; color: #222; }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3em; font-size: 2.25em; }
-        h2 { border-bottom: 1px solid #eee; padding-bottom: 0.3em; font-size: 1.75em; }
-        h3 { font-size: 1.5em; }
-        h4 { font-size: 1.25em; }
-        p, ul { margin-bottom: 1em; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 0.5em; }
-        pre { background-color: #2d2d2d; color: #f1f1f1; padding: 1em; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
-        strong { font-weight: 600; }
-        .container { background-color: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .back-to-home { display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        .back-to-home:hover { background-color: #5a6268; }
-    </style>
+    <title>WorkSpace4: 商品詳細ページ改善</title>
+    <link rel="stylesheet" href="../common_style.css">
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>WorkSpace4: 商品詳細ページ改善 統合ドキュメント</h1>
+    <header>
+        <h1>WorkSpace4: 商品詳細ページ改善</h1>
+        <p>商品詳細ページのデザインや情報整理に関するワークスペースです。</p>
+    </header>
 
-        <section id="design-proposal">
-            <h2>商品詳細ページ改善案</h2>
-            
-            <h3>1. 現状の課題</h3>
-            <ul>
-                <li>商品説明のテキストが小さく、読みにくい。</li>
-                <li>文章の改行位置が不自然な箇所があり、商品の魅力が伝わりきっていない。</li>
-            </ul>
+    <main class="container">
+        <section class="my-page-section">
+            <h2>プロジェクトの目的</h2>
+            <p>
+                既存の商品詳細ページは、商品説明のテキストが小さく、商品の魅力が十分に伝わっていません。このプロジェクトでは、ページのデザインと構成を整理し、より魅力的で分かりやすい情報を提供することで、ユーザーの購買意欲を高めることを目指します。
+            </p>
+        </section>
 
-            <h3>2. 改善の目的</h3>
-            <p>単なるスペックの羅列ではなく、商品の持つ物語や価値を伝え、ユーザーが「飲んでみたい」と思えるような魅力的なページに刷新する。情報の整理とデザインの改善を通じて、購入転換率の向上を目指す。</p>
-
-            <h3>3. デザイン改善方針</h3>
-            <h4>A. 魅力的なキャッチコピーの追加</h4>
-            <ul>
-                <li>各商品の特徴を一行で表現する、思わず読み進めたくなるようなキャッチコピーを商品名の近くに配置する。</li>
-                <li>例：「世界最古の醸造所が贈る、究極の小麦ビール」</li>
-            </ul>
-
-            <h4>B. ビジュアルの強化</h4>
-            <ul>
-                <li>商品画像をより大きく、高品質なものにする。</li>
-                <li>複数の角度から撮影した写真や、ビールをグラスに注いだ写真など、複数の画像を掲載し、ユーザーが商品のイメージを掴みやすくする。</li>
-            </ul>
-
-            <h4>C. 情報の構造化</h4>
-            <ul>
-                <li>すべての情報を一つの文章の塊として表示するのではなく、意味のある単位で情報を整理し、見出しやタブを使って分かりやすく提示する。</li>
-                <li><strong>タブ形式のUI</strong>: 「基本情報」「商品のこだわり」「ペアリング」のようにタブで情報を切り替えることで、多くの情報をすっきりと見せる。</li>
-                <li><strong>セクション形式のUI</strong>: 「商品説明」「味わいの特徴」「料理との相性」のように、明確な見出しでセクションを区切ることで、ユーザーが必要な情報を見つけやすくする。</li>
-            </ul>
-
-            <h4>D. ペアリング情報の充実</h4>
-            <ul>
-                <li>「ソーセージとザワークラウト」「白身魚のムニエル」のように、具体的な料理名を挙げて相性の良いペアリングを提案する。</li>
-                <li>ユーザーが食卓のシーンを具体的にイメージできるようにすることで、購入を後押しする。</li>
-            </ul>
-
-            <h4>E. テンプレート化による効率的なページ生成</h4>
-            <ul>
-                <li>商品ページのHTML構造を統一された「ひな形」として作成する。</li>
-                <li>各商品のデータ（商品名、画像URL、説明文など）をJavaScriptのオブジェクトとして用意し、スクリプトでひな形に流し込む仕組みを構築する。</li>
-                <li>これにより、メンテナンス性が向上し、新規商品ページの追加も効率的に行えるようになる。</li>
+        <section class="my-page-section">
+            <h2>レイアウト提案</h2>
+            <p>
+                改善案に基づき、3つの異なるレイアウトのHTMLモックアップを作成しました。各リンクからプロトタイプを確認できます。
+            </p>
+            <ul class="link-list">
+                <li>
+                    <h3><a href="layouts/tabbed_layout.html" class="modal-link">1. タブ切り替えレイアウト</a></h3>
+                    <p>情報を「基本情報」「原料・製造」「料理マッチング」の3つのタブに分けて表示する案。多くの情報を整理して見せるのに適しています。</p>
+                </li>
+                <li>
+                    <h3><a href="layouts/catchy_copy_layout.html" class="modal-link">2. キャッチコピー強調レイアウト</a></h3>
+                    <p>商品名の下に大きなキャッチコピーを配置し、商品のストーリー性を感じさせるデザイン案です。</p>
+                </li>
+                <li>
+                    <h3><a href="layouts/template_layout.html" class="modal-link">3. 汎用テンプレートレイアウト</a></h3>
+                    <p>JavaScriptのデータオブジェクトを書き換えるだけでページ内容を変更できる、最も実用的なテンプレート案です。価格や購入ボタンも含まれています。</p>
+                </li>
             </ul>
         </section>
 
-        <section id="implementation-mockups">
-            <h2>実装モックアップとテンプレート案</h2>
-            <p>CSVファイルで提案された、新しい商品詳細ページの具体的なレイアウト案と実装テンプレートを以下にまとめる。</p>
-
-            <h3>1. タブUIデザイン案</h3>
-            <p>情報を「基本情報」「原料・製造」「料理マッチング」のタブに分けて表示するレイアウト。</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-&lt;head&gt;
-  &lt;title&gt;ビール商品詳細（タブUI）&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Mockup Content --&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-            <h3>2. セクションUI + キャッチコピー案</h3>
-            <p>情報を縦長のセクションに分け、キャッチコピーを強調するレイアウト。</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-&lt;head&gt;
-  &lt;title&gt;商品詳細（セクションUI）&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Mockup Content --&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-            <h3>3. データ分離型テンプレート案</h3>
-            <p>HTMLの構造は固定の「ひな形」とし、商品データをJavaScriptのオブジェクトとして定義。スクリプトでHTMLにデータを流し込むことで、ページの量産とメンテナンスを容易にする。</p>
-            <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-&lt;head&gt;
-  &lt;title&gt;商品詳細ページ（テンプレート）&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Mockup Content --&gt;
-  &lt;script&gt;
-    const productData = {
-      name: "ホフブロイ・オクトーバーフェストビア",
-      catch: "ミュンヘンの祭典を彩る芳醇な味わい",
-      // ... other data
-    };
-    // ... script to populate data
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+        <section class="my-page-section">
+            <h2>関連ドキュメント</h2>
+            <p>本プロジェクトに関するより詳細な情報は、以下のドキュメントを参照してください。</p>
+            <ul>
+                <li><a href="README.md">総合README</a></li>
+                <li><a href="docs/design-proposal.md">デザイン改善方針</a></li>
+                <li><a href="docs/implementation-mockups.md">実装モックアップ詳細</a></li>
+            </ul>
         </section>
+    </main>
 
-    </div>
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+    <script src="../modal.js" defer></script>
 </body>
 </html>

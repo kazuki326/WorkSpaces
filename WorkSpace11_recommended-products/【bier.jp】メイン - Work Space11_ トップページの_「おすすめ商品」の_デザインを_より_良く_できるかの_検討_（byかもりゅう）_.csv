@@ -1,0 +1,357 @@
+﻿"Work Space11: トップページの​「おすすめ商品」の​デザインを​より​良く​できるかの​検討​（byかもりゅう）​"
+"スマホ用のことも考える。​"
+"結論として言えるのは、画像と文字が大きいこと。文字の色を鮮やかにすること。​​"
+"商品説明を減らさないデザインを考慮すると、以下の2つ画像を考える。​​"
+"前提： 現状のままでも良いと思う。だが、より良くできるならそれに越したことはないと思う。 このworkspaceでは、bier.jp以外のビールの通販サイトや他ジャンルのサイトなどのトップページを見て、現状の「おすすめ商品」のデザインをより良くできるか、変える必要があるか検討する。   制約（重要！）： トップページの情報量を減らしてはいけない。増やすのは問題ない。   "
+"bier.jpの「おすすめ商品」の箇所とデザインが近いもの二つを選んだ。"
+"https://yourbeer.jp/","https://yourbeer.jp/"
+"今回は、右の画像の文字サイズや色を変えたのが、少ししか変化がなかったことが分かった。次回は、udフォントを使ったりしてより変化を加えてどうなるか確かめてみる。​"
+"影をつけて商品をより良く見せている。​"
+"画像が大きいことが大切だと上記したが、​​おすすめ商品の欄においては、特価品のデザインは、少し大きい気がする。​​"
+"この画像の箇所の検討"
+"同じ商品を紹介しているが、私個人の感想を言うと、上の２枚の画像の方が綺麗に見えるし、購買意欲がわく。下の画像からは、ビールが美味しそうだと感じられない。"
+"以前、別のworkspaceでも書いたが、​既存のフォントと比べたが、どちらも見やすかった。​"
+"コードブロック","JavaScript","#recommend .recom-item {
+    float: left;
+    height: 200px;
+    /* width: 240px; */
+    position: relative;
+    /* margin: 10px 5px 0 5px; */
+    overflow: hidden;
+    font-family: 'UD デジタル 教科書体 N-R';
+    // udフォントを追加
+}"
+"検証ツールでは、編集に限界があったが、おすすめ商品欄では、右の画像くらいテキスト欄や画像を小さくしても良いと思う。（画像では伝わりにくいかもしれないがかなり違う）​"
+"https://goodbeer.jp/","https://goodbeer.jp/"
+"font-sizeを大きした。全体的に見やすくなったと思う。しかし、説明文が短くなる箇所もある。それをどう考えるのか"
+"コードブロック","JavaScript","#recommend .recom-item p.recom-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    // font-size:15pxを追加"
+ビールが買える通販サイト21選&#xff01;結局どこがおすすめ&#xff1f; | ビール女子,https://beergirl.net/beer-ecmatome_c/
+"<p>既存のデザイン​</p>","JavaScript","div.beerbox img.pic {
+    display: block;
+    float: left;
+    margin: 5px;
+    height: 250px;"
+"コードブロック","JavaScript","div.beerbox img.pic {
+    display: block;
+    float: left;
+    margin: 5px;
+    height: 205px;
+}"
+"次回からは、左側の画像を実際にトップページにうつして考えてみる。。​"
+"bier.jp以外のビール通販サイト"
+"コードブロック","JavaScript","div.beerbox p.description {
+    background-color: white;
+    margin-left: 170px;
+    height: 186px;
+    width: 155px;
+    overflow: auto;
+    display: block;
+}"
+"<p>既存のデザイン​</p>","JavaScript","div.beerbox p.description {
+    background-color: white;
+    margin-left: 170px;
+    height: 230px;
+    width: 155px;
+    overflow: auto;
+    display: block;
+}"
+"違いを挙げていく"
+"コードブロック","JavaScript","div.beerbox p.description {
+    background-color: white;
+    /* margin-left: 170px; */
+    height: 186px;
+    width: 155px;
+    overflow: auto;
+    display: block;
+}
+
+// margin-leftではなく、display flexを使って、justifiy centerを使いたい"
+"「new」という帯び？が商品に巻かれているか"
+"<p>既存のデザイン​</p>","JavaScript","div.beerbox p.description {
+    background-color: white;
+    margin-left: 170px;
+    height: 186px;
+    width: 155px;
+    overflow: auto;
+    display: block;
+}"
+"ヘッダーがスクール際についてくるか否か"
+"new arrival、新着商品が画像かそうでないか。 ＊下の２枚は、new arrivalと新着商品が画像になっていて荒い。 上はテキストになっている。"
+"文字画像は可能な限り控えた方がいいかも？"
+"定期的におすすめ商品のラインナップを変える必要がある"
+"初心者ではない人は、ビールの名前を見るだけである程度の情報を理解するコトはできると思うが、初心者は分からないと思うので、「新商品」ポップなどがあれば分かりやすいと思う。"
+"ためしに、ヘッダーも「new」も全て取り外したが、それでも見やすい。"
+"おすすめ商品自体がたくさんあるので、その中で、並べ替え機能があればさらに分かりやすくなるのでは"
+"コードブロック","JavaScript","<script src=""https://cdn.tailwindcss.com""></script>
+<div class=""p-6 bg-gradient-to-b from-gray-100 to-white"">
+  <!-- 商品一覧 -->
+  <div id=""beerGrid"" class=""grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"">
+
+    <!-- 商品1：ヴァイエンシュテファン ヘフェヴァイスビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=""w-full h-36 object-cover"" src=""https://bier.jp/images/beeroriginal/nx-002.jpg"" alt=""ヴァイエンシュテファン"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">ヴァイエンシュテファン ヘフェヴァイスビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: ヴァイエンシュテファン</div>
+        <div class=""text-sm text-gray-500"">在庫: 25本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.4%</div>
+        <p class=""text-sm text-gray-600"">バナナのような香りとスパイスの風味。</p>
+      </div>
+    </div>
+
+    <!-- 商品2：エルディンガー ヴァイスビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=""w-full h-36 object-cover"" src=""https://bier.jp/images/beeroriginal/ex-101.jpg"" alt=""エルディンガー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">エルディンガー ヴァイスビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: エルディンガー</div>
+        <div class=""text-sm text-gray-500"">在庫: 38本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.3%</div>
+        <p class=""text-sm text-gray-600"">まろやかでクリーミーな味わい。</p>
+      </div>
+    </div>
+
+    <!-- 商品3：ビットブルガー プレミアムピルス -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=""w-full h-36 object-cover"" src=""https://bier.jp/images/beeroriginal/dx-101.jpg"" alt=""ビットブルガー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">ビットブルガー プレミアムピルス</h2>
+        <div class=""text-sm text-gray-500"">銘柄: ビットブルガー</div>
+        <div class=""text-sm text-gray-500"">在庫: 44本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 4.8%</div>
+        <p class=""text-sm text-gray-600"">キレのある爽快な苦味。</p>
+      </div>
+    </div>
+
+    <!-- 商品4：ケストリッツァー シュヴァルツビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=""w-full h-36 object-cover"" src=""https://bier.jp/images/beeroriginal/dx-103.jpg"" alt=""ケストリッツァー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">ケストリッツァー シュヴァルツビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: ケストリッツァー</div>
+        <div class=""text-sm text-gray-500"">在庫: 19本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 4.8%</div>
+        <p class=""text-sm text-gray-600"">ロースト感とモルトの甘みが調和。</p>
+      </div>
+    </div>
+
+    <!-- 商品5：パウラーナー ヘーフェヴァイスビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=""w-full h-36 object-cover"" src=""https://bier.jp/images/beeroriginal/ix-101.jpg"" alt=""パウラーナー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">パウラーナー ヘーフェヴァイスビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: パウラーナー</div>
+        <div class=""text-sm text-gray-500"">在庫: 26本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.5%</div>
+        <p class=""text-sm text-gray-600"">ふんわりとした酵母の香り。</p>
+      </div>
+    </div>
+
+    <!-- 商品6：シュパーテン ミュンヘナー ヘル -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=""w-full h-36 object-cover"" src=""https://bier.jp/images/beeroriginal/zx-101.jpg"" alt=""シュパーテン"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">シュパーテン ミュンヘナー ヘル</h2>
+        <div class=""text-sm text-gray-500"">銘柄: シュパーテン</div>
+        <div class=""text-sm text-gray-500"">在庫: 33本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.2%</div>
+        <p class=""text-sm text-gray-600"">ライトで飲みやすいラガー。</p>
+      </div>
+    </div>
+
+  </div>
+</div>"
+"✅ 商品一覧ページにあったら嬉しい機能 1. 検索バー キーワードで商品名や銘柄、説明文からビールを検索できる → Tailwind + JavaScript で簡単に実装可能。  2. 並び替え機能 「価格順」「在庫数順」「アルコール度数順」「新着順」などでソート → ドロップダウンで選べると直感的。  3. 絞り込み（フィルター） カテゴリ（ヴァイツェン／ピルスナーなど）  アルコール度数（3〜4%、5%以上など）  銘柄（Erdinger, Bitburgerなど） → ユーザーの目的買いをサポート。  4. お気に入り／☆ボタン 「お気に入りに追加」して後で見る、マイページに保存できる機能  5. 在庫アラート・購入制限 「残り5本」などの表示強調（赤文字やバッジ）  「残り1人3本まで」など制限がある場合の表記  6. レビュー・評価の表示 星評価（★★★★☆）やレビュー件数（レビュー12件）  「香り」「苦味」「飲みごたえ」などレーダーチャートで表示も◎  7. レスポンシブ改善 カード横幅や画像サイズ調整 → 現状やや縦に長くなりがち  モバイル表示でも2列やスワイプ対応にする  8. カートに追加ボタン 一覧から直接カートに追加できるボタンを配置  例：🛒「カートに追加」ボタン  9. ホバー時のプレビュー拡大 マウスホバーで画像や説明文が拡大、詳細表示される演出  10. ビールスタイル別カラーラベル ピルスナーは黄、ヴァイツェンは橙、シュバルツは黒など色分けラベル表示で直感的に"
+"コードブロック","JavaScript","<div class=""grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-gray-50"">
+  <!-- 商品カード -->
+  <div class=""flex flex-col md:flex-row bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"">
+    <!-- 商品画像 -->
+    <img class=""w-full md:w-48 h-48 object-cover"" src=""https://example.com/beer.jpg"" alt=""ビール名"">
+
+    <!-- 商品情報 -->
+    <div class=""p-4 flex flex-col justify-between"">
+      <div>
+        <h2 class=""text-xl font-semibold text-gray-800"">ビール名</h2>
+        <p class=""text-sm text-gray-500 mt-1"">カテゴリ: IPA</p>
+        <p class=""text-sm text-gray-500"">価格: ¥600</p>
+        <p class=""text-sm text-gray-500"">在庫: あり</p>
+        <p class=""mt-2 text-gray-600 text-sm leading-snug line-clamp-3"">
+          フルーティーな香りとしっかりとした苦みが特徴。夏にぴったりな爽やかな味わい。
+        </p>
+      </div>
+      <button class=""mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold py-2 px-4 rounded-xl self-start transition"">詳細を見る</button>
+    </div>
+  </div>
+  <!-- ここに複数の商品カードを追加 -->
+</div>
+
+<!-- line-clamp 用の Tailwind Plugin が必要 -->
+<script src=""https://cdn.tailwindcss.com""></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {},
+    },
+    plugins: [
+      require('@tailwindcss/line-clamp'),
+    ],
+  }
+</script>"
+"https://drinx.kirin.co.jp/beer/","https://drinx.kirin.co.jp/beer/"
+"https://ieno-bar.suntory.co.jp/beerichiran","https://ieno-bar.suntory.co.jp/beerichiran"
+"ためしに、上の画像のヘッダーをけしたが、それでも見やすかった。"
+"https://goodbeer.jp/","https://goodbeer.jp/"
+"下部三つが特に見栄えという面では良かったように感じた。非常に見やすかった。画像が大きく、文字の色合い大きさが良い。"
+"▼ 1. 商品追加：月2回程度 ドイツビールの入荷スケジュールに合わせて月に2回程度新商品を追加。  「新商品」バッジをつけると購買意欲が高まる。  ▼ 2. 特集切替：月1回 例：「夏に飲みたいラドラー特集」「オクトーバーフェストセレクション」など。  季節イベント・記念日（ドイツの祝祭日など）に合わせて更新。  ▼ 3. 並び順調整：週1回 or 自動 アクセス数・売上・在庫変動をもとに人気順、売上順に並べ替え。  自動化できれば理想（スクリプトやCMSの設定）。  💡補足：更新のしすぎに注意"
+"https://codepen.io/ykvdxbzq-the-bashful/pen/qEOWWMX","https://codepen.io/ykvdxbzq-the-bashful/pen/qEOWWMX"
+"コードブロック","JavaScript",">ライトで飲みやすいラガー。</p><script src=""https://cdn.tailwindcss.com""></script>
+<div class=""p-6 bg-gradient-to-b from-gray-100 to-white"">
+  <!-- 商品一覧 -->
+  <div id=""beerGrid"" class=""grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"">
+
+    <!-- 商品1：ヴァイエンシュテファン ヘフェヴァイスビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=\""w-full object-contain h-48 bg-white p-2\"" src=""https://bier.jp/images/beeroriginal/nx-002.jpg"" alt=""ヴァイエンシュテファン"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">ヴァイエンシュテファン ヘフェヴァイスビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: ヴァイエンシュテファン</div>
+        <div class=""text-sm text-gray-500"">在庫: 25本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.4%</div>
+        <p class=""text-sm text-gray-600"">バナナのような香りとスパイスの風味。</p>
+      </div>
+    </div>
+
+    <!-- 商品2：エルディンガー ヴァイスビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=\""w-full object-contain h-48 bg-white p-2\"" src=""https://bier.jp/images/beeroriginal/ex-101.jpg"" alt=""エルディンガー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">エルディンガー ヴァイスビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: エルディンガー</div>
+        <div class=""text-sm text-gray-500"">在庫: 38本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.3%</div>
+        <p class=""text-sm text-gray-600"">まろやかでクリーミーな味わい。</p>
+      </div>
+    </div>
+
+    <!-- 商品3：ビットブルガー プレミアムピルス -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=\""w-full object-contain h-48 bg-white p-2\"" src=""https://bier.jp/images/beeroriginal/dx-101.jpg"" alt=""ビットブルガー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">ビットブルガー プレミアムピルス</h2>
+        <div class=""text-sm text-gray-500"">銘柄: ビットブルガー</div>
+        <div class=""text-sm text-gray-500"">在庫: 44本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 4.8%</div>
+        <p class=""text-sm text-gray-600"">キレのある爽快な苦味。</p>
+      </div>
+    </div>
+
+    <!-- 商品4：ケストリッツァー シュヴァルツビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=\""w-full object-contain h-48 bg-white p-2\"" src=""https://bier.jp/images/beeroriginal/dx-103.jpg"" alt=""ケストリッツァー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">ケストリッツァー シュヴァルツビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: ケストリッツァー</div>
+        <div class=""text-sm text-gray-500"">在庫: 19本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 4.8%</div>
+        <p class=""text-sm text-gray-600"">ロースト感とモルトの甘みが調和。</p>
+      </div>
+    </div>
+
+    <!-- 商品5：パウラーナー ヘーフェヴァイスビア -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=\""w-full object-contain h-48 bg-white p-2\"" src=""https://bier.jp/images/beeroriginal/ix-101.jpg"" alt=""パウラーナー"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">パウラーナー ヘーフェヴァイスビア</h2>
+        <div class=""text-sm text-gray-500"">銘柄: パウラーナー</div>
+        <div class=""text-sm text-gray-500"">在庫: 26本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.5%</div>
+        <p class=""text-sm text-gray-600"">ふんわりとした酵母の香り。</p>
+      </div>
+    </div>
+
+    <!-- 商品6：シュパーテン ミュンヘナー ヘル -->
+    <div class=""bg-white shadow-lg rounded-2xl overflow-hidden"">
+      <img class=\""w-full object-contain h-48 bg-white p-2\"" src=""https://bier.jp/images/beeroriginal/zx-101.jpg"" alt=""シュパーテン"">
+      <div class=""p-4 space-y-2"">
+        <h2 class=""text-xl font-bold text-yellow-600"">シュパーテン ミュンヘナー ヘル</h2>
+        <div class=""text-sm text-gray-500"">銘柄: シュパーテン</div>
+        <div class=""text-sm text-gray-500"">在庫: 33本</div>
+        <div class=""text-sm text-gray-500"">アルコール度数: 5.2%</div>
+        <p class=""text-sm text-gray-600""
+      </div>
+    </div>
+
+  </div>
+</div>"
+"現状の情報量を変えないで、見栄えをより良くするなら、表面と裏面をつくって、表面に基本情報（価格など）を載せて、裏面に商品の詳細情報を載せるというのもアリだと思う。"
+"文字の色、太さ、大きさが違う。"
+"商品画像の全体像が写るように変更"
+"商品名をクリックすると商品詳細ページに飛ぶようにする"
+"https://yonasato.com/ec/","https://yonasato.com/ec/"
+"https://yourbeer.jp/","https://yourbeer.jp/"
+"https://shop.orionbeer.co.jp/collections/recommend","https://shop.orionbeer.co.jp/collections/recommend"
+"https://codepen.io/ykvdxbzq-the-bashful/pen/raVrdyd","https://codepen.io/ykvdxbzq-the-bashful/pen/raVrdyd"
+"ここまで詳細情報ｗいれなくても良いかもしれない。写真がメインで、気になれば、クリックして詳細ページに進むような仕組みにする"
+"詳細情報が裏面にあるとほかの商品との比較が難しくなると考え、カードの表面に記載するようにした。また、それぞれのカードにカーソルを合わせると少しアップになるようなアニメーションがついている"
+"カテゴリー分けが必要なのかも検討する必要があると感じた。"
+"ヴァイエンシュテファン ヘフェヴァイスビア　https://bier.jp/images/beeroriginal/nx-002.jpg　　　　　　　　　　エルディンガー ヴァイスビア　　https://bier.jp/images/beeroriginal/ex-101.jpg　　　　　　　　　　　　　　ビットブルガー プレミアムピルス　　https://bier.jp/images/beeroriginal/dx-101.jpg　　　　　　　　　　　　ケストリッツァー シュヴァルツビア　　https://bier.jp/images/beeroriginal/dx-103.jpg　　　　　　　　　　　　パウラーナー ヘーフェヴァイスビア　　　https://bier.jp/images/beeroriginal/ix-101.jpg　　　　　　　　　　　シュパーテン ミュンヘナー ヘル　　　　https://bier.jp/images/beeroriginal/zx-101.jpg　　　　　　　　　　　　　　　　　　　　　これらの画像をコード内に埋め込んで、正確な商品一覧を作成して","https://bier.jp/images/beeroriginal/nx-002.jpg, https://bier.jp/images/beeroriginal/ex-101.jpg, https://bier.jp/images/beeroriginal/dx-101.jpg, https://bier.jp/images/beeroriginal/dx-103.jpg, https://bier.jp/images/beeroriginal/ix-101.jpg, https://bier.jp/images/beeroriginal/zx-101.jpg"
+"bier.jpの背景色にしても特に悪くなかった。すると、背景色はあまりかんけいないのかもしれない。"
+"コードブロック","JavaScript","<div class=""grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gradient-to-b from-gray-100 to-white"">
+  <!-- 商品カード -->
+  <div class=""bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative"">
+    <!-- 商品画像 -->
+    <img class=""w-full h-56 object-cover"" src=""https://example.com/beer.jpg"" alt=""ビール名"">
+
+    <!-- 商品情報 -->
+    <div class=""p-5 flex flex-col justify-between h-full space-y-2"">
+      <h2 class=""text-2xl font-bold text-gray-800"">ビール名</h2>
+      <div class=""flex flex-wrap text-sm text-gray-500 gap-2"">
+        <span class=""bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full"">カテゴリ: IPA</span>
+        <span>価格: ¥600</span>
+        <span>在庫: あり</span>
+      </div>
+      <p class=""text-gray-600 text-sm leading-relaxed mt-2 line-clamp-3"">
+        フルーティーな香りとしっかりとした苦みが特徴。夏にぴったりな爽やかな味わい。爽やかなホップの香りと程よいアルコール感が絶妙で、ビール好きにはたまらない逸品です。
+      </p>
+      <button class=""mt-4 w-fit bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-5 rounded-full shadow-md transition"">詳細を見る</button>
+    </div>
+
+    <!-- ホバー時の詳細オーバーレイ -->
+    <div class=""absolute inset-0 bg-white bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-5 flex flex-col justify-center"">
+      <h3 class=""text-lg font-semibold text-gray-800 mb-2"">詳細情報</h3>
+      <ul class=""text-sm text-gray-600 space-y-1"">
+        <li>アルコール度数: 5.5%</li>
+        <li>原産国: ドイツ</li>
+        <li>容量: 330ml</li>
+        <li>醸造所: ビアブロワリー</li>
+        <li>特徴: 柑橘系アロマ・苦み強め</li>
+      </ul>
+    </div>
+  </div>
+  <!-- 他の商品カードを同様に追加 -->
+</div>
+
+<!-- line-clamp 用の Tailwind Plugin が必要 -->
+<script src=""https://cdn.tailwindcss.com""></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {},
+    },
+    plugins: [
+      require('@tailwindcss/line-clamp'),
+    ],
+  }
+</script>"
+"逆に上の画像を下の画像に寄せた。多少みづらくなったが、それでも、下の画像よりましに見える。 すると、背景色や文字に画像を使うこと、また商品の見せ方に違いがあるのかもしれない、"
+"アニメーション効果をつけて、カーソルで触れると商品詳細情報がみえるようにした。"
+"この画面のスマホ表示バージョンを作成した"
+"https://codepen.io/ykvdxbzq-the-bashful/pen/GgJPgWK","https://codepen.io/ykvdxbzq-the-bashful/pen/GgJPgWK"
+"下の画像の文字の色、人さと大きさを上の画像のものに寄せた"
+"現在のbier.jpだと商品名も他の説書のフォントサイズと“同じで見にくいため、一つ一つをカード化するか、フォントのサイズを多くクするかで、商品同士の境界線をしっかり作るべきだと感じた"
+"<div class=""grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6 bg-gradient-to-b from-gray-100 to-white"">  <!-- 商品1：ヴァイエンシュテファン ヘフェヴァイスビア -->  <div class=""bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300"">    <img class=""w-full h-48 object-cover"" src=""https://upload.wikimedia.org/wikipedia/commons/4/43/Weihenstephaner_Hefeweissbier.jpg"" alt=""ヴァイエンシュテファン"">    <div class=""p-4 space-y-2"">      <h2 class=""text-xl font-bold text-yellow-600"">ヴァイエンシュテファン ヘフェヴァイスビア</h2>      <div class=""font-semibold text-yellow-700 bg-yellow-200 inline-block px-3 py-1 rounded-full text-sm"">カテゴリ: ヘフェヴァイツェン</div>      <div class=""text-sm text-gray-500 space-y-1"">        <div>価格: ¥780</div>        <div>在庫: 25本</div>      </div>      <p class=""text-sm text-gray-600"">バナナのような香りとスパイスの風味。</p>      <ul class=""text-sm text-gray-600 list-disc list-inside"">        <li>度数: 5.4%</li><li>国: ドイツ</li><li>容量: 500ml</li><li>醸造所: ヴァイエンシュテファン</li>      </ul>    </div>  </div>  <!-- 商品2：エルディンガー ヴァイスビア -->  <div class=""bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300"">    <img class=""w-full h-48 object-cover"" src=""https://upload.wikimedia.org/wikipedia/commons/f/fd/Erdinger_Weissbier.jpg"" alt=""エルディンガー ヴァイスビア"">    <div class=""p-4 space-y-2"">      <h2 class=""text-xl font-bold text-yellow-600"">エルディンガー ヴァイスビア</h2>      <div class=""font-semibold text-yellow-700 bg-yellow-200 inline-block px-3 py-1 rounded-full text-sm"">カテゴリ: ヴァイツェン</div>      <div class=""text-sm text-gray-500 space-y-1"">        <div>価格: ¥750</div>        <div>在庫: 38本</div>      </div>      <p class=""text-sm text-gray-600"">まろやかでクリーミーな味わい。</p>      <ul class=""text-sm text-gray-600 list-disc list-inside"">        <li>度数: 5.3%</li><li>国: ドイツ</li><li>容量: 500ml</li><li>醸造所: エルディンガー</li>      </ul>    </div>  </div>  <!-- 商品3：ビットブルガー プレミアムピルス -->  <div class=""bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300"">    <img class=""w-full h-48 object-cover"" src=""https://upload.wikimedia.org/wikipedia/commons/7/75/Bitburger.jpg"" alt=""ビットブルガー プレミアムピルス"">    <div class=""p-4 space-y-2"">      <h2 class=""text-xl font-bold text-yellow-600"">ビットブルガー プレミアムピルス</h2>      <div class=""font-semibold text-yellow-700 bg-yellow-200 inline-block px-3 py-1 rounded-full text-sm"">カテゴリ: ピルスナー</div>      <div class=""text-sm text-gray-500 space-y-1"">        <div>価格: ¥680</div>        <div>在庫: 44本</div>      </div>      <p class=""text-sm text-gray-600"">キレのある爽快な苦味。</p>      <ul class=""text-sm text-gray-600 list-disc list-inside"">        <li>度数: 4.8%</li><li>国: ドイツ</li><li>容量: 500ml</li><li>醸造所: ビットブルガー</li>      </ul>    </div>  </div>  <!-- 商品4：ケストリッツァー シュヴァルツビア -->  <div class=""bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300"">    <img class=""w-full h-48 object-cover"" src=""https://upload.wikimedia.org/wikipedia/commons/1/1b/Koestritzer_Schwarzbier.jpg"" alt=""ケストリッツァー"">    <div class=""p-4 space-y-2"">      <h2 class=""text-xl font-bold text-yellow-600"">ケストリッツァー シュヴァルツビア</h2>      <div class=""font-semibold text-yellow-700 bg-yellow-200 inline-block px-3 py-1 rounded-full text-sm"">カテゴリ: シュヴァルツ</div>      <div class=""text-sm text-gray-500 space-y-1"">        <div>価格: ¥720</div>        <div>在庫: 19本</div>      </div>      <p class=""text-sm text-gray-600"">ロースト感とモルトの甘みが調和。</p>      <ul class=""text-sm text-gray-600 list-disc list-inside"">        <li>度数: 4.8%</li><li>国: ドイツ</li><li>容量: 500ml</li><li>醸造所: ケストリッツァー</li>      </ul>    </div>  </div>  <!-- 商品5：パウラーナー ヘーフェヴァイスビア -->  <div class=""bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300"">    <img class=""w-full h-48 object-cover"" src=""https://upload.wikimedia.org/wikipedia/commons/d/db/Paulaner_Hefe_Weissbier.jpg","https://upload.wikimedia.org/wikipedia/commons/4/43/Weihenstephaner_Hefeweissbier.jpg, https://upload.wikimedia.org/wikipedia/commons/f/fd/Erdinger_Weissbier.jpg, https://upload.wikimedia.org/wikipedia/commons/7/75/Bitburger.jpg, https://upload.wikimedia.org/wikipedia/commons/1/1b/Koestritzer_Schwarzbier.jpg, https://upload.wikimedia.org/wikipedia/commons/d/db/Paulaner_Hefe_Weissbier.jpg"
+"画像だと伝われないかもしれないが、だいぶ見やすくなった。"

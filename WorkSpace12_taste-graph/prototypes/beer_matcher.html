@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>味の好みに合うビール提案</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+    h1, h2 { color: #333; }
+    .main-container { max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    #user-input { margin-bottom: 20px; }
+    label { display: block; margin: 10px 0; }
+    input { width: 50px; }
+    button { background-color: #3e8e41; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 20px; }
+    button:hover { background-color: #2c6b2e; }
+    #result { background-color: #eef; padding: 15px; border-radius: 5px; margin-top: 20px; min-height: 50px; }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h1>味の好みに合ったビールを提案</h1>
+
+    <!-- ユーザーの好み入力 -->
+    <div id="user-input">
+      <h2>好みを入力してください (0-5)</h2>
+      <label>酸味: <input type="number" id="酸味" min="0" max="5" value="3"></label>
+      <label>甘み: <input type="number" id="甘み" min="0" max="5" value="3"></label>
+      <label>苦み: <input type="number" id="苦み" min="0" max="5" value="3"></label>
+      <label>コク: <input type="number" id="コク" min="0" max="5" value="3"></label>
+      <label>香り: <input type="number" id="香り" min="0" max="5" value="3"></label>
+      <button onclick="findBestMatch()">ビールを提案</button>
+    </div>
+  
+    <!-- 提案結果表示 -->
+    <h2>おすすめのビール</h2>
+    <div id="result">
+        <p>上のボタンを押して、あなたにぴったりのビールを見つけましょう！</p>
+    </div>
+  </div>
+
+  <script>
+    // ビールデータベース (サンプル)
+    const beers = [
+      { name: "ヴァイエンシュテファン ヘフェヴァイスビア", 酸味: 2, 甘み: 3, 苦み: 2, コク: 3, 香り: 5 },
+      { name: "エルディンガー ヴァイスビア", 酸味: 2, 甘み: 3, 苦み: 2, コク: 4, 香り: 4 },
+      { name: "ビットブルガー プレミアムピルス", 酸味: 1, 甘み: 2, 苦み: 4, コク: 2, 香り: 3 },
+      { name: "ケストリッツァー シュヴァルツビア", 酸味: 1, 甘み: 4, 苦み: 3, コク: 4, 香り: 3 },
+      { name: "パウラーナー ヘーフェヴァイスビア", 酸味: 2, 甘み: 3, 苦み: 2, コク: 3, 香り: 5 },
+      { name: "シュパーテン ミュンヘナー ヘル", 酸味: 1, 甘み: 2, 苦み: 3, コク: 3, 香り: 2 }
+    ];
+
+    function findBestMatch() {
+      // ユーザーの入力取得
+      const userPreferences = {
+        酸味: Number(document.getElementById("酸味").value),
+        甘み: Number(document.getElementById("甘み").value),
+        苦み: Number(document.getElementById("苦み").value),
+        コク: Number(document.getElementById("コク").value),
+        香り: Number(document.getElementById("香り").value)
+      };
+
+      // 距離計算 (ユークリッド距離)
+      let bestMatch = null;
+      let minDistance = Infinity;
+
+      beers.forEach(beer => {
+        const distance = Math.sqrt(
+          Math.pow(beer.酸味 - userPreferences.酸味, 2) +
+          Math.pow(beer.甘み - userPreferences.甘み, 2) +
+          Math.pow(beer.苦み - userPreferences.苦み, 2) +
+          Math.pow(beer.コク - userPreferences.コク, 2) +
+          Math.pow(beer.香り - userPreferences.香り, 2)
+        );
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          bestMatch = beer;
+        }
+      });
+
+      // 結果表示
+      document.getElementById("result").innerHTML = `
+        <p><strong>${bestMatch.name}</strong> があなたの好みに一番近いビールです。</p>
+        <p>酸味: ${bestMatch.酸味}, 甘み: ${bestMatch.甘み}, 苦み: ${bestMatch.苦み}, コク: ${bestMatch.コク}, 香り: ${bestMatch.香り}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

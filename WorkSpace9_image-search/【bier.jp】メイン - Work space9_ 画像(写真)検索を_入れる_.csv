@@ -1,0 +1,1700 @@
+﻿"Work space9: 画像(写真)検索を​入れる​"
+"JavaScriptでDjangoからデータを取得する"
+"DjangoからJavaScriptのウェブサイトにデータを取得するためには、Djangoの組み込み機能を使用して、データを取得するためのAPI(アプリケーションプログラミングインターフェース)を作成します。"
+"3.JavaScriptからAJAXリクエストを作成します:JavaScriptのコードで、AJAX(非同期JavaScriptとXML)を使用してDjangoのAPIにリクエストを送信し、データを取得します。 "
+"Djangoのビューを作成します:Djangoプロジェクト内で、必要なデータを取得するビューを作成します。このビューは、JSONなどのJavaScriptで簡単に利用できる形式でデータを返します。"
+"JavaScript","JavaScript","// jQuery AJAXを使用した例
+$.ajax({
+  url: '/api/image_search/',
+  method: 'GET',
+  success: function(response) {
+    // レスポンスデータを処理します
+    console.log(response);
+  },
+  error: function(error) {
+    // エラーを処理します
+    console.error(error);
+  }
+});"
+"Python","JavaScript","from django.http import JsonResponse
+
+def image_search(request):
+    # 必要なデータを取得します（例）
+    data = {
+        'image_id': 1,
+        'image_url': 'https://example.com/image.jpg',
+        'image_description': 'これは例の画像です',
+    }
+
+    # データをJSONとして返します
+    return JsonResponse(data)"
+"4.JavaScriptでデータを処理します:DjangoのAPIからのレスポンスを受け取った後は、JavaScriptのコード内で必要に応じてデータを処理します。 "
+"2.URLパターンを定義します:Djangoプロジェクトのurls.pyファイルで、前のステップで作成し たビューにマッピングするURLパターンを定義します。"
+"python","JavaScript","from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('api/image_search/', views.image_search, name='image_search'),
+    # 他のURLパターン...
+]"
+"Django側で REST API を用意している 部分ですね。"
+
+"アイデアをひたすら膨らませるフェーズ（何を書いてもOK）"
+"状況が把握しきれないのでとりあえず最後のプログラムをcolabで動かしてみる"
+"コードブロック","JavaScript","{
+""textAnnotations"": [
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 49,
+            ""y"": 76
+          },
+          {
+            ""x"": 107,
+            ""y"": 76
+          },
+          {
+            ""x"": 107,
+            ""y"": 206
+          },
+          {
+            ""x"": 49,
+            ""y"": 206
+          }
+        ]
+      },
+      ""description"": ""MAULAN\nMINERAL\nFUNCHES\nPAULANER\nBody/at\nSE"",
+      ""locale"": ""de""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 49,
+            ""y"": 76
+          },
+          {
+            ""x"": 96,
+            ""y"": 76
+          },
+          {
+            ""x"": 96,
+            ""y"": 86
+          },
+          {
+            ""x"": 49,
+            ""y"": 86
+          }
+        ]
+      },
+      ""description"": ""MAULAN""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 51,
+            ""y"": 139
+          },
+          {
+            ""x"": 107,
+            ""y"": 140
+          },
+          {
+            ""x"": 107,
+            ""y"": 153
+          },
+          {
+            ""x"": 51,
+            ""y"": 152
+          }
+        ]
+      },
+      ""description"": ""MINERAL""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 62,
+            ""y"": 168
+          },
+          {
+            ""x"": 93,
+            ""y"": 168
+          },
+          {
+            ""x"": 93,
+            ""y"": 179
+          },
+          {
+            ""x"": 62,
+            ""y"": 179
+          }
+        ]
+      },
+      ""description"": ""FUNCHES""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 57,
+            ""y"": 184
+          },
+          {
+            ""x"": 101,
+            ""y"": 184
+          },
+          {
+            ""x"": 101,
+            ""y"": 190
+          },
+          {
+            ""x"": 57,
+            ""y"": 190
+          }
+        ]
+      },
+      ""description"": ""PAULANER""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 63,
+            ""y"": 192
+          },
+          {
+            ""x"": 88,
+            ""y"": 192
+          },
+          {
+            ""x"": 88,
+            ""y"": 200
+          },
+          {
+            ""x"": 63,
+            ""y"": 200
+          }
+        ]
+      },
+      ""description"": ""Body""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 83,
+            ""y"": 192
+          },
+          {
+            ""x"": 90,
+            ""y"": 192
+          },
+          {
+            ""x"": 90,
+            ""y"": 199
+          },
+          {
+            ""x"": 83,
+            ""y"": 199
+          }
+        ]
+      },
+      ""description"": ""/""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 88,
+            ""y"": 192
+          },
+          {
+            ""x"": 95,
+            ""y"": 192
+          },
+          {
+            ""x"": 95,
+            ""y"": 199
+          },
+          {
+            ""x"": 88,
+            ""y"": 199
+          }
+        ]
+      },
+      ""description"": ""at""
+    },
+    {
+      ""boundingPoly"": {
+        ""vertices"": [
+          {
+            ""x"": 72,
+            ""y"": 199
+          },
+          {
+            ""x"": 84,
+            ""y"": 198
+          },
+          {
+            ""x"": 85,
+            ""y"": 205
+          },
+          {
+            ""x"": 73,
+            ""y"": 206
+          }
+        ]
+      },
+      ""description"": ""SE""
+    }
+  ]
+}"
+"①画像を読み込む ②JSONのリクエストを基にテキスト情報を取得する ③取得した情報をJSONで返して外部サービス、内部のデータベースと照らし合わせて一致度が高いものを取得する ④取得した画像を表示する"
+"Google Cloud Vision APIを用いて生成"
+"コードブロック","Python","import os
+from google.cloud import vision
+from google.cloud import firestore
+
+# Google Cloudの認証情報を設定
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'path/to/credentials.json'
+
+# Google Vision APIとFirestoreクライアントを初期化
+client_vision = vision.ImageAnnotatorClient()
+client_firestore = firestore.Client()
+
+def ocr_image(image_path):
+    # 画像を読み込む
+    with open(image_path, 'rb') as image_file:
+        content = image_file.read()
+
+    # 画像データをGoogle Vision APIに送信し、OCRを実行
+    image = vision.Image(content=content)
+    response = client_vision.text_detection(image=image)
+    texts = response.text_annotations
+
+    # OCRで検出された文字列を返す
+    if texts:
+        return texts[0].description
+    else:
+        return None
+
+def search_images_by_name(query):
+    # データベース内の商品名とOCR結果を比較し、一致度順にデータベース内の画像を取得
+    images = []
+    collection_ref = client_firestore.collection('products')
+
+    for doc in collection_ref.stream():
+        data = doc.to_dict()
+        product_name = data.get('name', '')
+        image_url = data.get('image_url', '')
+
+        if query in product_name:
+            images.append((product_name, image_url))
+
+    # 一致度順にソートして画像を返す
+    images.sort(key=lambda x: len(images[0]) - len(query))
+    return images
+
+# テスト用の画像ファイルとOCRのクエリを指定
+image_path = 'path/to/image.jpg'
+query = ocr_image(image_path)
+
+if query:
+    # OCR結果が得られた場合、データベース内の画像を一致度順に取得
+    matched_images = search_images_by_name(query)
+    for product_name, image_url in matched_images:
+        print(f'Product: {product_name}')
+        print(f'Image URL: {image_url}')
+else:
+    print('No text detected in the image.')"
+"コードブロック","Python","import os
+from google.cloud import vision
+import difflib 
+
+# Google Cloudの認証情報を設定
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'path/to/credentials.json'
+
+# Google Vision APIとFirestoreクライアントを初期化
+client_vision = vision.ImageAnnotatorClient()
+
+def ocr_image(image_path):
+    # 画像を読み込む
+    with open(image_path, 'rb') as image_file:
+        content = image_file.read()
+
+    # 画像データをGoogle Vision APIに送信し、OCRを実行
+    image = vision.Image(content=content)
+    response = client_vision.text_detection(image=image)
+    texts = response.text_annotations
+
+    # OCRで検出されたテキストを個別に取得してリストとして返す
+    if texts:
+        return [text.description for text in texts[1:]]  # 先頭の要素は全体のテキストなので除外
+    else:
+        return []
+
+def calculate_similarity(str1, str2):#配列比較の関数にする
+    seq_matcher = difflib.SequenceMatcher(None,str1,str2)
+    return seq_matcher.ratio
+    
+def search_images_by_name(query):
+    # データベース内の商品名とOCR結果を比較し、一致度順にデータベース内の画像を取得
+    #使用するデータベースに応じて書き換える
+    product_name = ['']
+    image_url = ['']
+    average_similarity = calculate_similarity(query, product_name)()
+    images = []
+    images.append((product_name,image_url,average_similarity))
+　  return images
+
+
+
+# テスト用の画像ファイルとOCRのクエリを指定
+image_path = 'path/to/image.jpg'
+ocr_results = ocr_image(image_path)
+
+if ocr_results:
+    # OCR結果が得られた場合、データベース内の画像を一致度順に取得
+    matched_images = search_images_by_name(ocr_results)
+    for product_name, image_url, similarity in images:
+        print(f'Product: {product_name}')
+        print(f'Image URL: {image_url}')
+        print(f'Similarity: {similarity}')
+else:
+    print('No text detected in the image.')"
+"google vision APIを用いたOCRで読み取った文字列とデータベース内の商品名を比較して、「あいまい検索」を行い抽出したデータベース内の画像を一致度順にならべたい。これらをPythonで作ってください。"
+"Django フレームワークを用いて、Pythonでコード書くことで実装できる。"
+画像検索のwebアプリを雑に作ってみる - Re:ゼロから始めるML生活,https://www.nogawanogawa.com/entry/image_search_2
+"問題なく右の文章が出力された"
+"FAISSを使ってみる"
+"商品データベースの質に依存しそう そこにアクセスするための枠組みを考えるのが大切そう"
+"request JSON","JavaScript","{
+  ""requests"": [
+    {
+      ""features"": [
+        
+        {
+          ""maxResults"": 50,
+          ""model"": ""builtin/latest"",
+          ""type"": ""DOCUMENT_TEXT_DETECTION""
+        },
+        
+      ],
+      ""image"": {
+        ""content"": ""(data from Dbier.jpg)""
+      },
+      ""imageContext"": {
+        ""cropHintsParams"": {
+          ""aspectRatios"": [
+            0.8,
+            1,
+            1.2
+          ]
+        }
+      }
+    }
+  ]
+}"
+"画像認識させるJSON"
+"これを参考に作成中"
+"┌───────────┐   scrape + json   ┌──────────────┐ │ bier.jp   │ ───────────────▶ │ SQLite(beers)│ └───────────┘                  │ id / name …  │                                └──────┬───────┘                                       │ metadata-lookup                        img files      ▼ ユーザ画像 ──CLIP embed──▶ 512-d vec ──HNSW index── 最近傍 ID → メタ情報 → 可視化  (URL)                (ViT-B/32)       (hnswlib)"
+"Djangoは有名なフレームワークですが、それ自体が画像検索をしてくれるわけではありません。"
+"画像の一致度を見る前に、オブジェクト認識が通常は必要になります。写真で撮った画像はビールだけが含まれているわけではないためです。"
+"Djangoでサーバサイドで処理する場合には、Webサイト側から呼び出すためのAPIについても検討しましょう。(Djangoで画面表示はもちろんできますが、写真検索のためだけにbier.jp全体をDjangoで置き換えるのは現実的ではありません)"
+"それぞれ関数作って、フローを表現してみてはどうでしょうか。何を渡して何を受け取るかが明確になると思います。"
+"コードブロック","JavaScript","import os
+import numpy as np
+from PIL import Image
+import requests
+from io import BytesIO
+
+import torch
+import torchvision.transforms as transforms
+import torchvision.models as models
+
+import faiss
+
+# 1. 事前学習済み ResNet50（分類層を除外）を用いた特徴抽出器の構築
+def load_feature_extractor():
+    model = models.resnet50(pretrained=True)
+    # 分類層(fc)を除去し、特徴抽出用に変更
+    model = torch.nn.Sequential(*(list(model.children())[:-1]))
+    model.eval()  # 推論モードに設定
+    return model
+
+# 2. 画像の前処理: リサイズ、正規化（PIL Image をテンソルに変換）
+def preprocess_image(image):
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),  # ResNet50 の入力サイズにリサイズ
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406],  # ImageNet 標準の正規化値
+                             std=[0.229, 0.224, 0.225])
+    ])
+    image = image.convert('RGB')
+    image = transform(image)
+    image = image.unsqueeze(0)  # バッチ次元を追加
+    return image
+
+# URLから画像を取得し、前処理を実施する関数
+def preprocess_image_from_url(url):
+    response = requests.get(url)
+    image = Image.open(BytesIO(response.content))
+    return preprocess_image(image)
+
+# ファイルパスから画像を読み込み前処理する関数
+def preprocess_image_from_path(path):
+    image = Image.open(path)
+    return preprocess_image(image)
+
+# 3. 特徴抽出: モデルにより画像テンソルから特徴量を抽出
+def extract_features(model, image_tensor):
+    with torch.no_grad():
+        features = model(image_tensor)
+    # 出力形状が [1, 2048, 1, 1] ならば平坦化して [1, 2048] に
+    features = features.view(features.size(0), -1)
+    return features.cpu().numpy()
+
+# 4. 商品画像（ローカルフォルダ内）の特徴を用いて FAISS インデックスを構築
+def build_faiss_index(image_folder, model):
+    # 対象となる画像ファイルのパス一覧を取得（例：.jpg, .jpeg, .png）
+    image_paths = [os.path.join(image_folder, fname)
+                   for fname in os.listdir(image_folder)
+                   if fname.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    
+    features_list = []
+    for path in image_paths:
+        img_tensor = preprocess_image_from_path(path)
+        feat = extract_features(model, img_tensor)
+        features_list.append(feat)
+    
+    # 画像数 × 特徴次元の2次元配列に変換（例: N × 2048）
+    features_array = np.vstack(features_list).astype('float32')
+    d = features_array.shape[1]  # 特徴量の次元数
+    # FAISS の IndexFlatL2（L2距離による単純なインデックス）を作成
+    index = faiss.IndexFlatL2(d)
+    index.add(features_array)
+    return index, image_paths
+
+# 5. クエリ画像に対して最も類似する商品を検索する関数
+def search_product(query_image_tensor, model, index, image_paths, k=1):
+    query_feature = extract_features(model, query_image_tensor).astype('float32')
+    distances, indices = index.search(query_feature, k)
+    return [image_paths[idx] for idx in indices[0]], distances[0]
+
+# 6. メイン処理
+def main():
+    # 事前学習済みモデルの読み込み
+    model = load_feature_extractor()
+    
+    # 商品画像が保存されているローカルフォルダ (例：""products"") を指定
+    product_folder = 'products'
+    index, image_paths = build_faiss_index(product_folder, model)
+    
+    # 商品画像と対応する商品情報のマッピング（例）
+    # 実際には、データベースなどから商品詳細情報を取得することになるでしょう
+    product_labels = {
+        'hx-030.jpg': 'Beer Original HX-030',
+        # 他の商品画像と商品情報のマッピングを追加
+    }
+    
+    # クエリ画像: 指定URLから画像を取得
+    query_url = ""https://bier.jp/images/beeroriginal/hx-030.jpg""
+    query_tensor = preprocess_image_from_url(query_url)
+    
+    # 類似度検索（上位1件）
+    results, distances = search_product(query_tensor, model, index, image_paths, k=1)
+    
+    result_path = results[0]
+    filename = os.path.basename(result_path)
+    product_info = product_labels.get(filename, ""Unknown product"")
+    
+    print(""認識された商品情報:"")
+    print(f""画像パス: {result_path}"")
+    print(f""商品情報: {product_info}"")
+    print(f""類似度スコア（距離）: {distances[0]}"")
+
+if __name__ == '__main__':
+    main()"
+"[{""itemname"": ""xxx"", ""itemCode"": ""Ax123"", ""imageURL"": ""https://...."", ""similarity"": 0.897}, {""itemname"": ""yyy"", ""itemCode"": ""Ax456"", ""imageURL"": ""https://...."", ""similarity"": 0.597}]"
+"GPTを用いた画像検索システム構築中"
+"https://colab.research.google.com/drive/1s5eHSjV3Eaud8-TFR-5fcTcGByCsvO0L#scrollTo=92kNDxyWE1Gl","https://colab.research.google.com/drive/1s5eHSjV3Eaud8-TFR-5fcTcGByCsvO0L#scrollTo=92kNDxyWE1Gl"
+"プログラムの解説をさせてみた"
+"この結果が正しいのかわからない 合っている気がしなくもない"
+"商品データベースがない状態で「どのような製品なのか」を完全に特定するのは非常に難しいですが、いくつかのアプローチで製品の大まかなカテゴリや特徴を推測することは可能です。 1. 事前学習済み画像分類モデルの利用 一般的な画像分類: 例えば、ImageNetで学習されたResNetやInceptionといったモデルは、数百の一般的なクラス（「ビール瓶」「缶」など）が学習されています。これらのモデルを使えば、入力画像から大まかなカテゴリを推測できる場合があります。しかし、製品の詳細な情報（ブランド名や特定モデルなど）は学習されていないため、認識できるのはあくまで「一般的なカテゴリ」に留まります。2. ゼロショット学習・マルチモーダルモデルの活用 CLIPなどのモデル: OpenAIのCLIPのような画像とテキストを同時に扱えるモデルを利用すれば、事前に定義したテキストプロンプト（例：「この画像はビールのラベルです」「この画像はクラフトビールの商品です」など）と画像の類似度を計算し、どの説明が最も合致するかを判断できます。これにより、事前に用意したラベルや説明文を用いずに、画像の内容に近い説明を出力することが期待できます。ただし、CLIPも学習データに依存しているため、未知の製品や特殊なケースでは精度に限界があります。3. クラスタリングや自己教師あり学習 特徴のクラスタリング: 複数の製品画像がある場合、教師なし学習で特徴量のクラスタリングを行い、似た特徴を持つ画像をグループ化することは可能です。ユーザーには「このグループに属する製品は似た特性を持っています」といった形で情報を提供できますが、どのクラスタが具体的にどの製品を意味するかの解釈は別途人手や追加情報が必要となります。結論 商品データベースがない状態では、画像の特徴から「どのような製品なのか」を厳密に特定するのは難しく、一般的なカテゴリの推定や類似製品のグループ分けが現実的なアプローチとなります。  より具体的な製品認識を実現するためには、以下のいずれかが必要です。 大規模なラベル付きデータセット: 製品ごとの詳細な情報を含むデータセットで学習した専用の分類器や検出モデル。ゼロショット・マルチモーダルモデルの活用: CLIPなどのモデルを利用して、画像とテキストの類似度から推測する手法。ただし、これも事前学習データに依存するため、未知の製品に対する精度は保証されません。このように、現状の技術では全くのデータベースなしに完全な製品情報を抽出することは難しいですが、上記の方法を組み合わせることで、ある程度の推測や類似製品の提示は可能です。"
+"もちろんです。このプログラムは、画像からテキストを抽出し(OCR)、そのテキストと商品名の類似度を計算し、類似度の高い順に商品を並べ替えるという機能を持っています。以下に各関数の詳細を説明します。 ocr(image_file): この関数は、画像ファイルからテキストを抽出する役割を果たします。テストモードでは、固定の文字列リスト(‘aaa’, ‘bbb’, ‘ccc’)を返します。本番モードでは、画像ファイルを開き、そのテキストを抽出し、テキストリストを返します。similarity(ocr_list, product_list): この関数は、OCRで抽出したテキストリストと商品名リストの類似度を計算します。現在はランダムな値を返しています。get_similarity(texts): この関数は、OCRで抽出したテキストと実際の商品名を比較し、その結果を返します。テストモードでは、固定のデータを返します。本番モードでは、OCRリストと各商品の類似度を計算し、その結果をリストとして返します。sort_similar_items(list): この関数は、類似度の高い順に商品を並べ替えます。リスト内の各アイテムは辞書形式で、""similarity""キーの値に基づいて並べ替えられます。最後に、json.dumps(items)を使用して、並べ替えられたアイテムリストをJSON形式で出力します。 このプログラムは、OCRとテキスト比較を使用して、画像に含まれるテキストが特定の商品名とどれだけ類似しているかを判断するためのものです。これは、例えば、商品の画像から商品名を自動的に識別するようなシステムで役立つかもしれません。ただし、現在のコードはテストモードと本番モードの両方を含んでおり、本番モードの一部の詳細(画像の読み込み、テキストの抽出、類似度の計算)は省略されています。これらの部分は、具体的なOCRエンジンや類似度計算アルゴリズムによって異なる実装が必要となります。また、similarity関数は現在ランダムな値を返していますので、実際の類似度計算ロジックを実装する必要があります。このプログラムは、そのようなシステムの基本的なフレームワークを提供しています。具体的な実装は、使用するOCRエンジンや類似度計算アルゴリズム、そして対象とする商品の種類などによります。"
+"どのようなシステム構成になるのか考えてみましょう（↓は例）"
+"json.load() json.dump()"
+"フレームワークが必要な場合は、例えばFastAPIも検討してみましょう。"
+"一致度を出す関数"
+"特に何も変更しなくても出たので長文のエラーというのはプログラム自身ではなく環境のほうに問題があったのかもしれない"
+"コードブロック","Python","def search_images_by_name(query):
+    # データベース内の商品名とOCR結果を比較し、一致度順にデータベース内の画像を取得
+    images = []
+    def get_from_db(texts):
+    return (['商品名'])
+
+    for doc in collection_ref.stream():
+        data = doc.to_dict()
+        product_name = data.get('name', '')
+        image_url = data.get('image_url', '')
+
+        similarity_scores = []
+        for ocr_text in query:
+            similarity_scores.append(calculate_similarity(product_name, ocr_text))
+
+        if similarity_scores:
+            average_similarity = sum(similarity_scores) / len(similarity_scores)
+            images.append((product_name, image_url, average_similarity))
+
+    # 一致度順にソートして画像を返す
+    images.sort(key=lambda x: x[2], reverse=True)
+    return images"
+"test&#61;1","Python","import random
+image_file = ""path/to/file""
+test = 1#test=0は本番
+
+def ocr(image_file):#OCRで読み取った文字を返す
+    if test:
+        return ['aaa','bbb','ccc']
+    # ここから下に関数の本体
+    else:
+        image = open(image_file)
+
+        text = image.texts
+
+        text_list = text.spilit()
+
+
+        return text_list
+
+texts = ocr(image_file)
+
+def similarity(ocr_list,product_list):
+  return random.random()
+
+
+
+def get_similarity(texts):
+    if test:
+      data =  [
+            {""itemname"":""xxx"",
+             ""itemCode"":""Ax123"",
+             ""imageURL"":""https://...."",
+             ""similarity"":0.897
+            },
+            {""itemname"":""yyy"",
+            ""itemCode"":""Ax456"",
+             ""imageURL"":""https://...."",
+             ""similarity"":0.597
+            },]
+      return data
+           #OCRで読み取った文字と実際の商品名を比較してその結果を返す
+    # ここから下に関数の本体
+    else:
+        ocr_list = ocr(image_file)
+        products = ['bier1','bier2']
+        sim_list = []
+        for product in products:
+            product_words = product.spilit()
+
+            sim = similarity(ocr_list, product_words)
+
+            sim_list.append({
+             ""itemname"":product,
+             ""itemcode"":""Ax789"",
+             ""imageURL"":""https://...."",
+             ""similarity"":sim
+            })
+        return sim_list
+
+def sort_similar_items(list):
+  new_list= sorted(list, key=lambda x:x[""similarity""], reverse=True)
+  return new_list
+
+datalist = get_similarity(texts)
+
+items = sort_similar_items(datalist)
+
+
+import json
+print(json.dumps(items))"
+HNSWアルゴリズム入門&#xff1a;高速な類似検索の仕組み - Qiita,https://qiita.com/yonaka15/items/d3cc001ebeffab5442ea
+openai/clip-vit-base-patch32 · Hugging Face,https://huggingface.co/openai/clip-vit-base-patch32
+"urls.py","Python","# urls.py
+
+from django.urls import path
+from image_search import views
+
+urlpatterns = [
+    path('search/', views.search, name='image_search'),
+    # 他のURLパターン
+]"
+"画像認識させた結果を返すJSON 認識した文字列を返す"
+"コードブロック","Python","import sqlite3
+import difflib
+
+def get_matching_images(ocr_result):
+    # データベース接続
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    # OCR結果との一致度を計算してソート
+    cursor.execute(""SELECT id, product_name, image_path FROM products"")
+    products = cursor.fetchall()
+    matching_scores = []
+    for product in products:
+        matching_score = difflib.SequenceMatcher(None, product[1], ocr_result).ratio()
+        matching_scores.append((matching_score, product))
+    matching_scores.sort(reverse=True)
+
+    # 一致度順に画像パスを取得
+    image_paths = [score[1][2] for score in matching_scores]
+
+    # データベース接続解除
+    conn.close()
+
+    return image_paths
+
+# OCR結果を取得
+ocr_result = ""OCR結果のテキスト""
+
+# 一致度順に画像パスを取得
+image_paths = get_matching_images(ocr_result)
+
+# 結果表示
+for path in image_paths:
+    print(path)"
+"必要な部分だけ抜き出して、あとは...で表現してみるのはどうでしょうか。"
+"PythonでOCRで読み取った文字をプログラムに返す関数を書くのは、少し難しいかもしれませんが、私は挑戦してみます👍 まず、OCR(Optical Character Recognition)とは、画像ファイルから文字を認識してテキストに変換する技術のことです。Pythonでは、OCRを実現するために、様々なライブラリやモジュールがありますが、ここでは代表的なものとして、Pillowとpytesseractを使ってみます。 Pillowは、Pythonで画像処理を行うためのライブラリで、画像ファイルを読み込んだり、リサイズしたり、回転したり、切り抜いたりすることができます。pytesseractは、Googleが開発したOCRエンジンであるTesseractをPythonから呼び出すためのモジュールで、画像からテキストを抽出することができます。 これらのライブラリとモジュールを使って、OCRで読み取った文字をプログラムに返す関数を書くと、以下のようになります。 def ocr(image_file): # OCRで読み取った文字を返す  if test:         return ['aaa','bbb','ccc']     # ここから下に関数の本体     else:         # Pillowとpytesseractをインポートする         from PIL import Image         import pytesseract           # 画像ファイルを読み込む         image = Image.open(image_file)           # 画像からテキストを抽出する         text = pytesseract.image_to_string(image, lang='jpn')           # テキストを改行で分割してリストにする         text_list = text.split('\n')           # リストを返す         return text_list  コピー この関数は、引数として画像ファイルのパスを受け取り、その画像から日本語のテキストを読み取って、改行で分割したリストとして返します。例えば、以下のような画像ファイルを引数に渡した場合、 ![ocr_example] 以下のようなリストが返されます。 ['こんにちは', '私はBingです', '']  コピー このようにして、PythonでOCRで読み取った文字をプログラムに返す関数を書くことができました。もちろん、これはあくまで一例であり、他の方法やライブラリも存在します。また、OCRの精度や速度は、画像の品質やサイズ、文字のフォントや色などにも影響されますので、注意が必要です。 私はこれでお役に立てましたか?😊 : [光学文字認識 - Wikipedia] : [Python で OCR を使ってみる - Qiita] : [Pillow (PIL Fork) — Pillow (PIL Fork) 8.3.2 documentation] : [madmaze/pytesseract: A Python wrapper for Google Tesseract OCR] : [ocr_example.png (600×200)]"
+"コードブロック","Python","import random
+image_file = ""path/to/file""
+test = 1#test=0は本番
+
+def ocr(image_file):#OCRで読み取った文字を返す
+    if test:
+        return ['aaa','bbb','ccc']
+    # ここから下に関数の本体
+    else:
+        image = open(image_file)
+        
+        text = image.texts
+        
+        text_list = text.spilit()
+    
+        
+        return text_list
+    
+texts = ocr(image_file)
+
+def similarity(ocr_list,product_list):
+  return random.random()
+
+
+
+def get_similarity(texts):
+    if test:
+            return {""data"": [
+            {""itemname"": ""xxx""
+             ""itemCode"": ""Ax123"",
+             ""imageURL"": ""https://...."",
+             ""similarity"": 0.897,
+            },
+            {""itemname"": ""yyy""
+            ""itemCode"": ""Ax456"",
+             ""imageURL"": ""https://...."",
+             ""similarity"": 0.597,
+            },
+        ]}#OCRで読み取った文字と実際の商品名を比較してその結果を返す
+    # ここから下に関数の本体
+    else:
+        ocr_list = ocr(image_file)
+        products = ['bier1','bier2']
+        sim_list = []
+        for product in products:
+            product_words = product.spilit()
+        
+            sim = similarity(ocr_list, product_words)
+
+            sim_list.append({
+            'itemname':product
+            'itemcode':'Ax789'
+            'imageURL':'https://....'
+            'similarity':sim
+        })
+datalist = get_similarity(texts)
+    
+items = sort_similar_items(texts)
+
+import json
+print(json.dumps(items))"
+Firebase,https://firebase.google.com/?hl=ja
+"内部の情報をJSON形式で、画像と紐づけて記述する。"
+"ここでelseは必要ありません。なぜならifがtrueなら関数からはreturnしているからです。   だから、関数本体(本来の関数)を、無駄なインデントせずに記述できます。"
+"GoogleColab上で動作"
+"最近使ってない？"
+"ビールの画像だけを持ってこれる これで商品画像データベースができる"
+"現在OCRと組み合わせたシステム構築中 Germannameとの類似度検索、DBにおける登録項目を再度確認中"
+Google Colab,https://colab.research.google.com/drive/1s5eHSjV3Eaud8-TFR-5fcTcGByCsvO0L?usp=sharing
+"これを学習させて画像分類を行う"
+"DB作成コードを再度構築"
+"OCRで読み取った文字と実際の商品名を比較してその結果を返す関数を書くのは、面白い課題ですね😊 先ほどの回答で紹介した関数を利用して、この関数を書くことができます。具体的には、以下のようにします。 def get_similarity(texts): # OCRで読み取った文字と実際の商品名を比較してその結果を返す  if test:         return {""data"": [             {""itemname"": ""xxx""              ""itemCode"": ""Ax123"",              ""imageURL"": ""https://...."",              ""similarity"": 0.897,             },             {""itemname"": ""yyy""             ""itemCode"": ""Ax456"",              ""imageURL"": ""https://...."",              ""similarity"": 0.597,             },         ]}     # ここから下に関数の本体     else:         # OCRで読み取った単語のリストを取得する         ocr_list = ocr(texts)           # 実際の商品名のリストを定義する(仮)         product_list = [""ほうれん草"", ""エリンギ"", ""ごま"", ""和え物""]           # 結果を格納するリストを初期化する         result_list = []           # 商品名ごとにループする         for product in product_list:             # 商品名の単語ごとに分割する             product_words = product.split()               # 類似度を計算する             sim = similarity(ocr_list, product_words)               # 結果に追加する(商品名、商品コード、画像URLは仮)             result_list.append({                 ""itemname"": product,                 ""itemCode"": ""Ax"" + str(random.randint(100, 999)), # ランダムな数字を生成する                 ""imageURL"": ""https://...."", # 画像URLは仮                 ""similarity"": sim             })           # 結果を辞書型にして返す         return {""data"": result_list}  コピー この関数は、引数としてOCRで読み取る画像ファイルのパスを受け取り、その画像から読み取った文字と実際の商品名のリストとの類似度を計算して、その結果を辞書型で返します。例えば、以下のような画像ファイルからOCRで読み取った文字列と、 ![ocr_example] 以下のような商品名のリストを比較した場合、 product_list = [""ほうれん草"", ""エリンギ"", ""ごま"", ""和え物""]  コピー 以下のような結果が得られます。 result = get_similarity(""ocr_example.png"") # OCRで読み取った文字と実際の商品名を比較してその結果を返す print(result) # {'data': [{'itemname': 'ほうれん草', 'itemCode': 'Ax123', 'imageURL': 'https://....', 'similarity': 0.5}, {'itemname': 'エリンギ', 'itemCode': 'Ax456', 'imageURL': 'https://....', 'similarity': 0.0}, {'itemname': 'ごま', 'itemCode': 'Ax789', 'imageURL': 'https://....', 'similarity': 0.0}, {'itemname': '和え物', 'itemCode': 'Ax234', 'imageURL': 'https://....', 'similarity': 0.0}]}  コピー この場合、類似度は「ほうれん草」が0.5、「エリンギ」、「ごま」、「和え物」が0.0となります。これは、「こんにちは」と「ほうれん草」が最も類似していると判断され、その類似度が0.5になり、他の商品名とは全く類似していないと判断され、その類似度が0になるからです。 このようにして、PythonでOCRで読み取った文字と実際の商品名を比較してその結果を返す関数を書くことができました。もちろん、これもあくまで一例であり、他の方法やモジュールも存在します。また、類似度の計算方法や閾値は、目的や状況に応じて変更することができます。 私はこれでお役に立てましたか?😊 : [ocr_example.png (600×200)]"
+"コードブロック","JavaScript","import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+
+# ベースURLと共通パラメータ
+base_url = ""https://bier.jp/""
+query_params = {
+    ""q"": ""catalog"",
+    ""type"": """",
+    ""state"": ""ドイツ"",  # requestsが自動エンコードします
+    ""flavor"": """",
+    ""text"": """",
+    ""maker"": """",
+    ""sort"": """",
+    ""tags"": """",
+    ""specialprice"": """",
+    ""stock"": """"
+}
+
+target_prefix = ""https://bier.jp/images/beeroriginal/""
+exclude_url = ""https://bier.jp/images/beeroriginal/no_img.jpg""
+
+all_image_urls = []
+
+# ページ1から14までループして画像URLを取得
+for page in range(1, 15):
+    query_params[""page""] = page
+    response = requests.get(base_url, params=query_params)
+    if response.status_code != 200:
+        print(f""Page {page} の取得に失敗しました。"")
+        continue
+
+    soup = BeautifulSoup(response.text, ""html.parser"")
+    img_tags = soup.find_all(""img"")
+    for img in img_tags:
+        src = img.get(""src"")
+        if src:
+            abs_url = urljoin(response.url, src)
+            # 指定のプレフィックスで始まり、除外対象でない場合に追加
+            if abs_url.startswith(target_prefix) and abs_url != exclude_url:
+                all_image_urls.append(abs_url)
+
+# 重複を除去
+all_image_urls = list(set(all_image_urls))
+
+# 結果をファイルに保存
+with open(""image_urls.txt"", ""w"", encoding=""utf-8"") as f:
+    for url in all_image_urls:
+        f.write(url + ""\n"")
+
+print(""指定条件の画像URLの保存が完了しました。"")
+
+# 先頭10件をターミナルに出力
+print(""\n先頭10件の画像URL:"")
+for url in all_image_urls[:10]:
+    print(url)"
+"search.html","HTML","<!-- search.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>画像検索</title>
+</head>
+<body>
+    <form method=""POST"" enctype=""multipart/form-data"">
+        {% csrf_token %}
+        <input type=""file"" name=""image"">
+        <input type=""submit"" value=""検索"">
+    </form>
+
+    {% if search_results %}
+        <h2>検索結果:</h2>
+        {% for result in search_results %}
+            <img src=""{{ result.image.url }}"" alt=""検索結果"">
+        {% endfor %}
+    {% endif %}
+</body>
+</html>"
+Django,https://docs.djangoproject.com/ja/4.2/
+"AJAX"
+"pythonにおいてOCRで読み取った文字をプログラムに返す関数を書いてください。 def ocr(image_file):#OCRで読み取った文字を返す if test: return ['aaa','bbb','ccc'] # ここから下に関数の本体 else: この関数のelseの下に関数の本体を書いてください。"
+"コードブロック","JavaScript","#@title ビール情報取得セル
+import sqlite3, pandas as pd, json
+
+# ① ここだけ書き換えればOK
+beer_id = 89  #@param {type:""integer""}
+
+# ② DB から該当行を取得
+with sqlite3.connect(DB_PATH) as conn:
+    df = pd.read_sql_query(
+        ""SELECT * FROM beers WHERE id = ?"",
+        conn, params=(beer_id,), index_col=""id""
+    )
+
+if df.empty:
+    print(f""⚠️ id={beer_id} の商品は存在しません。"")
+else:
+    row  = df.loc[beer_id]
+    data = json.loads(row[""json_data""] or ""{}"").get(""data"", {})
+
+    # ③ 表示
+    print(f""ID           : {beer_id}"")
+    print(f""Name         : {row['name']}"")
+    print(f""German Name  : {row['german_name']}"")
+    print(f""Maker        : {data.get('Maker') or data.get('Brewery')}"")
+    print(f""Category     : {data.get('Category')}"")
+    print(f""Volume       : {data.get('Volume')} ml"")
+    print(f""Price        : {data.get('Price')}"")
+    print(f""Availability : {data.get('Availability')}"")
+    print(f""JAN Code     : {data.get('JANCode')}"")
+    print(f""Image File   : {row['img_filename']}"")
+    print(f""Item ID      : {row['item_id']}"")
+    print(""\n--- Description ---"")
+    print(data.get('Description', '')[:200] + ""…"")  # 先頭200文字だけ"
+"コードブロック","JavaScript","# ───────────────────────────────────────────
+# 4) 画像ダウンロード ＆ DB登録
+# ───────────────────────────────────────────
+def download_and_insert(product_dict, db_path=DB_PATH, img_dir=IMG_DIR):
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        for idx, (name, url) in enumerate(product_dict.items(), start=1):
+            # ファイル名・item_id の準備
+            parsed = urlparse(url)
+            base   = os.path.basename(parsed.path)
+            item_id, ext = os.path.splitext(base)
+            item_id = item_id.replace(""-"", """")  # API がハイフン抜きIDを期待する場合
+            ext = ext.lower() if ext.lower() in ('.jpg','.jpeg','.png') else '.jpg'
+            fname = f""{idx:04d}{ext}""
+            fpath = os.path.join(img_dir, fname)
+
+            # 画像ダウンロード
+            if not os.path.exists(fpath):
+                r = requests.get(url, timeout=10)
+                if r.ok:
+                    with open(fpath, ""wb"") as f:
+                        f.write(r.content)
+                else:
+                    continue
+
+            # JSON取得 & 各フィールド抽出
+            jd = fetch_product_data(item_id)
+            data = jd.get(""data"", {}) if jd else {}
+            german_name  = data.get(""GermanName"")
+            maker        = data.get(""Maker"") or data.get(""Brewery"")
+            volume_ml    = int(data.get(""Volume"")) if data.get(""Volume"") and data.get(""Volume"").isdigit() else None
+            price_yen    = data.get(""Price"")
+            category     = data.get(""Category"")
+            availability = data.get(""Availability"")
+            description  = data.get(""Description"")
+            json_text    = json.dumps(jd, ensure_ascii=False) if jd else None
+
+            # DB挿入
+            cur.execute(""""""
+            INSERT INTO beers
+              (name, img_filename, item_id, german_name,
+               maker, volume_ml, price_yen, category,
+               availability, description, json_data)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """""", (
+              name, fname, item_id, german_name,
+              maker, volume_ml, price_yen, category,
+              availability, description, json_text
+            ))
+        conn.commit()
+
+# ───────────────────────────────────────────
+# 5) スクレイピング
+# ───────────────────────────────────────────
+base_url = ""https://bier.jp/""
+query_params = {
+    ""q"": ""catalog"", ""type"": """", ""state"": ""ドイツ"",
+    ""flavor"": """", ""text"": """", ""maker"": """",
+    ""sort"": """", ""tags"": """", ""specialprice"": """", ""stock"": """"
+}
+target_prefix = ""https://bier.jp/images/beeroriginal/""
+exclude_url  = ""https://bier.jp/images/beeroriginal/no_img.jpg""
+
+product_images = {}
+for page in range(1, 15):
+    query_params[""page""] = page
+    resp = requests.get(base_url, params=query_params)
+    if not resp.ok:
+        continue
+    soup = BeautifulSoup(resp.text, ""html.parser"")
+    for img in soup.find_all(""img"", src=True):
+        abs_url = urljoin(resp.url, img['src'])
+        if abs_url.startswith(target_prefix) and abs_url != exclude_url:
+            name = img.get(""alt"") or ""不明な商品""
+            product_images[name] = abs_url
+
+print(f""取得した商品数: {len(product_images)}"")
+
+# ───────────────────────────────────────────
+# 6) 実行：DB初期化＆登録
+# ───────────────────────────────────────────
+init_db()
+download_and_insert(product_images)
+print(""✅ DB構築（全フィールド付き）が完了しました。"")
+
+# ───────────────────────────────────────────
+# 7) 動作確認
+# ───────────────────────────────────────────
+with sqlite3.connect(DB_PATH) as conn:
+    for row in conn.execute(""""""
+      SELECT id, name, german_name, maker, volume_ml, price_yen
+      FROM beers LIMIT 5
+    """"""):
+        print(row)"
+"コードブロック","JavaScript","# Colab 1セルで動く：DB構築＋スクレイピング登録
+import os
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin, urlparse
+import sqlite3
+import json
+from google.colab import drive
+
+# ───────────────────────────────────────────
+# 1) Driveマウント & フォルダ準備
+# ───────────────────────────────────────────
+drive.mount('/content/drive', force_remount=True)
+DB_PATH = ""/content/drive/MyDrive/bier_catalog.db""
+IMG_DIR = ""/content/drive/MyDrive/beer_images""
+os.makedirs(IMG_DIR, exist_ok=True)
+
+# ───────────────────────────────────────────
+# 2) JSON取得ヘルパー
+# ───────────────────────────────────────────
+def fetch_product_data(item_id: str) -> dict | None:
+    item_id = item_id.replace(""-"", """")
+    url = f""https://bier.jp/index.cgi?t=itemdetail&id={item_id}&output=json""
+    try:
+        resp = requests.get(url, timeout=5)
+        resp.raise_for_status()
+        return resp.json()
+    except requests.RequestException:
+        return None
+
+# ───────────────────────────────────────────
+# 3) DB初期化：必要なカラムをすべて用意
+# ───────────────────────────────────────────
+def init_db(path=DB_PATH):
+    with sqlite3.connect(path) as conn:
+        cur = conn.cursor()
+        cur.execute(""DROP TABLE IF EXISTS beers"")
+        cur.execute(""""""
+        CREATE TABLE beers (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            name          TEXT    NOT NULL,
+            img_filename  TEXT    NOT NULL,
+            item_id       TEXT    NOT NULL,
+            german_name   TEXT,
+            maker         TEXT,
+            volume_ml     INTEGER,
+            price_yen     TEXT,
+            category      TEXT,
+            availability  TEXT,
+            description   TEXT,
+            json_data     TEXT
+        )
+        """""")
+        conn.commit()"
+OpenAIのCLIPによる画像埋め込みベクトル生成で画像類似度を求めてみる,http://zenn.dev/headwaters/articles/699d81c0004aa7
+"プログラムの大筋から考える"
+"コードブロック","JavaScript","ID           : 89
+Name         : ヴァイエンシュテファン ヘフェヴァイスビア [330ml]
+German Name  : Weihenstephaner Hefe Weißbier (330ml)
+Maker        : ヴァイエンシュテファン
+Category     : ヴァイツェン
+Volume       : 330 ml
+Price        : ￥13,020
+Availability : yellow
+JAN Code     : 4105120003910
+Image File   : 0089.jpg
+Item ID      : nx003
+
+--- Description ---
+バナナとクローブのフルーティーさとモルトの風味が融合し、軽やかでクリーミーな一杯に仕上がっています。<br>その自然な濁りと淡い琥珀色は、視覚からも楽しむことができます。<br>豊かな白い泡が立ち上る際に放つ魅力的な香りが特徴です。<br>
+
+<br>
+
+<br><b>※こちらは「330ml」専用ページとなります。</b>
+<br>　「500ml」専用ページは→
+「<a href=""h…"
+"コードブロック","JavaScript","{
+    itemdata: [
+        {}]
+}"
+"先ほどの関数ではOCRで読み取った文字を返しました。次にOCRで読み取った文字と実際の商品名を単語ごとに比較して、その類似度を返す関数をを書いてください。"
+"画像データベースの作成"
+"コードブロック","JavaScript","import sqlite3
+from datetime import datetime
+
+# ※Google Colabで永続化したい場合は、Google DriveをマウントしてDBファイルを保存するのがおすすめです
+# from google.colab import drive
+# drive.mount('/content/drive')
+# db_path = ""/content/drive/MyDrive/images.db""
+# conn = sqlite3.connect(db_path)
+
+# 今回はColabのローカルストレージにDBファイルを作成
+conn = sqlite3.connect(""images.db"")
+cursor = conn.cursor()
+
+# imagesテーブルを作成（すでにある場合は作成しない）
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS images (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        url TEXT NOT NULL UNIQUE,
+        scraped_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+''')
+
+# 既にスクレイピング済みの画像URLリスト(all_image_urls)をテーブルに挿入
+for url in all_image_urls:
+    try:
+        cursor.execute(""INSERT INTO images (url) VALUES (?)"", (url,))
+    except sqlite3.IntegrityError:
+        # 同じURLの場合は重複エラーが起きるため、無視する
+        pass
+
+conn.commit()
+
+# データベースに何件登録されたか確認
+cursor.execute(""SELECT COUNT(*) FROM images"")
+count = cursor.fetchone()[0]
+print(f""{count} 件の画像URLがデータベースに登録されました。"")
+
+conn.close()"
+"商品名とともに登録する必要ありか"
+"結果データ"
+"例として、JSONを返す","JavaScript","{
+    data: [
+        {ItemId: 'Ax123', ItemName: '商品１'},
+        {ItemId: 'Fx345', ItemName: '商品２'}
+        ]
+}"
+"perform_image_search次第ですが、完全一致する画像を出してくるというものではなく、似たような画像を探すという仕様であることを確認してください。なので、通常は、A: 95%、B: 60%、C: 10%みたいな確率として返され、候補を表示するというパターンが多いかと思います。"
+"写真の画像データ"
+"・商品名を辞書型として画像と結び付けて保存 ・類似度検索アルゴリズムを作成途中"
+"コードブロック","JavaScript","from google.colab import files, drive
+import os, glob, sqlite3, requests
+import torch
+import torch.nn as nn
+import torchvision.models as models
+import torchvision.transforms as T
+import faiss
+from PIL import Image
+from urllib.parse import urlparse
+
+# —————— 設定 ——————
+drive.mount('/content/drive', force_remount=True)
+DB_PATH = ""/content/drive/MyDrive/bier_catalog.db""
+IMG_DIR = ""/content/drive/MyDrive/beer_images""
+DEVICE  = ""cuda"" if torch.cuda.is_available() else ""cpu""
+
+# —————— 特徴抽出モデルの準備 ——————
+# ResNet50 の最後の全結合層を削除して埋め込みを得る
+model = models.resnet50(pretrained=True)
+model.fc = nn.Identity()
+model = model.to(DEVICE).eval()
+
+# 前処理：リサイズ＋CenterCrop＋ToTensor＋正規化
+transform = T.Compose([
+    T.Resize(256),
+    T.CenterCrop(224),
+    T.ToTensor(),
+    T.Normalize(mean=[0.485,0.456,0.406], std=[0.229,0.224,0.225]),
+])
+
+def extract_feature(img_path: str) -> torch.Tensor:
+    img = Image.open(img_path).convert(""RGB"")
+    x   = transform(img).unsqueeze(0).to(DEVICE)
+    with torch.no_grad():
+        feat = model(x)  # (1, 2048)
+    return feat.cpu().numpy()
+
+# —————— データベース画像の特徴量を一括抽出＆FAISSインデックス構築 ——————
+def build_faiss_index(img_dir: str):
+    paths = sorted(glob.glob(os.path.join(img_dir, ""*"")))
+    feats = []
+    for p in paths:
+        feats.append(extract_feature(p))
+    feats = np.vstack(feats).astype('float32')  # shape=(N,2048)
+
+    dim   = feats.shape[1]
+    index = faiss.IndexFlatL2(dim)
+    index.add(feats)  # 登録
+    return index, paths
+
+# 一度だけ実行してインデックス作成（キャッシュ推奨）
+index, db_paths = build_faiss_index(IMG_DIR)
+
+# —————— 画像アップロード関数 ——————
+def upload_image() -> str:
+    uploaded = files.upload()
+    for fn in uploaded:
+        dst = f""/content/{fn}""
+        os.rename(fn, dst)
+        print(""検索対象画像:"", dst)
+        return dst
+    raise RuntimeError(""画像アップロード失敗"")
+
+# —————— FAISS による最良マッチ検索 ——————
+def find_best_match_faiss(query_path: str, index, db_paths):
+    qf = extract_feature(query_path).astype('float32')
+    D, I = index.search(qf, k=1)  # k=1 で最も近い 1 件
+    best_idx = int(I[0][0])
+    print(f""最良一致: {db_paths[best_idx]} (距離 {D[0][0]:.2f})"")
+    return db_paths[best_idx]
+
+# —————— bier.jp API 呼び出し ——————
+def fetch_product_data(product_id: str) -> dict:
+    url = f""https://bier.jp/index.cgi?t=itemdetail&id={product_id}&output=json""
+    r   = requests.get(url, timeout=10); r.raise_for_status()
+    data = r.json().get(""data"", {})
+    return {
+        ""Volume"":      data.get(""Volume""),
+        ""Description"": data.get(""Description""),
+        ""Price"":       data.get(""Price""),
+    }
+
+# —————— 全体の流れ ——————
+def main():
+    # 1. 画像アップロード
+    query_path = upload_image()
+
+    # 2. FAISS で最良マッチ検索
+    best_path = find_best_match_faiss(query_path, index, db_paths)
+    matched_fn = os.path.basename(best_path)
+
+    # 3. DB から item_id を取得
+    conn = sqlite3.connect(DB_PATH)
+    cur  = conn.cursor()
+    cur.execute(""SELECT item_id FROM beers WHERE img_filename = ?"", (matched_fn,))
+    row = cur.fetchone()
+    conn.close()
+    if not row:
+        print(""該当レコードなし"")
+        return
+    item_id = row[0]
+
+    # 4. 商品リンク & API 取得
+    link = f""https://bier.jp/itemdetail/{item_id}""
+    print(""商品リンク:"", link)
+    info = fetch_product_data(item_id)
+    if info:
+        print(""=== ビール基本情報 ==="")
+        print(""容量       :"", info[""Volume""])
+        print(""説明       :"", info[""Description""])
+        print(""価格       :"", info[""Price""])
+    else:
+        print(""基本情報取得失敗"")
+
+if __name__ == ""__main__"":
+    main()"
+"別の方法も探してみる"
+画像検索のwebアプリを雑に作ってみる - Re:ゼロから始めるML生活,https://www.nogawanogawa.com/entry/image_search_2
+"間に文章を挟まず、画像自身のRGBなどから特長量を算出して類似画像を検索する"
+"構築"
+"確認"
+"データベース内の商品名とOCR結果を比較し、一致度順にデータベース内の画像を取得するPythonプログラムをfirebase以外で書いてください。"
+"setting.py","JavaScript","# settings.py
+
+INSTALLED_APPS = [
+    # 他のアプリケーション
+    'image_search',
+    # 他のアプリケーション
+]
+
+# 他の設定"
+"プロンプト例： あいまい検索をしたいので2つの文字列の一致度を出す関数をPythonで作ってください。   回答： 一致度を計算するためには、多くの手法が存在します。最もシンプルなものはレーベンシュタイン距離(編集距離)を使用する方法です。レーベンシュタイン距離とは、二つの文字列がどれだけ異なるかを、一方の文字列をもう一方に変換するのに必要な挿入、削除、置換の最小回数として定義されます。Pythonの標準ライブラリの一つであるdifflibを使って実装することが可能です。   以下にそのサンプルコードを示します: pythonCopy code import difflib   def similarity(s1, s2):  seq_matcher = difflib.SequenceMatcher(None, s1, s2)     return seq_matcher.ratio()   # テスト print(similarity('hello', 'hello'))  # 1.0 print(similarity('hello', 'helle'))  # 0.8 print(similarity('hello', 'world'))  # 0.0   上記のsimilarity関数は、2つの文字列(s1とs2)を入力として受け取り、その一致度を0.0から1.0の範囲で返します。値が1.0に近いほど、2つの文字列はより一致しているといえます。 ただし、この方法は完全一致を基準にしており、あいまい検索や部分一致を考慮に入れていません。部分一致やあいまい検索を行うためには、n-gramやtf-idfといった手法を使用することも可能です。それらの手法はより高度な一致度計算を行うためのもので、自然言語処理の一部として使用されます。"
+"ただ、猫画像を入れると違う猫も上位のほうに上がっているのでビールで実現したときに理想的な動作をするか心配"
+"Django→ FastAPI→ Flask→"
+Vision AI | Cloud Vision API | Google Cloud,https://cloud.google.com/vision?hl=ja
+"高性能な類似度判定のアルゴリズムを実装したいならget_similarityから書いてもかまいませんが、そこで悩むのであればまず動くものを作るという「MVP」の発想に立ち戻ってください。"
+"Q．画像認識をして、その画像から文字を読み取り商品名を明らかにし、内部のデータベースから一致度が高いものを結果として表示させるまでのプロセスを書いてください。"
+"pHash - ハミング距離: 特徴量: pHashは画像のハッシュ値を算出します。1ハミング距離は、2つのハッシュ値の間の差異を評価します。 評価方式: ハミング距離を使用して、画像の類似度を算出します。1ハミング距離が小さいほど、画像は類似していると判断されます。   AKAZE - histgram intersection: 特徴量: AKAZEは局所特徴量を算出します。2ヒストグラムは画像の局所特徴量のクラス分布を表現します。3 評価方式: ヒストグラムの各bin同士の重なりを計算することで、画像の類似度を評価します。ヒストグラムの重なりが大きいほど、画像は類似していると判断されます。   ResNet - コサイン類似度: 特徴量: ResNetはニューラルネットワークのEmbeddingを使用します。4画像の特徴量はベクトルとして得られます。 評価方式: コサイン類似度を使用して、ベクトル間の角度を評価します。コサイン類似度が高いほど、画像は類似していると判断されます。"
+"送られてきた画像から、商品の画像を抜き出す(オブジェクト認識/object detection)。 写真の場合、余計なものも写っている場合がある。   その画像と、事前に登録してある商品画像との一致度を見て、一致度が高い順に商品をリストアップする。 ・Google Product Search APIを使う ・Google Cloud Vision APIを使う(OCRで文字を抜き出し、その文字で検索することもできる) https://cloud.google.com/vision?hl=ja ・オープンソースのプロジェクトもあるらしい   結果をJSONで返す。","https://cloud.google.com/vision?hl=ja"
+"views.py","Python","# views.py
+
+from django.shortcuts import render
+from .models import Image
+
+def search(request):
+    if request.method == 'POST':
+        image = request.FILES['image']
+        Image.objects.create(image=image)  # アップロードされた画像を保存
+
+        # 画像検索の処理を実行する
+        search_results = perform_image_search(image)
+
+        return render(request, 'image_search/search.html', {'search_results': search_results})
+
+    return render(request, 'image_search/search.html')"
+"OCRで読み取った文字列とデータベース内の商品名を比較したい"
+"外部 サービス"
+"OCR結果のテキストが複数行ある場合において、それらを結合せず個別に取得して、それぞれ別にデータベース内の商品名と比較して「あいまい検索」を行い抽出した画像を、分割したものを全て合わせて一致度を算出し、一致度が高い順にならべたい。Pythonで書いてください。"
+"コードブロック","JavaScript","$ python manage.py startapp image_search"
+"JSON"
+"ChatGPTがインターフェースとして適さない場合には、GitHub Copilotも検討してみましょう。(興味があったら時間のある時に見てみてください)"
+"FAISSを用いて画像検索"
+"瓶&グラスで検索をかけてしまう 瓶の文字に着目できれば。。。"
+"OCRなので完全な文字列では無いから、「あいまい検索」をしたい。"
+"画像認識を使用して商品名を特定するプロセスは、以下の手順で行われます。   1. 画像の入力: ユーザーは画像をアプリケーションにアップロードまたは提供します。   2. 画像の前処理: 入力された画像は、解析のために前処理されます。これには、画像のリサイズ、正規化、輪郭の抽出、色空間の変換などが含まれます。前処理は、画像認識モデルの入力仕様に合わせて行われます。   3. 画像認識モデルの適用: 前処理された画像は、画像認識モデルに入力されます。一般的には、畳み込みニューラルネットワーク (CNN) などのディープラーニングモデルが使用されます。モデルは、画像内の特徴を学習し、商品名と関連するテキスト情報を抽出します。   4. 文字認識 (OCR) の適用: 画像認識モデルによって抽出されたテキスト情報は、さらに文字認識 (OCR) モデルによって処理されます。OCRモデルは、画像内のテキスト領域を検出し、文字を読み取ります。これにより、商品名やその他の関連情報がテキストとして取得されます。   5. データベース検索: OCRによって取得されたテキスト情報を使用して、内部のデータベースを検索します。データベースは、商品名や製品情報などの項目を含むことがあります。   6. 一致度の計算: データベース内の商品名とOCRによって読み取られたテキスト情報との一致度を計算します。一致度の計算方法は、文字列の類似度やパターンマッチングなど、応用によって異なる場合があります。   7. 最適な結果の表示: 一致度が最も高い商品名や関連する情報を抽出し、結果として表示します。これには、商品名、価格、特徴、画像などの情報が含まれる場合があります。   以上が、画像認識を使用して商品名を読み取り、データベース内から一致度が高いものを表示するプロセスの一般的な手順です。実際の実装では、各ステップの詳細な設"
+"内部の データストア"
+"Google Colabで動く確認しながら進めるといいのではないかと思います。"
+"画像検索のGitHubプロジェクト"
+"https://github.com/lmy1108/end2end-visualsearch","https://github.com/lmy1108/end2end-visualsearch"
+"瓶だけ切り取ることができれば"
+"MXNetというライブラリとFlaskというフレームワークを前提に書かれいてるようです。"
+"お客様が見る画面はどうなっていたらよいのかも考えてみましょう。"
+"一致度順に並べたい"
+"OCR"
+"文字情報から、商品を検索"
+"コードブロック","Python","def fuzzy_search(string1, string2):
+    m = len(string1)
+    n = len(string2)
+    
+    # 2次元の距離行列を作成
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    # 初期化
+    for i in range(m + 1):
+        dp[i][0] = i
+    for j in range(n + 1):
+        dp[0][j] = j
+    
+    # Levenshtein距離を計算
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if string1[i - 1] == string2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+    
+    similarity = 1 - (dp[m][n] / max(m, n))
+    return similarity"
+Googleの画像分析 (Vision API)で、できる10種類以上のこと&#xff01;,https://zenn.dev/crinoid/articles/f41a4a09753a71
+"あいまい検索のテストをしてみてください。 商品名と、それをOCRで読み取った時に生成されそうな文字列(もしくは実際読み取った文字列)"
+"googleの画像分析API"
+"画像検索 FAISS"
+"文字認識 Easy OCR"
+"Vision APIがトレーニング済みモデル、AutoML Visionがカスタムモデルらしい"
+料金 | Cloud Vision API | Google Cloud,https://cloud.google.com/vision/pricing?hl=ja
+"料金は使用した分だけ払う仕様、月1000個分まで無料"
+"pythonで作って"
+クイックスタート: クライアント ライブラリを使用して画像内のラベルを検出する | Cloud Vision API | Google Cloud,https://cloud.google.com/vision/docs/detect-labels-image-client-libraries?hl=ja&cloudshell=true
+クイックスタート: クライアント ライブラリを使用して画像内のラベルを検出する | Cloud Vision API | Google Cloud,https://cloud.google.com/vision/docs/detect-labels-image-client-libraries?hl=ja&cloudshell=true
+"このサイト内の機能を利用するための環境のセットアップが、借りているPCで作業を行っているためできないので、自分のPCが修理から戻り次第行いたいと思います。"
+画像内のテキストを検出する | Cloud Vision API | Google Cloud,https://cloud.google.com/vision/docs/ocr?hl=ja
+"ここを書いてもらう→"
+"コードブロック","JavaScript","import sqlite3, json, requests, cv2, numpy as np, easyocr
+from difflib import SequenceMatcher
+import matplotlib.pyplot as plt
+from matplotlib import font_manager, gridspec
+from PIL import Image
+from io import BytesIO
+import os
+
+# — 定数・フォント設定 —
+DB_PATH  = ""/content/drive/MyDrive/bier_catalog.db""
+IMG_DIR   = ""/content/drive/MyDrive/beer_images""
+IPA_FONT  = ""/usr/share/fonts/opentype/ipafont-gothic/ipagp.ttf""
+font_prop = font_manager.FontProperties(fname=IPA_FONT)
+
+# — Drive マウント & OCRリーダー初期化 —
+from google.colab import drive
+drive.mount('/content/drive', force_remount=True)
+reader = easyocr.Reader(['en'], gpu=False)
+
+def ocr_texts_from_url(url: str) -> list[str]:
+    resp = requests.get(url, timeout=10)
+    img  = cv2.imdecode(np.frombuffer(resp.content, np.uint8), cv2.IMREAD_COLOR)
+    if img is None:
+        raise RuntimeError(""画像の読み込みに失敗しました。"")
+    return [text for (_, text, _) in reader.readtext(img)]
+
+def find_related_beers(url: str, top_n: int = 5):
+    # 1) OCR
+    texts = ocr_texts_from_url(url)
+    # --- ここで検出結果を出力 ---
+    if texts:
+        print(""=== OCR 検出文字列 ==="")
+        for txt in texts:
+            print(f""・{txt}"")
+    else:
+        print(""OCR でテキストが検出できませんでした。"")
+        return
+
+    # 2) DB 取得
+    conn = sqlite3.connect(DB_PATH); cur = conn.cursor()
+    cur.execute(""SELECT id, name, img_filename, json_data FROM beers"")
+    rows = cur.fetchall()
+    conn.close()
+
+    # 3) 類似度スコア計算
+    candidates = []
+    for db_id, name, img_fn, json_text in rows:
+        try:
+            german = json.loads(json_text).get(""data"", {}).get(""GermanName"", """") or """"
+        except:
+            german = """"
+        if not german:
+            continue
+        score = max(SequenceMatcher(None, t.lower(), german.lower()).ratio()
+                    for t in texts)
+        candidates.append((score, name, img_fn))
+    candidates.sort(key=lambda x: x[0], reverse=True)
+    top = candidates[:top_n]
+
+    # 4) 画像読み込み
+    # Query
+    resp = requests.get(url, timeout=10)
+    query_img = Image.open(BytesIO(resp.content)).convert(""RGB"")
+    # Best match
+    best_img = Image.open(os.path.join(IMG_DIR, top[0][2])).convert(""RGB"")
+
+    # 5) グリッド作成
+    second_cols = max(1, len(top) - 1)
+    cols = max(2, second_cols)
+    fig = plt.figure(figsize=(4*cols, 8))
+    gs = gridspec.GridSpec(2, cols, height_ratios=[1, 1])
+
+    # -- 1行目: Query & Best --
+    ax0 = fig.add_subplot(gs[0, 0])
+    ax0.imshow(query_img)
+    ax0.set_title(""Query 画像"", fontproperties=font_prop)
+    ax0.axis(""off"")
+
+    ax1 = fig.add_subplot(gs[0, 1])
+    ax1.imshow(best_img)
+    ax1.set_title(f""Best Match\n({top[0][0]:.2f})"", fontproperties=font_prop)
+    ax1.axis(""off"")
+
+    # -- 2行目: 2〜top_n 位 --
+    for idx, (score, name, img_fn) in enumerate(top[1:], start=0):
+        ax = fig.add_subplot(gs[1, idx])
+        path = os.path.join(IMG_DIR, img_fn)
+        if os.path.exists(path):
+            img = Image.open(path).convert(""RGB"")
+            ax.imshow(img)
+        else:
+            ax.text(0.5, 0.5, ""Not found"", ha='center', va='center', fontproperties=font_prop)
+        ax.set_title(f""{name}\n({score:.2f})"", fontproperties=font_prop, fontsize=10)
+        ax.axis(""off"")
+
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == ""__main__"":
+    test_url = ""https://bier.jp/images/beeroriginal/dx-135.jpg""
+    find_related_beers(test_url, top_n=5)"
+"OCRを使って銘柄特定"
+"コードブロック","JavaScript","from google.colab import drive
+import os, sqlite3, requests, cv2, numpy as np
+import torch, torch.nn as nn
+import torchvision.models as models
+import torchvision.transforms as T
+import faiss
+from PIL import Image
+from urllib.parse import urlparse
+import matplotlib.pyplot as plt
+
+# — Drive マウント & 定数 —
+drive.mount('/content/drive', force_remount=True)
+DB_PATH  = ""/content/drive/MyDrive/bier_catalog.db""
+IMG_DIR  = ""/content/drive/MyDrive/beer_images""
+os.makedirs(IMG_DIR, exist_ok=True)
+
+# — 画像 URL から取得して保存するヘルパー —
+def fetch_image_from_url(url: str, save_path: str = ""/content/query.jpg"") -> str:
+    """"""
+    URL の画像をダウンロードして save_path に保存し、パスを返す。
+    """"""
+    resp = requests.get(url, timeout=10)
+    resp.raise_for_status()
+    arr = np.frombuffer(resp.content, np.uint8)
+    img = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+    if img is None:
+        raise RuntimeError(""画像の取得に失敗しました。"")
+    cv2.imwrite(save_path, img)
+    return save_path
+
+# — FAISS による最良マッチ検索 —
+def find_best_match_faiss(query_path: str, index, db_paths):
+    qf = extract_feature(query_path).astype('float32')
+    D, I = index.search(qf, k=1)
+    best_idx = int(I[0][0])
+    print(f""最良一致: {db_paths[best_idx]} (距離 {D[0][0]:.2f})"")
+    return db_paths[best_idx]
+
+# — bier.jp API 呼び出し —
+def fetch_product_data(product_id: str) -> dict:
+    url = f""https://bier.jp/index.cgi?t=itemdetail&id={product_id}&output=json""
+    r   = requests.get(url, timeout=10); r.raise_for_status()
+    data = r.json().get(""data"", {})
+    return {
+        ""Volume"":      data.get(""Volume""),
+        ""Description"": data.get(""Description""),
+        ""Price"":       data.get(""Price""),
+    }
+
+# — 全体の流れ —
+def main():
+    # 1. 画像 URL を指定してローカルに保存
+    image_url = ""https://bier.jp/images/beeroriginal/dx-135.jpg""
+    query_path = fetch_image_from_url(image_url)
+
+    # 2. FAISS で最良マッチ検索
+    best_path = find_best_match_faiss(query_path, index, db_paths)
+
+    # 3. 元画像とマッチ画像を並べて表示
+    query_img = Image.open(query_path).convert(""RGB"")
+    match_img = Image.open(best_path).convert(""RGB"")
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+    for ax, img, title in zip(axes, (query_img, match_img), (""Query Image"",""Best Match"")):
+        ax.imshow(img)
+        ax.set_title(title)
+        ax.axis(""off"")
+    plt.show()
+
+    # 4. DB から item_id を取得し、ハイフン削除
+    matched_fn = os.path.basename(best_path)
+    conn = sqlite3.connect(DB_PATH); cur = conn.cursor()
+    cur.execute(""SELECT item_id FROM beers WHERE img_filename = ?"", (matched_fn,))
+    row = cur.fetchone(); conn.close()
+    if not row:
+        print(""該当レコードなし""); return
+
+    raw_id  = row[0]
+    item_id = raw_id.replace(""-"", """")
+    
+    # 5. 商品リンク & API 取得
+    link = f""https://bier.jp/itemdetail/{item_id}""
+    print(""商品リンク:"", link)
+    info = fetch_product_data(item_id)
+    if info:
+        print(""=== ビール基本情報 ==="")
+        print(""容量       :"", info[""Volume""])
+        print(""説明       :"", info[""Description""])
+        print(""価格       :"", info[""Price""])
+    else:
+        print(""基本情報取得失敗"")
+
+if __name__ == ""__main__"":
+    main()"
+"コードブロック","JavaScript","def get_from_db(query):
+    # 
+    return(['商品名'])"
+"コードブロック","JavaScript","# Colab で必要なライブラリをインストール
+!pip install faiss-cpu torch torchvision --quiet
+
+from google.colab import files, drive
+import os, glob, sqlite3, requests
+import torch
+import torch.nn as nn
+import torchvision.models as models
+import torchvision.transforms as T
+import faiss
+from PIL import Image
+from urllib.parse import urlparse
+import numpy as np
+
+
+# —————— 設定 ——————
+drive.mount('/content/drive', force_remount=True)
+DB_PATH = ""/content/drive/MyDrive/bier_catalog.db""
+IMG_DIR = ""/content/drive/MyDrive/beer_images""
+DEVICE  = ""cuda"" if torch.cuda.is_available() else ""cpu""
+
+
+# —————— 特徴抽出モデルの準備 ——————
+# ResNet50 の最後の全結合層を削除して埋め込みを得る
+model = models.resnet50(pretrained=True)
+model.fc = nn.Identity()
+model = model.to(DEVICE).eval()
+
+# 前処理：リサイズ＋CenterCrop＋ToTensor＋正規化
+transform = T.Compose([
+    T.Resize(256),
+    T.CenterCrop(224),
+    T.ToTensor(),
+    T.Normalize(mean=[0.485,0.456,0.406], std=[0.229,0.224,0.225]),
+])
+
+def extract_feature(img_path: str) -> torch.Tensor:
+    img = Image.open(img_path).convert(""RGB"")
+    x   = transform(img).unsqueeze(0).to(DEVICE)
+    with torch.no_grad():
+        feat = model(x)  # (1, 2048)
+    return feat.cpu().numpy()
+
+# —————— データベース画像の特徴量を一括抽出＆FAISSインデックス構築 ——————
+def build_faiss_index(img_dir: str):
+    paths = sorted(glob.glob(os.path.join(img_dir, ""*"")))
+    feats = []
+    for p in paths:
+        feats.append(extract_feature(p))
+    feats = np.vstack(feats).astype('float32')  # shape=(N,2048)
+
+    dim   = feats.shape[1]
+    index = faiss.IndexFlatL2(dim)
+    index.add(feats)  # 登録
+    return index, paths
+
+# 一度だけ実行してインデックス作成（キャッシュ推奨）
+index, db_paths = build_faiss_index(IMG_DIR)"
+"AutoML Vision で 専用に学習 させるか"
+"Vision APIでGoogleの画像のいろいろな要素から商品名を推測するか"
+"あいまい検索は基本的にはデータベース内ではできないので、全データを取り出してきてプログラム内で行います。"
+"コードブロック","JavaScript","import cv2
+import requests
+import numpy as np
+import easyocr
+
+def simple_ocr_from_url(url: str):
+    # 1. 画像を URL から取得
+    resp = requests.get(url)
+    img = cv2.imdecode(
+        np.frombuffer(resp.content, np.uint8),
+        cv2.IMREAD_COLOR
+    )
+    if img is None:
+        print(""画像の読み込みに失敗しました。"")
+        return
+
+    # 2. EasyOCR でそのまま OCR 実行（前処理なし）
+    reader = easyocr.Reader(['en'], gpu=False)
+    results = reader.readtext(img)
+
+    # 3. 検出結果を出力
+    if not results:
+        print(""テキストが検出できませんでした。"")
+    else:
+        for bbox, text, prob in results:
+            print(f""検出テキスト: {text!r} （信頼度: {prob:.2f}）"")
+
+if __name__ == ""__main__"":
+    test_url = ""https://bierkultur-deutschland.com/wp-content/uploads/2020/12/20201116_174013-890x500.jpg""
+    simple_ocr_from_url(test_url)"
+"google cloud 内のOCRの説明"
+"画像検索"
+"Google　colab上でVision AIを動かせるかどうか試しています。"
+"google cloud の無料トライアル期間がしゅうりょうしていたため、別アカウントでログインしてセットアップしなおしています"
+【Google】Cloud AutoML Visionを使った機械学習モデルの作成 | BTC RPA,https://rpa.bigtreetc.com/column/cloud-automl-vision/
+"コードブロック","Python","string1 = ""Paulaner Hefeweissbier ""
+string2 = ""PauIamer ABCD""
+
+similarity = fuzzy_search(string1, string2)
+print(""類似度:"", similarity)
+
+string1 = ""Hertl Mutti's Sonnenschein""
+
+similarity = fuzzy_search(string1, string2)
+print(""類似度:"", similarity)"
+"花の中でも薔薇画像を個別に判定できるように学習させている"
+"Hertl Mutti's Sonnenschein"
+"この方法で商品を個別に学習させるのはさすがに難しいかも"
+"検出テキスト: 'kelbiere' （信頼度: 0.22） 検出テキスト: 'Zwickelbier' （信頼度: 0.71） 検出テキスト: '-NATURTROB-' （信頼度: 0.26）"
+"bingに聞いてみた"
+"正式な商品名： Paulaner Hefeweissbier   Hertl Mutti's Sonnenschein ..."
+"OCRで読み取ったデータ： PauIamer ABCD ..."
+"ここで躓いています"
+"colabでAPIを動かすことができました。次回は実際に文字検出できればと考えています。"
+"ビールの英語名もあらかじめ登録しておき、どのビール名と一致するかを検討する"
+"画像検索には関係がありませんが、Google CloudのAPIは特に特殊なものではないので、REST APIが使えればいいので、こういうので試しても同じ。"
+"認識度：0.14"
+"実際のデータでやってみるのはどうですか？"
+"レスポンスのJSON","JavaScript","{
+""textAnnotations"": [
+    {""boundingPoly"": {""vertices"": [{""x"": 49, ""y"": 76}, {""x"": 107, ""y"": 76}, {""x"": 107, ""y"": 206}, {""x"": 49, ""y"": 206}]},""description"": ""MAULAN\nMINERAL\nFUNCHES\nPAULANER\nBody/at\nSE"",""locale"": ""de""},
+    {""boundingPoly"": {""vertices"": [{""x"": 49, ""y"": 76}, {""x"": 96, ""y"": 76}, {""x"": 96, ""y"": 86}, {""x"": 49, ""y"": 86}]},""description"": ""MAULAN""},
+    {""boundingPoly"": {""vertices"": [{""x"": 51, ""y"": 139}, {""x"": 107, ""y"": 140}, {""x"": 107, ""y"": 153}, {""x"": 51, ""y"": 152}]},""description"": ""MINERAL""},
+    {""boundingPoly"": {""vertices"": [{""x"": 62, ""y"": 168}, {""x"": 93, ""y"": 168}, {""x"": 93, ""y"": 179}, {""x"": 62, ""y"": 179}]},""description"": ""FUNCHES""},
+    {""boundingPoly"": {""vertices"": [{""x"": 57, ""y"": 184}, {""x"": 101, ""y"": 184}, {""x"": 101, ""y"": 190}, {""x"": 57, ""y"": 190}]},""description"": ""PAULANER""},
+    {""boundingPoly"": {""vertices"": [{""x"": 63, ""y"": 192}, {""x"": 88, ""y"": 192}, {""x"": 88, ""y"": 200}, {""x"": 63, ""y"": 200}]},""description"": ""Body""},
+    {""boundingPoly"": {""vertices"": [{""x"": 83, ""y"": 192}, {""x"": 90, ""y"": 192}, {""x"": 90, ""y"": 199}, {""x"": 83, ""y"": 199}]},""description"": ""/""},
+    {""boundingPoly"": {""vertices"": [{""x"": 88, ""y"": 192}, {""x"": 95, ""y"": 192}, {""x"": 95, ""y"": 199}, {""x"": 88, ""y"": 199}]},""description"": ""at""},
+    {""boundingPoly"": {""vertices"": [{""x"": 72, ""y"": 199}, {""x"": 84, ""y"": 198}, {""x"": 85, ""y"": 205}, {""x"": 73, ""y"": 206}]},""description"": ""SE""}
+  ]
+}"
+LINE Notify,https://notify-bot.line.me/ja/
+"長文のエラーが出て、解析に困っています"
+"エラーメッセージによれば、Pythonスクリプトに構文エラーや実行フローの問題があるようです。具体的なエラーが発生しているコードの部分や、どのようなエラーが発生しているのかについて詳細を教えていただければ、より具体的なアドバイスを提供することができます。 それに加えて、コードを見るといくつかの問題点が見受けられます。例えば、image = open(image_file) の後で image.texts を呼び出していますが、Pythonの open() 関数はファイルオブジェクトを返し、そのオブジェクトには texts という属性は存在しません。OCRを行うためのライブラリを使用しているのであれば、そのライブラリのドキュメンテーションを確認してみてください。 また、text.spilit() というメソッドを呼び出していますが、Pythonの文字列には split() というメソッドがありますので、ここはタイプミスかもしれません。 これらの点を修正してみてください。それでも問題が解決しない場合は、エラーメッセージの詳細を教えていただければと思います。よろしくお願いいたします。"
+【Cloud IAM】よくわからない...　から、わかった&#xff01;へ&#xff5c; 開発者ブログ &#xff5c; 株式会社アイソルート,https://www.isoroot.jp/blog/1244/
+マルチモーダル画像検索アプリを作ってみた&#xff01; - Qiita,https://qiita.com/yuji-arakawa/items/70470b348c90adb82b7f#%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89
+"Japanese Stable CLIPを用いて画像検索"
+"コードブロック","JavaScript","'================================================================
+# 0) 依存ライブラリ
+# ================================================================
+!pip install -q --upgrade pip faiss-cpu open_clip_torch pillow
+ # ================================================================
+# 1) モデル & 前処理器（fp16）
+# ================================================================
+import open_clip, torch, faiss, numpy as np, glob, os, urllib.request
+from PIL import Image
+ DEVICE = ""cuda"" if torch.cuda.is_available() else ""cpu""
+MODEL_ID = ""hf-hub:llm-jp/llm-jp-clip-vit-base-patch16""
+ model, preprocess = open_clip.create_model_from_pretrained(
+    MODEL_ID,
+    precision=""fp16""          # ← fp16 重み
+)
+model = model.to(DEVICE)
+tokenizer = open_clip.get_tokenizer(MODEL_ID)
+ # ================================================================
+# 2) 画像ダウンロード（必要な分だけ追加 OK）
+# ================================================================
+os.makedirs(""images"", exist_ok=True)
+ url = ""https://cdn-ak.f.st-hatena.com/images/fotolife/m/musakazz/20241117/20241117030700.jpg""
+urllib.request.urlretrieve(url, ""images/your_query.jpg"")   # クエリ用画像
+ # 例: コーパスに別画像を追加したい場合
+# extra_url = ""https://example.com/foo.jpg""
+# urllib.request.urlretrieve(extra_url, ""images/foo.jpg"")
+ # ================================================================
+# 3) 埋め込み関数（fp16 にキャスト）
+# ================================================================
+@torch.no_grad()
+def img_vec(path: str) -> np.ndarray:
+    img = Image.open(path).convert(""RGB"")
+    img = preprocess(img).unsqueeze(0).to(DEVICE).half()   # ★ .half()
+    v = model.encode_image(img)
+    v = v / v.norm(dim=-1, keepdim=True)
+    return v.cpu().numpy()
+ @torch.no_grad()
+def text_vec(text: str) -> np.ndarray:
+    txt = tokenizer([text]).to(DEVICE)
+    txt = txt.half()                                       # ★ .half()
+    v = model.encode_text(txt)
+    v = v / v.norm(dim=-1, keepdim=True)
+    return v.cpu().numpy()'"
+"コードブロック","JavaScript","#
+ # ================================================================
+# 4) インデックス作成（images/*.jpg を登録）
+# ================================================================
+paths = sorted(glob.glob(""images/*.jpg""))
+assert paths, ""images/ フォルダに jpg/png を置いてください""
+ vecs = np.vstack([img_vec(p) for p in paths]).astype(""float32"")
+index = faiss.IndexFlatIP(vecs.shape[1]); index.add(vecs)
+print(f""🗂  Indexed {len(paths)} images\n"")
+ # ================================================================
+# 5) テキスト → 画像検索
+# ================================================================
+query = ""青い海と空""                # ← ここを書き換えて検索
+D, I = index.search(text_vec(query).astype(""float32""), k=min(5, len(paths)))
+print(f""--- Top hits for “{query}” ---"")
+for r, idx in enumerate(I[0], 1):
+    print(f""{r}. {paths[idx]}  (score={D[0][r-1]:.3f})"")
+ # ================================================================
+# 6) 画像 → 画像検索
+# ================================================================
+q_img = ""images/your_query.jpg""     # ← クエリ画像を変える場合はパスを書き換え
+D2, I2 = index.search(img_vec(q_img).astype(""float32""), k=min(5, len(paths)))
+print(f""\n--- Similar images to {q_img} ---"")
+for r, idx in enumerate(I2[0], 1):
+    print(f""{r}. {paths[idx]}  (score={D2[0][r-1]:.3f})"")"
+"公開LLMでお試し記述 モデルの読み込みでエラー中"

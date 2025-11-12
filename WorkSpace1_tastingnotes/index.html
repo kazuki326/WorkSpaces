@@ -3,164 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Space 1: テイスティングノート機能</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1, h2, h3 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-        pre {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        .file-block { margin-bottom: 40px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; }
-        .file-header { background-color: #f7f7f7; padding: 10px 15px; font-weight: bold; border-bottom: 1px solid #ddd; }
-        .file-content { padding: 15px; }
-        .preview-links ul { list-style-type: none; padding: 0; }
-        .preview-links li { margin-bottom: 10px; }
-        .preview-links a {
-            display: block;
-            padding: 10px 15px;
-            background: #eef4f8;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #005a9c;
-            transition: background-color 0.2s;
-            cursor: pointer;
-        }
-        .preview-links a:hover { background-color: #dceaf5; }
+    <title>WorkSpace1: テイスティングノート機能</title>
+    <link rel="stylesheet" href="../common_style.css">
 
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: #fff;
-            width: 80%;
-            height: 80%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .modal-title { font-weight: bold; }
-        .modal-close {
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .modal-body {
-            flex-grow: 1;
-            padding: 0;
-            overflow: hidden;
-        }
-        .modal-body iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .back-to-home {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            background-color: #6c757d;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-        .back-to-home:hover {
-            background-color: #5a6268;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>Work Space 1: テイスティングノート機能</h1>
+    <header>
+        <h1>WorkSpace1: テイスティングノート機能</h1>
         <p>購入者がビールのテイスティング結果を記録し、その平均評価を商品ページに「口コミ」として掲載する機能の企画・設計資料です。</p>
+    </header>
 
-        <h2>機能プレビュー</h2>
-        <div class="preview-links">
-            <p>Miroボードで検討されたUI/UXのモックアップです。リンクをクリックして各プレビューをポップアップで確認できます。</p>
-            <ul>
-                <li><a onclick="openModal('preview/1_input_form.html', '1. テイスティングノート入力フォーム')">1. テイスティングノート入力フォーム</a></li>
-                <li><a onclick="openModal('preview/2_rating_sliders.html', '2. 評価スライダーUI')">2. 評価スライダーUI</a></li>
-                <li><a onclick="openModal('preview/3_collection_view.html', '3. Myビール図鑑（コレクション）')">3. Myビール図鑑（コレクション）</a></li>
-                <li><a onclick="openModal('preview/4_collection_popup.html', '4. ポップアップ詳細（レーダーチャート付き）')">4. ポップアップ詳細（レーダーチャート付き）</a></li>
-                <li><a onclick="openModal('preview/5_barcode_scanner.html', '5. バーコードスキャナー')">5. バーコードスキャナー</a></li>
-            </ul>
-        </div>
+    <main>
+        <div class="container">
+            <h2>機能プレビュー</h2>
+            <div class="preview-links">
+                <p>Miroボードで検討されたUI/UXのモックアップです。リンクをクリックして各プレビューをポップアップで確認できます。</p>
+                <ul>
+                    <li><a onclick="openModal('preview/1_input_form.html', '1. テイスティングノート入力フォーム')">1. テイスティングノート入力フォーム</a></li>
+                    <li><a onclick="openModal('preview/2_rating_sliders.html', '2. 評価スライダーUI')">2. 評価スライダーUI</a></li>
+                    <li><a onclick="openModal('preview/3_collection_view.html', '3. Myビール図鑑（コレクション）')">3. Myビール図鑑（コレクション）</a></li>
+                    <li><a onclick="openModal('preview/4_collection_popup.html', '4. ポップアップ詳細（レーダーチャート付き）')">4. ポップアップ詳細（レーダーチャート付き）</a></li>
+                    <li><a onclick="openModal('preview/5_barcode_scanner.html', '5. バーコードスキャナー')">5. バーコードスキャナー</a></li>
+                </ul>
+            </div>
 
-        <h2>設計ドキュメント</h2>
-        <div class="file-block">
-            <div class="file-header">docs/feature-specification.md</div>
-            <div class="file-content">
-                <pre># テイスティングノート機能 仕様書...</pre>
+            <h2>設計ドキュメント</h2>
+            <div class="file-block">
+                <div class="file-header">docs/feature-specification.md</div>
+                <div class="file-content">
+                    <pre># テイスティングノート機能 仕様書...</pre>
+                </div>
             </div>
-        </div>
-        <div class="file-block">
-            <div class="file-header">docs/technical-plan.md</div>
-            <div class="file-content">
-                <pre># 技術的実装プラン...</pre>
+            <div class="file-block">
+                <div class="file-header">docs/technical-plan.md</div>
+                <div class="file-content">
+                    <pre># 技術的実装プラン...</pre>
+                </div>
             </div>
-        </div>
-        <div class="file-block">
-            <div class="file-header">docs/ideas-and-brainstorming.md</div>
-            <div class="file-content">
-                <pre># アイデアとブレインストーミング...</pre>
+            <div class="file-block">
+                <div class="file-header">docs/ideas-and-brainstorming.md</div>
+                <div class="file-content">
+                    <pre># アイデアとブレインストーミング...</pre>
+                </div>
             </div>
-        </div>
 
-        <h2>Miro CSVデータ (Raw)</h2>
-        <div class="file-block">
-            <div class="file-header">【bier.jp】メイン - Work Space1_... .csv</div>
-            <div class="file-content">
-                <pre>"Work Space1: 購入者が​テイスティングnoteを​かけるように​する..."</pre>
+            <h2>Miro CSVデータ (Raw)</h2>
+            <div class="file-block">
+                <div class="file-header">【bier.jp】メイン - Work Space1_... .csv</div>
+                <div class="file-content">
+                    <pre>"Work Space1: 購入者が​テイスティングnoteを​かけるように​する..."</pre>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
 
     <!-- Modal Structure -->
     <div class="modal-overlay" id="modalOverlay">

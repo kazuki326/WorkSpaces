@@ -3,151 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Space 3: LINE注文機能</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1, h2 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
-        .file-block { margin-bottom: 40px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; }
-        .file-header { background-color: #f7f7f7; padding: 10px 15px; font-weight: bold; border-bottom: 1px solid #ddd; }
-        .file-content { padding: 15px; }
-        .preview-links ul { list-style-type: none; padding: 0; }
-        .preview-links li { margin-bottom: 10px; }
-        .preview-links a { display: block; padding: 10px 15px; background: #eef4f8; border-radius: 5px; text-decoration: none; color: #005a9c; transition: background-color 0.2s; cursor: pointer; }
-        .preview-links a:hover { background-color: #dceaf5; }
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: #fff; width: 90%; max-width: 410px; height: 85%; max-height: 870px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); display: flex; flex-direction: column; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 1px solid #eee; }
-        .modal-title { font-weight: bold; }
-        .modal-close { cursor: pointer; border: none; background: none; font-size: 24px; font-weight: bold; }
-        .modal-body { flex-grow: 1; padding: 0; overflow: hidden; }
-        .modal-body iframe { width: 100%; height: 100%; border: none; }
-        .back-to-home { display: inline-block; margin-bottom: 20px; padding: 8px 15px; background-color: #6c757d; color: #fff; text-decoration: none; border-radius: 5px; font-size: 14px; transition: background-color 0.2s; }
-        .back-to-home:hover { background-color: #5a6268; }
-    </style>
+    <title>WorkSpace3: LINE注文機能</title>
+    <link rel="stylesheet" href="../common_style.css">
 </head>
 <body>
-    <div class="container">
-        <a href="../index.html" class="back-to-home">↩ ホームに戻る</a>
-        <h1>Work Space 3: LINE注文機能</h1>
-        <p>Miroのボードから抽出した情報と、それに基づいて生成されたプロジェクトファイルの概要です。</p>
+    <header>
+        <h1>WorkSpace3: LINE注文機能</h1>
+        <p>LINEアプリから商品を注文できる機能に関するワークスペースです。</p>
+    </header>
 
-        <h2>機能プレビュー</h2>
-        <div class="preview-links">
-            <p>LINEアプリ上での表示を模したデザインアセットのプレビューです。リンクをクリックしてポップアップで確認できます。</p>
+    <main class="container">
+        <section class="my-page-section">
+            <h2>プロジェクト概要</h2>
+            <p>
+                公式LINEアカウントにチャットボットを導入し、ユーザーがLINE上で商品を検索し、<code>bier.jp</code>の買い物かごに直接商品を追加できる仕組みを構築します。これにより、ユーザー体験の向上と売上増加を目指します。
+            </p>
+        </section>
+
+        <section class="my-page-section">
+            <h2>アーキテクチャ</h2>
+            <p>本プロジェクトは、LINE、Google Apps Script、そして<code>bier.jp</code>のサーバーサイドAPIを連携させることで実現します。</p>
+            <div class="code-block-container">
+                <pre><code>LINE User  &lt;--&gt;  LINE Chatbot (Google Apps Script)  --&gt;  bier.jp Add-to-Cart API  --&gt;  User's localStorage</code></pre>
+            </div>
+            <ol>
+                <li>ユーザーがLINEチャットボットと対話し、おすすめされた商品の「かごに追加」ボタンを押します。</li>
+                <li>チャットボットは、<code>bier.jp</code>ドメイン上に設置されたAPIを呼び出すURLを生成します。</li>
+                <li>ユーザーがそのURLにアクセスすると、APIが<code>bier.jp</code>サイトの<code>localStorage</code>に商品情報を追加します。</li>
+                <li>最終的な決済は、ユーザーが<code>bier.jp</code>の買い物かごページに遷移して行います。</li>
+            </ol>
+        </section>
+
+        <section class="my-page-section">
+            <h2>デザインとプレビュー</h2>
+            <p>LINE上でユーザーに表示されるUIコンポーネントの設計とプレビューです。</p>
             <ul>
-                <li><a onclick="openModal('preview/product_card_preview.html', 'プレビュー: 商品カード')">1. 商品カード (Flex Message)</a></li>
-                <li><a onclick="openModal('preview/rich_menu_preview.html', 'プレビュー: リッチメニュー')">2. リッチメニュー</a></li>
+                <li>
+                    <strong>商品カード (Flex Message)</strong>:
+                    チャットボットが商品を提示する際に使用するリッチなカードです。
+                    [<a href="preview/product_card_preview.html" class="modal-link">プレビュー</a>]
+                    [<a href="design/product-card.json">JSON定義</a>]
+                </li>
+                <li>
+                    <strong>リッチメニュー</strong>:
+                    トーク画面下部に常時表示されるメニューです。
+                    [<a href="preview/rich_menu_preview.html" class="modal-link">プレビュー</a>]
+                    [<a href="design/rich-menu.json">JSON定義</a>]
+                </li>
             </ul>
-        </div>
+        </section>
 
-        <h2>主要ドキュメント</h2>
-        <div class="file-block">
-            <div class="file-header">README.md</div>
-            <div class="file-content"><pre id="readme-content">読み込み中...</pre></div>
-        </div>
-        <div class="file-block">
-            <div class="file-header">docs/api-design.md</div>
-            <div class="file-content"><pre id="api-design-content">読み込み中...</pre></div>
-        </div>
-        <div class="file-block">
-            <div class="file-header">docs/line-integration-plan.md</div>
-            <div class="file-content"><pre id="line-integration-plan-content">読み込み中...</pre></div>
-        </div>
+        <section class="my-page-section">
+            <h2>技術仕様とドキュメント</h2>
+            <p>本プロジェクトの技術的な詳細をまとめたドキュメントです。</p>
+            <ul>
+                <li><a href="README.md">総合README</a>: プロジェクト全体の目標、アーキテクチャ、課題の概要。</li>
+                <li><a href="docs/api-design.md">買い物かご追加API設計書</a>: <code>bier.jp</code>側に実装するAPIの詳細な仕様。</li>
+                <li><a href="docs/line-integration-plan.md">LINE連携機能 設計プラン</a>: アカウント連携やリッチメニュー、Flex Messageに関する設計。</li>
+                <li><a href="docs/third-party-services.md">サードパーティ製サービス調査</a>: L Message等の外部サービスを調査し、自前実装に至った経緯。</li>
+            </ul>
+        </section>
 
-        <h2>ソースコード</h2>
-        <div class="file-block">
-            <div class="file-header">src/gas/main.gs</div>
-            <div class="file-content"><pre><code id="main-gs-content">読み込み中...</code></pre></div>
-        </div>
-        <div class="file-block">
-            <div class="file-header">src/bier-jp-api/server.js</div>
-            <div class="file-content"><pre><code id="server-js-content">読み込み中...</code></pre></div>
-        </div>
-    </div>
+        <section class="my-page-section">
+            <h2>ソースコード</h2>
+            <p>実装された、または実装予定のソースコードです。</p>
+            <ul>
+                <li><a href="src/gas/"><code>src/gas/</code></a>: LINEチャットボットのロジックを担うGoogle Apps Scriptのコード群。</li>
+                <li><a href="src/bier-jp-api/"><code>src/bier-jp-api/</code></a>: 買い物かご追加APIを担うNode.js (Express) サーバーのコード。</li>
+            </ul>
+        </section>
+    </main>
 
-    <!-- Modal Structure -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="modalTitle"></div>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <iframe id="modal-iframe" src=""></iframe>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Modal script
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalIframe = document.getElementById('modal-iframe');
-        const modalTitle = document.getElementById('modalTitle');
-
-        function openModal(url, title) {
-            modalIframe.src = url;
-            modalTitle.textContent = title;
-            modalOverlay.style.display = 'flex';
-        }
-
-        function closeModal() {
-            modalOverlay.style.display = 'none';
-            modalIframe.src = '';
-        }
-
-        modalOverlay.addEventListener('click', function(event) {
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
-
-        // Content loading script
-        document.addEventListener('DOMContentLoaded', () => {
-            const filesToLoad = [
-                { id: 'readme-content', path: 'README.md' },
-                { id: 'api-design-content', path: 'docs/api-design.md' },
-                { id: 'line-integration-plan-content', path: 'docs/line-integration-plan.md' },
-                { id: 'main-gs-content', path: 'src/gas/main.gs' },
-                { id: 'server-js-content', path: 'src/bier-jp-api/server.js' },
-            ];
-
-            filesToLoad.forEach(file => {
-                fetch(file.path)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(text => {
-                        document.getElementById(file.id).textContent = text;
-                    })
-                    .catch(e => {
-                        console.error(`Error loading ${file.path}:`, e);
-                        document.getElementById(file.id).textContent = `エラー: ${file.path} を読み込めませんでした。`;
-                    });
-            });
-        });
-    </script>
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+    <script src="../modal.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おすすめ商品 - デザインB (ホバー詳細)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {},
+          },
+          plugins: [
+            require('@tailwindcss/line-clamp'),
+          ],
+        }
+      </script>
+</head>
+<body>
+    <div class="p-6 bg-gray-50">
+        <h1 class="text-3xl font-bold text-center mb-8">おすすめ商品 - デザインB (ホバー詳細)</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- 商品カード -->
+            <div class="bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative">
+              <!-- 商品画像 -->
+              <img class="w-full h-56 object-cover" src="https://bier.jp/images/beeroriginal/nx-002.jpg" alt="ヴァイエンシュテファン">
+          
+              <!-- 商品情報 -->
+              <div class="p-5 flex flex-col justify-between h-full space-y-2">
+                <h2 class="text-2xl font-bold text-gray-800">ヴァイエンシュテファン ヘフェヴァイスビア</h2>
+                <div class="flex flex-wrap text-sm text-gray-500 gap-2">
+                  <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">カテゴリ: ヴァイツェン</span>
+                  <span>価格: ¥780</span>
+                  <span>在庫: 25本</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mt-2 line-clamp-3">
+                    バナナのような香りとスパイスの風味。世界最古の醸造所が誇る、伝統的な味わいのヴァイツェンです。
+                </p>
+                <button class="mt-4 w-fit bg-yellow-500 hover:bg-yellow-600 text-white font-medium py-2 px-5 rounded-full shadow-md transition">詳細を見る</button>
+              </div>
+          
+              <!-- ホバー時の詳細オーバーレイ -->
+              <div class="absolute inset-0 bg-white bg-opacity-95 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-5 flex flex-col justify-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">詳細情報</h3>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>アルコール度数: 5.4%</li>
+                  <li>原産国: ドイツ</li>
+                  <li>容量: 500ml</li>
+                  <li>醸造所: ヴァイエンシュテファン</li>
+                  <li>特徴: バナナ香、クローブ、クリーミー</li>
+                </ul>
+              </div>
+            </div>
+            <!-- 他の商品カードを同様に追加 -->
+            <div class="bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative">
+                <img class="w-full h-56 object-cover" src="https://bier.jp/images/beeroriginal/ex-101.jpg" alt="エルディンガー">
+                <div class="p-5">
+                    <h2 class="text-2xl font-bold text-gray-800">エルディンガー ヴァイスビア</h2>
+                    <p class="text-gray-600 text-sm mt-2 line-clamp-3">まろやかでクリーミーな味わい。</p>
+                </div>
+                <div class="absolute inset-0 bg-white bg-opacity-95 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-5 flex flex-col justify-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">詳細情報</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>アルコール度数: 5.3%</li>
+                        <li>原産国: ドイツ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300 group relative">
+                <img class="w-full h-56 object-cover" src="https://bier.jp/images/beeroriginal/dx-101.jpg" alt="ビットブルガー">
+                <div class="p-5">
+                    <h2 class="text-2xl font-bold text-gray-800">ビットブルガー プレミアムピルス</h2>
+                    <p class="text-gray-600 text-sm mt-2 line-clamp-3">キレのある爽快な苦味。</p>
+                </div>
+                <div class="absolute inset-0 bg-white bg-opacity-95 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-5 flex flex-col justify-center">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">詳細情報</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>アルコール度数: 4.8%</li>
+                        <li>原産国: ドイツ</li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+    </div>
+</body>
+</html>

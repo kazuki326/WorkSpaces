@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>味グラフ自動生成</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        h1, h2 { text-align: center; color: #333; }
+        .form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .form-full { grid-column: 1 / -1; }
+        input, button { padding: 10px; font-size: 1rem; border-radius: 0.5rem; border: 1px solid #ccc; width: 100%; box-sizing: border-box; }
+        button { background-color: #0074D9; color: white; cursor: pointer; grid-column: 1 / -1; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>味グラフ自動生成ツール</h1>
+        <p style="text-align: center; margin-bottom: 20px;">ビールのスペックを入力すると、味の傾向をグラフに変換します。</p>
+        <div class="form">
+          <input type="text" id="name" placeholder="ビール名" class="form-full" />
+          <input type="text" id="style" placeholder="スタイル (例: IPA, Stout)" />
+          <input type="number" id="abv" step="any" placeholder="アルコール度数 (%)" />
+          <input type="number" id="ibu" placeholder="IBU (苦味指数)" />
+          <input type="text" id="malt" placeholder="主なモルト (例: caramel)" />
+          <input type="text" id="fermentation" placeholder="発酵方法 (例: ale)" class="form-full" />
+          <input type="text" id="note" placeholder="特徴メモ (例: banana, fruit)" class="form-full" />
+          <button onclick="generateChart()">チャート生成</button>
+        </div>
+        <canvas id="beerChart"></canvas>
+      </div>
+
+      <script>
+        let chart;
+      
+        function generateChart() {
+          const name = document.getElementById("name").value;
+          const style = (document.getElementById("style").value || "").toLowerCase();
+          const abv = parseFloat(document.getElementById("abv").value) || 0;
+          const ibu = parseFloat(document.getElementById("ibu").value) || 0;
+          const malt = (document.getElementById("malt").value || "").toLowerCase();
+          const fermentation = (document.getElementById("fermentation").value || "").toLowerCase();
+          const note = (document.getElementById("note").value || "").toLowerCase();
+      
+          // --- 味のスコア計算ロジック ---
+          // 苦味 (IBUを基準)
+          let bitterness = ibu < 15 ? 1 : ibu < 30 ? 2 : ibu < 50 ? 3 : ibu < 70 ? 4 : 5;
+      
+          // 甘味 (アルコール度数とモルトの種類を基準)
+          let sweetness = 2;
+          if (malt.includes("caramel") || malt.includes("munich")) sweetness = 3;
+          if (abv > 8) sweetness += 1;
+          if (style.includes("bock") || style.includes("stout")) sweetness = Math.max(sweetness, 4);
+      
+          // コク (アルコール度数を基準)
+          let body = abv < 4.5 ? 1 : abv < 6 ? 2 : abv < 7.5 ? 3 : abv < 9 ? 4 : 5;
+      
+          // 香り (発酵方法とスタイル、特徴を基準)
+          let aroma = 1;
+          if (fermentation.includes("ale")) aroma += 1;
+          if (style.includes("weizen") || style.includes("ipa") || note.includes("banana") || note.includes("fruit")) aroma += 1;
+          if (note.includes("barrel") || note.includes("wild")) aroma += 1;
+      
+          // 酸味 (スタイルと特徴を基準)
+          let sourness = 1;
+          if (style.includes("berliner") || style.includes("gose") || style.includes("sour")) sourness = 4;
+          else if (note.includes("fruit") || note.includes("lactic")) sourness = 3;
+          else if (style.includes("weizen")) sourness = 2;
+
+          // 0-5の範囲に収める
+          sweetness = Math.min(Math.max(sweetness, 0), 5);
+          aroma = Math.min(Math.max(aroma, 0), 5);
+          
+          const data = {
+            labels: ["苦味", "甘味", "コク", "香り", "酸味"],
+            datasets: [
+              {
+                label: name || "ビール",
+                data: [bitterness, sweetness, body, aroma, sourness],
+                backgroundColor: "rgba(75,192,192,0.2)",
+                borderColor: "rgba(75,192,192,1)",
+                borderWidth: 2,
+                pointBackgroundColor: "rgba(75,192,192,1)"
+              }
+            ]
+          };
+      
+          const config = {
+            type: "radar",
+            data: data,
+            options: {
+              responsive: true,
+              scales: {
+                r: {
+                  suggestedMin: 0,
+                  suggestedMax: 5,
+                  ticks: { stepSize: 1 }
+                }
+              }
+            }
+          };
+      
+          if (chart) chart.destroy();
+          chart = new Chart(document.getElementById("beerChart"), config);
+        };
+      </script>
+</body>
+</html>

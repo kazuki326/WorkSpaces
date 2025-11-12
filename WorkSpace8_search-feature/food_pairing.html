@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>料理からビールを検索</title>
+    <link rel="stylesheet" href="../common_style.css">
+</head>
+<body>
+    <header>
+        <h1>WorkSpace8: 料理に合うビールを探す</h1>
+        <p>食べたい料理から、それに合うビールを提案する機能のデモです。</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="food-list">
+                <button onclick="showBeer('ピザ')">ピザ</button>
+                <button onclick="showBeer('寿司')">寿司</button>
+                <button onclick="showBeer('ステーキ')">ステーキ</button>
+                <button onclick="showBeer('カレー')">カレー</button>
+                <button onclick="showBeer('チーズ')">チーズ</button>
+                <button onclick="showBeer('ハンバーガー')">ハンバーガー</button>
+            </div>
+            <div class="beer-suggestion" id="beerSuggestion">
+                <p>選択した料理に合うビールがここに表示されます。</p>
+            </div>
+            <p><a href="index.html">WorkSpace8メインページに戻る</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+
+    <script>
+        function showBeer(food) {
+            const beerPairs = {
+                'ピザ': 'ピルスナー',
+                '寿司': 'ホワイトエール',
+                'ステーキ': 'スタウト',
+                'カレー': 'IPA',
+                'チーズ': 'ペールエール',
+                'ハンバーガー': 'ラガー'
+            };
+
+            const suggestion = beerPairs[food] || 'ビールの情報が見つかりませんでした';
+            document.getElementById('beerSuggestion').innerHTML = `<p>${food} に合うビールは <strong>${suggestion}</strong> です。</p>`;
+        }
+    </script>
+</body>
+</html>

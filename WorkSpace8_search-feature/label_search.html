@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビールラベル検索</title>
+    <link rel="stylesheet" href="../common_style.css">
+</head>
+<body>
+    <header>
+        <h1>WorkSpace8: ビールラベル検索</h1>
+        <p>ビールのラベル画像をアップロードして、似たビールや同じビールを検索する機能のデモです。</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <form id="labelSearchForm">
+                <label for="labelImage">ラベルの画像をアップロードしてください:</label>
+                <input type="file" id="labelImage" accept="image/*">
+                <button type="submit">検索</button>
+            </form>
+            <div id="results"></div>
+            <p><a href="index.html">WorkSpace8メインページに戻る</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 bier.jp WorkSpaces</p>
+    </footer>
+
+    <script>
+        document.getElementById('labelSearchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('labelImage');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    // Placeholder for image processing and search logic
+                    document.getElementById('results').innerHTML = '<p>検索中...</p>';
+                    setTimeout(() => {
+                        document.getElementById('results').innerHTML = '<p>ビールが見つかりました！</p>';
+                    }, 2000); // Simulate search delay
+                };
+                
+                reader.readAsDataURL(file);
+            } else {
+                alert('画像をアップロードしてください');
+            }
+        });
+    </script>
+</body>
+</html>
