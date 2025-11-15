@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロトタイプギャラリー | Bier.jp WorkSpaces</title>
+    <link rel="stylesheet" href="design-system.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-bar select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .prototype-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            border: 2px solid transparent;
+        }
+
+        .prototype-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+        }
+
+        .prototype-header {
+            background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .workspace-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+        }
+
+        .prototype-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .prototype-version {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--gray-200);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .prototype-body {
+            padding: 1.5rem;
+        }
+
+        .prototype-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .prototype-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .prototype-footer {
+            padding: 1rem 1.5rem;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .view-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            transition: var(--transition-fast);
+            display: inline-block;
+        }
+
+        .view-btn:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .last-modified {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .no-prototypes {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-500);
+        }
+
+        .stats {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="back-link">← ダッシュボードに戻る</a>
+            <h1>🎨 プロトタイプギャラリー</h1>
+            <p>全WorkSpaceのプロトタイプを一覧表示</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- 統計 -->
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalPrototypes">0</div>
+                    <div class="stat-label">総プロトタイプ数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="readyCount">0</div>
+                    <div class="stat-label">Ready状態</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="draftCount">0</div>
+                    <div class="stat-label">Draft状態</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="workspaceCount">0</div>
+                    <div class="stat-label">プロトタイプを持つWorkSpace</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- フィルター -->
+        <div class="filter-bar">
+            <label>
+                <strong>WorkSpace:</strong>
+                <select id="workspaceFilter">
+                    <option value="all">すべて</option>
+                </select>
+            </label>
+            <label>
+                <strong>ステータス:</strong>
+                <select id="statusFilter">
+                    <option value="all">すべて</option>
+                    <option value="ready">Ready</option>
+                    <option value="approved">Approved</option>
+                    <option value="draft">Draft</option>
+                    <option value="deprecated">Deprecated</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- ギャラリー -->
+        <div id="gallery" class="gallery"></div>
+
+        <div id="noPrototypes" class="no-prototypes" style="display: none;">
+            プロトタイプが見つかりません
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const WORKSPACE_DIRS = [
+                'WorkSpace1_tastingnotes',
+                'WorkSpace2_official-line',
+                'WorkSpace3_line-ordering',
+                'WorkSpace4_product-detail-page',
+                'WorkSpace5_feature-page',
+                'WorkSpace6_beer-comparison',
+                'WorkSpace7_video-content',
+                'WorkSpace8_search-feature',
+                'WorkSpace9_image-search',
+                'WorkSpace10_my-page',
+                'WorkSpace11_recommended-products',
+                'WorkSpace12_taste-graph'
+            ];
+
+            let allPrototypes = [];
+            let currentFilter = {
+                workspace: 'all',
+                status: 'all'
+            };
+
+            async function loadPrototypes() {
+                const promises = WORKSPACE_DIRS.map(async (dir) => {
+                    try {
+                        const response = await fetch(`./${dir}/workspace.json`);
+                        if (!response.ok) return null;
+                        const data = await response.json();
+                        return {
+                            workspace: data.name,
+                            workspaceId: data.id,
+                            directory: dir,
+                            prototypes: data.prototypes || []
+                        };
+                    } catch (error) {
+                        console.error(`Error loading ${dir}:`, error);
+                        return null;
+                    }
+                });
+
+                const results = await Promise.all(promises);
+                const workspaces = results.filter(ws => ws !== null);
+
+                // フラット化
+                allPrototypes = [];
+                workspaces.forEach(ws => {
+                    ws.prototypes.forEach(proto => {
+                        allPrototypes.push({
+                            ...proto,
+                            workspace: ws.workspace,
+                            workspaceId: ws.workspaceId,
+                            directory: ws.directory
+                        });
+                    });
+                });
+
+                populateFilters(workspaces);
+                updateStatistics();
+                renderGallery();
+            }
+
+            function populateFilters(workspaces) {
+                const workspaceFilter = document.getElementById('workspaceFilter');
+                workspaces.forEach(ws => {
+                    if (ws.prototypes.length > 0) {
+                        const option = document.createElement('option');
+                        option.value = ws.workspaceId;
+                        option.textContent = ws.workspace;
+                        workspaceFilter.appendChild(option);
+                    }
+                });
+            }
+
+            function updateStatistics() {
+                document.getElementById('totalPrototypes').textContent = allPrototypes.length;
+
+                const readyCount = allPrototypes.filter(p => p.status === 'ready').length;
+                document.getElementById('readyCount').textContent = readyCount;
+
+                const draftCount = allPrototypes.filter(p => p.status === 'draft').length;
+                document.getElementById('draftCount').textContent = draftCount;
+
+                const workspaceCount = new Set(allPrototypes.map(p => p.workspaceId)).size;
+                document.getElementById('workspaceCount').textContent = workspaceCount;
+            }
+
+            function getFilteredPrototypes() {
+                return allPrototypes.filter(proto => {
+                    if (currentFilter.workspace !== 'all' && proto.workspaceId !== currentFilter.workspace) {
+                        return false;
+                    }
+                    if (currentFilter.status !== 'all' && proto.status !== currentFilter.status) {
+                        return false;
+                    }
+                    return true;
+                });
+            }
+
+            function renderGallery() {
+                const gallery = document.getElementById('gallery');
+                const noPrototypes = document.getElementById('noPrototypes');
+                const filtered = getFilteredPrototypes();
+
+                if (filtered.length === 0) {
+                    gallery.innerHTML = '';
+                    noPrototypes.style.display = 'block';
+                    return;
+                }
+
+                noPrototypes.style.display = 'none';
+
+                gallery.innerHTML = filtered.map(proto => `
+                    <div class="prototype-card fade-in">
+                        <div class="prototype-header">
+                            <div class="workspace-label">${proto.workspace}</div>
+                            <div class="prototype-title">${proto.name}</div>
+                            <span class="prototype-version">${proto.version || 'v1.0'}</span>
+                        </div>
+                        <div class="prototype-body">
+                            ${proto.description ? `
+                                <div class="prototype-description">${proto.description}</div>
+                            ` : ''}
+                            <div class="prototype-meta">
+                                <span class="badge badge-status ${proto.status}">${proto.status}</span>
+                            </div>
+                        </div>
+                        <div class="prototype-footer">
+                            <a href="${proto.directory}/${proto.file}" class="view-btn" target="_blank">プロトタイプを見る</a>
+                            ${proto.lastModified ? `
+                                <div class="last-modified">更新: ${proto.lastModified}</div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function setupEventListeners() {
+                document.getElementById('workspaceFilter').addEventListener('change', (e) => {
+                    currentFilter.workspace = e.target.value;
+                    renderGallery();
+                });
+
+                document.getElementById('statusFilter').addEventListener('change', (e) => {
+                    currentFilter.status = e.target.value;
+                    renderGallery();
+                });
+            }
+
+            function init() {
+                setupEventListeners();
+                loadPrototypes();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>

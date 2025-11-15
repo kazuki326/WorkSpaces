@@ -44,6 +44,26 @@
             opacity: 0.95;
         }
 
+        .header-nav {
+            margin-top: 1rem;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-md);
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+            display: inline-block;
+        }
+
+        .header-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
         /* ツールバー */
         .toolbar {
             background: white;
@@ -444,6 +464,9 @@
         <div class="header-content">
             <h1>🍺 Bier.jp WorkSpaces</h1>
             <p>プロジェクト管理ダッシュボード - 進捗の可視化とプロトタイプ管理</p>
+            <div class="header-nav">
+                <a href="prototypes.html">🎨 プロトタイプギャラリー</a>
+            </div>
         </div>
     </header>
 

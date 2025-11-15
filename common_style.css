@@ -803,3 +803,47 @@ label {
     height: 100%;
     border: none;
 }
+
+/* ===================================
+   Breadcrumb Navigation
+   =================================== */
+
+.breadcrumb {
+    background-color: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.breadcrumb .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb a {
+    color: #005a9c;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    background-color: #f0f0f0;
+    text-decoration: none;
+}
+
+.breadcrumb a::before {
+    content: "← ";
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
