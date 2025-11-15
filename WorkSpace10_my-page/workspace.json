@@ -1,0 +1,55 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-10",
+  "name": "マイページ機能",
+  "description": "ユーザーの購入履歴、お気に入り、テイスティングノートなどを一元管理するマイページ",
+  "status": "in-progress",
+  "progress": 60,
+  "priority": "high",
+  "team": [],
+  "createdDate": "2024-10-05",
+  "lastUpdated": "2024-11-15",
+  "tags": ["マイページ", "UX", "フロントエンド", "ユーザー管理"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-10-1",
+      "name": "マイページプロトタイプ",
+      "file": "index.html",
+      "version": "v1.5",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-10",
+      "description": "サイドバーナビゲーション付きマイページUI。ダッシュボード、テイスティングノート、購入履歴など複数セクションを含む。"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "UI設計完了",
+      "completed": true,
+      "completedDate": "2024-10-28"
+    },
+    {
+      "name": "プロトタイプ作成",
+      "completed": true,
+      "completedDate": "2024-11-10"
+    },
+    {
+      "name": "バックエンド実装",
+      "completed": false,
+      "dueDate": "2024-12-05"
+    },
+    {
+      "name": "フロントエンド実装",
+      "completed": false,
+      "dueDate": "2024-12-20"
+    }
+  ],
+  "dependencies": ["workspace-1"],
+  "notes": "テイスティングノート機能と密接に連携。FontAwesomeアイコンを使用。"
+}

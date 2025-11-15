@@ -1,0 +1,39 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-2",
+  "name": "公式LINEアカウント構築",
+  "description": "bier.jpの公式LINEアカウントを構築し、顧客とのコミュニケーションチャネルを拡大",
+  "status": "in-progress",
+  "progress": 55,
+  "priority": "high",
+  "team": [],
+  "createdDate": "2024-09-15",
+  "lastUpdated": "2024-11-15",
+  "tags": ["LINE", "マーケティング", "カスタマーサポート", "外部連携"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "docs/",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [
+    {
+      "name": "LINE公式アカウント開設",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "基本メッセージ設計",
+      "completed": false,
+      "dueDate": "2024-12-10"
+    },
+    {
+      "name": "リッチメニュー作成",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    }
+  ],
+  "dependencies": ["workspace-3"],
+  "notes": "WorkSpace3（LINE注文機能）と密接に連携"
+}

@@ -3,103 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bier.jp WorkSpaces</title>
+    <title>Bier.jp WorkSpaces Dashboard</title>
+    <link rel="stylesheet" href="design-system.css">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fdfdfd;
-        }
-        h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #222;
-            text-align: center;
-            margin-bottom: 1em;
-        }
-        ul {
-            list-style-type: none;
+        * {
+            margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        li {
-            margin-bottom: 1em;
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.6;
         }
-        a {
+
+        /* ヘッダー */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* ツールバー */
+        .toolbar {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .toolbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toolbar-left {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex: 1;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            background: white;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: var(--transition-fast);
+        }
+
+        .filter-btn:hover {
+            background: var(--gray-100);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--gray-200);
+            padding: 0.25rem;
+            border-radius: var(--border-radius-md);
+        }
+
+        .view-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: var(--transition-fast);
+        }
+
+        .view-btn.active {
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* 統計カード */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+        }
+
+        /* グリッドビュー */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .workspace-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .workspace-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+        }
+
+        .workspace-card-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .workspace-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gray-800);
+        }
+
+        .workspace-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        .workspace-card-body {
+            padding: 1.5rem;
+        }
+
+        .workspace-meta {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .progress-section {
+            margin: 1rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .workspace-footer {
+            padding: 1rem 1.5rem;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .team-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        .prototype-count {
+            background: var(--color-info);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-lg);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tags-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 1rem;
+        }
+
+        /* カンバンビュー */
+        .kanban-view {
+            display: none;
+        }
+
+        .kanban-view.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .kanban-column {
+            background: var(--gray-200);
+            border-radius: var(--border-radius-lg);
+            padding: 1rem;
+        }
+
+        .kanban-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+        }
+
+        .kanban-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .kanban-count {
+            background: white;
+            color: var(--gray-700);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-md);
+            font-size: 0.875rem;
+        }
+
+        .kanban-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .kanban-card {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .kanban-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        /* リストビュー */
+        .list-view {
+            display: none;
+        }
+
+        .list-view.active {
             display: block;
-            padding: 1em 1.5em;
-            background-color: #fff;
-            color: #007bff;
-            text-decoration: none;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-weight: 600;
-            transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        a:hover {
-            background-color: #f8f9fa;
-            transform: translateY(-2px);
-            border-color: #cce5ff;
+
+        .list-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-fast);
+            cursor: pointer;
         }
-        .how-to {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 1.5em 2em;
-            margin-bottom: 2em;
+
+        .list-item:hover {
+            box-shadow: var(--shadow-md);
         }
-        .how-to h2 {
-            margin-top: 0;
-            border-bottom: none;
+
+        .list-item-main {
+            flex: 1;
         }
-        dl {
-            margin-top: 1em;
+
+        .list-item-side {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
-        dt {
-            font-weight: 600;
-            margin-top: 1em;
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .toolbar-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kanban-view.active {
+                grid-template-columns: 1fr;
+            }
+
+            .list-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .list-item-side {
+                width: 100%;
+                justify-content: space-between;
+            }
         }
-        dd {
-            margin-left: 0;
-            padding-left: 1.5em;
-            border-left: 3px solid #dee2e6;
-            color: #495057;
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ローディング */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-500);
+        }
+
+        .spinner {
+            border: 3px solid var(--gray-200);
+            border-top: 3px solid var(--color-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <h1>Bier.jp WorkSpaces</h1>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+            <h1>🍺 Bier.jp WorkSpaces</h1>
+            <p>プロジェクト管理ダッシュボード - 進捗の可視化とプロトタイプ管理</p>
+        </div>
+    </header>
 
-    <section class="how-to">
-        <h2>各WorkSpaceの見方</h2>
-        <p>各WorkSpaceは、特定のテーマに関する議論や開発を集約する場所です。主に以下の構造で構成されています。</p>
-        <dl>
-            <dt><code>docs/</code></dt>
-            <dd>企画の背景、Miroの議論をまとめた仕様書、技術的な計画書などのドキュメントが格納されています。</dd>
-            <dt><code>src/</code></dt>
-            <dd>機能実装のためのソースコードが格納されます。（まだ企画段階のWorkSpaceには存在しない場合があります）</dd>
-            <dt><code>index.html</code></dt>
-            <dd>そのWorkSpaceの企画内容や議論の要点をまとめたサマリーページです。まずこのページを見ることで、WorkSpaceの全体像を把握できます。</dd>
-        </dl>
-    </section>
+    <!-- ツールバー -->
+    <div class="toolbar">
+        <div class="toolbar-content">
+            <div class="toolbar-left">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="WorkSpaceを検索...">
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="planning">計画中</button>
+                    <button class="filter-btn" data-filter="in-progress">進行中</button>
+                    <button class="filter-btn" data-filter="testing">テスト中</button>
+                    <button class="filter-btn" data-filter="completed">完了</button>
+                </div>
+            </div>
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="grid">📊 グリッド</button>
+                <button class="view-btn" data-view="kanban">📋 カンバン</button>
+                <button class="view-btn" data-view="list">📄 リスト</button>
+            </div>
+        </div>
+    </div>
 
-    <h2>WorkSpace一覧</h2>
-    <ul>
-        <li><a href="./WorkSpace1_tastingnotes/index.html">WorkSpace1: Tasting Notes</a></li>
-        <li><a href="./WorkSpace2_official-line/index.html">WorkSpace2: Official LINE</a></li>
-        <li><a href="./WorkSpace3_line-ordering/index.html">WorkSpace3: LINE Ordering</a></li>
-        <li><a href="./WorkSpace4_product-detail-page/index.html">WorkSpace4: Product Detail Page</a></li>
-        <li><a href="./WorkSpace5_feature-page/index.html">WorkSpace5: Feature Page</a></li>
-        <li><a href="./WorkSpace6_beer-comparison/index.html">WorkSpace6: Beer Comparison</a></li>
-        <li><a href="./WorkSpace7_video-content/index.html">WorkSpace7: Video Content</a></li>
-        <li><a href="./WorkSpace8_search-feature/index.html">WorkSpace8: Search Feature</a></li>
-        <li><a href="./WorkSpace9_image-search/index.html">WorkSpace9: Image Search</a></li>
-        <li><a href="./WorkSpace10_my-page/index.html">WorkSpace10: My Page</a></li>
-        <li><a href="./WorkSpace11_recommended-products/index.html">WorkSpace11: Recommended Products</a></li>
-        <li><a href="./WorkSpace12_taste-graph/index.html">WorkSpace12: Taste Graph</a></li>
-    </ul>
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <!-- 統計 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalWorkspaces">12</div>
+                <div class="stat-label">総WorkSpace数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="inProgressCount">5</div>
+                <div class="stat-label">進行中</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgProgress">47%</div>
+                <div class="stat-label">平均進捗率</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalPrototypes">0</div>
+                <div class="stat-label">総プロトタイプ数</div>
+            </div>
+        </div>
+
+        <!-- グリッドビュー -->
+        <div id="gridView" class="workspace-grid active"></div>
+
+        <!-- カンバンビュー -->
+        <div id="kanbanView" class="kanban-view"></div>
+
+        <!-- リストビュー -->
+        <div id="listView" class="list-view"></div>
+
+        <!-- ローディング -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>WorkSpaceを読み込み中...</p>
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>

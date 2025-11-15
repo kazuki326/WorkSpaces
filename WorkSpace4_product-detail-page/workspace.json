@@ -1,0 +1,39 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-4",
+  "name": "商品詳細ページの整理",
+  "description": "商品詳細ページの情報を整理し、より見やすく分かりやすいデザインに改善",
+  "status": "planning",
+  "progress": 40,
+  "priority": "medium",
+  "team": [],
+  "createdDate": "2024-10-01",
+  "lastUpdated": "2024-11-15",
+  "tags": ["UX", "デザイン", "商品ページ", "フロントエンド"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "docs/",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [
+    {
+      "name": "現状分析と課題抽出",
+      "completed": true,
+      "completedDate": "2024-10-15"
+    },
+    {
+      "name": "デザイン案作成",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "実装",
+      "completed": false,
+      "dueDate": "2024-12-20"
+    }
+  ],
+  "dependencies": ["workspace-1"],
+  "notes": "テイスティングノートの平均評価表示と連携予定"
+}

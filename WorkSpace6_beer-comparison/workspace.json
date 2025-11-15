@@ -1,0 +1,50 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-6",
+  "name": "ビール比較機能",
+  "description": "複数のビールを選択して価格・容量・特徴を一覧で比較できる機能",
+  "status": "testing",
+  "progress": 85,
+  "priority": "medium",
+  "team": ["かもりゅう"],
+  "createdDate": "2024-10-10",
+  "lastUpdated": "2024-11-15",
+  "tags": ["UX", "JavaScript", "比較機能", "フロントエンド"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-6-1",
+      "name": "ビール比較プロトタイプ",
+      "file": "index.html",
+      "version": "v2.0",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-12",
+      "description": "最大4つのビールを選択して詳細比較できるインタラクティブなプロトタイプ"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "プロトタイプ完成",
+      "completed": true,
+      "completedDate": "2024-11-12"
+    },
+    {
+      "name": "ユーザビリティテスト",
+      "completed": false,
+      "dueDate": "2024-11-25"
+    },
+    {
+      "name": "本番実装",
+      "completed": false,
+      "dueDate": "2024-12-10"
+    }
+  ],
+  "dependencies": [],
+  "notes": "プロトタイプは完成度が高く、実装フェーズに近い"
+}

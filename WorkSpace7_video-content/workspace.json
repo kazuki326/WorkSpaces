@@ -1,0 +1,34 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-7",
+  "name": "動画コンテンツ企画",
+  "description": "実写やアニメーションを使った動画コンテンツで商品やビール文化を紹介",
+  "status": "planning",
+  "progress": 20,
+  "priority": "low",
+  "team": [],
+  "createdDate": "2024-10-15",
+  "lastUpdated": "2024-11-15",
+  "tags": ["マーケティング", "動画", "コンテンツ"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [
+    {
+      "name": "コンテンツ企画立案",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    },
+    {
+      "name": "第1弾動画制作",
+      "completed": false,
+      "dueDate": "2025-01-31"
+    }
+  ],
+  "dependencies": [],
+  "notes": "長期的なコンテンツ戦略の一環"
+}
