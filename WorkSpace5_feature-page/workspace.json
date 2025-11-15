@@ -1,0 +1,34 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-5",
+  "name": "特集ページ作成",
+  "description": "季節やイベントに合わせた特集ページを作成し、コンテンツマーケティングを強化",
+  "status": "planning",
+  "progress": 30,
+  "priority": "medium",
+  "team": ["コタニ"],
+  "createdDate": "2024-10-05",
+  "lastUpdated": "2024-11-15",
+  "tags": ["マーケティング", "コンテンツ", "デザイン"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "docs/",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [
+    {
+      "name": "コンテンツカレンダー作成",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "第1弾特集ページ公開",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    }
+  ],
+  "dependencies": [],
+  "notes": "継続的なコンテンツ更新が必要"
+}

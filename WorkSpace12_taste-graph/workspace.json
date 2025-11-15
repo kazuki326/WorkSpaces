@@ -1,0 +1,39 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-12",
+  "name": "味のグラフ表示機能",
+  "description": "ビールの味わいを視覚的に表現するレーダーチャートやグラフの表示機能",
+  "status": "planning",
+  "progress": 30,
+  "priority": "medium",
+  "team": [],
+  "createdDate": "2024-10-20",
+  "lastUpdated": "2024-11-15",
+  "tags": ["UX", "可視化", "Chart.js", "デザイン"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [
+    {
+      "name": "グラフデザイン検討",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "Chart.js実装",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    },
+    {
+      "name": "商品ページへの統合",
+      "completed": false,
+      "dueDate": "2025-01-10"
+    }
+  ],
+  "dependencies": ["workspace-1", "workspace-4"],
+  "notes": "テイスティングノートの平均評価と商品詳細ページで使用予定"
+}

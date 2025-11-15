@@ -1,1 +1,56 @@
+# Miro exports (CSVファイル)
+*.csv
+**/*.csv
+
+# 作業用メモ
 prompt.txt
+*.tmp
+*.backup
+*.bak
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Node modules (将来的に使う可能性)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# サムネイル生成ファイル（将来的に自動生成する場合）
+**/prototypes/thumbs/
+**/preview/thumbs/

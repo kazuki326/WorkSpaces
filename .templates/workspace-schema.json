@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WorkSpace Metadata",
+  "description": "bier.jp WorkSpaceの進捗管理とメタデータ定義",
+  "type": "object",
+  "required": ["id", "name", "status", "progress"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^workspace-[0-9]+$",
+      "description": "WorkSpaceの一意なID（例: workspace-1）"
+    },
+    "name": {
+      "type": "string",
+      "description": "WorkSpaceの名称"
+    },
+    "description": {
+      "type": "string",
+      "description": "WorkSpaceの簡潔な説明"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planning", "in-progress", "testing", "completed", "on-hold"],
+      "description": "現在のステータス"
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "進捗率（0-100）"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "default": "medium",
+      "description": "優先度"
+    },
+    "team": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "担当者リスト"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date",
+      "description": "作成日（YYYY-MM-DD）"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date",
+      "description": "最終更新日（YYYY-MM-DD）"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "タグ（例: UX, バックエンド, LINE連携）"
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "miro": {
+          "type": "string",
+          "format": "uri"
+        },
+        "figma": {
+          "type": "string",
+          "format": "uri"
+        },
+        "docs": {
+          "type": "string"
+        },
+        "other": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "url": {"type": "string", "format": "uri"}
+            }
+          }
+        }
+      }
+    },
+    "prototypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "file"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "プロトタイプの一意なID"
+          },
+          "name": {
+            "type": "string",
+            "description": "プロトタイプの名称"
+          },
+          "file": {
+            "type": "string",
+            "description": "ファイルパス（相対パス）"
+          },
+          "version": {
+            "type": "string",
+            "description": "バージョン（例: v1.0）"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "ready", "approved", "deprecated"],
+            "default": "draft"
+          },
+          "thumbnail": {
+            "type": "string",
+            "description": "サムネイル画像のパス"
+          },
+          "lastModified": {
+            "type": "string",
+            "format": "date"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "completed"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "completedDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "依存するWorkSpaceのID（例: workspace-2）"
+    },
+    "notes": {
+      "type": "string",
+      "description": "その他のメモ"
+    }
+  }
+}

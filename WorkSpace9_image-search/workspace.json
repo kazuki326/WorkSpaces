@@ -1,0 +1,45 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-9",
+  "name": "画像検索機能",
+  "description": "写真をアップロードして似たビールを検索できるビジュアル検索機能",
+  "status": "planning",
+  "progress": 25,
+  "priority": "low",
+  "team": [],
+  "createdDate": "2024-10-25",
+  "lastUpdated": "2024-11-15",
+  "tags": ["AI", "画像認識", "検索", "先進技術"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-9-1",
+      "name": "画像検索UI",
+      "file": "index.html",
+      "version": "v0.5",
+      "status": "draft",
+      "thumbnail": "",
+      "lastModified": "2024-11-01",
+      "description": "画像アップロードと検索結果表示のUIモックアップ"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "技術調査",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    },
+    {
+      "name": "PoC実装",
+      "completed": false,
+      "dueDate": "2025-01-31"
+    }
+  ],
+  "dependencies": [],
+  "notes": "Google Vision APIやAWS Rekognitionなどの利用を検討。技術的難易度が高いため、長期プロジェクト。"
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-11",
+  "name": "おすすめ商品デザイン改善",
+  "description": "トップページの「おすすめ商品」セクションのデザインをより魅力的に改善",
+  "status": "planning",
+  "progress": 35,
+  "priority": "medium",
+  "team": ["かもりゅう"],
+  "createdDate": "2024-10-15",
+  "lastUpdated": "2024-11-15",
+  "tags": ["デザイン", "UX", "トップページ", "レコメンド"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [
+    {
+      "name": "現状分析",
+      "completed": true,
+      "completedDate": "2024-10-25"
+    },
+    {
+      "name": "デザイン案作成",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "実装",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    }
+  ],
+  "dependencies": [],
+  "notes": "A/Bテストを実施してコンバージョン率を測定予定"
+}

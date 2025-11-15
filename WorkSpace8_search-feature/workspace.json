@@ -1,0 +1,50 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-8",
+  "name": "検索機能の充実",
+  "description": "味・香り・アルコール度数などの詳細条件で商品を検索できる高度な検索機能",
+  "status": "in-progress",
+  "progress": 50,
+  "priority": "medium",
+  "team": ["かもりゅう"],
+  "createdDate": "2024-10-20",
+  "lastUpdated": "2024-11-15",
+  "tags": ["検索", "フィルター", "UX", "フロントエンド"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-8-1",
+      "name": "詳細検索プロトタイプ",
+      "file": "index.html",
+      "version": "v1.0",
+      "status": "draft",
+      "thumbnail": "",
+      "lastModified": "2024-11-08",
+      "description": "複数条件でのフィルタリング検索UI"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "UI設計",
+      "completed": true,
+      "completedDate": "2024-11-05"
+    },
+    {
+      "name": "フロントエンド実装",
+      "completed": false,
+      "dueDate": "2024-12-01"
+    },
+    {
+      "name": "バックエンドAPI実装",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    }
+  ],
+  "dependencies": [],
+  "notes": "ElasticsearchやAlgoliaなどの検索エンジン導入を検討中"
+}

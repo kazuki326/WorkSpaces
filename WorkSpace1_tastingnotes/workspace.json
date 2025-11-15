@@ -1,0 +1,105 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-1",
+  "name": "テイスティングノート機能",
+  "description": "購入者がビールのテイスティング結果を記録し、その平均評価を商品ページに口コミとして掲載する機能",
+  "status": "in-progress",
+  "progress": 65,
+  "priority": "high",
+  "team": ["コタニ"],
+  "createdDate": "2024-10-01",
+  "lastUpdated": "2024-11-15",
+  "tags": ["UX", "フロントエンド", "バックエンド", "マイページ", "レビュー機能"],
+  "links": {
+    "miro": "https://miro.com/app/board/bier-jp-workspace1",
+    "figma": "",
+    "docs": "docs/",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-1-1",
+      "name": "テイスティングノート入力フォーム",
+      "file": "preview/1_input_form.html",
+      "version": "v1.0",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-01",
+      "description": "ビール評価を入力するためのフォームUI。5段階スライダーとコメント欄を含む。"
+    },
+    {
+      "id": "proto-1-2",
+      "name": "評価スライダーUI",
+      "file": "preview/2_rating_sliders.html",
+      "version": "v1.0",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-01",
+      "description": "味・香り・苦味などの評価項目をスライダーで入力するUIコンポーネント。"
+    },
+    {
+      "id": "proto-1-3",
+      "name": "Myビール図鑑（コレクション）",
+      "file": "preview/3_collection_view.html",
+      "version": "v1.2",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-05",
+      "description": "ユーザーが記録したビールを図鑑形式で一覧表示。グリッドレイアウト。"
+    },
+    {
+      "id": "proto-1-4",
+      "name": "ポップアップ詳細（レーダーチャート付き）",
+      "file": "preview/4_collection_popup.html",
+      "version": "v1.1",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-03",
+      "description": "ビール詳細をポップアップ表示。Chart.jsを使用したレーダーチャートで評価を可視化。"
+    },
+    {
+      "id": "proto-1-5",
+      "name": "バーコードスキャナー",
+      "file": "preview/5_barcode_scanner.html",
+      "version": "v0.9",
+      "status": "draft",
+      "thumbnail": "",
+      "lastModified": "2024-10-28",
+      "description": "スマホカメラでビールのバーコードをスキャンして商品を特定する機能の試作。"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "UI/UX設計完了",
+      "completed": true,
+      "completedDate": "2024-10-20"
+    },
+    {
+      "name": "プロトタイプ作成",
+      "completed": true,
+      "completedDate": "2024-11-05"
+    },
+    {
+      "name": "バックエンドAPI設計",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "フロントエンド実装",
+      "completed": false,
+      "dueDate": "2024-12-15"
+    },
+    {
+      "name": "テスト・デバッグ",
+      "completed": false,
+      "dueDate": "2024-12-25"
+    },
+    {
+      "name": "本番リリース",
+      "completed": false,
+      "dueDate": "2025-01-10"
+    }
+  ],
+  "dependencies": [],
+  "notes": "バーコードスキャン機能はMVPでは見送る可能性あり。レーダーチャートの実装にChart.jsを使用予定。"
+}

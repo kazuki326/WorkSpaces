@@ -1,0 +1,65 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-3",
+  "name": "LINE注文機能",
+  "description": "LINE上で商品を検索・注文できるチャットボット機能を実装",
+  "status": "in-progress",
+  "progress": 70,
+  "priority": "high",
+  "team": [],
+  "createdDate": "2024-09-20",
+  "lastUpdated": "2024-11-15",
+  "tags": ["LINE", "チャットボット", "GAS", "API", "Flex Message"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "docs/",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-3-1",
+      "name": "商品カード（Flex Message）",
+      "file": "preview/product_card_preview.html",
+      "version": "v1.0",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-10",
+      "description": "LINE上で表示する商品カードのUIプレビュー"
+    },
+    {
+      "id": "proto-3-2",
+      "name": "リッチメニュー",
+      "file": "preview/rich_menu_preview.html",
+      "version": "v1.0",
+      "status": "ready",
+      "thumbnail": "",
+      "lastModified": "2024-11-10",
+      "description": "LINEトーク画面下部に表示されるリッチメニューのデザイン"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "アーキテクチャ設計完了",
+      "completed": true,
+      "completedDate": "2024-10-15"
+    },
+    {
+      "name": "GASチャットボット実装",
+      "completed": false,
+      "dueDate": "2024-11-30"
+    },
+    {
+      "name": "買い物かごAPI開発",
+      "completed": false,
+      "dueDate": "2024-12-10"
+    },
+    {
+      "name": "テスト・デバッグ",
+      "completed": false,
+      "dueDate": "2024-12-20"
+    }
+  ],
+  "dependencies": ["workspace-2"],
+  "notes": "Google Apps ScriptとLINE Messaging APIを使用。bier.jp側に買い物かごAPIの新規開発が必要。"
+}

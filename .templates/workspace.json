@@ -1,0 +1,23 @@
+{
+  "$schema": "./workspace-schema.json",
+  "id": "workspace-X",
+  "name": "WorkSpace名",
+  "description": "このWorkSpaceの簡潔な説明",
+  "status": "planning",
+  "progress": 0,
+  "priority": "medium",
+  "team": [],
+  "createdDate": "2024-01-01",
+  "lastUpdated": "2024-01-01",
+  "tags": [],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [],
+  "milestones": [],
+  "dependencies": [],
+  "notes": ""
+}
