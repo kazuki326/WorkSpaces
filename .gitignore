@@ -5,6 +5,8 @@
 # 作業用メモ
 prompt.txt
 *.tmp
+*.backup
+*.bak
 
 # OS generated files
 .DS_Store
