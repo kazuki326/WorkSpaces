@@ -303,6 +303,9 @@
         window.location.href = `./${directory}/index.html`;
     }
 
+    // グローバルスコープに公開（onclick属性から呼び出せるように）
+    window.navigateTo = navigateTo;
+
     // ===================================
     // イベントリスナー
     // ===================================
