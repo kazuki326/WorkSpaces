@@ -136,10 +136,12 @@
             return;
         }
 
-        container.innerHTML = filtered.map(ws => `
+        container.innerHTML = filtered.map(ws => {
+            const wsNumber = ws.id.replace('workspace-', '');
+            return `
             <div class="workspace-card fade-in" onclick="navigateTo('${ws.directory}')">
                 <div class="workspace-card-header">
-                    <div class="workspace-title">${ws.name}</div>
+                    <div class="workspace-title">WS${wsNumber}: ${ws.name}</div>
                     <div class="workspace-description">${ws.description}</div>
                 </div>
                 <div class="workspace-card-body">
@@ -173,7 +175,8 @@
                     ` : ''}
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // ===================================
@@ -204,9 +207,11 @@
                     <div class="kanban-count">${items.length}</div>
                 </div>
                 <div class="kanban-cards">
-                    ${items.map(ws => `
+                    ${items.map(ws => {
+                        const wsNumber = ws.id.replace('workspace-', '');
+                        return `
                         <div class="kanban-card" onclick="navigateTo('${ws.directory}')">
-                            <div style="font-weight: 600; margin-bottom: 0.5rem;">${ws.name}</div>
+                            <div style="font-weight: 600; margin-bottom: 0.5rem;">WS${wsNumber}: ${ws.name}</div>
                             <div style="font-size: 0.875rem; color: #6c757d; margin-bottom: 0.75rem;">${ws.description}</div>
                             <div class="progress-container" style="margin-bottom: 0.5rem;">
                                 <div class="progress-bar" style="width: ${ws.progress}%"></div>
@@ -216,7 +221,8 @@
                                 <span style="color: #6c757d;">${ws.progress}%</span>
                             </div>
                         </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `).join('');
@@ -235,10 +241,12 @@
             return;
         }
 
-        container.innerHTML = filtered.map(ws => `
+        container.innerHTML = filtered.map(ws => {
+            const wsNumber = ws.id.replace('workspace-', '');
+            return `
             <div class="list-item" onclick="navigateTo('${ws.directory}')">
                 <div class="list-item-main">
-                    <div style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">${ws.name}</div>
+                    <div style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">WS${wsNumber}: ${ws.name}</div>
                     <div style="color: #6c757d; margin-bottom: 0.75rem;">${ws.description}</div>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                         <span class="badge badge-status ${ws.status}">${STATUS_LABELS[ws.status]}</span>
@@ -259,7 +267,8 @@
                     ` : ''}
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // ===================================
