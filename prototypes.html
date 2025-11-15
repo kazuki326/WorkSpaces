@@ -405,10 +405,12 @@
 
                 noPrototypes.style.display = 'none';
 
-                gallery.innerHTML = filtered.map(proto => `
+                gallery.innerHTML = filtered.map(proto => {
+                    const wsNumber = proto.workspaceId.replace('workspace-', '');
+                    return `
                     <div class="prototype-card fade-in">
                         <div class="prototype-header">
-                            <div class="workspace-label">${proto.workspace}</div>
+                            <div class="workspace-label">WS${wsNumber}: ${proto.workspace}</div>
                             <div class="prototype-title">${proto.name}</div>
                             <span class="prototype-version">${proto.version || 'v1.0'}</span>
                         </div>
@@ -427,7 +429,8 @@
                             ` : ''}
                         </div>
                     </div>
-                `).join('');
+                    `;
+                }).join('');
             }
 
             function setupEventListeners() {

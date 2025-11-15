@@ -136,10 +136,12 @@
             return;
         }
 
-        container.innerHTML = filtered.map(ws => `
+        container.innerHTML = filtered.map(ws => {
+            const wsNumber = ws.id.replace('workspace-', '');
+            return `
             <div class="workspace-card fade-in" onclick="navigateTo('${ws.directory}')">
                 <div class="workspace-card-header">
-                    <div class="workspace-title">${ws.name}</div>
+                    <div class="workspace-title">WS${wsNumber}: ${ws.name}</div>
                     <div class="workspace-description">${ws.description}</div>
                 </div>
                 <div class="workspace-card-body">
@@ -163,17 +165,14 @@
                     ` : ''}
                 </div>
                 <div class="workspace-footer">
-                    <div class="team-section">
-                        ${ws.team && ws.team.length > 0 ? `
-                            <span>👤 ${ws.team.join(', ')}</span>
-                        ` : '<span style="color: #adb5bd;">担当者未設定</span>'}
-                    </div>
                     ${ws.prototypes && ws.prototypes.length > 0 ? `
                         <div class="prototype-count">🎨 ${ws.prototypes.length} プロトタイプ</div>
-                    ` : ''}
+                    ` : '<div></div>'}
+                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); navigateTo('${ws.directory}')">詳細を見る →</button>
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // ===================================
@@ -204,19 +203,23 @@
                     <div class="kanban-count">${items.length}</div>
                 </div>
                 <div class="kanban-cards">
-                    ${items.map(ws => `
-                        <div class="kanban-card" onclick="navigateTo('${ws.directory}')">
-                            <div style="font-weight: 600; margin-bottom: 0.5rem;">${ws.name}</div>
+                    ${items.map(ws => {
+                        const wsNumber = ws.id.replace('workspace-', '');
+                        return `
+                        <div class="kanban-card">
+                            <div style="font-weight: 600; margin-bottom: 0.5rem;">WS${wsNumber}: ${ws.name}</div>
                             <div style="font-size: 0.875rem; color: #6c757d; margin-bottom: 0.75rem;">${ws.description}</div>
                             <div class="progress-container" style="margin-bottom: 0.5rem;">
                                 <div class="progress-bar" style="width: ${ws.progress}%"></div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; margin-bottom: 0.75rem;">
                                 <span class="badge badge-priority ${ws.priority}">${PRIORITY_LABELS[ws.priority]}</span>
                                 <span style="color: #6c757d;">${ws.progress}%</span>
                             </div>
+                            <button class="btn btn-primary btn-sm" onclick="navigateTo('${ws.directory}')" style="width: 100%;">詳細を見る →</button>
                         </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `).join('');
@@ -235,15 +238,17 @@
             return;
         }
 
-        container.innerHTML = filtered.map(ws => `
-            <div class="list-item" onclick="navigateTo('${ws.directory}')">
+        container.innerHTML = filtered.map(ws => {
+            const wsNumber = ws.id.replace('workspace-', '');
+            return `
+            <div class="list-item">
                 <div class="list-item-main">
-                    <div style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">${ws.name}</div>
+                    <div style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">WS${wsNumber}: ${ws.name}</div>
                     <div style="color: #6c757d; margin-bottom: 0.75rem;">${ws.description}</div>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
                         <span class="badge badge-status ${ws.status}">${STATUS_LABELS[ws.status]}</span>
                         <span class="badge badge-priority ${ws.priority}">${PRIORITY_LABELS[ws.priority]}</span>
-                        ${ws.team && ws.team.length > 0 ? `<span class="tag">👤 ${ws.team.join(', ')}</span>` : ''}
+                        <button class="btn btn-primary btn-sm" onclick="navigateTo('${ws.directory}')">詳細を見る →</button>
                     </div>
                 </div>
                 <div class="list-item-side">
@@ -259,7 +264,8 @@
                     ` : ''}
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     // ===================================
