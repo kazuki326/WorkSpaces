@@ -55,10 +55,102 @@
         </section>
 
         <section class="my-page-section">
+            <h2>総合README</h2>
+            <div class="readme-content">
+                <h3>1. プロジェクト目標</h3>
+                <p>ECサイト「bier.jp」の公式LINEアカウントにチャットボットを導入し、ユーザーがLINE上で商品を注文できる仕組みを構築する。これにより、ユーザー体験の向上と売上増加を目指す。</p>
+
+                <h3>2. アーキテクチャ概要</h3>
+                <p>Miroでの議論の結果、以下のアーキテクチャを採用する。</p>
+                <ol>
+                    <li>
+                        <strong>LINEチャットボット (Google Apps Script)</strong>:
+                        <ul>
+                            <li>ユーザーとの対話、商品レコメンドを担当する。</li>
+                            <li>LINE Messaging APIからのWebhookを受け取り、応答メッセージを生成する。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>商品カード (Flex Message)</strong>:
+                        <ul>
+                            <li>チャットボットが商品を提案する際に、画像、説明、価格、アクションボタンを含むリッチなUI（商品カード）を送信する。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>買い物かご追加API (<code>bier.jp</code>側)</strong>:
+                        <ul>
+                            <li><code>bier.jp</code>のドメイン上に、外部から商品IDを受け取り、localStorageで管理されている買い物かごに商品を追加するためのAPIエンドポイントを新規に開発する。</li>
+                            <li>LINEの商品カードの「商品かごに追加」ボタンは、このAPIを呼び出すURLを指す。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>決済と配送</strong>:
+                        <ul>
+                            <li>決済と配送先情報の入力は、既存の<code>bier.jp</code>のフローを利用する。ユーザーは買い物かごページに遷移し、そこで手続きを完了させる。</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p><strong>補足:</strong> 当初、LINE内での決済完結も検討されたが（L Message, Lea等の外部サービス利用）、既存の<code>bier.jp</code>のシステムとの連携の複雑さや在庫管理の二重化リスクを考慮し、まずは<code>bier.jp</code>サイトへの誘導とAPI連携を優先する方針とする。</p>
+
+                <h3>3. 主な機能要件</h3>
+                <ul>
+                    <li><strong>チャットボットによる商品検索・推薦</strong>: ユーザーのメッセージに基づき、商品を検索し、商品カードを送信する。</li>
+                    <li><strong>LINEアカウント連携</strong>: <code>bier.jp</code>のアカウントとLINEアカウントを連携させ、シームレスな顧客体験を提供する。</li>
+                    <li><strong>リッチメニューの設置</strong>: ユーザーがいつでも「買い物かご」や「トップページ」にアクセスできるメニューをLINEのトーク画面下部に常時表示する。</li>
+                    <li><strong>買い物かごへの追加機能</strong>: LINEの商品カードからワンタップで<code>bier.jp</code>の買い物かごに商品を追加できる。</li>
+                </ul>
+
+                <h3>4. 技術的課題とTODO</h3>
+                <ul>
+                    <li>
+                        <strong><code>bier.jp</code>買い物かごAPIの開発</strong>:
+                        <ul>
+                            <li><code>bier.jp</code>のドメインで、商品IDをパラメータとして受け取り、localStorageの買い物かご情報を更新するAPIを実装する。</li>
+                            <li>セキュリティ（CSRF対策など）を考慮する必要がある。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Google Apps Script (GAS) の実装</strong>:
+                        <ul>
+                            <li>LINE Messaging APIのWebhook処理</li>
+                            <li>商品検索ロジック (<code>searchByProductName</code>)</li>
+                            <li>商品カード生成ロジック (<code>ConvertToProductCard</code>)</li>
+                            <li><code>bier.jp</code>の在庫情報や商品情報をGASから参照する方法の確立（SpreadsheetまたはAPI経由）</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Flex Messageの最適化</strong>:
+                        <ul>
+                            <li>商品説明が長文の場合の省略表示 (<code>...</code>)</li>
+                            <li>画像のアスペクト比や表示品質の改善</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>LINEアカウント連携の実装</strong>:
+                        <ul>
+                            <li>LINEのドキュメントに基づき、連携フローを設計・実装する。</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>エラーハンドリング</strong>:
+                        <ul>
+                            <li>API呼び出しの失敗、商品が見つからない場合など、様々なエラーケースを想定した処理を実装する。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>5. マーケティング施策</h3>
+                <ul>
+                    <li>LINE友だち登録を促進するためのWebサイト上のバナー設置やSNSでの告知。</li>
+                    <li>クーポン配布、新商品情報、セール情報などを通じたアクティブな情報発信。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="my-page-section">
             <h2>技術仕様とドキュメント</h2>
             <p>本プロジェクトの技術的な詳細をまとめたドキュメントです。</p>
             <ul>
-                <li><a href="README.md">総合README</a>: プロジェクト全体の目標、アーキテクチャ、課題の概要。</li>
                 <li><a href="docs/api-design.md">買い物かご追加API設計書</a>: <code>bier.jp</code>側に実装するAPIの詳細な仕様。</li>
                 <li><a href="docs/line-integration-plan.md">LINE連携機能 設計プラン</a>: アカウント連携やリッチメニュー、Flex Messageに関する設計。</li>
                 <li><a href="docs/third-party-services.md">サードパーティ製サービス調査</a>: L Message等の外部サービスを調査し、自前実装に至った経緯。</li>
