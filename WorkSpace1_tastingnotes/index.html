@@ -20,11 +20,11 @@
             <div class="preview-links">
                 <p>Miroボードで検討されたUI/UXのモックアップです。リンクをクリックして各プレビューをポップアップで確認できます。</p>
                 <ul>
-                    <li><a onclick="openModal('preview/1_input_form.html', '1. テイスティングノート入力フォーム')">1. テイスティングノート入力フォーム</a></li>
-                    <li><a onclick="openModal('preview/2_rating_sliders.html', '2. 評価スライダーUI')">2. 評価スライダーUI</a></li>
-                    <li><a onclick="openModal('preview/3_collection_view.html', '3. Myビール図鑑（コレクション）')">3. Myビール図鑑（コレクション）</a></li>
-                    <li><a onclick="openModal('preview/4_collection_popup.html', '4. ポップアップ詳細（レーダーチャート付き）')">4. ポップアップ詳細（レーダーチャート付き）</a></li>
-                    <li><a onclick="openModal('preview/5_barcode_scanner.html', '5. バーコードスキャナー')">5. バーコードスキャナー</a></li>
+                    <li><a href="#" onclick="openModal('preview/1_input_form.html', '1. テイスティングノート入力フォーム'); return false;">1. テイスティングノート入力フォーム</a></li>
+                    <li><a href="#" onclick="openModal('preview/2_rating_sliders.html', '2. 評価スライダーUI'); return false;">2. 評価スライダーUI</a></li>
+                    <li><a href="#" onclick="openModal('preview/3_collection_view.html', '3. Myビール図鑑（コレクション）'); return false;">3. Myビール図鑑（コレクション）</a></li>
+                    <li><a href="#" onclick="openModal('preview/4_collection_popup.html', '4. ポップアップ詳細（レーダーチャート付き）'); return false;">4. ポップアップ詳細（レーダーチャート付き）</a></li>
+                    <li><a href="#" onclick="openModal('preview/5_barcode_scanner.html', '5. バーコードスキャナー'); return false;">5. バーコードスキャナー</a></li>
                 </ul>
             </div>
 
@@ -67,7 +67,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="modalTitle"></div>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <button class="modal-close-btn" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
                 <iframe id="modal-iframe" src=""></iframe>
@@ -83,17 +83,27 @@
         function openModal(url, title) {
             modalIframe.src = url;
             modalTitle.textContent = title;
-            modalOverlay.style.display = 'flex';
+            modalOverlay.classList.add('active');
         }
 
         function closeModal() {
-            modalOverlay.style.display = 'none';
-            modalIframe.src = ''; // Clear iframe src to stop any running scripts/videos
+            modalOverlay.classList.remove('active');
+            // Clear iframe src after transition completes
+            setTimeout(() => {
+                modalIframe.src = '';
+            }, 300);
         }
 
         // Close modal if overlay is clicked
         modalOverlay.addEventListener('click', function(event) {
             if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
                 closeModal();
             }
         });
