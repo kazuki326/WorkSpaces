@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品詳細</title>
+    <style>
+        /* ========================================
+           基本設定とページ全体のスタイル
+           ======================================== */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* ========================================
+           商品ギャラリー全体のコンテナ
+           ======================================== */
+        .product-gallery {
+            width: 90vw;
+            max-width: 960px;
+            margin: 4vw auto;
+            background-color: #fff;
+            padding: 2.5vw;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* ========================================
+           メイン画像表示エリア
+           ======================================== */
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            margin-bottom: 2vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: contain;
+            cursor: grab;
+            transition: opacity 0.2s ease;
+        }
+
+        .main-image-container img:hover {
+            opacity: 0.8;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: clamp(34px, 5vw, 50px);
+            height: clamp(34px, 5vw, 50px);
+            font-size: clamp(16px, 2.5vw, 24px);
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            background-color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .arrow.left {
+            left: 1.5vw;
+        }
+
+        .arrow.right {
+            right: 1.5vw;
+        }
+
+        /* ========================================
+           ★ 追加: 画像の説明文エリアのスタイル
+           ======================================== */
+        .image-description {
+            text-align: center;
+            margin: 0 auto 2vw;
+            font-size: clamp(14px, 1.8vw, 18px);
+            color: #555;
+            min-height: 1.2em;
+        }
+
+        /* ========================================
+           サムネイル画像エリア
+           ======================================== */
+        .thumbnail-slider-wrapper {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-top: 5px;
+            /* ホバーで動くための上の余白 */
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1.5vw;
+        }
+
+        .thumbnail-container img {
+            width: clamp(60px, 28%, 120px);
+            flex-shrink: 0;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid transparent;
+            border-radius: 4px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .thumbnail-container img:hover {
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-container img.active {
+            border-color: #007bff;
+        }
+
+        .thumbnail-slider-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .thumbnail-slider-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .thumbnail-slider-wrapper::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .thumbnail-slider-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* ========================================
+           モーダルウィンドウ (拡大表示)
+           ======================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.modal-open {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            cursor: grab;
+        }
+
+        .modal-description {
+            position: absolute;
+            bottom: 140px;
+            /* ページネーション(100px)の少し上 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            /* 横幅が広がりすぎないように制限 */
+            max-width: 600px;
+            color: #fff;
+            text-align: center;
+            font-size: clamp(14px, 1.5vw, 16px);
+            line-height: 1.5;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1010;
+        }
+
+        .modal-close-button:hover {
+            color: #bbb;
+        }
+
+        .modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            font-size: 2.5em;
+            font-weight: bold;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 1010;
+        }
+
+        .modal-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-arrow.left {
+            left: 20px;
+        }
+
+        .modal-arrow.right {
+            right: 20px;
+        }
+
+        /* ========================================
+           モーダル内のページネーション (〇●〇)
+           ======================================== */
+        .modal-pagination {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .pagination-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #888;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pagination-dot.active {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-gallery">
+        <div class="main-image-container">
+            <img id="mainImage" src="" alt="メイン画像">
+            <div class="arrow left" onclick="changeMainImage(-1)">&#10094;</div>
+            <div class="arrow right" onclick="changeMainImage(1)">&#10095;</div>
+        </div>
+
+        <p id="imageDescription" class="image-description"></p>
+
+        <div class="thumbnail-slider-wrapper">
+            <div id="thumbnailContainer" class="thumbnail-container"></div>
+        </div>
+    </div>
+    <div id="modal" class="modal-overlay">
+        <span id="closeButton" class="modal-close-button">&times;</span>
+        <img id="modalImage" class="modal-content" src="" alt="拡大画像">
+
+        <p id="modalDescription" class="modal-description"></p>
+
+        <div id="modalArrowLeft" class="modal-arrow left">&#10094;</div>
+        <div id="modalArrowRight" class="modal-arrow right">&#10095;</div>
+        <div id="modalPagination" class="modal-pagination"></div>
+    </div>
+
+    <script>
+        // ★ 変更点: 画像パスと説明文をオブジェクトで管理する
+        const imageSources = [
+            { src: 'images/bier1.png', description: '１番目の画像の説明です。' },
+            { src: 'images/bier1_glass.png', description: 'これが２番目の画像です。' },
+            { src: 'images/bier1_bbq.png', description: '３番目の画像についての文章。' },
+            { src: 'images/bier1_bbq2.png', description: '４番目の画像です。' },
+            { src: 'images/bier1_food.png', description: '最後の５番目の画像になります。' }
+        ];
+        let currentIndex = 0;
+
+        // ★ 変更点: 必要な要素をここでまとめて取得
+        const mainImage = document.getElementById('mainImage');
+        const imageDescription = document.getElementById('imageDescription');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+
+        // サムネイルを動的に生成するためのコード
+        imageSources.forEach((item, index) => {
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = `サムネイル${index + 1}`;
+            img.addEventListener('click', () => selectImage(index));
+            thumbnailContainer.appendChild(img);
+        });
+        const allThumbnails = document.querySelectorAll('.thumbnail-container img');
+
+        // 新しいサムネイルに対応した関数
+        function selectImage(index) {
+            currentIndex = index;
+            mainImage.src = imageSources[currentIndex].src;
+            imageDescription.textContent = imageSources[currentIndex].description;
+
+            allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+            allThumbnails[currentIndex].classList.add('active');
+
+            allThumbnails[currentIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
+
+        // 矢印がクリックされたときにメイン画像を切り替える関数
+        function changeMainImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) {
+                currentIndex = imageSources.length - 1;
+            } else if (currentIndex >= imageSources.length) {
+                currentIndex = 0;
+            }
+            selectImage(currentIndex);
+        }
+
+        // ページの読み込みが完了したときに最初の画像を選択状態にする
+        window.addEventListener('load', () => {
+            selectImage(0);
+        });
+
+        /* --- モーダルとスワイプ機能のJavaScript --- */
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        const closeButton = document.getElementById('closeButton');
+        const modalArrowLeft = document.getElementById('modalArrowLeft');
+        const modalArrowRight = document.getElementById('modalArrowRight');
+        const modalPagination = document.getElementById('modalPagination');
+        const modalDescription = document.getElementById('modalDescription');
+
+        imageSources.forEach((item, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('pagination-dot');
+            dot.addEventListener('click', () => { jumpToImage(index); });
+            modalPagination.appendChild(dot);
+        });
+
+        const paginationDots = document.querySelectorAll('.pagination-dot');
+
+        function updateModalView() {
+            modalImage.src = imageSources[currentIndex].src;
+            modalDescription.textContent = imageSources[currentIndex].description;
+            paginationDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function jumpToImage(index) { currentIndex = index; updateModalView(); }
+        function changeModalImage(direction) { currentIndex += direction; if (currentIndex < 0) { currentIndex = imageSources.length - 1; } else if (currentIndex >= imageSources.length) { currentIndex = 0; } updateModalView(); }
+        mainImage.addEventListener('click', (event) => { if (isMainDraggingJustFinished) { isMainDraggingJustFinished = false; return; } modal.classList.add('modal-open'); updateModalView(); });
+        closeButton.addEventListener('click', () => { modal.classList.remove('modal-open'); });
+        modal.addEventListener('click', (event) => { if (event.target === modal) { modal.classList.remove('modal-open'); } });
+        modalArrowLeft.addEventListener('click', () => { changeModalImage(-1); });
+        modalArrowRight.addEventListener('click', () => { changeModalImage(1); });
+        let touchStartX = 0; let touchEndX = 0; const swipeThreshold = 50;
+        modal.addEventListener('touchstart', (event) => { touchStartX = event.touches[0].clientX; });
+        modal.addEventListener('touchend', (event) => { touchEndX = event.changedTouches[0].clientX; handleModalSwipe(); });
+        function handleModalSwipe() { const swipeDistance = touchEndX - touchStartX; if (swipeDistance < -swipeThreshold) { changeModalImage(1); } else if (swipeDistance > swipeThreshold) { changeModalImage(-1); } }
+        let isModalDragging = false;
+        modal.addEventListener('mousedown', (event) => { if (event.target === modalImage || event.target.classList.contains('modal-arrow')) { isModalDragging = true; touchStartX = event.clientX; modalImage.style.cursor = 'grabbing'; event.preventDefault(); } });
+        modal.addEventListener('mouseup', (event) => { if (isModalDragging) { isModalDragging = false; touchEndX = event.clientX; modalImage.style.cursor = 'grab'; handleModalSwipe(); } });
+        modal.addEventListener('mouseleave', (event) => { if (isModalDragging) { isModalDragging = false; touchEndX = event.clientX; modalImage.style.cursor = 'grab'; handleModalSwipe(); } });
+        modal.addEventListener('mousemove', (event) => { if (isModalDragging) { event.preventDefault(); } });
+        const mainImageContainer = document.querySelector('.main-image-container');
+        let isMainDragging = false; let isMainDraggingJustFinished = false; let mainTouchStartX = 0; let mainTouchEndX = 0;
+        function handleMainSwipe() { const swipeDistance = mainTouchEndX - mainTouchStartX; if (swipeDistance < -swipeThreshold) { changeMainImage(1); } else if (swipeDistance > swipeThreshold) { changeMainImage(-1); } }
+        mainImageContainer.addEventListener('touchstart', (event) => { mainTouchStartX = event.touches[0].clientX; });
+        mainImageContainer.addEventListener('touchend', (event) => { mainTouchEndX = event.changedTouches[0].clientX; handleMainSwipe(); });
+        mainImageContainer.addEventListener('mousedown', (event) => { isMainDragging = true; mainTouchStartX = event.clientX; mainImage.style.cursor = 'grabbing'; event.preventDefault(); });
+        mainImageContainer.addEventListener('mouseup', (event) => { if (isMainDragging) { isMainDragging = false; mainTouchEndX = event.clientX; mainImage.style.cursor = 'grab'; if (Math.abs(mainTouchEndX - mainTouchStartX) > 10) { isMainDraggingJustFinished = true; setTimeout(() => { isMainDraggingJustFinished = false; }, 100); } handleMainSwipe(); } });
+        mainImageContainer.addEventListener('mouseleave', (event) => { if (isMainDragging) { isMainDragging = false; mainTouchEndX = event.clientX; mainImage.style.cursor = 'grab'; handleMainSwipe(); } });
+        mainImageContainer.addEventListener('mousemove', (event) => { if (isMainDragging) { event.preventDefault(); } });
+    </script>
+</body>
+
+</html>
