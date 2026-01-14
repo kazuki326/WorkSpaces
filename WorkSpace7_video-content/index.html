@@ -6,6 +6,8 @@
     <title>WorkSpace7: 動画コンテンツアイデア集</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -152,6 +154,21 @@
             </div>
         </section>
     </main>
+
+    <section class="my-page-section">
+        <h2>関連ドキュメント</h2>
+        <p>動画コンテンツの戦略と制作ガイドラインです。</p>
+        <div class="doc-toggles">
+            <details class="doc-toggle" data-doc="docs/content-strategy.md">
+                <summary>コンテンツ戦略<span class="doc-description">動画コンテンツの目的、ターゲット、KPI。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+            <details class="doc-toggle" data-doc="docs/production-guidelines.md">
+                <summary>制作ガイドライン<span class="doc-description">撮影・編集の基準、ブランドガイドライン。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 bier.jp Video Content Ideas</p>

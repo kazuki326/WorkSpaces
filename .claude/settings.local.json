@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/sync-readme-status.js:*)",
+      "Bash(git checkout:*)",
+      "Bash(node scripts/scan-workspaces.js:*)",
+      "Bash(grep:*)"
+    ]
+  }
+}

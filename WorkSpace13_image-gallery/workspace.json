@@ -1,0 +1,34 @@
+{
+  "$schema": "../.templates/workspace-schema.json",
+  "id": "workspace-13",
+  "name": "画像ギャラリー",
+  "description": "商品画像やビール関連の写真をギャラリー形式で表示する機能",
+  "status": "planning",
+  "progress": 10,
+  "priority": "low",
+  "team": [],
+  "createdDate": "2025-01-14",
+  "lastUpdated": "2025-01-14",
+  "tags": ["画像", "ギャラリー", "UI"],
+  "links": {
+    "miro": "",
+    "figma": "",
+    "docs": "",
+    "other": []
+  },
+  "prototypes": [
+    {
+      "id": "proto-13-1",
+      "name": "フォトギャラリー",
+      "file": "photos.html",
+      "version": "v0.1",
+      "status": "draft",
+      "thumbnail": "",
+      "lastModified": "2025-01-14",
+      "description": "商品写真をギャラリー形式で表示するプロトタイプ"
+    }
+  ],
+  "milestones": [],
+  "dependencies": [],
+  "notes": ""
+}

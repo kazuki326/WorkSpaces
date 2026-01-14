@@ -6,6 +6,8 @@
     <title>WorkSpace3: LINE注文機能</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -57,12 +59,24 @@
         <section class="my-page-section">
             <h2>技術仕様とドキュメント</h2>
             <p>本プロジェクトの技術的な詳細をまとめたドキュメントです。</p>
-            <ul>
-                <li><a href="README.md">総合README</a>: プロジェクト全体の目標、アーキテクチャ、課題の概要。</li>
-                <li><a href="docs/api-design.md">買い物かご追加API設計書</a>: <code>bier.jp</code>側に実装するAPIの詳細な仕様。</li>
-                <li><a href="docs/line-integration-plan.md">LINE連携機能 設計プラン</a>: アカウント連携やリッチメニュー、Flex Messageに関する設計。</li>
-                <li><a href="docs/third-party-services.md">サードパーティ製サービス調査</a>: L Message等の外部サービスを調査し、自前実装に至った経緯。</li>
-            </ul>
+            <div class="doc-toggles">
+                <details class="doc-toggle" data-doc="README.md">
+                    <summary>総合README<span class="doc-description">プロジェクト全体の目標、アーキテクチャ、課題の概要。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/api-design.md">
+                    <summary>買い物かご追加API設計書<span class="doc-description">bier.jp側に実装するAPIの詳細な仕様。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/line-integration-plan.md">
+                    <summary>LINE連携機能 設計プラン<span class="doc-description">アカウント連携やリッチメニュー、Flex Messageに関する設計。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/third-party-services.md">
+                    <summary>サードパーティ製サービス調査<span class="doc-description">L Message等の外部サービスを調査し、自前実装に至った経緯。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+            </div>
         </section>
 
         <section class="my-page-section">

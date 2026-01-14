@@ -6,6 +6,8 @@
     <title>WorkSpace4: 商品詳細ページ改善</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -45,11 +47,20 @@
         <section class="my-page-section">
             <h2>関連ドキュメント</h2>
             <p>本プロジェクトに関するより詳細な情報は、以下のドキュメントを参照してください。</p>
-            <ul>
-                <li><a href="README.md">総合README</a></li>
-                <li><a href="docs/design-proposal.md">デザイン改善方針</a></li>
-                <li><a href="docs/implementation-mockups.md">実装モックアップ詳細</a></li>
-            </ul>
+            <div class="doc-toggles">
+                <details class="doc-toggle" data-doc="README.md">
+                    <summary>総合README<span class="doc-description">プロジェクト全体の概要と目標。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/design-proposal.md">
+                    <summary>デザイン改善方針<span class="doc-description">商品詳細ページのデザイン改善に関する方針と提案。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/implementation-mockups.md">
+                    <summary>実装モックアップ詳細<span class="doc-description">各レイアウト案の実装詳細と比較。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+            </div>
         </section>
     </main>
 

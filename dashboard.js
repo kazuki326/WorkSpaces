@@ -7,25 +7,8 @@
 
     // 状態管理
     let workspaces = [];
-    let currentView = 'grid';
     let currentFilter = 'all';
     let searchQuery = '';
-
-    // WorkSpace一覧（静的定義）
-    const WORKSPACE_DIRS = [
-        'WorkSpace1_tastingnotes',
-        'WorkSpace2_official-line',
-        'WorkSpace3_line-ordering',
-        'WorkSpace4_product-detail-page',
-        'WorkSpace5_feature-page',
-        'WorkSpace6_beer-comparison',
-        'WorkSpace7_video-content',
-        'WorkSpace8_search-feature',
-        'WorkSpace9_image-search',
-        'WorkSpace10_my-page',
-        'WorkSpace11_recommended-products',
-        'WorkSpace12_taste-graph'
-    ];
 
     // ステータスの日本語表示
     const STATUS_LABELS = {
@@ -52,7 +35,19 @@
         const loading = document.getElementById('loading');
         loading.classList.remove('hidden');
 
-        const promises = WORKSPACE_DIRS.map(async (dir) => {
+        // workspaces.json から動的にディレクトリ一覧を取得
+        let workspaceDirs = [];
+        try {
+            const listResponse = await fetch('./workspaces.json');
+            if (listResponse.ok) {
+                const listData = await listResponse.json();
+                workspaceDirs = listData.workspaces || [];
+            }
+        } catch (error) {
+            console.error('Failed to load workspaces.json:', error);
+        }
+
+        const promises = workspaceDirs.map(async (dir) => {
             try {
                 const response = await fetch(`./${dir}/workspace.json`);
                 if (!response.ok) {
@@ -73,7 +68,7 @@
 
         loading.classList.add('hidden');
         updateStatistics();
-        renderCurrentView();
+        render();
     }
 
     // ===================================
@@ -85,11 +80,6 @@
 
         const inProgress = workspaces.filter(ws => ws.status === 'in-progress').length;
         document.getElementById('inProgressCount').textContent = inProgress;
-
-        const avgProgress = Math.round(
-            workspaces.reduce((sum, ws) => sum + ws.progress, 0) / workspaces.length
-        );
-        document.getElementById('avgProgress').textContent = `${avgProgress}%`;
 
         const totalPrototypes = workspaces.reduce((sum, ws) =>
             sum + (ws.prototypes ? ws.prototypes.length : 0), 0
@@ -124,6 +114,48 @@
     }
 
     // ===================================
+    // サムネイル生成（iframe プレビュー）
+    // ===================================
+
+    function getThumbnailHTML(ws) {
+        // 最初のプロトタイプのパスを取得
+        const firstPrototype = ws.prototypes && ws.prototypes.length > 0 ? ws.prototypes[0] : null;
+
+        if (firstPrototype && firstPrototype.file) {
+            const iframeSrc = `./${ws.directory}/${firstPrototype.file}`;
+            const iframeId = `iframe-${ws.id}`;
+            return `
+                <div class="workspace-thumbnail">
+                    <div class="workspace-thumbnail-iframe-wrapper">
+                        <iframe id="${iframeId}"
+                                src="${iframeSrc}"
+                                loading="lazy"
+                                sandbox="allow-same-origin"
+                                onload="this.parentElement.nextElementSibling.classList.add('loaded')"></iframe>
+                    </div>
+                    <div class="workspace-thumbnail-loading">
+                        <div class="mini-spinner"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // プロトタイプがない場合はプレースホルダー
+        return `
+            <div class="workspace-thumbnail">
+                <div class="workspace-thumbnail-placeholder">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    <span>プロトタイプなし</span>
+                </div>
+            </div>
+        `;
+    }
+
+    // ===================================
     // グリッドビュー
     // ===================================
 
@@ -140,6 +172,7 @@
             const wsNumber = ws.id.replace('workspace-', '');
             return `
             <div class="workspace-card fade-in" onclick="navigateTo('${ws.directory}')">
+                ${getThumbnailHTML(ws)}
                 <div class="workspace-card-header">
                     <div class="workspace-title">WS${wsNumber}: ${ws.name}</div>
                     <div class="workspace-description">${ws.description}</div>
@@ -160,13 +193,14 @@
                     </div>
                     ${ws.tags && ws.tags.length > 0 ? `
                         <div class="tags-section">
-                            ${ws.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            ${ws.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            ${ws.tags.length > 3 ? `<span class="tag">+${ws.tags.length - 3}</span>` : ''}
                         </div>
                     ` : ''}
                 </div>
                 <div class="workspace-footer">
                     ${ws.prototypes && ws.prototypes.length > 0 ? `
-                        <div class="prototype-count">🎨 ${ws.prototypes.length} プロトタイプ</div>
+                        <div class="prototype-count">${ws.prototypes.length} プロトタイプ</div>
                     ` : '<div></div>'}
                     <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); navigateTo('${ws.directory}')">詳細を見る →</button>
                 </div>
@@ -176,123 +210,11 @@
     }
 
     // ===================================
-    // カンバンビュー
+    // 描画
     // ===================================
 
-    function renderKanbanView() {
-        const container = document.getElementById('kanbanView');
-        const filtered = getFilteredWorkspaces();
-
-        const columns = {
-            'planning': [],
-            'in-progress': [],
-            'testing': [],
-            'completed': []
-        };
-
-        filtered.forEach(ws => {
-            if (columns[ws.status]) {
-                columns[ws.status].push(ws);
-            }
-        });
-
-        container.innerHTML = Object.entries(columns).map(([status, items]) => `
-            <div class="kanban-column">
-                <div class="kanban-header">
-                    <div class="kanban-title">${STATUS_LABELS[status]}</div>
-                    <div class="kanban-count">${items.length}</div>
-                </div>
-                <div class="kanban-cards">
-                    ${items.map(ws => {
-                        const wsNumber = ws.id.replace('workspace-', '');
-                        return `
-                        <div class="kanban-card">
-                            <div style="font-weight: 600; margin-bottom: 0.5rem;">WS${wsNumber}: ${ws.name}</div>
-                            <div style="font-size: 0.875rem; color: #6c757d; margin-bottom: 0.75rem;">${ws.description}</div>
-                            <div class="progress-container" style="margin-bottom: 0.5rem;">
-                                <div class="progress-bar" style="width: ${ws.progress}%"></div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; margin-bottom: 0.75rem;">
-                                <span class="badge badge-priority ${ws.priority}">${PRIORITY_LABELS[ws.priority]}</span>
-                                <span style="color: #6c757d;">${ws.progress}%</span>
-                            </div>
-                            <button class="btn btn-primary btn-sm" onclick="navigateTo('${ws.directory}')" style="width: 100%;">詳細を見る →</button>
-                        </div>
-                        `;
-                    }).join('')}
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // ===================================
-    // リストビュー
-    // ===================================
-
-    function renderListView() {
-        const container = document.getElementById('listView');
-        const filtered = getFilteredWorkspaces();
-
-        if (filtered.length === 0) {
-            container.innerHTML = '<p style="text-align: center; color: #6c757d; padding: 2rem;">該当するWorkSpaceが見つかりません</p>';
-            return;
-        }
-
-        container.innerHTML = filtered.map(ws => {
-            const wsNumber = ws.id.replace('workspace-', '');
-            return `
-            <div class="list-item">
-                <div class="list-item-main">
-                    <div style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">WS${wsNumber}: ${ws.name}</div>
-                    <div style="color: #6c757d; margin-bottom: 0.75rem;">${ws.description}</div>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-                        <span class="badge badge-status ${ws.status}">${STATUS_LABELS[ws.status]}</span>
-                        <span class="badge badge-priority ${ws.priority}">${PRIORITY_LABELS[ws.priority]}</span>
-                        <button class="btn btn-primary btn-sm" onclick="navigateTo('${ws.directory}')">詳細を見る →</button>
-                    </div>
-                </div>
-                <div class="list-item-side">
-                    <div style="text-align: center; min-width: 80px;">
-                        <div style="font-size: 1.5rem; font-weight: 700; color: #007bff;">${ws.progress}%</div>
-                        <div style="font-size: 0.75rem; color: #6c757d;">進捗</div>
-                    </div>
-                    ${ws.prototypes && ws.prototypes.length > 0 ? `
-                        <div style="text-align: center; min-width: 80px;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #17a2b8;">${ws.prototypes.length}</div>
-                            <div style="font-size: 0.75rem; color: #6c757d;">プロトタイプ</div>
-                        </div>
-                    ` : ''}
-                </div>
-            </div>
-            `;
-        }).join('');
-    }
-
-    // ===================================
-    // ビュー切り替え
-    // ===================================
-
-    function renderCurrentView() {
-        // すべてのビューを非表示
-        document.getElementById('gridView').classList.remove('active');
-        document.getElementById('kanbanView').classList.remove('active');
-        document.getElementById('listView').classList.remove('active');
-
-        // 現在のビューを表示
-        switch (currentView) {
-            case 'grid':
-                document.getElementById('gridView').classList.add('active');
-                renderGridView();
-                break;
-            case 'kanban':
-                document.getElementById('kanbanView').classList.add('active');
-                renderKanbanView();
-                break;
-            case 'list':
-                document.getElementById('listView').classList.add('active');
-                renderListView();
-                break;
-        }
+    function render() {
+        renderGridView();
     }
 
     // ===================================
@@ -311,23 +233,13 @@
     // ===================================
 
     function setupEventListeners() {
-        // ビュー切り替えボタン
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentView = btn.dataset.view;
-                renderCurrentView();
-            });
-        });
-
         // フィルターボタン
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentFilter = btn.dataset.filter;
-                renderCurrentView();
+                render();
             });
         });
 
@@ -335,7 +247,7 @@
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value;
-            renderCurrentView();
+            render();
         });
     }
 

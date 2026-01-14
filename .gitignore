@@ -54,3 +54,5 @@ logs/
 # サムネイル生成ファイル（将来的に自動生成する場合）
 **/prototypes/thumbs/
 **/preview/thumbs/
+
+*-cwd

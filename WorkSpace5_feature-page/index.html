@@ -6,6 +6,8 @@
     <title>WorkSpace5: 特集ページ作成</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -36,20 +38,20 @@
             <p>
                 年間を通したコンテンツ計画や、具体的な特集テーマ案、実装の詳細については、以下のドキュメントにまとめています。
             </p>
-            <ul class="link-list">
-                <li>
-                    <h3><a href="docs/feature-plan.md">特集テーマ案</a></h3>
-                    <p>「季節限定」「ビアスタイル別」「料理ペアリング」など、8つの異なる切り口のテーマ案です。</p>
-                </li>
-                <li>
-                    <h3><a href="docs/content-calendar.md">コンテンツカレンダー</a></h3>
-                    <p>年間を通した特集の更新計画案です。月ごとのテーマや更新の狙いを定義しています。</p>
-                </li>
-                <li>
-                    <h3><a href="docs/implementation-details.md">実装と運用の詳細</a></h3>
-                    <p>バナーから特集ページへの遷移、更新ルール、効果測定の方法などを定義しています。</p>
-                </li>
-            </ul>
+            <div class="doc-toggles">
+                <details class="doc-toggle" data-doc="docs/feature-plan.md">
+                    <summary>特集テーマ案<span class="doc-description">「季節限定」「ビアスタイル別」「料理ペアリング」など、8つの異なる切り口のテーマ案です。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/content-calendar.md">
+                    <summary>コンテンツカレンダー<span class="doc-description">年間を通した特集の更新計画案です。月ごとのテーマや更新の狙いを定義しています。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+                <details class="doc-toggle" data-doc="docs/implementation-details.md">
+                    <summary>実装と運用の詳細<span class="doc-description">バナーから特集ページへの遷移、更新ルール、効果測定の方法などを定義しています。</span></summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+            </div>
         </section>
     </main>
 

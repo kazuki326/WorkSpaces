@@ -1,0 +1,19 @@
+{
+  "generated": "2026-01-14T00:36:30.772Z",
+  "count": 13,
+  "workspaces": [
+    "WorkSpace1_tastingnotes",
+    "WorkSpace2_official-line",
+    "WorkSpace3_line-ordering",
+    "WorkSpace4_product-detail-page",
+    "WorkSpace5_feature-page",
+    "WorkSpace6_beer-comparison",
+    "WorkSpace7_video-content",
+    "WorkSpace8_search-feature",
+    "WorkSpace9_image-search",
+    "WorkSpace10_my-page",
+    "WorkSpace11_recommended-products",
+    "WorkSpace12_taste-graph",
+    "WorkSpace13_image-gallery"
+  ]
+}

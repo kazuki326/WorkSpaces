@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
     <link href="https://use.fontawesome.com/releases/v6.6.0/css/all.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -114,6 +116,21 @@
             </div>
         </div>
     </main>
+
+    <section class="my-page-section container">
+        <h2>関連ドキュメント</h2>
+        <p>検索機能の詳細仕様とアルゴリズム設計です。</p>
+        <div class="doc-toggles">
+            <details class="doc-toggle" data-doc="docs/feature-specification.md">
+                <summary>機能仕様書<span class="doc-description">各検索機能の詳細、検索条件、UI仕様。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+            <details class="doc-toggle" data-doc="docs/search-algorithm.md">
+                <summary>検索アルゴリズム設計<span class="doc-description">マッチングロジック、スコアリング方法。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 bier.jp WorkSpaces</p>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bier.jp WorkSpaces - プロジェクト管理ダッシュボード">
     <title>Bier.jp WorkSpaces Dashboard</title>
     <link rel="stylesheet" href="design-system.css">
     <style>
@@ -19,49 +20,101 @@
             line-height: 1.6;
         }
 
+        /* アイコン共通 */
+        .icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .icon-sm {
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon-lg {
+            width: 24px;
+            height: 24px;
+        }
+
         /* ヘッダー */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
-            box-shadow: var(--shadow-md);
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1.5rem 0;
         }
 
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .header-title {
+            display: flex;
+            flex-direction: column;
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            color: var(--gray-800);
+            line-height: 1.2;
         }
 
         .header p {
-            font-size: 1.1rem;
-            opacity: 0.95;
+            font-size: 0.875rem;
+            color: var(--gray-500);
         }
 
         .header-nav {
-            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
         }
 
         .header-nav a {
-            color: white;
+            color: var(--gray-600);
             text-decoration: none;
             padding: 0.5rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--border-radius-md);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+            font-weight: 500;
             transition: var(--transition-fast);
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .header-nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: var(--gray-100);
+            color: var(--color-primary);
         }
 
         /* ツールバー */
@@ -116,10 +169,11 @@
 
         .search-icon {
             position: absolute;
-            left: 0.75rem;
+            left: 0.875rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--gray-500);
+            color: var(--gray-400);
+            pointer-events: none;
         }
 
         .filter-group {
@@ -147,29 +201,6 @@
             border-color: var(--color-primary);
         }
 
-        .view-toggle {
-            display: flex;
-            gap: 0.25rem;
-            background: var(--gray-200);
-            padding: 0.25rem;
-            border-radius: var(--border-radius-md);
-        }
-
-        .view-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: var(--transition-fast);
-        }
-
-        .view-btn.active {
-            background: white;
-            box-shadow: var(--shadow-sm);
-        }
-
         /* メインコンテンツ */
         .main-content {
             max-width: 1400px;
@@ -181,34 +212,81 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
         .stat-card {
             background: white;
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
             border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow-sm);
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition-fast);
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .stat-card:hover {
+            border-color: var(--gray-300);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .stat-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        .stat-icon.total {
+            background: rgba(0, 123, 255, 0.1);
             color: var(--color-primary);
         }
 
+        .stat-icon.progress {
+            background: rgba(23, 162, 184, 0.1);
+            color: var(--color-info);
+        }
+
+        .stat-icon.prototype {
+            background: rgba(111, 66, 193, 0.1);
+            color: var(--priority-critical);
+        }
+
+        .stat-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            line-height: 1.2;
+        }
+
         .stat-label {
-            font-size: 0.875rem;
-            color: var(--gray-600);
-            margin-top: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+            margin-top: 0.125rem;
         }
 
         /* グリッドビュー */
         .workspace-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
@@ -219,18 +297,99 @@
             box-shadow: var(--shadow-sm);
             transition: var(--transition-base);
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
         }
 
         .workspace-card:hover {
             box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             border-color: var(--color-primary);
         }
 
+        .workspace-card:hover .workspace-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        /* サムネイル（iframeプレビュー） */
+        .workspace-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: var(--gray-100);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .workspace-thumbnail-iframe-wrapper {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+
+        .workspace-thumbnail-iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .workspace-thumbnail-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+        }
+
+        .workspace-thumbnail-placeholder svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--gray-400);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .workspace-thumbnail-placeholder span {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* ローディングオーバーレイ */
+        .workspace-thumbnail-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity var(--transition-base);
+        }
+
+        .workspace-thumbnail-loading.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .workspace-thumbnail-loading .mini-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray-300);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
         .workspace-card-header {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
+            padding: 1.25rem 1.5rem;
             border-bottom: 1px solid var(--gray-200);
         }
 
@@ -302,104 +461,25 @@
             margin-top: 1rem;
         }
 
-        /* カンバンビュー */
-        .kanban-view {
-            display: none;
-        }
-
-        .kanban-view.active {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .kanban-column {
-            background: var(--gray-200);
-            border-radius: var(--border-radius-lg);
-            padding: 1rem;
-        }
-
-        .kanban-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-        }
-
-        .kanban-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .kanban-count {
-            background: white;
-            color: var(--gray-700);
-            padding: 0.25rem 0.5rem;
-            border-radius: var(--border-radius-md);
-            font-size: 0.875rem;
-        }
-
-        .kanban-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .kanban-card {
-            background: white;
-            padding: 1rem;
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .kanban-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateX(4px);
-        }
-
-        /* リストビュー */
-        .list-view {
-            display: none;
-        }
-
-        .list-view.active {
-            display: block;
-        }
-
-        .list-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition-fast);
-            cursor: pointer;
-        }
-
-        .list-item:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .list-item-main {
-            flex: 1;
-        }
-
-        .list-item-side {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
         /* レスポンシブ */
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
             .header h1 {
-                font-size: 1.75rem;
+                font-size: 1.25rem;
+            }
+
+            .header-nav {
+                width: 100%;
+            }
+
+            .header-nav a {
+                flex: 1;
+                justify-content: center;
             }
 
             .toolbar-content {
@@ -407,27 +487,48 @@
                 align-items: stretch;
             }
 
+            .toolbar-left {
+                flex-direction: column;
+            }
+
             .search-box {
                 max-width: 100%;
+            }
+
+            .filter-group {
+                flex-wrap: wrap;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
             .workspace-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .kanban-view.active {
+        @media (max-width: 480px) {
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
-            .list-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+            .stat-card {
+                padding: 1rem;
             }
 
-            .list-item-side {
-                width: 100%;
-                justify-content: space-between;
+            .stat-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .stat-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
             }
         }
 
@@ -462,11 +563,24 @@
     <!-- ヘッダー -->
     <header class="header">
         <div class="header-content">
-            <h1>🍺 Bier.jp WorkSpaces</h1>
-            <p>プロジェクト管理ダッシュボード - 進捗の可視化とプロトタイプ管理</p>
-            <div class="header-nav">
-                <a href="prototypes.html">🎨 プロトタイプギャラリー</a>
+            <div class="header-left">
+                <div class="header-logo">B</div>
+                <div class="header-title">
+                    <h1>Bier.jp WorkSpaces</h1>
+                    <p>プロジェクト管理ダッシュボード</p>
+                </div>
             </div>
+            <nav class="header-nav">
+                <a href="prototypes.html">
+                    <svg class="icon icon-sm" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    プロトタイプ
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -475,8 +589,11 @@
         <div class="toolbar-content">
             <div class="toolbar-left">
                 <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="WorkSpaceを検索...">
+                    <svg class="search-icon icon icon-sm" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="WorkSpaceを検索..." aria-label="WorkSpaceを検索">
                 </div>
                 <div class="filter-group">
                     <button class="filter-btn active" data-filter="all">すべて</button>
@@ -486,11 +603,6 @@
                     <button class="filter-btn" data-filter="completed">完了</button>
                 </div>
             </div>
-            <div class="view-toggle">
-                <button class="view-btn active" data-view="grid">📊 グリッド</button>
-                <button class="view-btn" data-view="kanban">📋 カンバン</button>
-                <button class="view-btn" data-view="list">📄 リスト</button>
-            </div>
         </div>
     </div>
 
@@ -499,31 +611,46 @@
         <!-- 統計 -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number" id="totalWorkspaces">12</div>
-                <div class="stat-label">総WorkSpace数</div>
+                <div class="stat-icon total">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalWorkspaces">12</div>
+                    <div class="stat-label">総WorkSpace数</div>
+                </div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="inProgressCount">5</div>
-                <div class="stat-label">進行中</div>
+                <div class="stat-icon progress">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="inProgressCount">5</div>
+                    <div class="stat-label">進行中</div>
+                </div>
             </div>
             <div class="stat-card">
-                <div class="stat-number" id="avgProgress">47%</div>
-                <div class="stat-label">平均進捗率</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalPrototypes">0</div>
-                <div class="stat-label">総プロトタイプ数</div>
+                <div class="stat-icon prototype">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalPrototypes">0</div>
+                    <div class="stat-label">総プロトタイプ数</div>
+                </div>
             </div>
         </div>
 
         <!-- グリッドビュー -->
-        <div id="gridView" class="workspace-grid active"></div>
-
-        <!-- カンバンビュー -->
-        <div id="kanbanView" class="kanban-view"></div>
-
-        <!-- リストビュー -->
-        <div id="listView" class="list-view"></div>
+        <div id="gridView" class="workspace-grid"></div>
 
         <!-- ローディング -->
         <div id="loading" class="loading hidden">

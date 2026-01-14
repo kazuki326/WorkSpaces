@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body class="my-page-layout">
     <div class="my-page-container">
@@ -27,7 +29,20 @@
             </div>
         </div>
     </div>
-
+    <section class="my-page-section" style="padding: 20px;">
+        <h2>関連ドキュメント</h2>
+        <p>マイページ機能の詳細仕様とUI設計です。</p>
+        <div class="doc-toggles">
+            <details class="doc-toggle" data-doc="docs/feature-specification.md">
+                <summary>機能仕様書<span class="doc-description">各セクションの機能詳細、ユーザーストーリー。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+            <details class="doc-toggle" data-doc="docs/ui-design.md">
+                <summary>UI設計<span class="doc-description">画面構成、ナビゲーション、レスポンシブ対応。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+        </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>

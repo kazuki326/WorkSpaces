@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="../common_style.css" />
   <title>WorkSpace6: ビールの比較機能</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
   <header>
@@ -85,6 +87,21 @@
             </label>
         </div>
     </div>
+
+    <section class="my-page-section">
+        <h2>関連ドキュメント</h2>
+        <p>本機能の詳細な仕様と実装ガイドです。</p>
+        <div class="doc-toggles">
+            <details class="doc-toggle" data-doc="docs/feature-specification.md">
+                <summary>機能仕様書<span class="doc-description">比較機能の目的、ユーザーストーリー、機能要件。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+            <details class="doc-toggle" data-doc="docs/implementation-guide.md">
+                <summary>実装ガイド<span class="doc-description">技術的な実装方法、データ構造、API設計。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+        </div>
+    </section>
   </main>
 
   <!-- 比較コンテナ（最下部に表示される） -->

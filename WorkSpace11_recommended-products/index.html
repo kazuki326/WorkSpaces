@@ -6,6 +6,8 @@
     <title>WorkSpace11: おすすめ商品</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -45,6 +47,21 @@
             </div>
         </div>
     </main>
+
+    <section class="my-page-section container">
+        <h2>関連ドキュメント</h2>
+        <p>おすすめ商品セクションのデザイン仕様と実装ガイドです。</p>
+        <div class="doc-toggles">
+            <details class="doc-toggle" data-doc="docs/design-specification.md">
+                <summary>デザイン仕様書<span class="doc-description">各デザイン案の詳細、比較、推奨案。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+            <details class="doc-toggle" data-doc="docs/implementation-guide.md">
+                <summary>実装ガイド<span class="doc-description">HTML/CSS構造、レスポンシブ対応、アクセシビリティ。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 bier.jp WorkSpaces</p>

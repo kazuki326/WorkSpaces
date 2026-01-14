@@ -6,7 +6,8 @@
     <title>WorkSpace1: テイスティングノート機能</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
-
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <header>
@@ -20,40 +21,30 @@
             <div class="preview-links">
                 <p>Miroボードで検討されたUI/UXのモックアップです。リンクをクリックして各プレビューをポップアップで確認できます。</p>
                 <ul>
-                    <li><a onclick="openModal('preview/1_input_form.html', '1. テイスティングノート入力フォーム')">1. テイスティングノート入力フォーム</a></li>
-                    <li><a onclick="openModal('preview/2_rating_sliders.html', '2. 評価スライダーUI')">2. 評価スライダーUI</a></li>
-                    <li><a onclick="openModal('preview/3_collection_view.html', '3. Myビール図鑑（コレクション）')">3. Myビール図鑑（コレクション）</a></li>
-                    <li><a onclick="openModal('preview/4_collection_popup.html', '4. ポップアップ詳細（レーダーチャート付き）')">4. ポップアップ詳細（レーダーチャート付き）</a></li>
-                    <li><a onclick="openModal('preview/5_barcode_scanner.html', '5. バーコードスキャナー')">5. バーコードスキャナー</a></li>
+                    <li><a href="#" onclick="openModal('preview/1_input_form.html', '1. テイスティングノート入力フォーム'); return false;">1. テイスティングノート入力フォーム</a></li>
+                    <li><a href="#" onclick="openModal('preview/2_rating_sliders.html', '2. 評価スライダーUI'); return false;">2. 評価スライダーUI</a></li>
+                    <li><a href="#" onclick="openModal('preview/3_collection_view.html', '3. Myビール図鑑（コレクション）'); return false;">3. Myビール図鑑（コレクション）</a></li>
+                    <li><a href="#" onclick="openModal('preview/4_collection_popup.html', '4. ポップアップ詳細（レーダーチャート付き）'); return false;">4. ポップアップ詳細（レーダーチャート付き）</a></li>
+                    <li><a href="#" onclick="openModal('preview/5_barcode_scanner.html', '5. バーコードスキャナー'); return false;">5. バーコードスキャナー</a></li>
                 </ul>
             </div>
 
             <h2>設計ドキュメント</h2>
-            <div class="file-block">
-                <div class="file-header">docs/feature-specification.md</div>
-                <div class="file-content">
-                    <pre># テイスティングノート機能 仕様書...</pre>
-                </div>
-            </div>
-            <div class="file-block">
-                <div class="file-header">docs/technical-plan.md</div>
-                <div class="file-content">
-                    <pre># 技術的実装プラン...</pre>
-                </div>
-            </div>
-            <div class="file-block">
-                <div class="file-header">docs/ideas-and-brainstorming.md</div>
-                <div class="file-content">
-                    <pre># アイデアとブレインストーミング...</pre>
-                </div>
-            </div>
+            <div class="docs-container">
+                <details class="doc-toggle" data-doc="docs/feature-specification.md">
+                    <summary>機能仕様書</summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
 
-            <h2>Miro CSVデータ (Raw)</h2>
-            <div class="file-block">
-                <div class="file-header">【bier.jp】メイン - Work Space1_... .csv</div>
-                <div class="file-content">
-                    <pre>"Work Space1: 購入者が​テイスティングnoteを​かけるように​する..."</pre>
-                </div>
+                <details class="doc-toggle" data-doc="docs/technical-plan.md">
+                    <summary>技術的実装プラン</summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
+
+                <details class="doc-toggle" data-doc="docs/ideas-and-brainstorming.md">
+                    <summary>アイデアとブレインストーミング</summary>
+                    <div class="doc-toggle-content loading">読み込み中...</div>
+                </details>
             </div>
         </div>
     </main>
@@ -67,7 +58,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="modalTitle"></div>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <button class="modal-close-btn" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
                 <iframe id="modal-iframe" src=""></iframe>
@@ -76,6 +67,9 @@
     </div>
 
     <script>
+        // ===================================
+        // モーダル機能
+        // ===================================
         const modalOverlay = document.getElementById('modalOverlay');
         const modalIframe = document.getElementById('modal-iframe');
         const modalTitle = document.getElementById('modalTitle');
@@ -83,19 +77,73 @@
         function openModal(url, title) {
             modalIframe.src = url;
             modalTitle.textContent = title;
-            modalOverlay.style.display = 'flex';
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            modalOverlay.style.display = 'none';
-            modalIframe.src = ''; // Clear iframe src to stop any running scripts/videos
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (!modalOverlay.classList.contains('active')) {
+                    modalIframe.src = '';
+                }
+            }, 300);
         }
 
-        // Close modal if overlay is clicked
         modalOverlay.addEventListener('click', function(event) {
             if (event.target === modalOverlay) {
                 closeModal();
             }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // ===================================
+        // マークダウン読み込み・表示
+        // ===================================
+        const loadedDocs = new Map();
+
+        async function loadMarkdown(docPath, contentElement) {
+            // 既に読み込み済みならキャッシュを使用
+            if (loadedDocs.has(docPath)) {
+                contentElement.innerHTML = loadedDocs.get(docPath);
+                contentElement.classList.remove('loading');
+                return;
+            }
+
+            try {
+                const response = await fetch(docPath);
+                if (!response.ok) throw new Error('Failed to load');
+
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+                const wrappedHtml = `<div class="markdown-body">${html}</div>`;
+
+                loadedDocs.set(docPath, wrappedHtml);
+                contentElement.innerHTML = wrappedHtml;
+                contentElement.classList.remove('loading');
+            } catch (error) {
+                contentElement.innerHTML = `<p style="color: var(--color-danger);">ドキュメントの読み込みに失敗しました。</p>`;
+                contentElement.classList.remove('loading');
+            }
+        }
+
+        // トグル開閉時にマークダウンを読み込む
+        document.querySelectorAll('.doc-toggle').forEach(toggle => {
+            toggle.addEventListener('toggle', function() {
+                if (this.open) {
+                    const docPath = this.dataset.doc;
+                    const contentElement = this.querySelector('.doc-toggle-content');
+                    if (contentElement.classList.contains('loading')) {
+                        loadMarkdown(docPath, contentElement);
+                    }
+                }
+            });
         });
     </script>
 </body>

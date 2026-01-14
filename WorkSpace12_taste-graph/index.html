@@ -6,6 +6,8 @@
     <title>WorkSpace12: テイストグラフ</title>
     <link rel="stylesheet" href="../common_style.css">
     <script src="../workspace-nav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../markdown-loader.js" defer></script>
 </head>
 <body>
     <header>
@@ -45,6 +47,21 @@
             </div>
         </div>
     </main>
+
+    <section class="my-page-section container">
+        <h2>関連ドキュメント</h2>
+        <p>テイストグラフ機能の仕様とデータモデル設計です。</p>
+        <div class="doc-toggles">
+            <details class="doc-toggle" data-doc="docs/feature-specification.md">
+                <summary>機能仕様書<span class="doc-description">各プロトタイプの機能詳細、ユースケース。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+            <details class="doc-toggle" data-doc="docs/data-model.md">
+                <summary>データモデル設計<span class="doc-description">味の評価軸、スコアリング、マッチングアルゴリズム。</span></summary>
+                <div class="doc-toggle-content loading">読み込み中...</div>
+            </details>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 bier.jp WorkSpaces</p>

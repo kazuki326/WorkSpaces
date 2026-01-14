@@ -45,11 +45,11 @@ open http://localhost:8000
 | # | WorkSpace | 概要 | ステータス |
 | :---: | :--- | :--- | :---: |
 | 1 | [テイスティングノート](./WorkSpace1_tastingnotes/) | 購入者がテイスティングノートを記録し、その平均を商品の口コミとして掲載する機能 | 🔄 |
-| 2 | [公式LINE](./WorkSpace2_official-line/) | 公式LINEアカウントの構築 | 📋 |
-| 3 | [LINE注文](./WorkSpace3_line-ordering/) | LINE上で商品を注文できる機能 | 📋 |
-| 4 | [商品詳細ページ](./WorkSpace4_product-detail-page/) | 商品詳細ページの整理 | 🔄 |
+| 2 | [公式LINE](./WorkSpace2_official-line/) | 公式LINEアカウントの構築 | 🔄 |
+| 3 | [LINE注文](./WorkSpace3_line-ordering/) | LINE上で商品を注文できる機能 | 🔄 |
+| 4 | [商品詳細ページ](./WorkSpace4_product-detail-page/) | 商品詳細ページの整理 | 📋 |
 | 5 | [特集ページ](./WorkSpace5_feature-page/) | 特集ページの作成 | 📋 |
-| 6 | [ビール比較](./WorkSpace6_beer-comparison/) | ビールの比較機能 | 📋 |
+| 6 | [ビール比較](./WorkSpace6_beer-comparison/) | ビールの比較機能 | 🧪 |
 | 7 | [動画コンテンツ](./WorkSpace7_video-content/) | 動画コンテンツの企画・整理 | 📋 |
 | 8 | [検索機能](./WorkSpace8_search-feature/) | 検索機能 | 🔄 |
 | 9 | [画像検索](./WorkSpace9_image-search/) | 画像検索機能 | 📋 |
