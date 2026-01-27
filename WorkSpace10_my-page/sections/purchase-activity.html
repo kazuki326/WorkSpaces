@@ -1,54 +1,203 @@
 <h2>購入関連</h2>
 
+<!-- 注文履歴 -->
 <div class="my-page-section">
-    <h3>注文履歴</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>注文ID</th>
-                <th>日時</th>
-                <th>購入商品</th>
-                <th>合計金額</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>#001</td>
-                <td>2023-08-01</td>
-                <td>Product 1, Product 2</td>
-                <td>$30.00</td>
-            </tr>
-            <tr>
-                <td>#002</td>
-                <td>2023-08-10</td>
-                <td>Product 3</td>
-                <td>$15.00</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="section-header">
+        <h3><i class="fas fa-receipt"></i> 注文履歴</h3>
+        <div class="filter-group">
+            <select id="order-filter">
+                <option value="all">すべての注文</option>
+                <option value="delivered">配送完了</option>
+                <option value="shipping">配送中</option>
+                <option value="pending">準備中</option>
+            </select>
+        </div>
+    </div>
 
-<div class="my-page-section">
-    <h3>定期購入管理</h3>
-    <p>定期購入している商品の一覧と管理が行えます。</p>
-    <div class="my-page-section">
-        <h4>月額ビールセット</h4>
-        <p>次回配送予定日: 2024年12月1日</p>
-        <button class="btn">詳細を見る</button>
+    <div class="order-history">
+        <div class="order-card">
+            <div class="order-card-header">
+                <div class="order-meta">
+                    <span class="order-number">#003</span>
+                    <span class="order-date">2026年1月20日</span>
+                </div>
+                <span class="status-badge status-delivered"><i class="fas fa-check-circle"></i> 配送完了</span>
+            </div>
+            <div class="order-card-body">
+                <div class="order-items">
+                    <div class="order-item-row">
+                        <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="ビール">
+                        <div class="item-details">
+                            <span class="item-name">クラフトビールセット（6本入り）</span>
+                            <span class="item-qty">× 1</span>
+                        </div>
+                        <span class="item-price">¥5,000</span>
+                    </div>
+                </div>
+                <div class="order-card-footer">
+                    <div class="order-total">
+                        <span>合計</span>
+                        <strong>¥5,000</strong>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-secondary btn-small"><i class="fas fa-redo"></i> 再購入</button>
+                        <button class="btn btn-secondary btn-small"><i class="fas fa-file-pdf"></i> 領収書</button>
+                        <button class="btn btn-secondary btn-small"><i class="fas fa-eye"></i> 詳細</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-card">
+            <div class="order-card-header">
+                <div class="order-meta">
+                    <span class="order-number">#002</span>
+                    <span class="order-date">2026年1月10日</span>
+                </div>
+                <span class="status-badge status-delivered"><i class="fas fa-check-circle"></i> 配送完了</span>
+            </div>
+            <div class="order-card-body">
+                <div class="order-items">
+                    <div class="order-item-row">
+                        <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=60&h=60&fit=crop" alt="ビール">
+                        <div class="item-details">
+                            <span class="item-name">ヴァイツェン</span>
+                            <span class="item-qty">× 2</span>
+                        </div>
+                        <span class="item-price">¥1,800</span>
+                    </div>
+                    <div class="order-item-row">
+                        <img src="https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=60&h=60&fit=crop" alt="ビール">
+                        <div class="item-details">
+                            <span class="item-name">ピルスナー</span>
+                            <span class="item-qty">× 2</span>
+                        </div>
+                        <span class="item-price">¥1,700</span>
+                    </div>
+                </div>
+                <div class="order-card-footer">
+                    <div class="order-total">
+                        <span>合計</span>
+                        <strong>¥3,500</strong>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-secondary btn-small"><i class="fas fa-redo"></i> 再購入</button>
+                        <button class="btn btn-secondary btn-small"><i class="fas fa-file-pdf"></i> 領収書</button>
+                        <button class="btn btn-secondary btn-small"><i class="fas fa-eye"></i> 詳細</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-card">
+            <div class="order-card-header">
+                <div class="order-meta">
+                    <span class="order-number">#004</span>
+                    <span class="order-date">2026年1月25日</span>
+                </div>
+                <span class="status-badge status-shipping"><i class="fas fa-truck"></i> 配送中</span>
+            </div>
+            <div class="order-card-body">
+                <div class="shipping-tracker">
+                    <div class="tracker-step completed">
+                        <div class="step-icon"><i class="fas fa-check"></i></div>
+                        <span>注文確定</span>
+                    </div>
+                    <div class="tracker-line completed"></div>
+                    <div class="tracker-step completed">
+                        <div class="step-icon"><i class="fas fa-check"></i></div>
+                        <span>発送準備</span>
+                    </div>
+                    <div class="tracker-line completed"></div>
+                    <div class="tracker-step active">
+                        <div class="step-icon"><i class="fas fa-truck"></i></div>
+                        <span>配送中</span>
+                    </div>
+                    <div class="tracker-line"></div>
+                    <div class="tracker-step">
+                        <div class="step-icon"><i class="fas fa-home"></i></div>
+                        <span>配達完了</span>
+                    </div>
+                </div>
+                <div class="order-items">
+                    <div class="order-item-row">
+                        <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="ビール">
+                        <div class="item-details">
+                            <span class="item-name">アメリカンIPA</span>
+                            <span class="item-qty">× 3</span>
+                        </div>
+                        <span class="item-price">¥2,550</span>
+                    </div>
+                </div>
+                <div class="order-card-footer">
+                    <div class="order-total">
+                        <span>合計</span>
+                        <strong>¥2,550</strong>
+                    </div>
+                    <div class="order-actions">
+                        <button class="btn btn-primary btn-small"><i class="fas fa-map-marker-alt"></i> 配送状況を確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
+<!-- 定期購入管理 -->
 <div class="my-page-section">
-    <h3>レビュー管理</h3>
-    <p>ここに投稿したレビューの一覧が表示されます。</p>
-    <div class="my-page-section">
-        <h4>商品Aへのレビュー</h4>
-        <p>「とても美味しかったです！」 - ★★★★★</p>
+    <div class="section-header">
+        <h3><i class="fas fa-sync-alt"></i> 定期購入</h3>
+    </div>
+    <div class="subscription-card">
+        <div class="subscription-icon">
+            <i class="fas fa-box"></i>
+        </div>
+        <div class="subscription-info">
+            <h4>月額ビールセット</h4>
+            <p class="subscription-desc">毎月届く厳選クラフトビール6本セット</p>
+            <div class="subscription-meta">
+                <span><i class="fas fa-yen-sign"></i> ¥4,980/月</span>
+                <span><i class="fas fa-calendar"></i> 次回配送: 2026年2月1日</span>
+            </div>
+        </div>
+        <div class="subscription-actions">
+            <span class="subscription-status active"><i class="fas fa-check-circle"></i> 有効</span>
+            <button class="btn btn-secondary btn-small">設定変更</button>
+            <button class="btn btn-secondary btn-small">スキップ</button>
+        </div>
     </div>
 </div>
 
+<!-- 利用履歴のダウンロード -->
 <div class="my-page-section">
-    <h3>利用履歴のダウンロード</h3>
-    <p>購入履歴やテイスティングノートなどのデータをダウンロードできます。</p>
-    <button class="btn">データをダウンロード</button>
+    <div class="section-header">
+        <h3><i class="fas fa-download"></i> データエクスポート</h3>
+    </div>
+    <p class="section-desc">購入履歴やテイスティングノートをダウンロードできます。</p>
+    <div class="export-options">
+        <div class="export-option">
+            <i class="fas fa-file-csv"></i>
+            <div>
+                <h4>購入履歴</h4>
+                <p>CSV形式</p>
+            </div>
+            <button class="btn btn-secondary btn-small"><i class="fas fa-download"></i></button>
+        </div>
+        <div class="export-option">
+            <i class="fas fa-file-alt"></i>
+            <div>
+                <h4>テイスティングノート</h4>
+                <p>JSON形式</p>
+            </div>
+            <button class="btn btn-secondary btn-small"><i class="fas fa-download"></i></button>
+        </div>
+        <div class="export-option">
+            <i class="fas fa-file-archive"></i>
+            <div>
+                <h4>すべてのデータ</h4>
+                <p>ZIP形式</p>
+            </div>
+            <button class="btn btn-secondary btn-small"><i class="fas fa-download"></i></button>
+        </div>
+    </div>
 </div>

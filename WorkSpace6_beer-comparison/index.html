@@ -19,6 +19,13 @@
         <h2>プロトタイプの使い方</h2>
         <p>以下の商品リストから比較したいビールのチェックボックスをオンにしてください（最大4つまで）。選択された商品は画面下部の「比較する商品一覧」に表示されます。「商品の比較をする」ボタンをクリックすると、画面上部に詳細な比較表が表示されます。</p>
 
+        <!-- ローディングオーバーレイ -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+            <div class="loading-overlay__text">商品情報を取得中...</div>
+            <div class="loading-overlay__progress" id="loadingProgress">0 / 0 件</div>
+        </div>
+
         <!-- 比較結果表示コンテナ（上部に固定表示） -->
         <div id="compareResult" class="compare_result" style="display: none;">
             <div class="compare_header">
@@ -26,6 +33,7 @@
             <span id="closeCompare" class="close_compare">&times;</span>
             </div>
             <div id="compareTableContainer" class="compare_table_container">
+                <!-- PC用テーブル -->
                 <table>
                     <thead>
                         <tr>
@@ -37,54 +45,53 @@
                             <th>URL</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="compareTableBody">
                         <!-- ここに比較結果が挿入されます -->
                     </tbody>
                 </table>
+                <!-- モバイル用カード -->
+                <div class="compare-cards" id="compareCards">
+                    <!-- ここにカード形式の比較結果が挿入されます -->
+                </div>
             </div>
         </div>
 
-        <!-- チェックボックス群 -->
-        <div class="product-list">
-            <label>
-            <input class="checks" type="checkbox" name="【※バラ売り】パウラナー・オクトーバーフェストビア【2024】" 
-                    value="https://bier.jp/itemdetail/Fx006i" 
-                    src="https://bier.jp/images/beeroriginal/fx-006.jpg"
-                    onchange="inputChange(this)">
-            【※バラ売り】パウラナー・オクトーバーフェストビア【2024】
-            </label>
-            
-            <label>
-            <input class="checks" type="checkbox" name="【※バラ売り】ツム ユーリゲ アルトビール" 
-                    value="https://bier.jp/itemdetail/Cx313i" 
-                    src="https://bier.jp/images/beeroriginal/cx-313.jpg"
-                    onchange="inputChange(this)">
-            【※バラ売り】ツム ユーリゲ アルトビール
-            </label>
-            
-            <label>
-            <input class="checks" type="checkbox" name="【※バラ売り】ケストリッツァー シュヴァルツビア" 
-                    value="https://bier.jp/itemdetail/Dx103i" 
-                    src="https://bier.jp/images/beeroriginal/dx-103.jpg"
-                    onchange="inputChange(this)">
-            【※バラ売り】ケストリッツァー シュヴァルツビア
-            </label>
-            
-            <label>
-            <input class="checks" type="checkbox" name="【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）" 
-                    value="https://bier.jp/itemdetail/Sx155" 
-                    src="https://bier.jp/images/beeroriginal/sx-155f.jpg"
-                    onchange="inputChange(this)">
-            【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）
-            </label>
-            
-            <label>
-            <input class="checks" type="checkbox" name="【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル" 
-                    value="https://bier.jp/itemdetail/Zx105i" 
-                    src="https://bier.jp/images/beeroriginal/zx-105.jpg"
-                    onchange="inputChange(this)">
-            【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル
-            </label>
+        <!-- 選択数表示 -->
+        <div class="selection-count">
+            選択中: <span class="selection-count__number" id="selectionCount">0</span> / 4
+        </div>
+
+        <!-- 商品カード形式 -->
+        <div class="product-list" id="productList">
+            <div class="product-card" onclick="toggleProduct(this)" data-name="【※バラ売り】パウラナー・オクトーバーフェストビア【2024】" data-url="https://bier.jp/itemdetail/Fx006i" data-img="https://bier.jp/images/beeroriginal/fx-006.jpg">
+                <input class="checks" type="checkbox" name="【※バラ売り】パウラナー・オクトーバーフェストビア【2024】" value="https://bier.jp/itemdetail/Fx006i" src="https://bier.jp/images/beeroriginal/fx-006.jpg">
+                <img class="product-card__image" src="https://bier.jp/images/beeroriginal/fx-006.jpg" alt="パウラナー・オクトーバーフェストビア">
+                <span class="product-card__name">【※バラ売り】パウラナー・オクトーバーフェストビア【2024】</span>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)" data-name="【※バラ売り】ツム ユーリゲ アルトビール" data-url="https://bier.jp/itemdetail/Cx313i" data-img="https://bier.jp/images/beeroriginal/cx-313.jpg">
+                <input class="checks" type="checkbox" name="【※バラ売り】ツム ユーリゲ アルトビール" value="https://bier.jp/itemdetail/Cx313i" src="https://bier.jp/images/beeroriginal/cx-313.jpg">
+                <img class="product-card__image" src="https://bier.jp/images/beeroriginal/cx-313.jpg" alt="ツム ユーリゲ アルトビール">
+                <span class="product-card__name">【※バラ売り】ツム ユーリゲ アルトビール</span>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)" data-name="【※バラ売り】ケストリッツァー シュヴァルツビア" data-url="https://bier.jp/itemdetail/Dx103i" data-img="https://bier.jp/images/beeroriginal/dx-103.jpg">
+                <input class="checks" type="checkbox" name="【※バラ売り】ケストリッツァー シュヴァルツビア" value="https://bier.jp/itemdetail/Dx103i" src="https://bier.jp/images/beeroriginal/dx-103.jpg">
+                <img class="product-card__image" src="https://bier.jp/images/beeroriginal/dx-103.jpg" alt="ケストリッツァー シュヴァルツビア">
+                <span class="product-card__name">【※バラ売り】ケストリッツァー シュヴァルツビア</span>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)" data-name="【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）" data-url="https://bier.jp/itemdetail/Sx155" data-img="https://bier.jp/images/beeroriginal/sx-155f.jpg">
+                <input class="checks" type="checkbox" name="【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）" value="https://bier.jp/itemdetail/Sx155" src="https://bier.jp/images/beeroriginal/sx-155f.jpg">
+                <img class="product-card__image" src="https://bier.jp/images/beeroriginal/sx-155f.jpg" alt="ドイツビールギフト8本セット">
+                <span class="product-card__name">【誕生日・ギフトに】ドイツビールギフト8本セット（白箱入り）</span>
+            </div>
+
+            <div class="product-card" onclick="toggleProduct(this)" data-name="【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル" data-url="https://bier.jp/itemdetail/Zx105i" data-img="https://bier.jp/images/beeroriginal/zx-105.jpg">
+                <input class="checks" type="checkbox" name="【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル" value="https://bier.jp/itemdetail/Zx105i" src="https://bier.jp/images/beeroriginal/zx-105.jpg">
+                <img class="product-card__image" src="https://bier.jp/images/beeroriginal/zx-105.jpg" alt="フランチスカーナー へーフェ ヴァイスビア・ドゥンケル">
+                <span class="product-card__name">【※バラ売り】フランチスカーナー へーフェ ヴァイスビア・ドゥンケル</span>
+            </div>
         </div>
     </div>
 
@@ -106,20 +113,40 @@
 
   <!-- 比較コンテナ（最下部に表示される） -->
   <div id="compareContainer" class="compare_container">
-    <div class="upper_part">
-      <span>比較する商品一覧</span>
-      <div class="buttons">
-        <button id="compareBtn" class="btn">
-          商品の比較をする
-        </button>
-        <button id="clearBtn" class="btn">
-          クリア
+    <!-- ヘッダーバー（クリックで最小化/展開） -->
+    <div class="compare_header_bar" id="compareHeaderBar">
+      <div class="compare_title">
+        <span>比較リスト</span>
+        <span class="compare_count" id="compareCount">0</span>
+      </div>
+      <div class="compare_header_actions">
+        <button class="compare_toggle_btn" id="compareToggleBtn" title="最小化/展開">
+          ▼
         </button>
       </div>
     </div>
-    <div id="compareList" class="compare_list"></div>
+
+    <!-- ボディ（最小化時は非表示） -->
+    <div class="compare_body">
+      <div id="compareList" class="compare_list">
+        <!-- 選択された商品がここに表示される -->
+      </div>
+      <div class="upper_part">
+        <div class="buttons">
+          <button id="compareBtn" class="btn btn-compare">
+            商品を比較する
+          </button>
+          <button id="clearBtn" class="btn btn-clear">
+            すべてクリア
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   
+  <!-- トースト通知コンテナ -->
+  <div id="toastContainer" class="toast-container"></div>
+
   <footer>
       <p>&copy; 2025 bier.jp WorkSpaces</p>
   </footer>

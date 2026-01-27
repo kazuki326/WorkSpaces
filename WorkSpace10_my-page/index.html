@@ -9,19 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="../markdown-loader.js" defer></script>
+    <script src="../ui-utils.js" defer></script>
 </head>
 <body class="my-page-layout">
     <div class="my-page-container">
-        <div class="sidebar">
-            <ul>
-                <li data-content="dashboard"><i class="fas fa-tachometer-alt"></i> ダッシュボード</li>
-                <li data-content="tasting-notes"><i class="fas fa-pencil-alt"></i> テイスティングノート</li>
-                <li data-content="purchase-activity"><i class="fas fa-history"></i> 購入関連</li>
-                <li data-content="engagement"><i class="fas fa-heart"></i> エンゲージメント</li>
-                <li data-content="account-management"><i class="fas fa-user"></i> アカウント管理</li>
-                <li data-content="support"><i class="fas fa-life-ring"></i> サポート</li>
+        <nav class="sidebar" aria-label="マイページナビゲーション">
+            <ul role="menubar">
+                <li data-content="dashboard" role="menuitem" tabindex="0"><i class="fas fa-tachometer-alt" aria-hidden="true"></i> ダッシュボード</li>
+                <li data-content="tasting-notes" role="menuitem" tabindex="0"><i class="fas fa-pencil-alt" aria-hidden="true"></i> テイスティングノート</li>
+                <li data-content="purchase-activity" role="menuitem" tabindex="0"><i class="fas fa-history" aria-hidden="true"></i> 購入関連</li>
+                <li data-content="engagement" role="menuitem" tabindex="0"><i class="fas fa-heart" aria-hidden="true"></i> エンゲージメント</li>
+                <li data-content="account-management" role="menuitem" tabindex="0"><i class="fas fa-user" aria-hidden="true"></i> アカウント管理</li>
+                <li data-content="support" role="menuitem" tabindex="0"><i class="fas fa-life-ring" aria-hidden="true"></i> サポート</li>
             </ul>
-        </div>
+        </nav>
         <div class="my-page-content">
             <h1>マイページへようこそ</h1>
             <div class="my-page-section" id="content-display">

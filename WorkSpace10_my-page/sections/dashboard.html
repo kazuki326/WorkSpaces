@@ -1,12 +1,170 @@
 <h2>ダッシュボード</h2>
-<p>ようこそ、[ユーザー名]さん！</p>
-<p>最新の注文状況、保有ポイント、おすすめ商品などがここに表示されます。</p>
-<div class="my-page-section">
-    <h3>最近の注文</h3>
-    <p>注文番号 #003 - 2024年11月10日 - ¥5,000</p>
-    <p>注文番号 #002 - 2024年10月25日 - ¥3,500</p>
+
+<!-- ウェルカムメッセージ + 通知 -->
+<div class="dashboard-header">
+    <div class="welcome-message">
+        <h3>ようこそ、田中 太郎さん！</h3>
+        <p class="last-login">最終ログイン: 2026年1月26日 18:30</p>
+    </div>
+    <div class="notification-badge">
+        <i class="fas fa-bell"></i>
+        <span class="badge-count">3</span>
+    </div>
 </div>
+
+<!-- アクティビティサマリー -->
+<div class="activity-summary">
+    <div class="summary-card">
+        <i class="fas fa-beer"></i>
+        <div class="summary-info">
+            <span class="summary-value">12</span>
+            <span class="summary-label">今月のテイスティング</span>
+        </div>
+    </div>
+    <div class="summary-card">
+        <i class="fas fa-coins"></i>
+        <div class="summary-info">
+            <span class="summary-value">1,500</span>
+            <span class="summary-label">保有ポイント</span>
+        </div>
+    </div>
+    <div class="summary-card">
+        <i class="fas fa-shopping-bag"></i>
+        <div class="summary-info">
+            <span class="summary-value">¥8,500</span>
+            <span class="summary-label">今月の購入額</span>
+        </div>
+    </div>
+    <div class="summary-card">
+        <i class="fas fa-medal"></i>
+        <div class="summary-info">
+            <span class="summary-value">5</span>
+            <span class="summary-label">獲得バッジ</span>
+        </div>
+    </div>
+</div>
+
+<!-- 最近の注文 -->
 <div class="my-page-section">
-    <h3>保有ポイント</h3>
-    <p>現在 1,500 ポイント</p>
+    <div class="section-header">
+        <h3><i class="fas fa-history"></i> 最近の注文</h3>
+        <a href="#purchase-activity" class="view-all">すべて見る →</a>
+    </div>
+    <div class="order-list">
+        <div class="order-item">
+            <div class="order-info">
+                <span class="order-id">#003</span>
+                <span class="order-date">2026年1月20日</span>
+            </div>
+            <div class="order-products">クラフトビールセット（6本入り）</div>
+            <div class="order-status status-delivered"><i class="fas fa-check-circle"></i> 配送完了</div>
+            <div class="order-total">¥5,000</div>
+        </div>
+        <div class="order-item">
+            <div class="order-info">
+                <span class="order-id">#002</span>
+                <span class="order-date">2026年1月10日</span>
+            </div>
+            <div class="order-products">ヴァイツェン、ピルスナー</div>
+            <div class="order-status status-delivered"><i class="fas fa-check-circle"></i> 配送完了</div>
+            <div class="order-total">¥3,500</div>
+        </div>
+    </div>
+</div>
+
+<!-- おすすめビール -->
+<div class="my-page-section">
+    <div class="section-header">
+        <h3><i class="fas fa-thumbs-up"></i> あなたへのおすすめ</h3>
+    </div>
+    <div class="recommendation-cards">
+        <div class="beer-card">
+            <div class="beer-image">
+                <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200&h=200&fit=crop" alt="IPA">
+            </div>
+            <div class="beer-info">
+                <h4>アメリカンIPA</h4>
+                <p class="beer-brewery">Craft Brewery Tokyo</p>
+                <div class="beer-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.5</span>
+                </div>
+                <p class="beer-price">¥850</p>
+            </div>
+            <button class="btn btn-primary btn-small">カートに追加</button>
+        </div>
+        <div class="beer-card">
+            <div class="beer-image">
+                <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=200&h=200&fit=crop" alt="スタウト">
+            </div>
+            <div class="beer-info">
+                <h4>チョコレートスタウト</h4>
+                <p class="beer-brewery">京都醸造</p>
+                <div class="beer-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>4.0</span>
+                </div>
+                <p class="beer-price">¥920</p>
+            </div>
+            <button class="btn btn-primary btn-small">カートに追加</button>
+        </div>
+        <div class="beer-card">
+            <div class="beer-image">
+                <img src="https://images.unsplash.com/photo-1600788886242-5c96aabe3757?w=200&h=200&fit=crop" alt="ペールエール">
+            </div>
+            <div class="beer-info">
+                <h4>ペールエール</h4>
+                <p class="beer-brewery">横浜ビール</p>
+                <div class="beer-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>5.0</span>
+                </div>
+                <p class="beer-price">¥780</p>
+            </div>
+            <button class="btn btn-primary btn-small">カートに追加</button>
+        </div>
+    </div>
+</div>
+
+<!-- 最近のテイスティング -->
+<div class="my-page-section">
+    <div class="section-header">
+        <h3><i class="fas fa-pencil-alt"></i> 最近のテイスティングノート</h3>
+        <a href="#tasting-notes" class="view-all">すべて見る →</a>
+    </div>
+    <div class="recent-notes">
+        <div class="note-thumbnail">
+            <div class="note-beer-name">ラガービール</div>
+            <div class="note-rating">
+                <i class="fas fa-star"></i> 4.0
+            </div>
+            <div class="note-date">2026年1月15日</div>
+        </div>
+        <div class="note-thumbnail">
+            <div class="note-beer-name">ヴァイツェン</div>
+            <div class="note-rating">
+                <i class="fas fa-star"></i> 4.5
+            </div>
+            <div class="note-date">2026年1月10日</div>
+        </div>
+        <div class="note-thumbnail">
+            <div class="note-beer-name">ピルスナー</div>
+            <div class="note-rating">
+                <i class="fas fa-star"></i> 3.5
+            </div>
+            <div class="note-date">2026年1月5日</div>
+        </div>
+    </div>
 </div>
