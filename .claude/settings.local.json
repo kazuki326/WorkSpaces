@@ -5,7 +5,9 @@
       "Bash(git checkout:*)",
       "Bash(node scripts/scan-workspaces.js:*)",
       "Bash(grep:*)",
-      "Bash(node scripts/sync-readme.js:*)"
+      "Bash(node scripts/sync-readme.js:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
