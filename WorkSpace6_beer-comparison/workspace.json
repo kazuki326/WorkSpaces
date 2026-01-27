@@ -4,7 +4,7 @@
   "name": "ビール比較機能",
   "description": "複数のビールを選択して価格・容量・特徴を一覧で比較できる機能",
   "status": "testing",
-  "progress": 85,
+  "progress": 90,
   "priority": "medium",
   "team": ["かもりゅう"],
   "createdDate": "2024-10-10",
