@@ -3,13 +3,17 @@
   "id": "workspace-13",
   "name": "画像ギャラリー",
   "description": "商品画像やビール関連の写真をギャラリー形式で表示する機能",
-  "status": "planning",
-  "progress": 10,
+  "status": "in-progress",
+  "progress": 50,
   "priority": "low",
   "team": [],
   "createdDate": "2025-01-14",
   "lastUpdated": "2025-01-14",
-  "tags": ["画像", "ギャラリー", "UI"],
+  "tags": [
+    "画像",
+    "ギャラリー",
+    "UI"
+  ],
   "links": {
     "miro": "",
     "figma": "",
