@@ -4,7 +4,8 @@
       "Bash(node scripts/sync-readme-status.js:*)",
       "Bash(git checkout:*)",
       "Bash(node scripts/scan-workspaces.js:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(node scripts/sync-readme.js:*)"
     ]
   }
 }

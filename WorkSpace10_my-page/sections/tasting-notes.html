@@ -1,33 +1,289 @@
-<h2>私のテイスティングノート</h2>
-<div class="note-list">
-    <div class="note">
-        <h3>ビール名: ラガービール</h3>
-        <p><strong>ノート:</strong> 香ばしい麦の香りとほのかな苦味が絶妙。飲みやすい。</p>
-        <div class="slider-container">
-            <label for="sweetness1"><strong>甘口↔辛口</strong></label>
-            <input type="range" id="sweetness1" name="sweetness" min="0" max="5" step="0.1" value="2.5" disabled>
-            <span id="sweetnessValue1">2.5</span>
+<h2>テイスティングノート</h2>
+
+<!-- ツールバー -->
+<div class="notes-toolbar">
+    <button class="btn btn-primary" id="new-note-btn">
+        <i class="fas fa-plus"></i> 新規ノート作成
+    </button>
+    <div class="toolbar-right">
+        <div class="view-toggle">
+            <button class="view-btn active" data-view="grid" title="グリッド表示">
+                <i class="fas fa-th-large"></i>
+            </button>
+            <button class="view-btn" data-view="list" title="リスト表示">
+                <i class="fas fa-list"></i>
+            </button>
         </div>
-        <div class="slider-container">
-            <label for="body1"><strong>まったり↔すっきり</strong></label>
-            <input type="range" id="body1" name="body" min="0" max="5" step="0.1" value="4.0" disabled>
-            <span id="bodyValue1">4.0</span>
+        <div class="sort-select">
+            <select id="sort-notes">
+                <option value="date-desc">新しい順</option>
+                <option value="date-asc">古い順</option>
+                <option value="rating-desc">評価が高い順</option>
+                <option value="rating-asc">評価が低い順</option>
+                <option value="name-asc">名前順（A→Z）</option>
+            </select>
         </div>
-        <p class="date">作成日: 2024年10月10日</p>
-    </div>
-    <div class="note">
-        <h3>ビール名: ヴァイツェン</h3>
-        <p><strong>ノート:</strong> フルーティで柔らかい口当たりが特徴的。軽やかに飲める。</p>
-        <div class="slider-container">
-            <label for="sweetness2"><strong>甘口↔辛口</strong></label>
-            <input type="range" id="sweetness2" name="sweetness" min="0" max="5" step="0.1" value="1.8" disabled>
-            <span id="sweetnessValue2">1.8</span>
-        </div>
-        <div class="slider-container">
-            <label for="body2"><strong>まったり↔すっきり</strong></label>
-            <input type="range" id="body2" name="body" min="0" max="5" step="0.1" value="3.5" disabled>
-            <span id="bodyValue2">3.5</span>
-        </div>
-        <p class="date">作成日: 2024年10月5日</p>
     </div>
 </div>
+
+<!-- 新規ノート作成フォーム（初期は非表示） -->
+<div class="note-form-container" id="note-form" style="display: none;">
+    <div class="my-page-section">
+        <div class="form-header">
+            <h3><i class="fas fa-edit"></i> 新規テイスティングノート</h3>
+            <button class="close-form-btn" id="close-form-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form class="tasting-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="beer-name">ビール名 <span class="required">*</span></label>
+                    <input type="text" id="beer-name" placeholder="例: アサヒスーパードライ" required>
+                </div>
+                <div class="form-group">
+                    <label for="brewery">ブルワリー</label>
+                    <input type="text" id="brewery" placeholder="例: アサヒビール">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="beer-style">スタイル</label>
+                    <select id="beer-style">
+                        <option value="">選択してください</option>
+                        <option value="lager">ラガー</option>
+                        <option value="pilsner">ピルスナー</option>
+                        <option value="weizen">ヴァイツェン</option>
+                        <option value="ipa">IPA</option>
+                        <option value="pale-ale">ペールエール</option>
+                        <option value="stout">スタウト</option>
+                        <option value="porter">ポーター</option>
+                        <option value="belgian">ベルジャン</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rating">総合評価 <span class="required">*</span></label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5"><label for="star5"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>フレーバープロファイル</label>
+                <div class="flavor-sliders">
+                    <div class="slider-group">
+                        <label>甘口 ↔ 辛口</label>
+                        <input type="range" min="0" max="5" step="0.5" value="2.5">
+                        <span class="slider-value">2.5</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>まったり ↔ すっきり</label>
+                        <input type="range" min="0" max="5" step="0.5" value="2.5">
+                        <span class="slider-value">2.5</span>
+                    </div>
+                    <div class="slider-group">
+                        <label>苦味 弱 ↔ 強</label>
+                        <input type="range" min="0" max="5" step="0.5" value="2.5">
+                        <span class="slider-value">2.5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="note-text">テイスティングノート</label>
+                <textarea id="note-text" rows="4" placeholder="香り、味わい、後味などの感想を自由に記入してください..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>写真を追加</label>
+                <div class="photo-upload">
+                    <div class="upload-area">
+                        <i class="fas fa-camera"></i>
+                        <span>クリックまたはドラッグ&ドロップ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancel-btn">キャンセル</button>
+                <button type="submit" class="btn btn-primary">保存する</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ノート一覧（グリッド表示） -->
+<div class="note-list note-grid" id="notes-container">
+    <div class="note-card">
+        <div class="note-card-header">
+            <span class="note-style-badge">ラガー</span>
+            <div class="note-card-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+        </div>
+        <h3 class="note-card-title">ラガービール</h3>
+        <p class="note-card-brewery">サッポロビール</p>
+        <p class="note-card-excerpt">香ばしい麦の香りとほのかな苦味が絶妙。飲みやすい。</p>
+        <div class="note-card-profile">
+            <div class="profile-bar">
+                <span class="profile-label">甘↔辛</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 50%;"></div></div>
+            </div>
+            <div class="profile-bar">
+                <span class="profile-label">重↔軽</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 80%;"></div></div>
+            </div>
+        </div>
+        <div class="note-card-footer">
+            <span class="note-card-date">2026年1月15日</span>
+            <div class="note-card-actions">
+                <button class="icon-btn" title="編集"><i class="fas fa-edit"></i></button>
+                <button class="icon-btn" title="共有"><i class="fas fa-share-alt"></i></button>
+                <button class="icon-btn" title="削除"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="note-card">
+        <div class="note-card-header">
+            <span class="note-style-badge">ヴァイツェン</span>
+            <div class="note-card-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+        <h3 class="note-card-title">ヴァイツェン</h3>
+        <p class="note-card-brewery">京都醸造</p>
+        <p class="note-card-excerpt">フルーティで柔らかい口当たりが特徴的。軽やかに飲める。</p>
+        <div class="note-card-profile">
+            <div class="profile-bar">
+                <span class="profile-label">甘↔辛</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 36%;"></div></div>
+            </div>
+            <div class="profile-bar">
+                <span class="profile-label">重↔軽</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 70%;"></div></div>
+            </div>
+        </div>
+        <div class="note-card-footer">
+            <span class="note-card-date">2026年1月10日</span>
+            <div class="note-card-actions">
+                <button class="icon-btn" title="編集"><i class="fas fa-edit"></i></button>
+                <button class="icon-btn" title="共有"><i class="fas fa-share-alt"></i></button>
+                <button class="icon-btn" title="削除"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="note-card">
+        <div class="note-card-header">
+            <span class="note-style-badge">IPA</span>
+            <div class="note-card-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        <h3 class="note-card-title">アメリカンIPA</h3>
+        <p class="note-card-brewery">Craft Brewery Tokyo</p>
+        <p class="note-card-excerpt">柑橘系のホップが華やか。苦味は強いが後味はすっきり。</p>
+        <div class="note-card-profile">
+            <div class="profile-bar">
+                <span class="profile-label">甘↔辛</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 75%;"></div></div>
+            </div>
+            <div class="profile-bar">
+                <span class="profile-label">重↔軽</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 60%;"></div></div>
+            </div>
+        </div>
+        <div class="note-card-footer">
+            <span class="note-card-date">2026年1月5日</span>
+            <div class="note-card-actions">
+                <button class="icon-btn" title="編集"><i class="fas fa-edit"></i></button>
+                <button class="icon-btn" title="共有"><i class="fas fa-share-alt"></i></button>
+                <button class="icon-btn" title="削除"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="note-card">
+        <div class="note-card-header">
+            <span class="note-style-badge">スタウト</span>
+            <div class="note-card-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+        </div>
+        <h3 class="note-card-title">チョコレートスタウト</h3>
+        <p class="note-card-brewery">横浜ビール</p>
+        <p class="note-card-excerpt">ローストした麦芽の香りとカカオのような風味。デザート感覚で楽しめる。</p>
+        <div class="note-card-profile">
+            <div class="profile-bar">
+                <span class="profile-label">甘↔辛</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 30%;"></div></div>
+            </div>
+            <div class="profile-bar">
+                <span class="profile-label">重↔軽</span>
+                <div class="profile-track"><div class="profile-fill" style="width: 25%;"></div></div>
+            </div>
+        </div>
+        <div class="note-card-footer">
+            <span class="note-card-date">2025年12月28日</span>
+            <div class="note-card-actions">
+                <button class="icon-btn" title="編集"><i class="fas fa-edit"></i></button>
+                <button class="icon-btn" title="共有"><i class="fas fa-share-alt"></i></button>
+                <button class="icon-btn" title="削除"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 新規ノート作成フォームの表示/非表示
+document.getElementById('new-note-btn')?.addEventListener('click', () => {
+    document.getElementById('note-form').style.display = 'block';
+});
+
+document.getElementById('close-form-btn')?.addEventListener('click', () => {
+    document.getElementById('note-form').style.display = 'none';
+});
+
+document.getElementById('cancel-btn')?.addEventListener('click', () => {
+    document.getElementById('note-form').style.display = 'none';
+});
+
+// 表示切り替え
+document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const view = btn.dataset.view;
+        const container = document.getElementById('notes-container');
+        container.classList.remove('note-grid', 'note-list-view');
+        container.classList.add(view === 'grid' ? 'note-grid' : 'note-list-view');
+    });
+});
+
+// スライダー値表示
+document.querySelectorAll('.slider-group input[type="range"]').forEach(slider => {
+    const valueSpan = slider.nextElementSibling;
+    slider.addEventListener('input', () => {
+        valueSpan.textContent = slider.value;
+    });
+});
+</script>

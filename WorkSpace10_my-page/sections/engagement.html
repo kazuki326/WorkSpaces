@@ -1,43 +1,145 @@
-<h2>エンゲージメント関連</h2>
+<h2>エンゲージメント</h2>
 
+<!-- ポイント -->
 <div class="my-page-section">
-    <h3>ウィッシュリスト</h3>
+    <div class="section-header">
+        <h3><i class="fas fa-coins"></i> ポイント</h3>
+    </div>
+    <div class="points-summary">
+        <div class="points-card">
+            <h4>保有ポイント</h4>
+            <div class="points-value">1,500</div>
+        </div>
+        <div class="points-card" style="background: linear-gradient(135deg, var(--color-success), #218838);">
+            <h4>今月獲得</h4>
+            <div class="points-value">+320</div>
+        </div>
+    </div>
+    <h4 style="margin-bottom: var(--spacing-md);">ポイント履歴</h4>
+    <div class="points-history">
+        <div class="points-item">
+            <div class="points-item-info">
+                <span class="points-item-desc">クラフトビールセット購入</span>
+                <span class="points-item-date">2026年1月20日</span>
+            </div>
+            <span class="points-item-value positive">+150</span>
+        </div>
+        <div class="points-item">
+            <div class="points-item-info">
+                <span class="points-item-desc">テイスティングノート投稿ボーナス</span>
+                <span class="points-item-date">2026年1月15日</span>
+            </div>
+            <span class="points-item-value positive">+50</span>
+        </div>
+        <div class="points-item">
+            <div class="points-item-info">
+                <span class="points-item-desc">ポイント利用（割引）</span>
+                <span class="points-item-date">2026年1月10日</span>
+            </div>
+            <span class="points-item-value negative">-200</span>
+        </div>
+        <div class="points-item">
+            <div class="points-item-info">
+                <span class="points-item-desc">レビュー投稿ボーナス</span>
+                <span class="points-item-date">2026年1月5日</span>
+            </div>
+            <span class="points-item-value positive">+30</span>
+        </div>
+    </div>
+</div>
+
+<!-- バッジコレクション -->
+<div class="my-page-section">
+    <div class="section-header">
+        <h3><i class="fas fa-medal"></i> バッジコレクション</h3>
+        <span style="font-size: 0.875rem; color: var(--gray-500);">5 / 10 獲得</span>
+    </div>
+    <div class="badge-collection">
+        <div class="badge-item">
+            <div class="badge-icon"><i class="fas fa-beer"></i></div>
+            <span class="badge-name">初心者テイスター</span>
+            <span class="badge-desc">初めてのノート投稿</span>
+        </div>
+        <div class="badge-item">
+            <div class="badge-icon"><i class="fas fa-star"></i></div>
+            <span class="badge-name">ビール愛好家</span>
+            <span class="badge-desc">ノート50件達成</span>
+            <div class="badge-progress">
+                <div class="badge-progress-fill" style="width: 24%;"></div>
+            </div>
+        </div>
+        <div class="badge-item">
+            <div class="badge-icon"><i class="fas fa-glass-cheers"></i></div>
+            <span class="badge-name">スタイルマスター</span>
+            <span class="badge-desc">20種類体験</span>
+            <div class="badge-progress">
+                <div class="badge-progress-fill" style="width: 40%;"></div>
+            </div>
+        </div>
+        <div class="badge-item">
+            <div class="badge-icon"><i class="fas fa-heart"></i></div>
+            <span class="badge-name">コミュニティリーダー</span>
+            <span class="badge-desc">いいね100件獲得</span>
+            <div class="badge-progress">
+                <div class="badge-progress-fill" style="width: 65%;"></div>
+            </div>
+        </div>
+        <div class="badge-item">
+            <div class="badge-icon"><i class="fas fa-calendar-check"></i></div>
+            <span class="badge-name">イベント常連</span>
+            <span class="badge-desc">イベント10回参加</span>
+            <div class="badge-progress">
+                <div class="badge-progress-fill" style="width: 30%;"></div>
+            </div>
+        </div>
+        <div class="badge-item locked">
+            <div class="badge-icon"><i class="fas fa-trophy"></i></div>
+            <span class="badge-name">プレミアム会員</span>
+            <span class="badge-desc">1年間継続利用</span>
+        </div>
+        <div class="badge-item locked">
+            <div class="badge-icon"><i class="fas fa-crown"></i></div>
+            <span class="badge-name">レジェンド</span>
+            <span class="badge-desc">ノート500件達成</span>
+        </div>
+        <div class="badge-item locked">
+            <div class="badge-icon"><i class="fas fa-users"></i></div>
+            <span class="badge-name">インフルエンサー</span>
+            <span class="badge-desc">フォロワー100人</span>
+        </div>
+    </div>
+</div>
+
+<!-- ウィッシュリスト -->
+<div class="my-page-section">
+    <div class="section-header">
+        <h3><i class="fas fa-heart"></i> ウィッシュリスト</h3>
+        <span style="font-size: 0.875rem; color: var(--gray-500);">2件</span>
+    </div>
     <div class="wishlist-container">
         <div class="wishlist-item">
-            <img src="https://via.placeholder.com/120x120?text=Beer1" alt="ビールの画像" class="wishlist-img">
+            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=120&h=120&fit=crop" alt="ビールの画像" class="wishlist-img">
             <div class="wishlist-info">
-                <h4>ラガービール</h4>
-                <p>価格: ¥800</p>
-                <p>追加日: 2024年10月15日</p>
-                <button class="add-to-cart">カートに追加</button>
-                <button class="remove-item">削除</button>
+                <h4>アメリカンIPA</h4>
+                <p>価格: ¥850</p>
+                <p style="font-size: 0.75rem; color: var(--gray-500);">追加日: 2026年1月20日</p>
+                <div style="margin-top: var(--spacing-sm);">
+                    <button class="btn btn-primary btn-small"><i class="fas fa-cart-plus"></i> カートに追加</button>
+                    <button class="btn btn-secondary btn-small"><i class="fas fa-trash"></i></button>
+                </div>
             </div>
         </div>
         <div class="wishlist-item">
-            <img src="https://via.placeholder.com/120x120?text=Beer2" alt="ビールの画像" class="wishlist-img">
+            <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=120&h=120&fit=crop" alt="ビールの画像" class="wishlist-img">
             <div class="wishlist-info">
-                <h4>ピルスナービール</h4>
-                <p>価格: ¥850</p>
-                <p>追加日: 2024年10月14日</p>
-                <button class="add-to-cart">カートに追加</button>
-                <button class="remove-item">削除</button>
+                <h4>チョコレートスタウト</h4>
+                <p>価格: ¥920</p>
+                <p style="font-size: 0.75rem; color: var(--gray-500);">追加日: 2026年1月18日</p>
+                <div style="margin-top: var(--spacing-sm);">
+                    <button class="btn btn-primary btn-small"><i class="fas fa-cart-plus"></i> カートに追加</button>
+                    <button class="btn btn-secondary btn-small"><i class="fas fa-trash"></i></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="my-page-section">
-    <h3>おすすめ商品</h3>
-    <p>あなたの購入履歴や閲覧履歴に基づいたおすすめ商品です。</p>
-    <div class="my-page-section">
-        <h4>おすすめビールA</h4>
-        <p>「[おすすめビールA]」は、あなたにぴったりの一本です！</p>
-    </div>
-</div>
-
-<div class="my-page-section">
-    <h3>ポイントとクーポン</h3>
-    <p><strong>総保有ポイント:</strong> 1200ポイント</p>
-    <p><strong>保有クーポン:</strong> 2枚</p>
-    <button class="btn">クーポンを見る</button>
 </div>

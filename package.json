@@ -1,0 +1,13 @@
+{
+  "name": "bierjp-workspaces",
+  "version": "1.0.0",
+  "description": "bier.jp WorkSpaces - プロトタイプ管理",
+  "scripts": {
+    "sync-readme": "node scripts/sync-readme.js",
+    "sync-readme:check": "node scripts/sync-readme.js --dry-run"
+  },
+  "keywords": ["bier.jp", "workspaces", "prototype"],
+  "author": "bier.jp team",
+  "license": "UNLICENSED",
+  "private": true
+}

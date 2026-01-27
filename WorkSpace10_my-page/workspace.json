@@ -4,11 +4,11 @@
   "name": "マイページ機能",
   "description": "ユーザーの購入履歴、お気に入り、テイスティングノートなどを一元管理するマイページ",
   "status": "in-progress",
-  "progress": 60,
+  "progress": 75,
   "priority": "high",
   "team": [],
   "createdDate": "2024-10-05",
-  "lastUpdated": "2024-11-15",
+  "lastUpdated": "2026-01-27",
   "tags": ["マイページ", "UX", "フロントエンド", "ユーザー管理"],
   "links": {
     "miro": "",
@@ -40,14 +40,19 @@
       "completedDate": "2024-11-10"
     },
     {
+      "name": "UI/UXアクセシビリティ改善",
+      "completed": true,
+      "completedDate": "2026-01-27"
+    },
+    {
       "name": "バックエンド実装",
       "completed": false,
-      "dueDate": "2024-12-05"
+      "dueDate": "2026-02-28"
     },
     {
       "name": "フロントエンド実装",
       "completed": false,
-      "dueDate": "2024-12-20"
+      "dueDate": "2026-03-15"
     }
   ],
   "dependencies": ["workspace-1"],
