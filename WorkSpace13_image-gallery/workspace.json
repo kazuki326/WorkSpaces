@@ -1,21 +1,29 @@
 {
   "$schema": "../.templates/workspace-schema.json",
   "id": "workspace-13",
-  "name": "画像ギャラリー",
-  "description": "商品画像やビール関連の写真をギャラリー形式で表示する機能",
+  "name": "商品ページ内の画像複数表示",
+  "description": "商品の魅力を視覚的に伝えるための画像表示システム。メイン画像の切り替え、サムネイルによるナビゲーション、拡大表示（モーダル）、およびモバイル端末での直感的な操作（スワイプ・ドラッグ）を提供します。",
   "status": "in-progress",
+<<<<<<< HEAD
   "progress": 60,
   "priority": "low",
   "team": [],
+=======
+  "progress": 70,
+  "priority": "medium",
+  "team": ["ミユナ"],
+>>>>>>> 1a84b5014c7de5a423c5e46fd35ad25cf0d455ed
   "createdDate": "2025-01-14",
-  "lastUpdated": "2025-01-14",
+  "lastUpdated": "2025-11-04",
   "tags": [
     "画像",
     "ギャラリー",
-    "UI"
+    "UI",
+    "スワイプ",
+    "モーダル"
   ],
   "links": {
-    "miro": "",
+    "miro": "https://miro.com/app/board/bier-jp-workspace1",
     "figma": "",
     "docs": "",
     "other": []
@@ -23,16 +31,50 @@
   "prototypes": [
     {
       "id": "proto-13-1",
-      "name": "フォトギャラリー",
+      "name": "画像ギャラリー",
       "file": "photos.html",
       "version": "v0.1",
       "status": "draft",
       "thumbnail": "",
-      "lastModified": "2025-01-14",
-      "description": "商品写真をギャラリー形式で表示するプロトタイプ"
+      "lastModified": "2025-11-04",
+      "description": "メイン画像ビューアー、サムネイルナビゲーション、モーダル拡大表示機能を含むプロトタイプ"
     }
   ],
-  "milestones": [],
-  "dependencies": [],
-  "notes": ""
+  "milestones": [
+    {
+      "name": "ギャラリー基本レイアウト設計",
+      "completed": true,
+      "completedDate": "2025-10-01"
+    },
+    {
+      "name": "サムネイル連動ロジック実装",
+      "completed": true,
+      "completedDate": "2025-10-15"
+    },
+    {
+      "name": "モーダル拡大表示・ページネーション実装",
+      "completed": true,
+      "completedDate": "2025-10-25"
+    },
+    {
+      "name": "スワイプ・ドラッグ操作対応",
+      "completed": true,
+      "completedDate": "2025-11-04"
+    },
+    {
+      "name": "バックエンド画像データ連携",
+      "completed": false,
+      "dueDate": "2026-03-01"
+    },
+    {
+      "name": "パフォーマンス最適化（Lazy Load等）",
+      "completed": false,
+      "dueDate": "2026-03-15"
+    }
+  ],
+  "dependencies": [
+    "workspace-4",
+    "workspace-10"
+  ],
+  "notes": "UI実装および基本ロジック完了済み。バックエンド連携は2026年3月を目標。"
 }

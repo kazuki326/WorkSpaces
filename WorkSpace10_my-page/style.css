@@ -1,0 +1,186 @@
+/* WorkSpace10: マイページ専用スタイル */
+
+/* ===================================
+   レイアウト修正
+   =================================== */
+
+/* ページ全体：縦方向に配置（コンテナ + 関連ドキュメント） */
+body.my-page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* メインコンテナ：サイドバー + コンテンツを横並び */
+.my-page-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    width: 100%;
+}
+
+/* サイドバー */
+.sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: var(--gray-800);
+    color: var(--gray-100);
+    padding: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+/* コンテンツエリア */
+.my-page-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+    background: var(--gray-100);
+    min-width: 0;
+    overflow-x: auto;
+}
+
+/* 関連ドキュメントセクション（ページ下部） */
+body.my-page-layout > section.my-page-section {
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    padding: var(--spacing-xl);
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ===================================
+   レスポンシブ対応
+   =================================== */
+
+@media (max-width: 768px) {
+    /* モバイル：サイドバーとコンテンツを縦並びに */
+    .my-page-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: unset;
+        padding: var(--spacing-sm);
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2px;
+    }
+
+    .sidebar li {
+        flex: 1 1 auto;
+        justify-content: center;
+        border-bottom: none;
+        border-right: 1px solid var(--gray-700);
+        padding: var(--spacing-sm);
+        font-size: 0.75rem;
+        min-width: 80px;
+    }
+
+    .sidebar li:last-child {
+        border-right: none;
+    }
+
+    .sidebar li.active {
+        border-left: none;
+        border-bottom: 3px solid white;
+    }
+
+    .sidebar li i {
+        display: block;
+        margin: 0 auto var(--spacing-xs);
+    }
+
+    .my-page-content {
+        padding: var(--spacing-md);
+    }
+
+    body.my-page-layout > section.my-page-section {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ===================================
+   セクションヘッダー
+   =================================== */
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.section-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.section-desc {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* ===================================
+   コンテンツカード
+   =================================== */
+
+.content-card {
+    background: white;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
+}
+
+.content-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* ===================================
+   グリッドレイアウト
+   =================================== */
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 992px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
