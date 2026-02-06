@@ -4,7 +4,7 @@
   "name": "味のグラフ表示機能",
   "description": "ビールの味わいを視覚的に表現するレーダーチャートやグラフの表示機能",
   "status": "planning",
-  "progress": 60,
+  "progress": 50,
   "priority": "medium",
   "team": [],
   "createdDate": "2024-10-20",
